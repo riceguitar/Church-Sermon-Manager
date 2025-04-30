@@ -377,14 +377,37 @@ class SermonManager { // phpcs:ignore
 
 		switch ( SermonManager::getOption( 'player' ) ) {
 			case 'mediaelement':
-				wp_enqueue_style( 'wpfc-sm-mediaelement-css' );
-				wp_enqueue_script( 'wpfc-sm-mediaelement' );
-				wp_enqueue_script( 'wpfc-sm-mediaelement-loader' );
+				wp_enqueue_style( 'wp-mediaelement' );
+				wp_enqueue_script( 'wp-mediaelement' );
+
 				break;
 			case 'plyr':
-				wp_enqueue_script( 'wpfc-sm-plyr' );
-				wp_enqueue_script( 'wpfc-sm-plyr-loader' );
+				wp_localize_script(
+					'wpfc-sm-plyr-loader',
+					'sm_data',
+					array(
+						'debug'                    => defined( 'WP_DEBUG' ) && WP_DEBUG === true ? 1 : 0,
+						'use_native_player_safari' => SermonManager::getOption( 'use_native_player_safari', false ) ? 1 : 0,
+					)
+				);
+
+				if ( SermonManager::getOption( 'disable_cloudflare_plyr' ) ) {
+					global $wp_scripts;
+
+					$GLOBALS['sm_plyr_scripts'] = array(
+						'wpfc-sm-plyr-loader' => $wp_scripts->registered['wpfc-sm-plyr-loader'],
+						'wpfc-sm-plyr'        => $wp_scripts->registered['wpfc-sm-plyr'],
+					);
+
+					add_action( 'wp_print_scripts', array( __CLASS__, 'maybe_print_cloudflare_plyr' ) );
+					add_action( 'wp_print_footer_scripts', array( __CLASS__, 'maybe_print_cloudflare_plyr' ) );
+				} else {
+					wp_enqueue_script( 'wpfc-sm-plyr' );
+					wp_enqueue_script( 'wpfc-sm-plyr-loader' );
+				}
+
 				wp_enqueue_style( 'wpfc-sm-plyr-css' );
+
 				break;
 		}
 
@@ -534,15 +557,12 @@ class SermonManager { // phpcs:ignore
 	 * @since 2.15.7
 	 */
 	public static function register_scripts_styles() {
-		wp_register_script( 'wpfc-sm-fb-player', 'https://connect.facebook.net/en_US/sdk.js', array(), '18.0' );
-		wp_register_script( 'wpfc-sm-plyr', 'https://cdn.plyr.io/3.7.8/plyr.polyfilled.min.js', array(), '3.7.8', SermonManager::getOption( 'player_js_footer' ) );
+		wp_register_script( 'wpfc-sm-fb-player', SM_URL . 'assets/vendor/js/facebook-video.js', array(), SM_VERSION );
+		wp_register_script( 'wpfc-sm-plyr', SM_URL . 'assets/vendor/js/plyr.polyfilled' . ( ( defined( 'WP_DEBUG' ) && WP_DEBUG === true ) ? '' : '.min' ) . '.js', array(), '3.4.7', SermonManager::getOption( 'player_js_footer' ) );
 		wp_register_script( 'wpfc-sm-plyr-loader', SM_URL . 'assets/js/plyr' . ( ( defined( 'WP_DEBUG' ) && WP_DEBUG === true ) ? '' : '.min' ) . '.js', array( 'wpfc-sm-plyr' ), SM_VERSION );
-		wp_register_script( 'wpfc-sm-mediaelement', 'https://cdn.jsdelivr.net/npm/mediaelement@5.0.5/build/mediaelement-and-player.min.js', array(), '5.0.5' );
-		wp_register_script( 'wpfc-sm-mediaelement-loader', SM_URL . 'assets/js/mediaelement' . ( ( defined( 'WP_DEBUG' ) && WP_DEBUG === true ) ? '' : '.min' ) . '.js', array( 'wpfc-sm-mediaelement' ), SM_VERSION );
 		wp_register_script( 'wpfc-sm-verse-script', SM_URL . 'assets/vendor/js/verse.js', array(), SM_VERSION );
 		wp_register_style( 'wpfc-sm-styles', SM_URL . 'assets/css/sermon.min.css', array(), SM_VERSION );
-		wp_register_style( 'wpfc-sm-plyr-css', 'https://cdn.plyr.io/3.7.8/plyr.min.css', array(), '3.7.8' );
-		wp_register_style( 'wpfc-sm-mediaelement-css', 'https://cdn.jsdelivr.net/npm/mediaelement@5.0.5/build/mediaelementplayer.min.css', array(), '5.0.5' );
+		wp_register_style( 'wpfc-sm-plyr-css', SM_URL . 'assets/vendor/css/plyr.min.css', array(), '3.4.7' );
 
 		// Register theme-specific styling, if there's any.
 		if ( file_exists( SM_PATH . 'assets/css/theme-specific/' . get_option( 'template' ) . '.css' ) ) {
