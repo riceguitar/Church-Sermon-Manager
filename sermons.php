@@ -1,17 +1,19 @@
 <?php // phpcs:ignore
 /**
- * Plugin Name: Sermon Manager for WordPress
- * Plugin URI: https://www.wpforchurch.com/products/sermon-manager-for-wordpress/
- * Description: Add audio and video sermons, manage speakers, series, and more.
- * Version: 2.30.0
- * Author: WP for Church
- * Author URI: https://www.wpforchurch.com/
- * Requires at least: 4.5
- * Tested up to wordpress: 6.5
- * Tested up to PHP : 8.0.2
+ * Plugin Name: Church Sermon Manager
+ * Plugin URI: https://sierra.host/
+ * Description: Add audio and video sermons, manage speakers, series, and more to your church website.
+ * Version: 3.0.1
+ * Author: David Sudarma (Sierra.host)
+ * Author URI: https://sierra.host/
+ * Original Author: WP for Church
+ * Original Author URI: http://wpforchurch.com/
+ * Requires at least: 6.4
+ * Tested up to wordpress: 6.8
+ * Tested up to PHP : 7.4
  * Requires PHP: 7.4
  *
- * Text Domain: sermon-manager-for-wordpress
+ * Text Domain: sermon-manager
  * Domain Path: /languages/
  *
  * @package SM\Core

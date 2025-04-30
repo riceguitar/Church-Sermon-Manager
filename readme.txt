@@ -1,11 +1,11 @@
-# Sermon Manager #  
-Contributors: wpforchurch, Alex Gutierrez 
-Donate link: http://wpforchurch.com/  
+# Church Sermon Manager #  
+Contributors: davidsudarma, wpforchurch, Alex Gutierrez 
+Donate link: https://sierra.host/  
 Tags: church, sermon, sermons, preaching, podcasting, manage, managing, podcasts, itunes  
-Requires at least: 4.7.0  
-Tested up to: 6.5
+Requires at least: 6.4  
+Tested up to: 6.8
 Requires PHP: 7.4  
-Stable tag: 2.30.0
+Stable tag: 3.0.1
 License: GPLv2  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,10 +13,11 @@ Add audio and video sermons, manage speakers, series, and more to your church we
 
 ## Description ##
 
-### Sermon Manager is the #1 WordPress Sermon Plugin ###
+### Church Sermon Manager is the #1 WordPress Sermon Plugin ###
 
-**Plugin is now under new management! 
-**Join our facebook community: https://www.facebook.com/groups/wpforchurch/
+**This is a maintained fork of the original Sermon Manager plugin.**
+**Original plugin by WP for Church: http://wpforchurch.com/**
+**Current maintainer: David Sudarma (Sierra.host)**
 
 Sermon Manager is designed to help churches easily publish sermons online. Some of the features include:
 
@@ -34,7 +35,7 @@ Sermon Manager is designed to help churches easily publish sermons online. Some 
 * Super flexible shortcode system
 * Supports 3rd party plugins such as Yoast SEO, Jetpack, etc
 * Quick and professional *free* and paid support
-* Works with any theme and can be customized to display just the way you like. You’ll find the template files in the `/views` folder. You can copy these into the root of your theme folder and customize to suit your site’s design.
+* Works with any theme and can be customized to display just the way you like. You'll find the template files in the `/views` folder. You can copy these into the root of your theme folder and customize to suit your site's design.
 
 ### One-Click Importing ###
 
@@ -98,7 +99,7 @@ Would you like to help improve Sermon Manager or report a bug you found? This pr
 
 Installation is simple:
 
-1. Just use the “Add New” button in Plugin section of your WordPress blog’s Control panel. To find the plugin there, search for `Sermon Manager`
+1. Just use the "Add New" button in Plugin section of your WordPress blog's Control panel. To find the plugin there, search for `Sermon Manager`
 2. Activate the plugin
 3. Add a sermon through the Dashboard
 4. To display the sermons on the frontend of your site, just visit the `http://yourdomain.com/sermons` if you have pretty permalinks enabled or `http://yourdomain.com/?post_type=wpfc_sermon` if not. Or you can use the shortcode `[sermons]` in any page.
@@ -111,7 +112,7 @@ Visit the `http://yourdomain.com/sermons` if you have pretty permalinks enabled 
 
 ### How do I create a menu link? ###
 
-Go to Appearance → Menus. In the “Custom Links” box add `http://yourdomain.com/?post_type=wpfc_sermon` as the URL and `Sermons` as the label and click “Add to Menu”.
+Go to Appearance → Menus. In the "Custom Links" box add `http://yourdomain.com/?post_type=wpfc_sermon` as the URL and `Sermons` as the label and click "Add to Menu".
 
 ### I wish Sermon Manager could... ###
 
@@ -146,7 +147,7 @@ ADD: [latest_sermon per_page=10 order="ASC" orderby="post_modified"] New Shortco
 Fixed: itunes:explicit "false", first it says no (using W3C Feed link)
 
 ### 2.17.1.2 ###
-Fixed: [sermon_images hide_title=”yes”] shortcode working
+Fixed: [sermon_images hide_title="yes"] shortcode working
 Fixed: PHP Warning with PHP 8.x
 
 ### 2.17.1.1 ###
