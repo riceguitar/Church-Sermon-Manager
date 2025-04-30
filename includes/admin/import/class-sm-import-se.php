@@ -276,29 +276,44 @@ class SM_Import_SE {
 			}
 
 			if ( ! isset( $imported[ $post_id ] ) ) {
-				if ( null === $the_post ) {
-					$id = wp_insert_post( apply_filters( 'sm_import_se_message', array(
-						'post_date'      => $message->date . ' 12:00:00',
-						'post_content'   => '%todo_render%',
-						'post_title'     => $message->title,
-						'post_type'      => 'wpfc_sermon',
-						'post_status'    => 'publish',
-						'comment_status' => SermonManager::getOption( 'import_disallow_comments' ) ? 'closed' : 'open',
-					) ) );
+				if (null === $the_post) {
+				    $id = wp_insert_post(
+				        apply_filters(
+				            'sm_import_se_message',
+				            array(
+				                'post_date'      => $message->date . ' 12:00:00',
+				                'post_content'   => !empty($message->post_content) 
+				                                    ? $message->post_content 
+				                                    : (!empty($message->description) ? $message->description : ''),
+				                'post_title'     => $message->title,
+				                'post_type'      => 'wpfc_sermon',
+				                'post_status'    => 'publish',
+				                'comment_status' => SermonManager::getOption('import_disallow_comments') ? 'closed' : 'open',
+				            )
+				        )
+				    );
 				} else {
-					$id = wp_insert_post( apply_filters( 'sm_import_se_message', array(
-						'post_author'       => $the_post->post_author,
-						'post_date'         => $the_post->post_date,
-						'post_date_gmt'     => $the_post->post_date_gmt,
-						'post_content'      => '%todo_render%',
-						'post_title'        => $message->title,
-						'post_status'       => $the_post->post_status,
-						'post_type'         => 'wpfc_sermon',
-						'post_modified'     => $the_post->post_modified,
-						'post_modified_gmt' => $the_post->post_modified_gmt,
-						'comment_status'    => SermonManager::getOption( 'import_disallow_comments' ) ? 'closed' : 'open',
-					) ) );
+				    $id = wp_insert_post(
+				        apply_filters(
+				            'sm_import_se_message',
+				            array(
+				                'post_author'       => $the_post->post_author,
+				                'post_date'         => $the_post->post_date,
+				                'post_date_gmt'     => $the_post->post_date_gmt,
+				                'post_content'      => !empty($the_post->post_content) 
+				                                      ? $the_post->post_content 
+				                                      : (!empty($message->description) ? $message->description : ''),
+				                'post_title'        => $message->title,
+				                'post_status'       => $the_post->post_status,
+				                'post_type'         => 'wpfc_sermon',
+				                'post_modified'     => $the_post->post_modified,
+				                'post_modified_gmt' => $the_post->post_modified_gmt,
+				                'comment_status'    => SermonManager::getOption('import_disallow_comments') ? 'closed' : 'open',
+				            )
+				        )
+				    );
 				}
+
 
 				if ( 0 === $id || $id instanceof WP_Error ) {
 					// Silently skip if error.
@@ -384,9 +399,9 @@ class SM_Import_SE {
 			}
 
 			// Set description.
-			if ( ! empty( $message->description ) ) {
-				update_post_meta( $id, 'sermon_description', $message->description );
-			}
+			// if ( ! empty( $message->description ) ) {
+			// 	update_post_meta( $id, 'sermon_description', $message->description );
+			// }
 
 			// Set sermon date.
 			if ( ! empty( $message->date ) && '0000-00-00' !== $message->date ) {

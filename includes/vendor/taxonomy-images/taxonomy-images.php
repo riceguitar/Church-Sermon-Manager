@@ -686,7 +686,6 @@ function sermon_image_plugin_get_associations( $refresh = false ) {
 	if ( empty( $associations ) || $refresh ) {
 		$associations = sermon_image_plugin_sanitize_associations( get_option( 'sermon_image_plugin' ) );
 	}
-
 	return $associations;
 }
 
@@ -1296,13 +1295,23 @@ function sermon_images_admin_enqueue_scripts() {
 		array( 'jquery' ),
 		sermon_image_plugin_version()
 	);
+	
+	
+	/* Checking Taxonomy to set its title and button name*/
+
+	$screen = get_current_screen();
+	if ( ! isset( $screen->taxonomy ) ) {
+		return false;
+	}
+
+	$sermn_taxonomy_name = $screen->taxonomy;
 
 
 	wp_localize_script( 'sermon-images-media-modal', 'taxonomyImagesMediaModal', array(
 		'wp_media_post_id'     => 0,
 		'attachment_id'        => 0,
-		'uploader_title'       => wp_sprintf( esc_html__( 'Set %s&rsquo;s image', 'sermon-manager-for-wordpress' ), sm_get_taxonomy_field( 'wpfc_preacher', 'singular_name' ) ),
-		'uploader_button_text' => wp_sprintf( esc_html__( 'Set %s&rsquo;s image', 'sermon-manager-for-wordpress' ), sm_get_taxonomy_field( 'wpfc_preacher', 'singular_name' ) ),
+		'uploader_title'       => wp_sprintf( esc_html__( 'Set %s&rsquo;s image', 'sermon-manager-for-wordpress' ), sm_get_taxonomy_field( $sermn_taxonomy_name, 'singular_name' ) ),
+		'uploader_button_text' => wp_sprintf( esc_html__( 'Set %s&rsquo;s image', 'sermon-manager-for-wordpress' ), sm_get_taxonomy_field( $sermn_taxonomy_name, 'singular_name' ) ),
 		'series_title'         => esc_html__( 'Set Series image', 'sermon-manager-for-wordpress' ),
 		'series_button_text'   => esc_html__( 'Set Series image', 'sermon-manager-for-wordpress' ),
 		'default_img_src'      => sermon_image_plugin_url( 'default.png' )

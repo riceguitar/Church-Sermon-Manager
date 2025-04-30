@@ -43,6 +43,21 @@ $current_tab = empty( $current_tab ) ? 'general' : $current_tab;
 			</form>
 		</div>
 		<div class="settings-side">
+			<div class="postbox sm-box" style="background: #f6fbff; display: block;
+    padding: 0 .7rem;">
+				<h2><span>IMPORTANT: Only if sermon content in missing</span>
+				</h2>
+				
+				<div class="inside">
+					<p>After updating to the latest version, please click the "Sync Now" button to resolve the issue.</p>
+					<div style="text-align:center">
+						<?php wp_nonce_field( 'sync_sermon_content_action', 'sync_sermon_content_nonce' ); ?>
+
+						<a href="#" id="sync_sermon_old_data"class="button-primary">Sync Now</a>
+					</div>
+					
+				</div>
+			</div>
 			<?php if ( ! defined('SMP_SM_VERSION') ) : ?>
 			<div class="postbox sm-box" style="background: #f6fbff;">
 				<h3><span>Sermon Manager Pro</span>
@@ -126,3 +141,31 @@ $current_tab = empty( $current_tab ) ? 'general' : $current_tab;
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	jQuery(document).ready(function ($) {
+		// console.log("function clicked11");
+	$('#sync_sermon_old_data').click(function(e) {
+        e.preventDefault(); // Prevent the default behavior of the button
+        var nonce=jQuery('#sync_sermon_content_nonce').val();
+        console.log("nonce === ",nonce);
+        if (confirm('Are you sure you want to sync the data?')) {
+            $.ajax({
+                url: ajaxurl,
+                type: 'post',
+                data: {
+                    action: 'sync_sermon_data',
+                    sync_sermon_content_nonce: nonce
+                },
+                success: function(response) {                	
+                	alert(response.data.message);
+                	// console.log("response === ",response);
+                    // 
+                },
+                error: function(e) {
+                    alert('Something went wrong, please try again.',e);
+                }
+            });
+        }
+    });
+});
+</script>

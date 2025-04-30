@@ -476,6 +476,7 @@ class SM_Export_SM {
 									?>
 								</excerpt:encoded>
 								<wp:post_id><?php echo $post->ID; ?></wp:post_id>
+								<wp:post_content><?php echo $post->post_content; ?></wp:post_content>
 								<wp:post_date><?php echo $post->post_date; ?></wp:post_date>
 								<wp:post_date_gmt><?php echo $post->post_date_gmt; ?></wp:post_date_gmt>
 								<wp:comment_status><?php echo $post->comment_status; ?></wp:comment_status>

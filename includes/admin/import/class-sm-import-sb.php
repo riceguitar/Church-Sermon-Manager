@@ -393,14 +393,19 @@ class SM_Import_SB {
 		foreach ( $sermons as $sermon ) {
 			if ( ! isset( $imported[ $sermon->id ] ) ) {
 				import: // phpcs:ignore
-				$id = wp_insert_post( apply_filters( 'sm_import_sb_message', array( // phpcs:ignore
-					'post_date'      => $sermon->datetime,
-					'post_content'   => '%todo_render%',
-					'post_title'     => $sermon->title,
-					'post_type'      => 'wpfc_sermon',
-					'post_status'    => 'publish',
-					'comment_status' => SermonManager::getOption( 'import_disallow_comments' ) ? 'closed' : 'open',
-				) ) );
+				$id = wp_insert_post(
+					    apply_filters(
+					        'sm_import_sb_message', 
+					        array(
+					            'post_date'      => $sermon->datetime,
+					            'post_content'   => !empty($sermon->post_content) ? $sermon->post_content : (!empty($sermon->description) ? $sermon->description : ''),
+					            'post_title'     => $sermon->title,
+					            'post_type'      => 'wpfc_sermon',
+					            'post_status'    => 'publish',
+					            'comment_status' => SermonManager::getOption('import_disallow_comments') ? 'closed' : 'open',
+					        )
+					    )
+					);
 
 				$imported[ $sermon->id ] = array(
 					'new_id' => $id,
@@ -525,7 +530,7 @@ class SM_Import_SB {
 			}
 
 			// Set description.
-			update_post_meta( $id, 'sermon_description', $sermon->description );
+			// update_post_meta( $id, 'sermon_description', $sermon->description );
 
 			// Set passage.
 			update_post_meta( $id, 'bible_passages_start', $sermon->start );

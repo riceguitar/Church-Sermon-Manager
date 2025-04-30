@@ -31,16 +31,16 @@ if ( ! SermonManager::getOption( 'disable_layouts', false ) ) {
 	function add_wpfc_sermon_content( $content ) {
 		if ( 'wpfc_sermon' === get_post_type() && in_the_loop() == true ) {
 			if ( ! is_feed() && ( is_archive() || is_search() ) ) {
-				$content = wpfc_sermon_excerpt_v2( true );
+				$content .= wpfc_sermon_excerpt_v2( true );
 			} elseif ( is_singular() && is_main_query() ) {
-				$content = wpfc_sermon_single_v2( true );
+				$content .= wpfc_sermon_single_v2( true );
 			}
 		}
 
 		return $content;
 	}
 
-	add_filter( 'the_content', 'add_wpfc_sermon_content' );
+	//add_filter( 'the_content', 'add_wpfc_sermon_content' );
 	if ( ! SermonManager::getOption( 'disable_the_excerpt' ) ) {
 		add_filter( 'the_excerpt', 'add_wpfc_sermon_content' );
 	}
@@ -142,7 +142,7 @@ function render_wpfc_sorting( $args = array() ) {
 		default:
 			if ( get_query_var( 'paged' ) === 0 ) {
 				$args['action'] = '';
-			} else {
+			} else {	
 				$args['action'] = str_replace( parse_url( get_pagenum_link(), PHP_URL_QUERY ), '', get_pagenum_link() );
 			}
 			break;
@@ -240,6 +240,26 @@ function get_wpfc_sermon_meta( $meta_key = '', $post = null ) {
 }
 
 /**
+ * Get the sermon audio URL, handling both WordPress attachments and external URLs.
+ *
+ * @param int|null $post_id Optional. The sermon post ID. Defaults to current post in the loop.
+ *
+ * @return string|false The audio URL if found, false otherwise.
+ */
+function get_wpfc_sermon_audio_url( $post_id = null ) {
+	if ( null === $post_id ) {
+		global $post;
+		$post_id = $post->ID;
+	}
+
+	$sermon_audio_id = get_post_meta( $post_id, 'sermon_audio_id', true );
+	$sermon_audio_url_wp = $sermon_audio_id ? wp_get_attachment_url( intval( $sermon_audio_id ) ) : false;
+	$sermon_audio_url = $sermon_audio_id && $sermon_audio_url_wp ? $sermon_audio_url_wp : get_post_meta( $post_id, 'sermon_audio', true );
+
+	return $sermon_audio_url ?: false;
+}
+
+/**
  * Pass sermon content through WordPress functions, to render shortcodes, etc.
  *
  * @param string $meta_key Sermon meta key.
@@ -257,7 +277,6 @@ function process_wysiwyg_output( $meta_key, $post_id = 0 ) {
 	$content = $wp_embed->run_shortcode( $content );
 	$content = wpautop( $content );
 	$content = do_shortcode( $content );
-
 	return $content;
 }
 
@@ -443,12 +462,12 @@ function wpfc_render_audio( $source = '', $seek = null ) {
  * @return string
  */
 function wpfc_sermon_attachments() {
-	if ( ! get_wpfc_sermon_meta( 'sermon_notes' ) && ! get_wpfc_sermon_meta( 'sermon_bulletin' ) ) {
+	if ( ! get_wpfc_sermon_meta( 'sermon_notes' ) && ! get_wpfc_sermon_meta( 'sermon_bulletin' )  && ! get_wpfc_sermon_meta( 'sermon_notes_multiple' )  && ! get_wpfc_sermon_meta( 'sermon_bulletin_multiple' ) ) {
 		return '';
 	}
 
 	$output = wpfc_get_partial( 'content-sermon-attachments' );
-
+	// print_r($output);
 	/**
 	 * Allows to filter the output of sermon attachments HTML.
 	 *
@@ -642,9 +661,10 @@ function wpfc_get_term_dropdown( $taxonomy, $default = '' ) {
 		}
 
 		// Order the numbers (books).
-		ksort( $ordered_terms );
+		//ksort( $ordered_terms );
 
 		$terms = array_merge( $ordered_terms, $unordered_terms );
+        sort( $terms );
 	}
 
 	$current_slug = get_query_var( $taxonomy ) ?: ( isset( $_GET[ $taxonomy ] ) ? $_GET[ $taxonomy ] : '' );

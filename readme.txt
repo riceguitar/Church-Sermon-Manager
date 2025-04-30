@@ -1,11 +1,11 @@
 # Sermon Manager #  
-Contributors: wpforchurch, jasonmwestbrook  
+Contributors: wpforchurch, Alex Gutierrez 
 Donate link: http://wpforchurch.com/  
 Tags: church, sermon, sermons, preaching, podcasting, manage, managing, podcasts, itunes  
 Requires at least: 4.7.0  
-Tested up to: 5.1  
-Requires PHP: 5.3  
-Stable tag: 2.15.16  
+Tested up to: 6.5
+Requires PHP: 7.4  
+Stable tag: 2.30.0
 License: GPLv2  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,6 +14,9 @@ Add audio and video sermons, manage speakers, series, and more to your church we
 ## Description ##
 
 ### Sermon Manager is the #1 WordPress Sermon Plugin ###
+
+**Plugin is now under new management! 
+**Join our facebook community: https://www.facebook.com/groups/wpforchurch/
 
 Sermon Manager is designed to help churches easily publish sermons online. Some of the features include:
 
@@ -47,6 +50,7 @@ Soon you will be able to migrate from those 3rd party plugins to Sermon Manager 
 * `[sermon_images]` — This will list all sermon series and their associated image in a grid.
 * `[list_podcasts]` — This will list available podcast services with nice large buttons.
 * `[list_sermons]` — This will list all series or speakers in a simple unordered list.
+* `[latest_sermon]` — This will list all  latest sermons.
 * `[latest_series]` — This will display information about the latest sermon series, including the image, title (optional), and description (optional).
 * `[sermon_sort_fields]` — Dropdown selections to quickly navigate to all sermons in a series or by a particular speaker.
 
@@ -74,10 +78,10 @@ Bug fixing and fixing unexpected behavior *is free* and *always will be free*. J
 * SEO & Marketing Ready
 * Live Chat Support Inside the Plugin
 * PowerPress Compatibility
-* [Full List of Pro Features & Roadmap](https://sermonmanager.pro/)
+* [Full List of Pro Features]
 
-When you upgrade to Pro you also get premium ticket and live chat support for the free version of Sermon Manager too!
-*Grab your copy of Sermon Manager Pro at early adopter pricing for life between Nov 9th and Nov 23!*
+When you upgrade to Pro you also get premium ticket and support for the free version of Sermon Manager too!
+
 
 ### Developers ###
 
@@ -122,6 +126,84 @@ Visit the [plugin homepage](https://wpforchurch.com/wordpress-plugins/sermon-man
 2. Sermon Files
 
 ## Changelog ##
+
+
+### 2.30.0 ###
+Fixed: Removed the "Description" custom field.
+Added: "Data Sync" button in Settings to resolve data issues after updating to the latest version. If you encounter any data issues, please use the sync button.
+Added: Option to enable or disable the Gutenberg Block Editor for sermons.
+
+
+### 2.20.0 ###
+Fixed: TwentyTwentyFour theme design support added.
+
+
+### 2.18.0 ###
+Fixed: In this release, we have addressed an issue where the post content field was not updating correctly with the post meta key. This fix ensures that the post content field now accurately reflects the data from the post meta key.
+
+### 2.17.2 ###
+ADD: [latest_sermon per_page=10 order="ASC" orderby="post_modified"] New Shortcode
+Fixed: itunes:explicit "false", first it says no (using W3C Feed link)
+
+### 2.17.1.2 ###
+Fixed: [sermon_images hide_title=”yes”] shortcode working
+Fixed: PHP Warning with PHP 8.x
+
+### 2.17.1.1 ###
+Add: New Checkbox added for the support of http:// or https:// inside the enclosure URL under the Podcast tab in the settings menu.
+
+### 2.17.1 ###
+Fixed: Compability issues with PHP 8.x
+
+### 2.17.0 ###
+Fixed: Error when updating the content.
+Fixed: PHP Error Unparenthesized.
+Fixed: RSS feed not working with PHP 8.0.
+
+### 2.16.9 ###
+Fixed: Issues saving with PHP 8.0 WP 5.9.2
+Fixed: PHP 8 error for twig and divi for sermon manager pro
+Fixed: Fatal error (Cannot access offset of type string on string)
+Fixed: Sermon series order list when using the shortcode
+Fixed: Compability issues with latest WP 5.9.3
+Fixed: Image size issue
+
+### 2.16.7 ###
+Fix: Single and mulitple file attachment available
+
+### 2.16.6 ###
+*Fix: Old Missing PDF file data issue fix
+
+### 2.16.5 ###
+*Fix: Hyperlinks are Stripped in the Description Field
+
+### 2.16.4 ###
+*Fix: Support Multiple PDF File upload For Notes and Bulletins
+
+### 2.16.3 ###
+*Fix: image size display issue in hortcode  [sermon_images  display="preachers" order="ASC" orderby="id" size="thumbnail"]
+*Fix: No follow attr for mp3 on single & archive
+
+### 2.16.2 ###
+*Fix: sm_get_screen_ids() Issue Fixed
+*Shortcode parameters control : [sermons title=no description=yes image=yes], Passing yes or no to show title, description and image. Backward compatible. Use only [sermons] if dont want any change. Both are working as backward compatible.
+
+### 2.16.1 ###
+*Fix: Wordpress 5.5 Compability issue bug fix
+
+### 2.16.0 ###
+*Fix: Bug Fix With CMB2
+
+### 2.15.19 ###
+*Fix: security issues
+*Fix: backend error
+
+### 2.15.18 ###
+* Fix: compatibility issue with PHP 7.4 in Elementor
+
+### 2.15.17 ###
+* Fix: Plyr audio download button 
+
 ### 2.15.16 ###
 * Fix: "after" parameter not working in "[sermons]" shortcode
 * Fix: Improve [latest_series] shortcode

@@ -855,7 +855,7 @@ function sm_get_next_sermon( $post = null ) {
  */
 function sm_set_service_type( $post_ID ) {
 	if ( isset( $_POST['wpfc_service_type'] ) ) {
-		$term = get_term_by( 'id', $_POST['wpfc_service_type'], 'wpfc_service_type' );
+		$term = get_term_by( 'id', sanitize_text_field($_POST['wpfc_service_type']), 'wpfc_service_type' );
 
 		if ( $term ) {
 			$service_type = $term->slug;
@@ -870,7 +870,7 @@ function sm_set_service_type( $post_ID ) {
 	$post = isset( $_POST['tax_input'] ) && isset( $_POST['tax_input']['wpfc_service_type'] ) && $_POST['tax_input']['wpfc_service_type'];
 
 	if ( $get || $post ) {
-		$field = $get ? $_GET['tax_input']['wpfc_service_type'] : $_POST['tax_input']['wpfc_service_type'];
+		$field = $get ? sanitize_text_field($_GET['tax_input']['wpfc_service_type']) : sanitize_text_field($_POST['tax_input']['wpfc_service_type']);
 		$terms = explode( ',', $field );
 
 		if ( $terms ) {
@@ -924,3 +924,57 @@ function sm_get_taxonomy_field( $taxonomy, $field_name ) {
 
 	return null;
 }
+
+
+
+function update_sermon_posts() {
+    // Get all posts of the custom post type 'wpfc_sermon'
+    $args = array(
+        'post_type'      => 'wpfc_sermon',
+        'posts_per_page' => -1, // Retrieve all posts
+        'post_status'    => array( 'publish', 'draft', 'pending', 'future', 'private', 'inherit' ), // All possible statuses
+    );
+
+    $sermon_posts = new WP_Query( $args );
+
+    // Loop through each sermon post
+    if ( $sermon_posts->have_posts() ) {
+        while ( $sermon_posts->have_posts() ) {
+            $sermon_posts->the_post();
+            $post_id = get_the_ID();
+
+            // Get the current post content and the sermon_description meta value
+            $post_content = get_post_field( 'post_content', $post_id );
+            $sermon_description = get_post_meta( $post_id, 'sermon_description', true );
+
+            // Compare post content with the sermon_description meta value
+            if ( $post_content !== $sermon_description ) {
+
+                // Backup the current post content to a new meta key 'post_content_backup'
+                update_post_meta( $post_id, 'post_content_backup', $post_content );
+
+                // Replace post content with the sermon_description value
+                wp_update_post( array(
+                    'ID'           => $post_id,
+                    'post_content' => $sermon_description,
+                ) );
+            }
+        }
+        wp_reset_postdata();
+    }
+}
+
+
+function ajax_sync_sermon_data() {
+    // Verify nonce for security
+    $isverified=false;
+   if ( isset( $_POST['sync_sermon_content_nonce'] ) && wp_verify_nonce( $_POST['sync_sermon_content_nonce'], 'sync_sermon_content_action' ) ) {
+   		// Call your update_sermon_posts() function
+    	update_sermon_posts();
+    	$isverified=true;
+	}
+    // Send a response back to the client
+    wp_send_json_success( array( 'message' => 'Data sync completed successfully!','data'=>$_POST,'isverified'=>$isverified ) );
+}
+add_action( 'wp_ajax_sync_sermon_data', 'ajax_sync_sermon_data' );
+

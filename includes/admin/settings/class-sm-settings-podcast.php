@@ -210,6 +210,14 @@ class SM_Settings_Podcast extends SM_Settings_Page {
 				'desc_tip' => __( 'Default disabled.', 'sermon-manager-for-wordpress' ),
 				'default'  => 'no',
 			),
+			array(
+				'title'    => __( 'Use "https://" in Enclosure URL', 'sermon-manager-for-wordpress' ),
+				'type'     => 'checkbox',
+				'id'       => 'podcast_enclosure_url',
+				'desc'     => __( 'Podcast RSS feed Enclosure URL. Uncheck if description looks messy.' ),
+				'desc_tip' => __( 'It is advisable to keep the checkbox unchecked, as selecting it will automatically replace all instances of "http://" with "https://" in the Enclosure URL of the podcast\'s RSS feed.', 'sermon-manager-for-wordpress' ),
+				'default'  => 'no',
+			),
 
 			array(
 				'type' => 'sectionend',

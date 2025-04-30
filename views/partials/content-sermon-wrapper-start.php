@@ -46,6 +46,9 @@ switch ( $template ) {
 	case 'twentynineteen':
 		echo '<section id="primary" class="content-area"><main id="main" class="site-main wpfc-twentynineteen ' . $additional_classes . '">';
 		break;
+	case 'twentytwentyfour':
+		echo '<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained"><div id="primary" class="content-area"><main id="main" class="site-main wpfc-sermon-container wpfc-twentytwentyfour ' . $additional_classes . '">';
+		break;
 	case 'Divi':
 		echo '<div id="main-content"><div class="container"><div id="content-area" class="clearfix"><main id="left-area" class="wpfc-sermon-container wpfc-divi ' . $additional_classes . '">';
 		break;

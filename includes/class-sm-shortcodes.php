@@ -38,6 +38,8 @@ class SM_Shortcodes {
 		add_shortcode( 'sermons_sm', array( self::get_instance(), 'display_sermons' ) );
 		// Filtering shortcode.
 		add_shortcode( 'sermon_sort_fields', array( self::get_instance(), 'display_sermon_sorting' ) );
+		// Display latest sermons shortcode.
+		add_shortcode( 'latest_sermon', array( self::get_instance(), 'display_latest_sermon' ) );
 
 		// Load deprecated shortcode aliasing.
 		$this->legacy_shortcodes();
@@ -62,6 +64,7 @@ class SM_Shortcodes {
 	public function legacy_shortcodes() {
 		add_shortcode( 'list-sermons', array( self::get_instance(), 'display_sermons_list' ) );
 		add_shortcode( 'sermon-images', array( self::get_instance(), 'display_images' ) );
+		add_shortcode( 'latest_sermon', array( self::get_instance(), 'display_latest_sermon' ) );
 	}
 
 	/**
@@ -88,22 +91,34 @@ class SM_Shortcodes {
 		);
 
 		// Init var.
-		$services = array();
+		$services = $services_to_exclude = $services_to_include = array();
 
 		// Join default and user options.
 		$args = shortcode_atts( $args, $atts, 'list_podcasts' );
 
+
 		// Remove spaces so we can get clean array values.
-		$args['include'] = str_replace( ' ', '', $args['include'] );
-		$args['exclude'] = str_replace( ' ', '', $args['exclude'] );
+		if ( $args['include'] ) {
+			$args['include'] = str_replace( ' ', '', $args['include'] );
+		}
+		
+		if ( $args['exclude'] ) {
+			$args['exclude'] = str_replace( ' ', '', $args['exclude'] );
+		}
 
 		// Convert comma-separated shortcode attributes to array.
-		$services_to_include = explode( ',', $args['include'] );
-		$services_to_exclude = explode( ',', $args['exclude'] );
+		if ( $args['include'] ) {
+			$services_to_include = explode( ',', $args['include'] );
+		}
+		
+		if ( $args['exclude'] ) {
+			$services_to_exclude = explode( ',', $args['exclude'] );
+		}
+		
 
 		// Remove excluded services.
-		if ( count( $services_to_exclude ) > 0 ) {
-			$services = array_diff( $services_to_include, $services_to_exclude );
+		if ( is_array( $services_to_exclude ) && is_array( $services_to_include )) {
+			$services = array_diff( $services_to_include, $services_to_exclude );			
 		}
 
 		if ( SM_OB_ENABLED ) {
@@ -434,23 +449,42 @@ class SM_Shortcodes {
 			'show_description' => false,
 		);
 
+		$display = $args['display'];
+
 		// For compatibility.
 		if ( ! empty( $atts['tax'] ) ) {
 			$atts['display'] = $atts['tax'];
 			unset( $atts['tax'] );
 		}
 
+	
+
+		$hide_title = false;
+		$show_description = true;
+
 		// For compatibility.
 		if ( ! empty( $atts['show_desc'] ) ) {
-			$atts['show_description'] = $atts['show_desc'];
-			unset( $atts['show_desc'] );
+			$show_description = $atts['show_desc'] == 'yes' ? true : false;
+			// unset( $atts['show_desc'] );
 		}
+
+		// For compatibility.
+		if ( ! empty( $atts['hide_title'] ) ) {
+			$hide_title = $atts['hide_title'] == 'yes' ? true : false;
+			// unset( $atts['hide_title'] );
+		}
+
+
 
 		// Join default and user options.
 		$args = shortcode_atts( $args, $atts, 'sermon_images' );
-
+		
+		// error_log("args === ".print_r($args,true));
 		// Convert to bool.
-		$args['show_description'] = (bool) $args['show_description'];
+		// $args['show_description'] = false;
+		// $args['hide_title'] = false;
+
+
 
 		// Check if we are using a SM taxonomy, and if we are, convert to valid taxonomy name.
 		if ( $this->convert_taxonomy_name( $args['display'], true ) ) {
@@ -458,7 +492,7 @@ class SM_Shortcodes {
 		} elseif ( ! $this->convert_taxonomy_name( $args['display'], false ) ) {
 			return '<strong>Error: Invalid "list" parameter.</strong><br> Possible values are: "series", "preachers", "topics" and "books".<br> You entered: "<em>' . $args['display'] . '</em>"';
 		}
-
+		
 		// Format args.
 		$args = array(
 			'taxonomy'  => $args['display'],
@@ -481,17 +515,18 @@ class SM_Shortcodes {
 
 		// $terms will always return an array
 		if ( ! empty( $terms ) ) {
-			$list = '<ul id="wpfc_images_grid">';
 
+			$list = '<ul id="wpfc_images_grid">';
+            $size = (isset($atts['size'])) ? $atts['size'] : 'sermon_medium' ;
 			foreach ( (array) $terms as $term ) {
 				$term_url = esc_url( get_term_link( $term, $term->taxonomy ) );
 
 				$list .= '<li class="wpfc_grid_image">';
-				$list .= '<a href="' . $term_url . '">' . wp_get_attachment_image( $term->image_id, $args['size'] ) . '</a>';
-				if ( false == $args['hide_title'] || 'no' == $args['hide_title'] ) {
+				$list .= '<a href="' . $term_url . '">' . wp_get_attachment_image( $term->image_id, $size ) . '</a>';
+				if ( !$hide_title) {
 					$list .= '<h3 class="wpfc_grid_title"><a href="' . $term_url . '">' . $term->name . '</a></h3>';
 				}
-				if ( true == $args['show_description'] ) {
+				if ( $show_description ) {
 					if ( ! empty( $term->description ) ) {
 						$list .= '<div class="taxonomy-description">' . $term->description . '</div>';
 					}
@@ -504,7 +539,8 @@ class SM_Shortcodes {
 			return $list;
 		} else {
 			// If nothing has been found.
-			return 'No ' . $this->convert_taxonomy_name( $args['display'], true ) . ' images found.';
+			$display = isset($args['display']) ? $args['display'] : $display;
+			return 'No ' . $this->convert_taxonomy_name( $display, true ) . ' images found.';
 		}
 	}
 
@@ -745,6 +781,149 @@ class SM_Shortcodes {
 		return null;
 	}
 
+
+
+	/**
+	 * Latest sermon display code
+	 *
+	 * @param array $atts Shortcode parameters.
+	 *
+	 * @type int    $atts ['per_page']            How many sermons per page.
+	
+	 * @return string
+	 */
+	function display_latest_sermon( $atts = array() ) {
+		
+		global $post_ID;
+
+		// Enqueue scripts and styles.
+		if ( ! defined( 'SM_ENQUEUE_SCRIPTS_STYLES' ) ) {
+			define( 'SM_ENQUEUE_SCRIPTS_STYLES', true );
+		}
+
+		// Unquote and verify boolean values.
+		if ( is_array( $atts ) || is_object( $atts ) ) {
+			// SermonManager::fetchOptionalValue($atts);
+			foreach ( $atts as &$att ) {
+				$att = $this->_unquote( $att );
+			}
+		}
+
+		//  Fetch Optional Perameter From ShortCode
+		if ( is_array( $atts ) || is_object( $atts ) ) {
+			foreach($atts as $key=>$value){
+				if($key == 'image'){
+					SermonManager::$image = $value;
+				}
+				if($key == 'title'){
+					SermonManager::$title = $value;
+				}
+				if($key == 'description'){
+					SermonManager::$description = $value;
+				}
+			}
+		}
+
+		//order="DESC", orderby="post_modified"		
+		// Default options.
+		$args = array(
+			'per_page'           => 10,
+			'order'              => 'ASC',
+			'orderby'            => 'post_modified',
+			'image_size'         => 'post-thumbnail',			
+		);
+	
+
+		// Merge default and user options.
+		$args = shortcode_atts( $args, $atts, 'sermons' );
+
+
+		// Set query args.
+		$query_args = array(
+			'post_type'      => 'wpfc_sermon',
+			'posts_per_page' => $args['per_page'],
+			'order'          => $args['order'],
+			'orderby'        => $args['post_date'],
+			'post_status' 	 => 'publish'			
+		);
+
+		// Check if it's a valid ordering argument.
+		if ( ! in_array( strtolower( $args['orderby'] ), array(
+			'date',
+			'preached',
+			'date_preached',
+			'published',
+			'date_published',
+			'id',
+			'none',
+			'title',
+			'name',
+			'rand',
+			'comment_count',
+			'post_date'
+		) ) ) {
+			$args['orderby'] = 'post_date';
+		}
+	
+
+		$query_args['orderby'] = $args['orderby'];		
+
+		$query = new WP_Query( $query_args );
+
+		// Add query to the args.
+		$args['query'] = $query;
+
+		// Set image size. Deprecated.
+		add_filter( 'wpfc_sermon_excerpt_sermon_image_size', function () use ( $args ) {
+			return $args['image_size'];
+		} );
+
+		define( 'WPFC_SM_SHORTCODE', true );
+
+		if ( $query->have_posts() ) {
+			if ( SM_OB_ENABLED ) {
+				ob_start(); ?>
+				<div id="wpfc-sermons-latest">
+					<div id="wpfc-sermons-latest">
+						<?php
+						
+						while ( $query->have_posts() ) {
+							$query->the_post();
+							global $post;
+
+							// Allows preventing the call of wpfc_sermon_excerpt_v2().
+							if ( apply_filters( 'sm_shortcode_output_override', false ) ) {
+								$output = '';
+							} else {
+								$output = '<div class="wpfc-sermon wpfc-sermon-latest">' . wpfc_sermon_excerpt_v2( true, $args ) . '</div>';
+							}
+							echo apply_filters( 'sm_shortcode_sermons_single_output', $output, $post, $args );
+						}
+						?>
+					</div>
+
+					<?php wp_reset_postdata(); ?>
+					
+				</div>
+				<?php
+				$return = ob_get_clean();
+			} else {
+				$return = '';
+			}
+
+			/**
+			 * Allows to filter the complete output of the shortcode.
+			 */
+			return apply_filters( 'sm_shortcode_sermons_output', $return, $query );
+		} else {
+			return 'No sermons found.';
+		}
+	}
+
+
+
+
+
 	/**
 	 * Main sermon display code
 	 *
@@ -772,6 +951,7 @@ class SM_Shortcodes {
 	 * @return string
 	 */
 	function display_sermons( $atts = array() ) {
+		
 		global $post_ID;
 
 		// Enqueue scripts and styles.
@@ -781,11 +961,26 @@ class SM_Shortcodes {
 
 		// Unquote and verify boolean values.
 		if ( is_array( $atts ) || is_object( $atts ) ) {
+			// SermonManager::fetchOptionalValue($atts);
 			foreach ( $atts as &$att ) {
 				$att = $this->_unquote( $att );
 			}
 		}
 
+		//  Fetch Optional Perameter From ShortCode
+		if ( is_array( $atts ) || is_object( $atts ) ) {
+			foreach($atts as $key=>$value){
+				if($key == 'image'){
+					SermonManager::$image = $value;
+				}
+				if($key == 'title'){
+					SermonManager::$title = $value;
+				}
+				if($key == 'description'){
+					SermonManager::$description = $value;
+				}
+			}
+		}		
 		// Default options.
 		$args = array(
 			'per_page'           => get_option( 'posts_per_page' ) ?: 10,
@@ -1151,13 +1346,27 @@ class SM_Shortcodes {
 									}
 								}
 
-								echo paginate_links( array(
+								echo $htmlPagination = paginate_links( array(
 									'base'     => preg_replace( '/\/\?.*/', '', rtrim( get_permalink( $post_ID ), '/' ) ) . '/%_%',
 									'current'  => $query->get( 'paged' ),
 									'total'    => $query->max_num_pages,
 									'end_size' => 3,
 									'add_args' => $add_args,
 								) );
+								
+								
+								 //key variable 
+								$paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
+								
+								   
+								if ( $query->max_num_pages !=  $paged && $paged == 1  ) {
+								
+								  echo ' <a class="next page-numbers" href="'. get_permalink( $post_ID ) .'page/'. ($paged + 1) .'">Next &raquo;</a>';								 
+								
+								}
+								
+								
+								
 								?>
 							</div>
 						<?php endif; ?>

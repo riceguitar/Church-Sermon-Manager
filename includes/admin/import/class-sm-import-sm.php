@@ -365,6 +365,13 @@ class SM_Import_SM {
 
 		$this->id = (int) $file['id'];
 		$this->log( 'Starting XML File parsing.', 0 );
+		
+		if ( ! is_file( $file['file'] ) ) {
+			$this->import_status = false;
+			$this->log( 'The file does not exist, please try again.', 0 );
+
+			return;
+		}
 		$import_data = $this->XMLparse( $file['file'] );
 		if ( is_wp_error( $import_data ) ) {
 			$response['status'] = false;
@@ -392,6 +399,7 @@ class SM_Import_SM {
 	 * @return array|WP_Error
 	 */
 	function XMLparse( $file ) {
+		
 		$this->wxr_version = $this->in_post = $this->cdata = $this->data = $this->sub_data = $this->in_tag = $this->in_sub_tag = false;
 		$this->authors     = $this->posts = $this->term = $this->category = $this->tag = array();
 
@@ -919,7 +927,8 @@ class SM_Import_SM {
 						if ( ! $value ) {
 							$value = maybe_unserialize( $meta['value'] );
 						}
-
+						/* echo "post meta called";
+						die(); */
 						add_post_meta( $post_id, $key, $value );
 
 						// if the post has a featured image, take note of this in case of remap.

@@ -49,7 +49,7 @@ class SM_API {
 			'sermon_audio',
 			'sermon_audio_duration',
 			'bible_passage',
-			'sermon_description',
+			// 'sermon_description',
 			'sermon_video_embed',
 			'sermon_video_url',
 			'sermon_bulletin',
@@ -132,7 +132,7 @@ class SM_API {
 			'_wpfc_sermon_duration' => array( '' ),
 			'Views'                 => array( '' ),
 			'bible_passage'         => array( '' ),
-			'sermon_description'    => array( '' ),
+			// 'sermon_description'    => array( '' ),
 			'sermon_video'          => array( '' ),
 			'sermon_video_link'     => array( '' ),
 			'sermon_bulletin'       => array( '' ),
@@ -140,15 +140,11 @@ class SM_API {
 			'sermon_date_auto'      => array( '' ),
 		) );
 
-		$audio_id     = isset( $post_meta['sermon_audio_id'][0] ) ? $post_meta['sermon_audio_id'][0] : null;
-		$audio_url_wp = $audio_id ? wp_get_attachment_url( intval( $audio_id ) ) : null;
-		$audio_url    = $post_meta['sermon_audio'][0];
-
-		$data['sermon_audio']          = $audio_id && $audio_url_wp ? $audio_url_wp : $audio_url;
+		$data['sermon_audio']          = get_wpfc_sermon_audio_url( $data['id'] );
 		$data['sermon_audio_duration'] = $post_meta['_wpfc_sermon_duration'][0];
 		$data['_views']                = $post_meta['Views'][0];
 		$data['bible_passage']         = $post_meta['bible_passage'][0];
-		$data['sermon_description']    = $post_meta['sermon_description'][0];
+		// $data['sermon_description']    = $post_meta['sermon_description'][0];
 		$data['sermon_video_embed']    = $post_meta['sermon_video'][0];
 		$data['sermon_video_url']      = $post_meta['sermon_video_link'][0];
 		$data['sermon_bulletin']       = $post_meta['sermon_bulletin'][0];

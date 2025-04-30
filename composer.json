@@ -1,4 +1,12 @@
 {
+  "name": "wpforchurch/sermon-manager",
+  "description": "Sermon Manager for WordPress - Manage and display your church sermons",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">=7.4",
+    "ext-calendar": "*"
+  },
   "require-dev": {
     "squizlabs/php_codesniffer": "3.*",
     "dealerdirect/phpcodesniffer-composer-installer": "*",
@@ -6,7 +14,16 @@
     "wp-coding-standards/wpcs": "*",
     "phpunit/phpunit": "^7"
   },
-  "require": {
-    "ext-calendar": "*"
-  }
+  "autoload": {
+    "psr-4": {
+      "SM\\": "src/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }

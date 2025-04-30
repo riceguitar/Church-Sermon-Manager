@@ -99,6 +99,14 @@ class SM_Settings_Debug extends SM_Settings_Page {
 				'default'  => 'yes',
 			),
 			array(
+				'title'    => __( 'Disable Gutenberg', 'sermon-manager-for-wordpress' ),
+				'type'     => 'checkbox',
+				'desc'     => __( ' Disable the Gutenberg Block Editor for Sermons', 'sermon-manager-for-wordpress' ),
+				'desc_tip' => __( 'Enable this option if you want to disable the Gutenberg Block Editor for sermons.', 'sermon-manager-for-wordpress' ),
+				'id'       => 'disable_gutenberg_block_editor',
+				'default'  => 'yes',
+			),
+			array(
 				'title' => __( 'Importing Settings', 'sermon-manager-for-wordpress' ),
 				'type'  => 'separator_title',
 			),
