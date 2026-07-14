@@ -717,7 +717,7 @@ class Shortcodes {
             echo '<select name="date">';
             echo '<option value="">Date</option>';
             foreach ($dates as $date) {
-                $month_name = date('F', mktime(0, 0, 0, $date->month, 1));
+                $month_name = date('F', mktime(0, 0, 0, (int) $date->month, 1));
                 echo '<option value="' . esc_attr($date->year . '-' . $date->month) . '">' . esc_html($month_name . ' ' . $date->year) . '</option>';
             }
             echo '</select>';

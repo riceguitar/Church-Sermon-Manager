@@ -56,14 +56,14 @@ if(!function_exists('is_plugin_active')){
 					<?php if ( has_term( '', 'wpfc_sermon_series', $post->ID ) ) : ?>
 						<div class="wpfc-sermon-single-meta-item wpfc-sermon-single-meta-series">
 							<span class="wpfc-sermon-single-meta-prefix">
-								<?php echo __( 'Series', 'sermon-manager-for-wordpress' ); ?>:</span>
+								<?php echo __( 'Series', 'sermon-manager' ); ?>:</span>
 							<span class="wpfc-sermon-single-meta-text"><?php the_terms( $post->ID, 'wpfc_sermon_series' ); ?></span>
 						</div>
 					<?php endif; ?>
 					<?php if ( get_post_meta( $post->ID, 'bible_passage', true ) ) : ?>
 						<div class="wpfc-sermon-single-meta-item wpfc-sermon-single-meta-passage">
 							<span class="wpfc-sermon-single-meta-prefix">
-								<?php echo __( 'Passage', 'sermon-manager-for-wordpress' ); ?>:</span>
+								<?php echo __( 'Passage', 'sermon-manager' ); ?>:</span>
 							<span class="wpfc-sermon-single-meta-text"><?php wpfc_sermon_meta( 'bible_passage' ); ?></span>
 						</div>
 					<?php endif; ?>
@@ -96,7 +96,7 @@ if(!function_exists('is_plugin_active')){
 						<a class="wpfc-sermon-single-audio-download"
 								href="<?php echo $sermon_audio_url; ?>"
 								download="<?php echo basename( $sermon_audio_url ); ?>"
-								 rel = "nofollow" title="<?php echo __( 'Download Audio File', 'sermon-manager-for-wordpress' ); ?>">
+								 rel = "nofollow" title="<?php echo __( 'Download Audio File', 'sermon-manager' ); ?>">
 							<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24"
 									xmlns="http://www.w3.org/2000/svg">
 								<path d="M0 0h24v24H0z" fill="none"></path>
@@ -125,7 +125,7 @@ if(!function_exists('is_plugin_active')){
 			<?php if ( has_term( '', 'wpfc_sermon_topics', $post->ID ) ) : ?>
 				<div class="wpfc-sermon-single-topics">
 					<span class="wpfc-sermon-single-topics-prefix">
-						<?php echo __( 'Topics', 'sermon-manager-for-wordpress' ); ?>:</span>
+						<?php echo __( 'Topics', 'sermon-manager' ); ?>:</span>
 					<span class="wpfc-sermon-single-topics-text"><?php the_terms( $post->ID, 'wpfc_sermon_topics' ); ?></span>
 				</div>
 			<?php endif; ?>

@@ -35,7 +35,7 @@ $current_tab = empty( $current_tab ) ? 'general' : $current_tab;
 					<p class="submit">
 						<?php if ( empty( $GLOBALS['hide_save_button'] ) ) : ?>
 							<input name="save" class="button-primary sm-save-button" type="submit"
-									value="<?php esc_attr_e( 'Save changes', 'sermon-manager-for-wordpress' ); ?>"/>
+									value="<?php esc_attr_e( 'Save changes', 'sermon-manager' ); ?>"/>
 						<?php endif; ?>
 						<?php wp_nonce_field( 'sm-settings' ); ?>
 					</p>
@@ -78,28 +78,28 @@ $current_tab = empty( $current_tab ) ? 'general' : $current_tab;
 				</div>
 			</div>
 			<div class="postbox sm-box">
-				<h3><span><?php esc_html_e( 'Need Some Help?', 'sermon-manager-for-wordpress' ); ?></span>
+				<h3><span><?php esc_html_e( 'Need Some Help?', 'sermon-manager' ); ?></span>
 				</h3>
 				<div class="inside">
 					<?php // translators: %s Sign up URL. ?>
-					<p><?php echo wp_sprintf( esc_html__( 'Did you know you can get expert support for only $49 per year! %s today and get support from the developers who are building the Sermon Manager.', 'sermon-manager-for-wordpress' ), '<a href="https://wpforchurch.com/wordpress-plugins/sermon-manager/?utm_source=sermon-manager&utm_medium=wordpress" target="_blank">' . esc_html__( 'Sign up', 'sermon-manager-for-wordpress' ) . '</a>' ); ?></p>
+					<p><?php echo wp_sprintf( esc_html__( 'Did you know you can get expert support for only $49 per year! %s today and get support from the developers who are building the Sermon Manager.', 'sermon-manager' ), '<a href="https://wpforchurch.com/wordpress-plugins/sermon-manager/?utm_source=sermon-manager&utm_medium=wordpress" target="_blank">' . esc_html__( 'Sign up', 'sermon-manager' ) . '</a>' ); ?></p>
 					<div style="text-align:center">
 						<a href="https://wordpress.org/support/plugin/sermon-manager-for-wordpress"
 								target="_blank" class="button-secondary">
-							<?php esc_html_e( 'Free&nbsp;Support', 'sermon-manager-for-wordpress' ); ?></a>&nbsp;
+							<?php esc_html_e( 'Free&nbsp;Support', 'sermon-manager' ); ?></a>&nbsp;
 						<a href="https://wpforchurch.com/my/clientarea.php?utm_source=sermon-manager&utm_medium=wordpress"
 								class="button-primary">
-							<?php esc_html_e( 'Priority&nbsp;Support', 'sermon-manager-for-wordpress' ); ?></a>
+							<?php esc_html_e( 'Priority&nbsp;Support', 'sermon-manager' ); ?></a>
 					</div>
 					<div class="description">
-						<span><?php esc_html_e( 'We offer limited free support via WordPress.org', 'sermon-manager-for-wordpress' ); ?></span>
+						<span><?php esc_html_e( 'We offer limited free support via WordPress.org', 'sermon-manager' ); ?></span>
 					</div>
 				</div>
 			</div>
 			<?php endif; ?>
 			<div class="postbox sm-box">
 				<h3>
-					<span><?php esc_html_e( 'Frequently Asked Questions', 'sermon-manager-for-wordpress' ); ?></span>
+					<span><?php esc_html_e( 'Frequently Asked Questions', 'sermon-manager' ); ?></span>
 				</h3>
 				<div class="inside">
 					<ol>
@@ -117,21 +117,21 @@ $current_tab = empty( $current_tab ) ? 'general' : $current_tab;
 					</ol>
 					<div class="text-align:center;font-size:0.85em;padding:0.4rem 0 0">
 						<?php // translators: %s Knowledgebase URL. ?>
-						<span><?php echo wp_sprintf( esc_html__( 'Find out more in our %s', 'sermon-manager-for-wordpress' ), '<a href="https://www.wpforchurch.com/my/knowledgebase.php?utm_source=sermon-manager&utm_medium=wordpress" title="Knowledgebase" target="_blank">' . esc_html__( 'knowledge base', 'sermon-manager-for-wordpress' ) . '</a>' ); ?></span>
+						<span><?php echo wp_sprintf( esc_html__( 'Find out more in our %s', 'sermon-manager' ), '<a href="https://www.wpforchurch.com/my/knowledgebase.php?utm_source=sermon-manager&utm_medium=wordpress" title="Knowledgebase" target="_blank">' . esc_html__( 'knowledge base', 'sermon-manager' ) . '</a>' ); ?></span>
 					</div>
 				</div>
 			</div>
 
 			<div class="postbox sm-box">
 				<h3>
-					<span><?php esc_html_e( 'Lets Make It Even Better!', 'sermon-manager-for-wordpress' ); ?></span>
+					<span><?php esc_html_e( 'Lets Make It Even Better!', 'sermon-manager' ); ?></span>
 				</h3>
 				<div class="inside">
-					<p><?php esc_html_e( 'If you have ideas on how to make Sermon Manager or any of our products better, let us know!', 'sermon-manager-for-wordpress' ); ?></p>
+					<p><?php esc_html_e( 'If you have ideas on how to make Sermon Manager or any of our products better, let us know!', 'sermon-manager' ); ?></p>
 					<div style="text-align:center">
 						<a href="https://feedback.userreport.com/05ff651b-670e-4eb7-a734-9a201cd22906/"
 								target="_blank"
-								class="button-secondary"><?php esc_html_e( 'Submit&nbsp;Your&nbsp;Idea', 'sermon-manager-for-wordpress' ); ?></a>
+								class="button-secondary"><?php esc_html_e( 'Submit&nbsp;Your&nbsp;Idea', 'sermon-manager' ); ?></a>
 					</div>
 				</div>
 			</div>

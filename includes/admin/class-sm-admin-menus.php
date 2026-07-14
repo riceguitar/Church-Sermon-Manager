@@ -31,7 +31,7 @@ class SM_Admin_Menus {
 	 * Add menu item.
 	 */
 	public function settings_menu() {
-		add_submenu_page( 'edit.php?post_type=wpfc_sermon', __( 'Sermon Manager Settings', 'sermon-manager-for-wordpress' ), __( 'Settings', 'sermon-manager-for-wordpress' ), 'manage_wpfc_sm_settings', 'sm-settings', array(
+		add_submenu_page( 'edit.php?post_type=wpfc_sermon', __( 'Sermon Manager Settings', 'sermon-manager' ), __( 'Settings', 'sermon-manager' ), 'manage_wpfc_sm_settings', 'sm-settings', array(
 			$this,
 			'settings_page',
 		) );
@@ -41,7 +41,7 @@ class SM_Admin_Menus {
 	 * Add menu item.
 	 */
 	public function import_export_menu() {
-		add_submenu_page( 'edit.php?post_type=wpfc_sermon', __( 'Sermon Manager Import/Export', 'sermon-manager-for-wordpress' ), __( 'Import/Export', 'sermon-manager-for-wordpress' ), 'manage_wpfc_sm_settings', 'sm-import-export', array(
+		add_submenu_page( 'edit.php?post_type=wpfc_sermon', __( 'Sermon Manager Import/Export', 'sermon-manager' ), __( 'Import/Export', 'sermon-manager' ), 'manage_wpfc_sm_settings', 'sm-import-export', array(
 			$this,
 			'import_export_page',
 		) );
@@ -132,7 +132,7 @@ class SM_Admin_Menus {
 
 		foreach ( $submenu['edit.php?post_type=wpfc_sermon'] as &$sermon_item ) {
 			if ( 'edit.php?post_type=wpfc_sermon' === $sermon_item[2] ) {
-				$sermon_item[0] = __( 'All Sermons', 'sermon-manager-for-wordpress' );
+				$sermon_item[0] = __( 'All Sermons', 'sermon-manager' );
 				return;
 			}
 		}

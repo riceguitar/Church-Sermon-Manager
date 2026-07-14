@@ -16,7 +16,7 @@ class SM_Settings_Verse extends SM_Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'verse';
-		$this->label = __( 'Verse', 'sermon-manager-for-wordpress' );
+		$this->label = __( 'Verse', 'sermon-manager' );
 
 		parent::__construct();
 	}
@@ -73,7 +73,7 @@ class SM_Settings_Verse extends SM_Settings_Page {
 											$value => $value,
 										), $setting['options'] );
 
-										$setting['desc'] = __( 'Note: WordPress is not set to any Spanish variant. Reverted to ESV.', 'sermon-manager-for-wordpress' );
+										$setting['desc'] = __( 'Note: WordPress is not set to any Spanish variant. Reverted to ESV.', 'sermon-manager' );
 
 										break 2;
 									}
@@ -88,23 +88,23 @@ class SM_Settings_Verse extends SM_Settings_Page {
 
 		$settings = apply_filters( 'sm_verse_settings', array(
 			array(
-				'title' => __( 'Verse Settings', 'sermon-manager-for-wordpress' ),
+				'title' => __( 'Verse Settings', 'sermon-manager' ),
 				'type'  => 'title',
 				'desc'  => '',
 				'id'    => 'verse_settings',
 			),
 			array(
-				'title'    => __( 'Verse Popups', 'sermon-manager-for-wordpress' ),
+				'title'    => __( 'Verse Popups', 'sermon-manager' ),
 				'type'     => 'checkbox',
-				'desc'     => __( 'Disable verse popups', 'sermon-manager-for-wordpress' ),
-				'desc_tip' => __( 'If this option is checked, the verses will not have a link and a popup anymore. But, you would be free to use any other service you want to use without interfering with Sermon Manager.', 'sermon-manager-for-wordpress' ),
+				'desc'     => __( 'Disable verse popups', 'sermon-manager' ),
+				'desc_tip' => __( 'If this option is checked, the verses will not have a link and a popup anymore. But, you would be free to use any other service you want to use without interfering with Sermon Manager.', 'sermon-manager' ),
 				'id'       => 'verse_popup',
 				'default'  => 'no',
 			),
 			array(
-				'title'   => __( 'Bible Version for Verse Popups', 'sermon-manager-for-wordpress' ),
+				'title'   => __( 'Bible Version for Verse Popups', 'sermon-manager' ),
 				'type'    => 'select',
-				'desc'    => __( 'Default: ESV.', 'sermon-manager-for-wordpress' ),
+				'desc'    => __( 'Default: ESV.', 'sermon-manager' ),
 				'id'      => 'verse_bible_version',
 				'options' => array(
 					'AMP'         => 'Amplified Bible (AMP)',
@@ -128,10 +128,10 @@ class SM_Settings_Verse extends SM_Settings_Page {
 				'default' => 'ESV',
 			),
 			array(
-				'title'    => __( 'Verse In Sermons Widget', 'sermon-manager-for-wordpress' ),
+				'title'    => __( 'Verse In Sermons Widget', 'sermon-manager' ),
 				'type'     => 'checkbox',
-				'desc'     => __( 'Show verse.', 'sermon-manager-for-wordpress' ),
-				'desc_tip' => __( 'By checking this option, the verse in our WordPress widget will show up. Default unchecked.', 'sermon-manager-for-wordpress' ),
+				'desc'     => __( 'Show verse.', 'sermon-manager' ),
+				'desc_tip' => __( 'By checking this option, the verse in our WordPress widget will show up. Default unchecked.', 'sermon-manager' ),
 				'id'       => 'widget_show_key_verse',
 				'default'  => 'no',
 			),

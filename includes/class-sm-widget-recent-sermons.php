@@ -17,9 +17,9 @@ class SM_Widget_Recent_Sermons extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname'   => 'widget_recent_sermons',
-			'description' => __( 'The most recent sermons on your site', 'sermon-manager-for-wordpress' ),
+			'description' => __( 'The most recent sermons on your site', 'sermon-manager' ),
 		);
-		parent::__construct( 'recent-sermons', __( 'Recent Sermons', 'sermon-manager-for-wordpress' ), $widget_ops );
+		parent::__construct( 'recent-sermons', __( 'Recent Sermons', 'sermon-manager' ), $widget_ops );
 		$this->alt_option_name = 'widget_recent_entries';
 
 		add_action( 'save_post', array( $this, 'flush_widget_cache' ) );
@@ -59,7 +59,7 @@ class SM_Widget_Recent_Sermons extends WP_Widget {
 		if ( SM_OB_ENABLED ) {
 			ob_start();
 
-			$title         = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Recent Sermons', 'sermon-manager-for-wordpress' ) : $instance['title'], $instance, $this->id_base );
+			$title         = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Recent Sermons', 'sermon-manager' ) : $instance['title'], $instance, $this->id_base );
 			$number        = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
 			$before_widget = isset( $instance['before_widget'] ) ? wp_kses_post( $instance['before_widget'] ) : '';
 			$after_widget  = isset( $instance['after_widget'] ) ? wp_kses_post( $instance['after_widget'] ) : '';
@@ -120,7 +120,7 @@ class SM_Widget_Recent_Sermons extends WP_Widget {
 								</span>
 
 									<?php if ( \SermonManager::getOption( 'widget_show_key_verse' ) ) : ?>
-										<span class="bible-passage"><br><?php echo __( 'Bible Text: ', 'sermon-manager-for-wordpress' ), get_wpfc_sermon_meta( 'bible_passage' ); ?></span>
+										<span class="bible-passage"><br><?php echo __( 'Bible Text: ', 'sermon-manager' ), get_wpfc_sermon_meta( 'bible_passage' ); ?></span>
 									<?php endif; ?>
 								</div>
 							</div>
@@ -201,23 +201,23 @@ class SM_Widget_Recent_Sermons extends WP_Widget {
 		$after_widget  = isset( $instance['after_widget'] ) ? wp_kses_post( $instance['after_widget'] ) : '';
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'sermon-manager-for-wordpress' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'sermon-manager' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
 					name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>"/>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php esc_html_e( 'Number of sermons to show:', 'sermon-manager-for-wordpress' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php esc_html_e( 'Number of sermons to show:', 'sermon-manager' ); ?></label>
 			<input id="<?php echo $this->get_field_id( 'number' ); ?>"
 					name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo $number; ?>"
 					size="3"/>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'before_widget' ); ?>"><?php esc_html_e( 'HTML to show before the widget:', 'sermon-manager-for-wordpress' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'before_widget' ); ?>"><?php esc_html_e( 'HTML to show before the widget:', 'sermon-manager' ); ?></label>
 			<textarea id="<?php echo $this->get_field_id( 'before_widget' ); ?>"
 					name="<?php echo $this->get_field_name( 'before_widget' ); ?>"><?php echo $before_widget; ?></textarea>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'after_widget' ); ?>"><?php esc_html_e( 'HTML to show after the widget:', 'sermon-manager-for-wordpress' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'after_widget' ); ?>"><?php esc_html_e( 'HTML to show after the widget:', 'sermon-manager' ); ?></label>
 			<textarea id="<?php echo $this->get_field_id( 'after_widget' ); ?>"
 					name="<?php echo $this->get_field_name( 'after_widget' ); ?>"><?php echo $after_widget; ?></textarea>
 		</p>

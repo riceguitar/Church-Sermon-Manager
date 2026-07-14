@@ -240,7 +240,7 @@ class SM_Install {
 	public static function cron_schedules( $schedules ) {
 		$schedules['monthly'] = array(
 			'interval' => 2635200,
-			'display'  => __( 'Monthly', 'sermon-manager-for-wordpress' ),
+			'display'  => __( 'Monthly', 'sermon-manager' ),
 		);
 
 		return $schedules;
@@ -255,7 +255,7 @@ class SM_Install {
 	 */
 	public static function plugin_action_links( $links ) {
 		$action_links = array(
-			'settings' => '<a href="' . admin_url( 'edit.php?post_type=wpfc_sermon&page=sm-settings' ) . '" aria-label="' . esc_attr__( 'View Sermon Manager settings', 'sermon-manager-for-wordpress' ) . '">' . esc_html__( 'Settings' ) . '</a>',
+			'settings' => '<a href="' . admin_url( 'edit.php?post_type=wpfc_sermon&page=sm-settings' ) . '" aria-label="' . esc_attr__( 'View Sermon Manager settings', 'sermon-manager' ) . '">' . esc_html__( 'Settings' ) . '</a>',
 		);
 
 		return array_merge( $action_links, $links );
@@ -272,8 +272,8 @@ class SM_Install {
 	public static function plugin_row_meta( $links, $file ) {
 		if ( SM_BASENAME == $file ) {
 			$row_meta = array(
-				'support' => '<a href="' . esc_url( 'https://wpforchurch.com/my/submitticket.php?utm_source=sermon-manager&utm_medium=wordpress' ) . '" aria-label="' . esc_attr__( 'Visit premium customer support', 'sermon-manager-for-wordpress' ) . '">' . esc_html__( 'Premium support', 'sermon-manager-for-wordpress' ) . '</a>',
-				'smp'     => '<a href="https://sermonmanager.pro/?utm_source=sermon-manager&amp;utm_medium=wordpress" aria-label="' . esc_attr( __( 'Get Sermon Manager Pro', 'sermon-manager-pro' ) ) . '" target="_blank" style="color:#ff0000;">' . __( 'Get Sermon Manager Pro', 'sermon-manager-pro' ) . '</a>',
+				'support' => '<a href="' . esc_url( 'https://wpforchurch.com/my/submitticket.php?utm_source=sermon-manager&utm_medium=wordpress' ) . '" aria-label="' . esc_attr__( 'Visit premium customer support', 'sermon-manager' ) . '">' . esc_html__( 'Premium support', 'sermon-manager' ) . '</a>',
+				'smp'     => '<a href="https://sermonmanager.pro/?utm_source=sermon-manager&amp;utm_medium=wordpress" aria-label="' . esc_attr( __( 'Get Sermon Manager Pro', 'sermon-manager' ) ) . '" target="_blank" style="color:#ff0000;">' . __( 'Get Sermon Manager Pro', 'sermon-manager' ) . '</a>',
 			);
 
 			return array_merge( $links, $row_meta );
