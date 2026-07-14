@@ -1,0 +1,85 @@
+#sm-tabs {
+  .ui-tabs-nav {
+    margin-bottom: 0;
+    margin-left: 10px;
+
+    li {
+      display: inline-block;
+      background-color: #f1f1f1;
+      border: 1px solid #ccc;
+      border-radius: 2px 2px 0 0;
+      margin-bottom: 0;
+
+      .ui-tabs-anchor {
+        padding: 5px 16px;
+        display: block;
+        text-decoration: none;
+        color: initial;
+        outline: none;
+        box-shadow: none;
+      }
+
+      &.ui-tabs-active {
+        background: #ffffff;
+        border-color: #d4d4d4;
+        border-bottom-color: transparent;
+      }
+    }
+  }
+
+  .ui-tabs-panel {
+    margin-top: -1px;
+    border: 1px solid #ccc;
+    padding: 8px 1rem;
+  }
+
+  th {
+    text-align: left;
+    padding-right: 1rem;
+  }
+}
+
+#normal-sortables {
+  min-height: 0 !important;
+}
+
+// adjust column widths in template editor
+.post-type-wpfc_sm_template {
+  .fixed {
+    .column-t_default, .column-t_version {
+      width: 10%;
+    }
+
+    .column-t_template, .column-t_date, .column-t_author {
+      width: 15%;
+    }
+  }
+
+  .column-t_default .dashicons-star-filled {
+    color: #ffd800;
+  }
+
+  .column-t_default .dashicons-star-empty:hover {
+    color: #ffd800;
+    cursor: pointer;
+  }
+
+  // hide unnecessary fields
+  .tablenav.top, .search-box, ul.subsubsub, .actions.bulkactions {
+    display: none;
+  }
+
+  // increase heading margin
+  h1.wp-heading-inline {
+    margin-bottom: 1rem;
+  }
+
+  .page-title-action {
+    display: none;
+  }
+}
+
+// Disable hover effect on settings title
+.uk-nav-header:hover {
+  background-color: inherit !important;
+}

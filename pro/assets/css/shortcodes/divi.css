@@ -1,0 +1,155 @@
+.sm-inner-grid .wpfc-sermon-inner {
+   display: block;
+   width: 100%;
+}
+
+.sm-inner-grid, .smp_sermon_taxonomy .wpfc-term-list, .wpfc-term-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.smp_sermon_taxonomy .wpfc-term {
+	margin-right: 30px;
+}
+
+.sm-inner-grid .et_pb_sermon_grid_column {
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.sm-inner-grid.grid .wpfc-sermon.et_pb_sermon_grid_column {
+   margin-right: 0 !important;
+   margin-bottom: 24px !important;
+}
+
+.sm-inner-grid.grid {
+	display: block;
+}
+
+.sm-inner-grid .wpfc-sermon-image, .sm-inner-grid .wpfc-sermon-video {
+    flex: none;
+}
+
+.sm-inner-grid .wpfc-sermon-video {
+	display: contents;
+}
+
+.sm-inner-grid .wpfc-sermon-image-img {
+    padding-top: 56.25%;
+}
+
+.wpfc-sermon-image img {
+	display: none;
+}
+
+.sm-inner-grid .et_pb_sermon_grid_column_2:nth-child(2n),
+.sm-inner-grid .et_pb_sermon_grid_column_3:nth-child(3n),
+.sm-inner-grid .et_pb_sermon_grid_column_4:nth-child(4n),
+.sm-inner-grid .et_pb_sermon_grid_column_5:nth-child(5n),
+.sm-inner-grid .et_pb_sermon_grid_column_6:nth-child(6n),
+.wpfc-term-list .et_pb_sermon_term_list_column_2:nth-child(2n),
+.wpfc-term-list .et_pb_sermon_term_list_column_3:nth-child(3n),
+.wpfc-term-list .et_pb_sermon_term_list_column_4:nth-child(4n),
+.wpfc-term-list .et_pb_sermon_term_list_column_5:nth-child(5n),
+.wpfc-term-list .et_pb_sermon_term_list_column_6:nth-child(6n),
+.wpfc-term-grid .et_pb_sermon_term_grid_column_2:nth-child(2n),
+.wpfc-term-grid .et_pb_sermon_term_grid_column_3:nth-child(3n),
+.wpfc-term-grid .et_pb_sermon_term_grid_column_4:nth-child(4n),
+.wpfc-term-grid .et_pb_sermon_term_grid_column_5:nth-child(5n),
+.wpfc-term-grid .et_pb_sermon_term_grid_column_6:nth-child(6n)  {
+    margin-right: 0 !important;
+}
+
+.custom-pagination {
+    width: 100%;
+}
+
+.wpfc-sermon-title {
+    font-size: 22px;
+    line-height: 1.3;
+}
+
+.smp_sermon_blog .sm-filtering {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.wpfc-sermon-video {
+	flex: 0 50%;
+	align-items: center;
+    display: flex;
+	height: auto;
+    position: relative;
+}
+
+.wpfc-sermon-video .plyr {
+	width: 100%;
+	height: 100%;
+}
+
+.sm-inner-grid .wpfc-sermon-video .plyr {
+	height: auto;
+}
+
+.wpfc-term-grid .wpfc-term a {
+	display: block;
+}
+
+.wpfc-term-grid .wpfc-term {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.wpfc-term-grid .wpfc-term-grid-image {
+	height: 200px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.wpfc-term-pagination {
+	margin-top: 20px;
+}
+
+.et-db .smpro-description #et-boc .et_pb_row {
+    width: 100%;
+    max-width: 100%;
+}
+
+@media (max-width: 1200px) and (min-width: 981px) {
+    .sm-inner-grid .wpfc-sermon.et_pb_sermon_grid_column, 
+	.wpfc-term-grid .wpfc-term.et_pb_sermon_term_grid_column,
+	.wpfc-term-list .wpfc-term.et_pb_sermon_term_list_column {
+		margin-right: 30px !important;
+		width: calc((100% - 60px) / 3) !important;
+	}
+	.sm-inner-grid .wpfc-sermon.et_pb_sermon_grid_column:nth-child(3n), 
+	.wpfc-term-grid .wpfc-term.et_pb_sermon_term_grid_column:nth-child(3n),
+	.wpfc-term-list .wpfc-term.et_pb_sermon_term_list_column:nth-child(3n) {
+		margin-right: 0px !important;
+	}
+}
+
+@media (max-width: 980px) and (min-width: 601px) {
+    .sm-inner-grid .wpfc-sermon.et_pb_sermon_grid_column, 
+	.wpfc-term-grid .wpfc-term.et_pb_sermon_term_grid_column,
+	.wpfc-term-list .wpfc-term.et_pb_sermon_term_list_column	{
+		margin-right: 30px !important;
+		width: calc((100% - 30px) / 2) !important;
+	}
+	.sm-inner-grid .wpfc-sermon.et_pb_sermon_grid_column:nth-child(2n), 
+	.wpfc-term-grid .wpfc-term.et_pb_sermon_term_grid_column:nth-child(2n),
+	.wpfc-term-list .wpfc-term.et_pb_sermon_term_list_column:nth-child(2n)	{
+		margin-right: 0px !important;
+	}
+}
+
+@media (max-width: 600px) {
+    .sm-inner-grid .wpfc-sermon.et_pb_sermon_grid_column, 
+	.wpfc-term-grid .wpfc-term.et_pb_sermon_term_grid_column,
+	.wpfc-term-list .wpfc-term.et_pb_sermon_term_list_column {
+		margin-right: 0px !important;
+		width: 100% !important;
+	}
+}

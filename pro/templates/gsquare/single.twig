@@ -1,0 +1,320 @@
+{% set bible_passage = fn('get_post_meta', post.ID, 'bible_passage', true) %}
+
+{% set get_video_link = fn('get_wpfc_sermon_meta', 'sermon_video_link') %}
+{% set get_video_link_seconds = fn('wpfc_get_media_url_seconds', get_video_link) %}
+{% set get_video_embed = fn('get_wpfc_sermon_meta', 'sermon_video') %}
+{% set get_audio = fn('get_wpfc_sermon_meta', 'sermon_audio') %}
+{% set get_audio_seconds = fn('wpfc_get_media_url_seconds', get_audio) %}
+
+{% set get_bulletin = fn('get_wpfc_sermon_meta', 'sermon_bulletin') %}
+{% set get_bulletin_multiple = fn('get_wpfc_sermon_meta', 'sermon_bulletin_multiple') %}
+{% set get_notes = fn('get_wpfc_sermon_meta', 'sermon_notes') %}
+{% set get_notes_multiple = fn('get_wpfc_sermon_meta', 'sermon_notes_multiple') %}
+
+{% set theme = fn('get_option', 'template') %}
+
+{# Get "Published" or "Preached" date #}
+{% if fn('SermonManager::getOption','use_published_date') %}
+    {% set date_formated = post.post_date %}
+{% else %}
+    {% set date_formated = fn('SM_Dates::get', '', null, false, false) %}
+{% endif %}
+
+{# Set sermon image url #}
+{% if settings.show_image == 'series' %}
+    {% set sermon_image_url = fn('get_sermon_image_url', true, 'full', true) %}
+{% elseif settings.show_image == 'sermon' %}
+    {% set sermon_image_url = fn('get_sermon_image_url', true, 'full') %}
+{% endif %}
+
+{# Set video url #}
+{% if get_video_link %}
+    {% set video_url = get_video_link %}
+{% elseif get_video_embed %}
+    {% set video_url = get_video_embed %}
+{% endif %}
+
+{% if settings.remove_sidebar == 'yes' %}
+    <script>
+        document.getElementById('page-container').classList.add('no-sidebar');
+    </script>
+{% endif %}
+
+{% set image_html %}
+    {# Sermon Image #}
+    {% if sermon_image_url and settings.show_image_single == 'yes' %}
+        <div class="smpro-image">
+            <div class="smpro-image__background" style="background-image: url( {{ sermon_image_url }} )"></div>
+        </div>
+    {% endif %}
+{% endset %}
+
+<article {{ fn('post_class') }}>
+    {% if theme == 'x' %}
+        <div class="entry-featured">
+            {{ image_html|raw }}
+        </div>
+    {% endif %}
+
+    <div class="smpro-single smpro-single_template_genesis entry-wrap">
+        {% if theme != 'x' %}
+            {{ image_html|raw }}
+        {% endif %}
+
+        {# Video Link #}
+        {% if get_video_link and settings.show_video_single == 'yes' %}
+            <div class="smpro-video smpro-video_type_link">
+                {{ fn('wpfc_render_video', get_video_link, get_video_link_seconds)|raw }}
+            </div>
+        {% endif %}
+
+        {# Video Embed #}
+        {% if get_video_embed and settings.show_video_single == 'yes' %}
+            <div class="smpro-video smpro-video_type_embed">
+                {{ fn('do_shortcode', get_video_embed)|raw }}
+            </div>
+        {% endif %}
+
+        {# Audio Player #}
+        {% if get_audio and settings.show_audio_single == 'yes' %}
+            <div class="smpro-audio">
+                {% if settings.audio_player == 'wp' %}
+                    {% set attr = { 'src' : get_audio, 'preload' : none } %}
+                    {{ fn('wp_audio_shortcode', attr )|raw }}
+                {% else %}
+                    {{ fn('wpfc_render_audio', get_audio, get_audio_seconds)|raw }}
+                {% endif %}
+
+            </div>
+        {% endif %}
+
+        {# Title #}
+        {% if settings.show_title_single == 'yes' %}
+            <h2 class="smpro-title">
+                <span class="smpro-title__text">{{ post.post_title }}</span>
+            </h2>
+        {% endif %}
+
+        {# Meta #}
+        {% if (sermon.preachers and settings.show_preacher_single == 'yes') or (sermon.series and settings.show_series_single == 'yes') or (sermon.bible_book and settings.show_books_single == 'yes') or (sermon.topics and settings.show_topics_single == 'yes') or (sermon.service_type and settings.show_service_type_single == 'yes') %}
+            <div class="smpro-single__meta">
+                {# Preachers #}
+                {% if sermon.preachers and settings.show_preacher_single == 'yes' %}
+                    <div class="smpro-meta-item smpro-meta-item_type_preacher">
+                    <span class="smpro-meta-item__icon">
+                        <span class="dashicons dashicons-admin-users"></span>
+                    </span>
+
+                        {% for term in sermon.preachers %}
+                            <a class="smpro-meta-item__text smpro-meta-item__text_linked"
+                                    href="{{ fn('get_term_link', term) }}">{{ term.name }}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {# Date #}
+                {% if post.post_date and settings.show_date_single == 'yes' %}
+                    {% set post_date = settings.use_published_date ? post.post_date : sermon.date_preached %}
+                    <div class="smpro-meta-item smpro-meta-item_type_date">
+                    <span class="smpro-meta-item__icon">
+                        <span class="dashicons dashicons-clock"></span>
+                    </span>
+
+                        <span class="smpro-meta-item__text">{{ post_date|date(settings.date_format == '0' ? args.date_format : settings.date_format) }}</span>
+                    </div>
+                {% endif %}
+
+                {# Series #}
+                {% if sermon.series and settings.show_series_single == 'yes' %}
+                    <div class="smpro-meta-item smpro-meta-item_type_series">
+                    <span class="smpro-meta-item__icon">
+                        <span class="dashicons dashicons-category"></span>
+                    </span>
+
+                        {% for term in sermon.series %}
+                            <a class="smpro-meta-item__text smpro-meta-item__text_linked"
+                                    href="{{ fn('get_term_link', term) }}">{{ term.name }}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {# Bible Book #}
+                {% if sermon.bible_book and settings.show_books_single == 'yes' %}
+                    <div class="smpro-meta-item smpro-meta-item_type_bible-book">
+                    <span class="smpro-meta-item__icon">
+                        <span class="dashicons dashicons-book-alt"></span>
+                    </span>
+
+                        {% for term in sermon.bible_book %}
+                            <a class="smpro-meta-item__text smpro-meta-item__text_linked"
+                                    href="{{ fn('get_term_link', term) }}">{{ term.name }}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {# Topics #}
+                {% if sermon.topics and settings.show_topics_single == 'yes' %}
+                    <div class="smpro-meta-item smpro-meta-item_type_topics">
+                    <span class="smpro-meta-item__icon">
+                        <span class="dashicons dashicons-tag"></span>
+                    </span>
+
+                        {% for term in sermon.topics %}
+                            <a class="smpro-meta-item__text smpro-meta-item__text_linked"
+                                    href="{{ fn('get_term_link', term) }}">{{ term.name }}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {# Service Type #}
+                {% if sermon.service_type and settings.show_service_type_single == 'yes' %}
+                    <div class="smpro-meta-item smpro-meta-item_type_service_type">
+                    <span class="smpro-meta-item__icon">
+                        <span class="dashicons dashicons-groups"></span>
+                    </span>
+
+                        {% for term in sermon.service_type %}
+                            <a class="smpro-meta-item__text smpro-meta-item__text_linked"
+                                    href="{{ fn('get_term_link', term) }}">{{ term.name }}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {# Comment count #}
+                {% if post.comment_count > '0' and settings.show_comment_count_single == 'yes' %}
+                    <div class="smpro-meta-item smpro-meta-item_type_comment-count">
+                        <a href="{{ fn('get_permalink', post.ID) ~ '#comments' }}" class="smpro-meta-item__link">
+                            <span class="dashicons dashicons-admin-comments"></span>
+                            <span class="smpro-meta-item__text">{{ post.comment_count }}</span>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {# Description #}
+        {% if sermon.description and settings.show_description_single == 'yes' %}
+            <div class="smpro-description">{{ sermon.description|raw }}</div>
+        {% endif %}
+
+        {# Footer #}
+        <div class="smpro-single__footer">
+            {# Bible Passage #}
+            {% if bible_passage and settings.show_bible_passage_single == 'yes' %}
+                <div class="smpro-meta-item smpro-meta-item_type_bible-passage">
+                    <span class="smpro-meta-item__prefix">Scripture:</span>
+                    <span class="smpro-meta-item__text">{{ fn('get_post_meta', post.ID, 'bible_passage', true) }}</span>
+                </div>
+            {% endif %}
+
+            {# Download #}
+            {% if (get_audio or get_notes or get_bulletin or get_bulletin_multiple or get_notes_multiple) and settings.show_download_link_single == 'yes' %}
+                <div class="smpro-download">
+                    {# Prefix #}
+                    <span class="smpro-download__prefix">Download:</span>
+
+                    {# Audio #}
+                    {% if get_audio %}
+                        <a class="smpro-download__item smpro-download__item_type_audio" href="{{ get_audio }}"
+                                download="{{ fn('basename', get_audio) }}">
+                            <span class="dashicons dashicons-media-audio"></span>
+                            <span class="smpro-download__text">Audio</span>
+                        </a>
+                    {% endif %}
+
+                    {# Notes #}
+                    {% if get_notes %}
+                        <a class="smpro-download__item smpro-download__item_type_notes" href="{{ get_notes }}">
+                                <span class="dashicons dashicons-media-default"></span>
+                                <span class="smpro-download__text">
+                                {% if settings.label_notes %}
+                                    {{settings.label_notes}}
+                                {% else %}
+                                    Notes
+                                {% endif %}
+                            </span>
+                            </a>
+                    {% endif %}
+
+                    {% if get_notes_multiple %}
+                        {% if get_notes_multiple is iterable %}
+                            {% for single_note in get_notes_multiple %}
+                                <a class="smpro-download__item smpro-download__item_type_notes" href="{{ single_note }}">
+                                    <span class="dashicons dashicons-media-default"></span>
+                                    <span class="smpro-download__text">
+                                    {% if settings.label_notes %}
+                                        {{settings.label_notes}}
+                                    {% else %}
+                                        Notes
+                                    {% endif %}
+                                </span>
+                                </a>
+                            {% endfor %}
+                        {% endif %}  
+                    {% endif %}  
+                        
+                   
+
+                    {# Bulletin #}
+                    {% if get_bulletin_multiple %}
+                        {% if get_bulletin_multiple is iterable %}
+                            {% for single_bulletin in get_bulletin_multiple %}
+                                <a class="smpro-download__item smpro-download__item_type_bulletin" href="{{ single_bulletin }}">
+                                    <span class="dashicons dashicons-media-text"></span>
+                                    <span class="smpro-download__text">
+                                {% if settings.label_bulletin %}
+                                    {{settings.label_bulletin}}
+                                {% else %}
+                                    Bulletin
+                                {% endif %}
+                                </span>
+                                </a>
+                            {% endfor %}
+                        {% endif %}
+                     {% endif %}
+                        {% if get_bulletin%}
+                            <a class="smpro-download__item smpro-download__item_type_bulletin" href="{{ get_bulletin }}">
+                                    <span class="dashicons dashicons-media-text"></span>
+                                    <span class="smpro-download__text">
+                                {% if settings.label_bulletin %}
+                                    {{settings.label_bulletin}}
+                                {% else %}
+                                    Bulletin
+                                {% endif %}
+                                </span>
+                                </a>
+                       
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            {# Share #}
+            {% if settings.enable_social_sharing_single == 'yes' %}
+                <div class="smpro-share asdsadadqwer23">
+                    <!-- AddToAny BEGIN -->
+                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style"
+                            data-a2a-url="{{ fn('get_permalink', post.ID) }}" data-a2a-title="{{ post.post_title }}">
+                        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                        <a class="a2a_button_facebook"></a>
+                        <a class="a2a_button_twitter"></a>
+                    </div>
+                    <script async src="https://static.addtoany.com/menu/page.js"></script>
+                    <!-- AddToAny END -->
+                </div>
+            {% endif %}
+            {{ args.comments|raw }}
+        </div>
+    </div>
+</article>
+
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "VideoObject",
+        "name": "{{ post.post_title }}",
+        "description": "{{ sermon.description }}",
+        "thumbnailUrl": "{{ sermon_image_url }}",
+        "uploadDate": "{{ post.post_date }}",
+        "contentUrl": "{{ video_url }}"
+    }
+</script>

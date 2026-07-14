@@ -1,0 +1,11 @@
+.fl-term-container-grid .wpfc-term-grid-image {
+	display: block;
+	padding-top: 56.5%;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.fl-term-container {
+	display: flex;
+	flex-wrap: wrap;
+}

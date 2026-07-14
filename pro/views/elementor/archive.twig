@@ -1,0 +1,83 @@
+
+{% set sermon_video_link = fn('get_wpfc_sermon_meta', 'sermon_video_link') %}
+{% set sermon_video = fn('get_wpfc_sermon_meta', 'sermon_video') %}
+
+<article  class="elementor-post elementor-grid-item sm-pro-sermon">
+    <div class="elementor-post__card {% if (settings.columns == '1' and settings.thumbnail_position != 'none') %}image_position-{{ settings.image_position }}{% endif %}">
+        {# Thumbnail #}
+		{% if (settings.show_image_video == 'yes' and ( ( settings.thumbnail == 'image' ) or ( settings.thumbnail == 'video' and ( sermon_video_link or sermon_video ) ) ) ) %}
+			<div class="elementor-post__thumbnail_info">
+			{% if ( settings.thumbnail == 'image' ) %}
+            <a class="elementor-post__thumbnail__link sm-pro-sermon-thumbnail-link" href="{{ fn('get_permalink') }}">
+                <div class="elementor-post__thumbnail elementor-fit-height sm-pro-sermon-thumbnail">{{ args.thumbnail_html|raw }}</div>
+            </a>
+			{% endif %}
+			
+			{% if ( settings.thumbnail == 'video' ) %}
+			{% if ( sermon_video_link ) %}
+			<a class="elementor-post__thumbnail__link sm-pro-sermon-thumbnail-link" href="{{ fn('get_permalink') }}">
+				<div class="elementor-post__thumbnail elementor-fit-height sm-pro-sermon-thumbnail sm-pro-sermon-video-link"> {{ fn('wpfc_render_video', sermon_video_link) | raw }}</div>
+			</a>
+			{% endif %}
+			
+			{% if ( sermon_video ) %}
+			<a class="elementor-post__thumbnail__link sm-pro-sermon-thumbnail-link" href="{{ fn('get_permalink') }}">
+				<div class="elementor-post__thumbnail elementor-fit-height sm-pro-sermon-thumbnail sm-pro-sermon-video"> {{ fn('do_shortcode', sermon_video) }}</div>
+			</a>
+			{% endif %}
+			{% endif %}
+
+            {% if (settings.show_badge and settings.badge_term) %}
+                <div class="elementor-post__badge">
+                    {{ settings.badge_term }}
+                </div>
+            {% endif %}
+
+            {% if (settings.show_avatar and settings.avatar and settings.columns != '1' ) %}
+                <div class="elementor-post__avatar">
+                    {{ settings.avatar|raw }}
+                </div>
+            {% endif %}
+            </div>
+		{% endif %}
+        
+        <div class="elementor-post__info">
+        {# Title #}
+        {% if settings.show_title %}
+		    <div class="elementor-post__text sm-pro-sermon-content">
+                {{ TemplateTags('the_title', settings) }}
+            </div>
+        {% endif %}
+
+        {# Meta Data in header #}
+        {% if settings.meta_data_header is not empty %}
+            <div class="elementor-post__meta-data sm-pro-sermon-header-meta">
+                {{ TemplateTags('the_metadata', {'meta_data': settings.meta_data_header}) }}
+            </div>
+        {% endif %}
+
+        {% if settings.show_excerpt or settings.show_read_more %}
+            <div class="elementor-post__text sm-pro-sermon-content">
+                {% if settings.show_excerpt and TemplateTags('the_excerpt', settings) %}
+                    <div class="elementor-post__excerpt">
+                        {{ TemplateTags('the_excerpt', settings) }}
+                    </div>
+                {% endif %}
+
+                {% if settings.show_read_more %}
+                    <a class="elementor-post__read-more sm-pro-sermon-read-more" href="{{ fn('get_permalink') }}">
+                        {{ settings.read_more_text }}
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {# Meta Data in footer #}
+        {% if settings.meta_data_footer is not empty %}
+            <div class="elementor-post__meta-data sm-pro-sermon-footer-meta">
+                {{ TemplateTags('the_metadata', {'meta_data': settings.meta_data_footer}) }}
+            </div>
+        {% endif %}
+        </div>
+    </div>
+</article>

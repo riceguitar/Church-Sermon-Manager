@@ -1,0 +1,72 @@
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+
+.left{
+  text-align: left;
+}
+.right{
+  text-align: right;
+}
+.center{
+  text-align: center;
+}
+.gpl-d-flex{
+  display: flex;
+}
+.gpl-flex-wrap{
+  flex-wrap: wrap;
+}
+.gpl-mb-30{
+  margin-bottom: 30px;
+}
+.gpl-mlr-15{
+  margin-right: 15px;
+  margin-left: 15px;
+}
+.gpl-mr-15{
+  margin-right: 15px;
+}
+
+.gpl-plr-15{
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.gpl-flex{
+  flex: 1 1;
+}
+.gpl-column-1{
+  width: 100%;
+}
+.gpl-column-2{
+  width: 50%;
+}
+.gpl-column-3{
+  width: 33.333%;
+}
+.gpl-column-4{
+  width: 25%;
+}
+.gpl-column-5{
+  width: 20%;
+}
+.gpl-column-6{
+  width: 16.666%;
+}
+.gpl-column-12{
+  width: 100%;
+}
+@media screen and (max-width: 767px) {
+  .gpl-column-1, .gpl-column-2, .gpl-column-3, .gpl-column-4, .gpl-column-5, .gpl-column-6 {
+    width: 100%;
+  }
+}
+
+.components-panel__body>.components-panel__body>.components-panel__body-title>.components-panel__body-toggle {
+  padding: 10px 10px 10px 30px;
+}
+

@@ -1,0 +1,38 @@
+.wpfc-templating {
+  .wpfc-nav {
+    li {
+      &:hover a {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+
+      &.uk-active a {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      a {
+        color: #fff;
+        padding: 5px;
+      }
+    }
+  }
+
+  .side-menu {
+    background-color: #4bbdf1;
+
+    .uk-nav a {
+      font-size: 16px;
+    }
+  }
+}
+
+body {
+  height: initial !important;
+}
+
+#wpcontent {
+  padding: 0;
+}
+
+#screen-meta-links {
+  display: none;
+}
