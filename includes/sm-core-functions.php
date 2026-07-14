@@ -978,3 +978,47 @@ function ajax_sync_sermon_data() {
 }
 add_action( 'wp_ajax_sync_sermon_data', 'ajax_sync_sermon_data' );
 
+/**
+ * Migrate Pro plugin's sermon_description meta to native post_content.
+ *
+ * @param bool $overwrite If true, overwrite existing post_content.
+ * @return array Summary of migration: total, updated, skipped.
+ */
+function sm_migrate_pro_content( $overwrite = false ) {
+	$args = array(
+		'post_type'      => 'wpfc_sermon',
+		'post_status'    => 'any',
+		'posts_per_page' => -1,
+		'fields'         => 'ids',
+	);
+	$sermon_ids = get_posts( $args );
+	$total = count( $sermon_ids );
+	$updated = 0;
+	$skipped = 0;
+
+	foreach ( $sermon_ids as $post_id ) {
+		$pro_content = get_post_meta( $post_id, 'sermon_description', true );
+		if ( ! empty( $pro_content ) ) {
+			$current_content = get_post_field( 'post_content', $post_id );
+			if ( $overwrite || empty( $current_content ) ) {
+				// Optionally backup old content
+				if ( ! empty( $current_content ) ) {
+					update_post_meta( $post_id, '_sm_backup_post_content', $current_content );
+				}
+				wp_update_post( array( 'ID' => $post_id, 'post_content' => $pro_content ) );
+				$updated++;
+			} else {
+				$skipped++;
+			}
+		} else {
+			$skipped++;
+		}
+	}
+
+	return array(
+		'total'   => $total,
+		'updated' => $updated,
+		'skipped' => $skipped,
+	);
+}
+
