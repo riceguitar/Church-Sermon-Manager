@@ -477,7 +477,10 @@ final class Templating_Manager {
 		}
 
 		ob_start();
-		post_class( 'smpro-article ' . isset( $args['additional_class'] ) ? $args['additional_class'] : '', $object );
+		// Precedence note: the original expression concatenated before the ternary,
+		// so 'smpro-article' was never actually emitted. Kept behavior-identical
+		// (minus the PHP warning) to avoid changing front-end markup.
+		post_class( isset( $args['additional_class'] ) ? $args['additional_class'] : '', $object );
 		$post_class = ob_get_clean();
 
 		$settings['post_class'] = $post_class;

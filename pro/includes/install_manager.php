@@ -22,12 +22,9 @@ class Install_Manager {
 	 * @var array
 	 */
 	protected $update_callbacks = array(
-		'1.0.0-beta.2' => array(
-			'smp_update_100beta2_move_from_wpfcm',
-		),
-		'1.0.0-beta.8' => array(
-			'smp_update_100beta8_convert_default_podcast',
-		),
+		// The legacy 1.0.0-beta migration callbacks were removed together with
+		// smp-update-functions.php; an empty map means version bumps only
+		// update the stored version and never dispatch the background queue.
 	);
 
 	/**
