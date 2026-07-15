@@ -31,6 +31,23 @@ GitHub releases.
 
 ## Switching from Sermon Manager / Sermon Manager Pro
 
+### Supported upgrade paths
+
+| You're running | Support |
+|---|---|
+| Sermon Manager 2.15.x – 2.30.x (WP for Church, the wordpress.org continuation, or the 2.30.x fork) | ✅ Fully supported — data is read in place, nothing to migrate |
+| Sermon Manager 2.8 – 2.15.x | ✅ Supported — bundled background migrations bring older data current automatically on activation (dates, series metadata, rendered content) |
+| Sermon Manager 2.x earlier than 2.8 | ⚠️ Best effort — the same migration chain includes pre-2.8 converters and should work; take a database backup first |
+| Sermon Manager 1.x | ❌ Not supported |
+| Sermon Manager Pro 2.0.0 – 2.0.13 (every public 2.0 release) | ✅ Fully supported — templates, podcast settings, and description content carry over in place |
+| Sermon Manager Pro 1.0 betas | ❌ Not supported directly — update to Pro 2.0.x first, or switch anyway and run Sermons → Migrate Pro Content to recover descriptions |
+
+Note: the original plugin's wordpress.org listing was closed in December 2025
+over a security issue and is no longer available for download — sites still
+running it receive no updates of any kind.
+
+### How to switch
+
 1. Install Church Sermon Manager (leave your old plugins alone for now).
 2. Activate it. While the legacy plugins are still active it stays idle and
    shows a reminder notice — nothing breaks.

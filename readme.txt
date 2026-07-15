@@ -72,13 +72,17 @@ Originally created by [WP for Church](https://wpforchurch.com/); maintained by [
 
 Yes. Church Sermon Manager uses the same post types, taxonomies, settings, and meta fields as the originals, and the same template and widget names as Pro. Nothing is imported or converted — the plugin simply reads the data that's already there.
 
+### Which versions can I upgrade from? ###
+
+Sermon Manager (free) 2.15.x–2.30.x: fully supported, data reads in place. Sermon Manager 2.8–2.15.x: supported — bundled background migrations update older data automatically on activation. Sermon Manager 2.x before 2.8: best effort (the migration chain includes pre-2.8 converters) — back up your database first. Sermon Manager Pro 2.0.0–2.0.13 (every public 2.0 release): fully supported, including templates and podcast settings. Sermon Manager 1.x and Pro 1.0 betas are not supported — for old Pro betas, update to Pro 2.0.x first or use Sermons → Migrate Pro Content after switching.
+
 ### How do updates work? ###
 
 Through the standard WordPress update system, sourced from GitHub releases instead of wordpress.org. Use "Check for updates" on the Plugins screen to check immediately, or enable auto-updates to install new versions automatically.
 
 ### Why isn't this on wordpress.org? ###
 
-The original plugin's directory listing is controlled by another party. Distributing through GitHub keeps this fork independent while updates still arrive automatically.
+The original plugin's directory listing is controlled by another party — and was closed by wordpress.org in December 2025 over a security issue, so it no longer ships anything at all. Distributing through GitHub keeps this fork independent while updates still arrive automatically.
 
 ### How do I display sermons on the frontend? ###
 
