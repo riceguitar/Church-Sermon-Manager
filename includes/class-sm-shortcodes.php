@@ -1076,7 +1076,9 @@ class SM_Shortcodes {
 				$query_args['meta_query'] = array(
 					array(
 						'key'     => 'sermon_date',
-						'value'   => time(),
+						// Stored sermon_date epochs use the site-local convention,
+						// so compare against site-local "now" (upstream issue #270).
+						'value'   => current_time( 'timestamp' ),
 						'type'    => 'numeric',
 						'compare' => '<=',
 					),

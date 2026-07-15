@@ -294,9 +294,26 @@ class SermonManager { // phpcs:ignore
 				switch ( $orderby ) {
 					case 'date_preached':
 						$query->set( 'meta_key', 'sermon_date' );
-						$query->set( 'meta_value_num', time() );
+						$query->set( 'meta_value_num', current_time( 'timestamp' ) );
 						$query->set( 'meta_compare', '<=' );
 						$query->set( 'orderby', 'meta_value_num' );
+						// `meta_value_num`/`meta_compare` alone only affect ORDER BY, not the WHERE
+						// clause (WP_Meta_Query::parse_query_vars() ignores `meta_value_num`), so
+						// future-dated sermons were leaking into archives/taxonomies. Add an explicit
+						// meta_query to actually filter them out, same as the [sermons] shortcode does.
+						$query->set(
+							'meta_query',
+							array(
+								array(
+									'key'     => 'sermon_date',
+									// Stored sermon_date epochs use the site-local
+									// convention (see SM_Dates_WP), so "now" must too.
+									'value'   => current_time( 'timestamp' ),
+									'type'    => 'NUMERIC',
+									'compare' => '<=',
+								),
+							)
+						);
 						break;
 					case 'date_published':
 						$query->set( 'orderby', 'date' );

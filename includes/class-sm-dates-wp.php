@@ -135,7 +135,7 @@ class SM_Dates_WP extends SM_Dates {
 		}
 
 		$original_terms = $GLOBALS['sm_original_terms'];
-		$updated_terms  = isset( $_POST['tax_input'] ) ? sanitize_text_field($_POST['tax_input']) : null;
+		$updated_terms  = isset( $_POST['tax_input'] ) ? $_POST['tax_input'] : null;
 
 		// Convert terms to term array of term IDs if it's not already that way.
 		
@@ -173,11 +173,11 @@ class SM_Dates_WP extends SM_Dates {
 				}
 			}
 		}
-		$updated_terms = array_fill_keys( sm_get_taxonomies(), array() );
-
-		if ( ! $updated_terms ) {
-			return;
+		// Guard against a scalar tax_input (would fatal on the array union below).
+		if ( ! is_array( $updated_terms ) ) {
+			$updated_terms = array();
 		}
+		$updated_terms += array_fill_keys( sm_get_taxonomies(), array() );
 
 		foreach ( sm_get_taxonomies() as $taxonomy ) {
 			$new_terms  = $updated_terms[ $taxonomy ];
@@ -197,8 +197,9 @@ class SM_Dates_WP extends SM_Dates {
 				}
 			}
 
-			// Update the main date.
-			self::update_term_dates( $taxonomy, $orig_terms + $new_terms );
+			// Update the main date. array_merge, not +: both arrays are
+			// zero-indexed, so a union by key would drop replacement terms.
+			self::update_term_dates( $taxonomy, array_merge( $orig_terms, $new_terms ) );
 		}
 	}
 
@@ -229,10 +230,7 @@ class SM_Dates_WP extends SM_Dates {
 					$the_terms[] = $term->term_id;
 				}
 			}
-			if (count($the_terms)>1) {
-				# code...
-				return;
-			}
+
 			// Save the most recent sermon date to the term.
 			foreach ( $the_terms as $term ) {
 				$meta  = get_term_meta( $term );
@@ -327,6 +325,10 @@ class SM_Dates_WP extends SM_Dates {
 				}
 
 				$dt      = DateTime::createFromFormat( $date_format, sanitize_text_field($_POST['sermon_date']) );
+				// Deliberately kept as the historical "site-local wall time as epoch"
+				// convention: every stored sermon_date and the display path
+				// (SM_Dates::get → date_i18n) assume it. Comparisons against "now"
+				// must therefore use current_time( 'timestamp' ), never time().
 				$dt_post = DateTime::createFromFormat( 'U', mysql2date( 'U', $post->post_date ) );
 
 				$time = array(
