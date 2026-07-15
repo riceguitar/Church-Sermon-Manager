@@ -6,7 +6,7 @@
  * Version: 3.1.1
  * Update URI: https://github.com/riceguitar/Church-Sermon-Manager
  * Author: David Sudarma (Sierra.host)
- * Author URI: https://sierra.host/
+ * Author URI: https://sierra.host/church-sermon-manager/
  * Original Author: WP for Church
  * Original Author URI: http://wpforchurch.com/
  * Requires at least: 6.4

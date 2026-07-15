@@ -69,5 +69,5 @@ mind: post type names, option names, meta keys, and widget names are frozen.
 
 ## Credits and license
 
-Originally created by WP for Church; forked and maintained by David Sudarma.
+Originally created by WP for Church; forked and maintained by [David Sudarma](https://sierra.host/church-sermon-manager/).
 GPL-2.0 — see [LICENSE](LICENSE).
