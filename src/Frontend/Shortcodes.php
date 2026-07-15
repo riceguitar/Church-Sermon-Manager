@@ -50,8 +50,18 @@ class Shortcodes {
 
     /**
      * Register all shortcodes.
+     *
+     * DISABLED: every tag below is also registered by the long-standing
+     * SM_Shortcodes class (includes/class-sm-shortcodes.php), whose renderers
+     * go through the real templating pipeline. Because this method ran later
+     * (on the init hook), it silently replaced those handlers with the thinner
+     * reimplementations in this class — which depend on theme template parts
+     * most themes don't have, and render empty lists. The legacy handlers are
+     * authoritative; this class stays as refactor groundwork only.
      */
     public function register_shortcodes(): void {
+        return;
+
         // List podcast buttons.
         add_shortcode('list_podcasts', [$this, 'display_podcasts_list']);
         // List all series or speakers in a simple unordered list.
@@ -611,7 +621,7 @@ class Shortcodes {
         if (!$args['hide_pagination']) {
             echo '<div class="sermon-pagination">';
             echo paginate_links([
-                'base'    => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+                'base'    => str_replace('999999999', '%#%', esc_url(get_pagenum_link(999999999))),
                 'format'  => '?paged=%#%',
                 'current' => max(1, $args['paged']),
                 'total'   => $sermons->max_num_pages,
