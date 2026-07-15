@@ -46,8 +46,16 @@ the "Check for updates" link on the Plugins screen.
      --exclude 'phpunit.xml.dist' --exclude '/composer.json' \
      --exclude '/composer.lock' --exclude 'CODE_OF_CONDUCT.md' \
      --exclude '.DS_Store' --exclude 'pro/cache' \
+     --exclude 'CLAUDE.md' --exclude 'CLAUDE.local.md' --exclude '.claude' \
+     --exclude 'AGENTS.md' \
      ./ /tmp/zipbuild/church-sermon-manager/
    cd /tmp/zipbuild && zip -qr church-sermon-manager.zip church-sermon-manager
+   ```
+   The build copies the WORKING TREE, so gitignored local files would be
+   included unless excluded — that's why the local editor/agent config
+   names are in the exclude list. Before uploading, always verify:
+   ```
+   unzip -l /tmp/zipbuild/church-sermon-manager.zip | grep -iE "claude|agents\.md|\.env" && echo "STOP: local files in zip" || echo "zip clean"
    ```
 
 6. **Create the GitHub release and attach the zip.** Note: `gh release create`
