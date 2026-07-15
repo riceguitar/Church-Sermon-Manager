@@ -1,3 +1,6 @@
+### 3.1.1 ###
+Fixed: Plugin row on the Plugins screen no longer shows the defunct "Premium support" and "Get Sermon Manager Pro" links; Support now points to the GitHub issue tracker.
+
 ### 3.1.0 ###
 Major: Sermon Manager Pro absorbed — templating (Twig), podcasting, and Elementor/Divi/Beaver/Visual Composer/shortcode widgets are now built in. Existing Pro sites keep all data: same post types, options, meta keys, templates, and widget names.
 Removed: All licensing and update-server code for the defunct wpforchurch.com endpoints (previously could stall page loads up to 35s).

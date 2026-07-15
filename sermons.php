@@ -3,7 +3,7 @@
  * Plugin Name: Church Sermon Manager
  * Plugin URI: https://github.com/riceguitar/Church-Sermon-Manager
  * Description: Add audio and video sermons, manage speakers, series, templates, podcasting, and page-builder widgets to your church website. Community-maintained successor to Sermon Manager and Sermon Manager Pro.
- * Version: 3.1.0
+ * Version: 3.1.1
  * Update URI: https://github.com/riceguitar/Church-Sermon-Manager
  * Author: David Sudarma (Sierra.host)
  * Author URI: https://sierra.host/

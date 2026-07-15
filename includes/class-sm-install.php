@@ -272,8 +272,7 @@ class SM_Install {
 	public static function plugin_row_meta( $links, $file ) {
 		if ( SM_BASENAME == $file ) {
 			$row_meta = array(
-				'support' => '<a href="' . esc_url( 'https://wpforchurch.com/my/submitticket.php?utm_source=sermon-manager&utm_medium=wordpress' ) . '" aria-label="' . esc_attr__( 'Visit premium customer support', 'sermon-manager' ) . '">' . esc_html__( 'Premium support', 'sermon-manager' ) . '</a>',
-				'smp'     => '<a href="https://sermonmanager.pro/?utm_source=sermon-manager&amp;utm_medium=wordpress" aria-label="' . esc_attr( __( 'Get Sermon Manager Pro', 'sermon-manager' ) ) . '" target="_blank" style="color:#ff0000;">' . __( 'Get Sermon Manager Pro', 'sermon-manager' ) . '</a>',
+				'support' => '<a href="' . esc_url( 'https://github.com/riceguitar/Church-Sermon-Manager/issues' ) . '" aria-label="' . esc_attr__( 'Report an issue or get support', 'sermon-manager' ) . '" target="_blank">' . esc_html__( 'Support', 'sermon-manager' ) . '</a>',
 			);
 
 			return array_merge( $links, $row_meta );
