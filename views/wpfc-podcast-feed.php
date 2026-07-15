@@ -304,21 +304,29 @@ $cover_image_url  = $settings['itunes_cover_image'];
 
 				$audio_url = get_wpfc_sermon_audio_url( $post->ID );
 				$audio_raw = $use_https ? str_ireplace( 'http://', 'https://', $audio_url ) : str_ireplace( 'https://', 'http://', $audio_url );
+
+				// Split off the query string (if any), so it never gets URL-encoded below.
+				$audio_query_p = strpos( $audio_raw, '?' );
+				$audio_query   = false !== $audio_query_p ? substr( $audio_raw, $audio_query_p ) : '';
+				$audio_raw     = false !== $audio_query_p ? substr( $audio_raw, 0, $audio_query_p ) : $audio_raw;
+
 				$audio_p   = strrpos( $audio_raw, '/' ) + 1;
 				$audio_raw = urldecode( $audio_raw );
-				$audio     = substr( $audio_raw, 0, $audio_p ) . rawurlencode( substr( $audio_raw, $audio_p ) );
+				$audio     = substr( $audio_raw, 0, $audio_p ) . rawurlencode( substr( $audio_raw, $audio_p ) ) . $audio_query;
 				$speakers  = strip_tags( get_the_term_list( $post->ID, 'wpfc_preacher', '', ' &amp; ', '' ) );
 				$speakers_terms    = get_the_terms( $post->ID, 'wpfc_preacher' );
 				$speaker           = $speakers_terms ? $speakers_terms[0]->name : '';
 				$series            = strip_tags( get_the_term_list( $post->ID, 'wpfc_sermon_series', '', ', ', '' ) );
 				$topics            = strip_tags( get_the_term_list( $post->ID, 'wpfc_sermon_topics', '', ', ', '' ) );
-				$post_image        = get_sermon_image_url( $settings['podcast_sermon_image_series'] );
+				$post_image        = get_sermon_image_url( $settings['podcast_sermon_image_series'], 'full' );
 				$post_image        =  $use_https ? str_ireplace( 'http://', 'https://', ! empty( $post_image ) ? $post_image : '' ) :  str_ireplace( 'https://', 'http://', ! empty( $post_image ) ? $post_image : '' );
 				$audio_duration    = get_post_meta( $post->ID, '_wpfc_sermon_duration', true ) ?: '0:00';
 				$audio_file_size   = get_post_meta( $post->ID, '_wpfc_sermon_size', 'true' ) ?: 0;
 				$description       = $post->post_content;				
-				$description_short = substr( wp_strip_all_tags( $description, true ), 0, 255 );
-				$description_short = strlen( $description_short ) === 255 ? $description_short . '...' : $description_short;
+				// Multibyte-safe truncation: a byte-based substr() can slice through a
+				// UTF-8 character and emit invalid XML in <itunes:subtitle>.
+				$description_short = mb_substr( wp_strip_all_tags( $description, true ), 0, 255 );
+				$description_short = mb_strlen( $description_short ) === 255 ? $description_short . '...' : $description_short;
 				$date_preached     = SM_Dates::get( 'D, d M Y H:i:s +0000', null, false, false );
 				$date_published    = get_the_date( 'D, d M Y H:i:s +0000', $post->ID );
 				$custom_enclosure  = apply_filters( 'wpfc-podcast-feed-custom-enclosure', '', $post->ID, $settings );
