@@ -3,9 +3,9 @@ Contributors: riceguitar, wpforchurch, Alex Gutierrez
 Donate link: https://sierra.host/  
 Tags: church, sermon, sermons, preaching, podcasting, manage, managing, podcasts, itunes  
 Requires at least: 6.4  
-Tested up to: 6.8
-Requires PHP: 7.4  
-Stable tag: 3.0.1
+Tested up to: 7.0
+Requires PHP: 7.4
+Stable tag: 3.1.0
 License: GPLv2  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -126,6 +126,12 @@ Visit the [plugin homepage](https://wpforchurch.com/wordpress-plugins/sermon-man
 2. Sermon Files
 
 ## Changelog ##
+
+### 3.1.0 (2026-07-14) ###
+* Major: Sermon Manager Pro absorbed — templating, podcasting, and page-builder widgets are built in; existing Pro sites keep all data with no migration.
+* Removed: all licensing/phone-home code for the defunct upstream servers.
+* Added: self-updates from GitHub releases; legacy-coexistence guard; Migrate Pro Content tool.
+* Fixed: empty sermon editor for Pro-era content; template paths after site migration; PHP 8 fatal in date sorting.
 
 ### 3.0.1 (2025-05-29) ###
 * Added: Support for WordPress 6.8

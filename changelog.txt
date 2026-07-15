@@ -1,3 +1,14 @@
+### 3.1.0 ###
+Major: Sermon Manager Pro absorbed — templating (Twig), podcasting, and Elementor/Divi/Beaver/Visual Composer/shortcode widgets are now built in. Existing Pro sites keep all data: same post types, options, meta keys, templates, and widget names.
+Removed: All licensing and update-server code for the defunct wpforchurch.com endpoints (previously could stall page loads up to 35s).
+Added: Self-updates from GitHub releases; "Update URI" header prevents wordpress.org from offering a different plugin over this one.
+Added: Legacy-coexistence guard — the plugin stays idle with a notice while the old Sermon Manager / Pro pair is still active, so switching is safe in any order.
+Added: "Migrate Pro Content" tool under Sermons for copying Pro description meta into native post content.
+Fixed: Sermon editor no longer shows empty content for sermons saved while Pro was inactive; content and description meta stay in sync on save.
+Fixed: Template filesystem paths are re-rooted at runtime, so site migrations no longer break sermon rendering.
+Fixed: PHP 8 fatal in the date sorting dropdown; undefined-key warning in the templating manager; fresh installs no longer queue dead background jobs.
+Changed: Single text domain (sermon-manager) across all modules; translation files renamed to match.
+
 ### 3.0.1 ###
 * Add: New public function `get_wpfc_sermon_audio_url()` to handle sermon audio URL retrieval, addressing [GitHub Issue #308](https://github.com/WP-for-Church/Sermon-Manager/issues/308). This function properly checks for WordPress attachment IDs and returns the appropriate audio URL.
 
