@@ -56,6 +56,13 @@ class SM_API {
 			'sermon_date',
 		);
 
+		// REST-facing field names that differ from the real meta keys the editor
+		// and templates read — mirror of add_custom_data()'s read-side mapping.
+		$meta_map = array(
+			'sermon_video_embed' => 'sermon_video',
+			'sermon_video_url'   => 'sermon_video_link',
+		);
+
 		foreach ( $keys as $key ) {
 			$data = isset( $params[ $key ] ) ? $params[ $key ] : null;
 
@@ -68,14 +75,16 @@ class SM_API {
 				}
 			}
 
-			update_post_meta( $post->ID, $key, $data );
+			$meta_key = isset( $meta_map[ $key ] ) ? $meta_map[ $key ] : $key;
+
+			update_post_meta( $post->ID, $meta_key, $data );
 
 			if ( 'sermon_date' === $key ) {
 				update_post_meta( $post->ID, 'sermon_date_auto', 0 );
 			}
 
-			add_filter( "cmb2_override_{$key}_meta_remove", '__return_true' );
-			add_filter( "cmb2_override_{$key}_meta_save", '__return_true' );
+			add_filter( "cmb2_override_{$meta_key}_meta_remove", '__return_true' );
+			add_filter( "cmb2_override_{$meta_key}_meta_save", '__return_true' );
 		}
 	}
 

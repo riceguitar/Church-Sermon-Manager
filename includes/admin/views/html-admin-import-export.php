@@ -64,7 +64,7 @@ defined( 'ABSPATH' ) or die;
 									</span>
 								<?php endif; ?>
 							</li>
-							<li><a href="" class=""
+							<li><a href="https://github.com/riceguitar/Church-Sermon-Manager#readme" class="" target="_blank" rel="noopener"
 										aria-label="<?php esc_attr_e( 'More Details', 'sermon-manager' ); ?>">
 									<?php _e( 'More Details', 'sermon-manager' ); ?>
 								</a></li>
@@ -93,7 +93,7 @@ defined( 'ABSPATH' ) or die;
 									<?php _e( 'Export', 'sermon-manager' ); ?>
 								</a>
 							</li>
-							<li><a href="" class=""
+							<li><a href="https://github.com/riceguitar/Church-Sermon-Manager#readme" class="" target="_blank" rel="noopener"
 										aria-label="<?php esc_attr_e( 'More Details', 'sermon-manager' ); ?>">
 									<?php _e( 'More Details', 'sermon-manager' ); ?></a></li>
 						</ul>

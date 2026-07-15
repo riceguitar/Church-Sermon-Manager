@@ -284,6 +284,10 @@ function get_wpfc_sermon_meta( $meta_key = '', $post = null ) {
 		global $post;
 	}
 
+	if ( ! ( $post instanceof WP_Post ) ) {
+		return '';
+	}
+
 	$data = get_post_meta( $post->ID, $meta_key, true );
 	if ( '' !== $data ) {
 		return $data;
