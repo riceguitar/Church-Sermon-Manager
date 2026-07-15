@@ -37,16 +37,16 @@ function wpfc_sermon_metaboxes() {
 
 	$sermon_details_meta = new_cmb2_box( array(
 		'id'           => 'wpfc_sermon_details',
-		'title'        => esc_html__( 'Sermon Details', 'sermon-manager-for-wordpress' ),
+		'title'        => esc_html__( 'Sermon Details', 'sermon-manager' ),
 		'object_types' => array( 'wpfc_sermon' ), // Post type.
 		'context'      => 'normal',
 		'priority'     => 'high',
 		'show_names'   => true, // Show field names on the left.
 	) );
 	$sermon_details_meta->add_field( array(
-		'name'         => esc_html__( 'Date Preached', 'sermon-manager-for-wordpress' ),
+		'name'         => esc_html__( 'Date Preached', 'sermon-manager' ),
 		// translators: %s date format, effectively <code>d/m/Y</code> or the like.
-		'desc'         => esc_html__( '(optional)', 'sermon-manager-for-wordpress' ) . '<br>' . wp_sprintf( esc_html__( 'format: %s', 'sermon-manager-for-wordpress' ), $date_format_label ),
+		'desc'         => esc_html__( '(optional)', 'sermon-manager' ) . '<br>' . wp_sprintf( esc_html__( 'format: %s', 'sermon-manager' ), $date_format_label ),
 		'id'           => 'sermon_date',
 		'type'         => 'text_date_timestamp',
 		'date_format'  => $date_format,
@@ -57,23 +57,23 @@ function wpfc_sermon_metaboxes() {
 		// translators: %1$s The singular label. Default Service Type.
 		// translators: %2$s The plural label. Default Service Types.
 		// translators: %3$s <a href="edit-tags.php?taxonomy=wpfc_service_type&post_type=wpfc_sermon" target="_blank">here</a>.
-		'desc'             => wp_sprintf( esc_html__( 'Select the %1$s. Modify the %2$s %3$s.', 'sermon-manager-for-wordpress' ), strtolower( sm_get_taxonomy_field( 'wpfc_service_type', 'singular_name' ) ), strtolower( sm_get_taxonomy_field( 'wpfc_service_type', 'label' ) ), '<a href="' . admin_url( 'edit-tags.php?taxonomy=wpfc_service_type&post_type=wpfc_sermon' ) . '" target="_blank">here</a>' ),
+		'desc'             => wp_sprintf( esc_html__( 'Select the %1$s. Modify the %2$s %3$s.', 'sermon-manager' ), strtolower( sm_get_taxonomy_field( 'wpfc_service_type', 'singular_name' ) ), strtolower( sm_get_taxonomy_field( 'wpfc_service_type', 'label' ) ), '<a href="' . admin_url( 'edit-tags.php?taxonomy=wpfc_service_type&post_type=wpfc_sermon' ) . '" target="_blank">here</a>' ),
 		'id'               => 'wpfc_service_type',
 		'type'             => 'select',
 		'show_option_none' => true,
 		'options'          => cmb2_get_term_options( 'wpfc_service_type' ),
 	) );
 	$sermon_details_meta->add_field( array(
-		'name' => esc_html__( 'Main Bible Passage', 'sermon-manager-for-wordpress' ),
+		'name' => esc_html__( 'Main Bible Passage', 'sermon-manager' ),
 		// translators: %1$s see msgid "John 3:16-18", effectively <code>John 3:16-18</code><br>.
 		// translators: %2$s see msgid "John 3:16-18, John 2:11-12", effectively <code>John 3:16-18, Luke 2:1-3</code>.
-		'desc' => wp_sprintf( esc_html__( 'Enter the Bible passage with the full book names, e.g. %1$s Or multiple books like %2$s', 'sermon-manager-for-wordpress' ), '<code>' . esc_html__( 'John 3:16-18', 'sermon-manager-for-wordpress' ) . '</code><br>', '<code>' . esc_html__( 'John 3:16-18, Luke 2:1-3', 'sermon-manager-for-wordpress' ) . '</code>' ),
+		'desc' => wp_sprintf( esc_html__( 'Enter the Bible passage with the full book names, e.g. %1$s Or multiple books like %2$s', 'sermon-manager' ), '<code>' . esc_html__( 'John 3:16-18', 'sermon-manager' ) . '</code><br>', '<code>' . esc_html__( 'John 3:16-18, Luke 2:1-3', 'sermon-manager' ) . '</code>' ),
 		'id'   => 'bible_passage',
 		'type' => 'text',
 	) );
 	// $sermon_details_meta->add_field( array(
-	// 	'name'    => esc_html__( 'Description', 'sermon-manager-for-wordpress' ),
-	// 	'desc'    => esc_html__( 'Type a brief description about this sermon, an outline, or a full manuscript', 'sermon-manager-for-wordpress' ),
+	// 	'name'    => esc_html__( 'Description', 'sermon-manager' ),
+	// 	'desc'    => esc_html__( 'Type a brief description about this sermon, an outline, or a full manuscript', 'sermon-manager' ),
 	// 	'id'      => 'sermon_description',
 	// 	'type'    => 'wysiwyg',
 	// 	'options' => array(
@@ -84,15 +84,15 @@ function wpfc_sermon_metaboxes() {
 
 	$sermon_files_meta = new_cmb2_box( array(
 		'id'           => 'wpfc_sermon_files',
-		'title'        => esc_html__( 'Sermon Files', 'sermon-manager-for-wordpress' ),
+		'title'        => esc_html__( 'Sermon Files', 'sermon-manager' ),
 		'object_types' => array( 'wpfc_sermon' ),
 		'context'      => 'normal',
 		'priority'     => 'high',
 		'show_names'   => true,
 	) );
 	$sermon_files_meta->add_field( array(
-		'name' => esc_html__( 'Location of MP3', 'sermon-manager-for-wordpress' ),
-		'desc' => esc_html__( 'Upload an audio file or enter an URL.', 'sermon-manager-for-wordpress' ),
+		'name' => esc_html__( 'Location of MP3', 'sermon-manager' ),
+		'desc' => esc_html__( 'Upload an audio file or enter an URL.', 'sermon-manager' ),
 		'id'   => 'sermon_audio',
 		'type' => 'file',
 		'text' => array(
@@ -100,61 +100,61 @@ function wpfc_sermon_metaboxes() {
 		),
 	) );
 	$sermon_files_meta->add_field( array(
-		'name' => esc_html__( 'MP3 Duration', 'sermon-manager-for-wordpress' ),
+		'name' => esc_html__( 'MP3 Duration', 'sermon-manager' ),
 		// translators: %s see msgid "hh:mm:ss", effectively <code>hh:mm:ss</code>.
-		'desc' => wp_sprintf( esc_html__( 'Length in %s format (fill out only for remote files, local files will get data calculated by default)', 'sermon-manager-for-wordpress' ), '<code>' . esc_html__( 'hh:mm:ss', 'sermon-manager-for-wordpress' ) . '</code>' ),
+		'desc' => wp_sprintf( esc_html__( 'Length in %s format (fill out only for remote files, local files will get data calculated by default)', 'sermon-manager' ), '<code>' . esc_html__( 'hh:mm:ss', 'sermon-manager' ) . '</code>' ),
 		'id'   => '_wpfc_sermon_duration',
 		'type' => 'text',
 	) );
 	$sermon_files_meta->add_field( array(
-		'name' => esc_html__( 'Video Embed Code', 'sermon-manager-for-wordpress' ),
-		'desc' => esc_html__( 'Paste your embed code for Vimeo, Youtube, Facebook, or direct video file here', 'sermon-manager-for-wordpress' ),
+		'name' => esc_html__( 'Video Embed Code', 'sermon-manager' ),
+		'desc' => esc_html__( 'Paste your embed code for Vimeo, Youtube, Facebook, or direct video file here', 'sermon-manager' ),
 		'id'   => 'sermon_video',
 		'type' => 'textarea_code',
 	) );
 	$sermon_files_meta->add_field( apply_filters( 'sm_cmb2_field_sermon_video_link', array(
-		'name' => esc_html__( 'Video Link', 'sermon-manager-for-wordpress' ),
-		'desc' => esc_html__( 'Paste your link for Vimeo, Youtube, Facebook, or direct video file here', 'sermon-manager-for-wordpress' ),
+		'name' => esc_html__( 'Video Link', 'sermon-manager' ),
+		'desc' => esc_html__( 'Paste your link for Vimeo, Youtube, Facebook, or direct video file here', 'sermon-manager' ),
 		'id'   => 'sermon_video_link',
 		'type' => 'text_url',
 	) ) );
 	$sermon_files_meta->add_field( array(
-		'name' => esc_html__( 'Single Sermon Note', 'sermon-manager-for-wordpress' ),
-		'desc' => esc_html__( 'Upload  pdf file.', 'sermon-manager-for-wordpress' ),
+		'name' => esc_html__( 'Single Sermon Note', 'sermon-manager' ),
+		'desc' => esc_html__( 'Upload  pdf file.', 'sermon-manager' ),
 		'id'   => 'sermon_notes',
 		'type' => 'file',
 		'text' => array(
-			'add_upload_file_text' => esc_html__( 'Add File', 'sermon-manager-for-wordpress' ),
+			'add_upload_file_text' => esc_html__( 'Add File', 'sermon-manager' ),
 			// Change upload button text. Default: "Add or Upload File".
 		),
 	) );
 	$sermon_files_meta->add_field( array(
-		'name' => esc_html__( 'Multiple Sermon Notes', 'sermon-manager-for-wordpress' ),
-		'desc' => esc_html__( 'Upload  pdf files.', 'sermon-manager-for-wordpress' ),
+		'name' => esc_html__( 'Multiple Sermon Notes', 'sermon-manager' ),
+		'desc' => esc_html__( 'Upload  pdf files.', 'sermon-manager' ),
 		'id'   => 'sermon_notes_multiple',
 		'type' => 'file_list',
 		'text' => array(
-			'add_upload_file_text' => esc_html__( 'Add File', 'sermon-manager-for-wordpress' ),
+			'add_upload_file_text' => esc_html__( 'Add File', 'sermon-manager' ),
 			// Change upload button text. Default: "Add or Upload File".
 		),
 	) );
 	$sermon_files_meta->add_field( array(
-		'name' => esc_html__( 'Single Bulletin', 'sermon-manager-for-wordpress' ),
-		'desc' => esc_html__( 'Upload a pdf file.', 'sermon-manager-for-wordpress' ),
+		'name' => esc_html__( 'Single Bulletin', 'sermon-manager' ),
+		'desc' => esc_html__( 'Upload a pdf file.', 'sermon-manager' ),
 		'id'   => 'sermon_bulletin',
 		'type' => 'file',
 		'text' => array(
-			'add_upload_file_text' => esc_html__( 'Add File', 'sermon-manager-for-wordpress' ),
+			'add_upload_file_text' => esc_html__( 'Add File', 'sermon-manager' ),
 			// Change upload button text. Default: "Add or Upload File".
 		),
 	) );
 	$sermon_files_meta->add_field( array(
-		'name' => esc_html__( 'Multiple Bulletin', 'sermon-manager-for-wordpress' ),
-		'desc' => esc_html__( 'Upload pdf files.', 'sermon-manager-for-wordpress' ),
+		'name' => esc_html__( 'Multiple Bulletin', 'sermon-manager' ),
+		'desc' => esc_html__( 'Upload pdf files.', 'sermon-manager' ),
 		'id'   => 'sermon_bulletin_multiple',
 		'type' => 'file_list',
 		'text' => array(
-			'add_upload_file_text' => esc_html__( 'Add File', 'sermon-manager-for-wordpress' ),
+			'add_upload_file_text' => esc_html__( 'Add File', 'sermon-manager' ),
 			// Change upload button text. Default: "Add or Upload File".
 		),
 	) );

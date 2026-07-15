@@ -1,0 +1,15 @@
+// Sermon Sorting
+@import 'partials/sorting';
+// Sermon Archive
+@import 'partials/archive';
+// Sermon Single
+@import 'partials/single';
+// Shortcode styling
+@import "partials/shortcodes";
+
+/**
+ * Common audio CSS
+ */
+.wpfc-sermon-player {
+  vertical-align: middle;
+}

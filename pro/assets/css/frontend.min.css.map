@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,oBAAuB,CACrB,aAAa,CAAE,IAAI,CACnB,OAAO,CAAE,YAAY,CACrB,2BAA2B,CAAE,KAAK,CAClC,2BAA2B,CAAE,MAAM,CACnC,KAAK,CAAE,IAAI,CACX,QAAQ,CAAE,MAAM,CAChB,QAAQ,CAAE,QAAQ,CAGpB,kCAAmC,CACjC,MAAM,CAAE,UAAU,CAGpB,kBAAmB,CACjB,WAAW,CAAE,GAAG",
+"sources": ["frontend.scss"],
+"names": [],
+"file": "frontend.min.css"
+}

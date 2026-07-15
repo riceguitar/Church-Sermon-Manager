@@ -1,0 +1,87 @@
+.forminp-licensing {
+  &.status-checking {
+    #license_status_response {
+      color: #877f7f;
+    }
+
+    #license_spinner {
+      display: inline-block;
+    }
+  }
+
+  &.status-error {
+    #license_status_response {
+      color: #d85600;
+    }
+
+    #check_license_button {
+      &:hover {
+        background: #db691d;
+      }
+
+      background: #d85600;
+      border-top-color: #B04500;
+      border-right-color: #863500;
+      border-bottom-color: #863500;
+      border-left-color: #863500;
+      box-shadow: 0 1px 0 #863500;
+      text-shadow: 0 -1px 1px #863500, 1px 0 1px #863500, 0 1px 1px #863500, -1px 0 1px #863500;
+    }
+  }
+
+  &.status-valid {
+    #license_status_response {
+      color: #009933;
+    }
+
+    #check_license_button {
+      &:hover {
+        background: #13a443;
+      }
+
+      background: #009933;
+      border-top-color: #007D2A;
+      border-right-color: #005E20;
+      border-bottom-color: #005E20;
+      border-left-color: #005E20;
+      box-shadow: 0 1px 0 #005E20;
+      text-shadow: 0 -1px 1px #005E20, 1px 0 1px #005E20, 0 1px 1px #005E20, -1px 0 1px #005E20;
+    }
+  }
+
+  &.status-invalid {
+    #license_status_response {
+      color: #cc0000;
+    }
+
+    #check_license_button {
+      &:hover {
+        background: #d81e1e;
+      }
+
+      background: #cc0000;
+      border-top-color: #A70000;
+      border-right-color: #7D0000;
+      border-bottom-color: #7D0000;
+      border-left-color: #7D0000;
+      box-shadow: 0 1px 0 #7D0000;
+      text-shadow: 0 -1px 1px #7D0000, 1px 0 1px #7D0000, 0 1px 1px #7D0000, -1px 0 1px #7D0000;
+    }
+  }
+}
+
+#license_status {
+  margin-top: 5px;
+
+  #license_status_response {
+    display: inline;
+
+    &.status-invalid {
+      color: #cc0000;
+    }
+  }
+}
+
+#license_spinner {
+  display: none;
+}

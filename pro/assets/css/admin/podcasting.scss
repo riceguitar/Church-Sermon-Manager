@@ -1,0 +1,36 @@
+/* Only on Add New/Edit podcast screen. */
+body.post-type-wpfc_sm_podcast.post-php, body.post-type-wpfc_sm_podcast.post-new-php {
+  /* Hide unneeded data in Publish metabox. */
+  #minor-publishing-actions, #misc-publishing-actions {
+    display: none;
+  }
+
+  /* Hide Edit permalink button. */
+  #edit-slug-buttons {
+    display: none;
+  }
+
+  /* Show field description under the field. */
+  td.forminp > .description {
+    display: block;
+  }
+
+  /* Width of fields. */
+  .forminp.forminp-text > input, .forminp.forminp-email > input {
+    min-width: 400px;
+  }
+}
+
+/* Only All Podcasts screen. */
+body.post-type-wpfc_sm_podcast.edit-php {
+  /* Hide unneeded data above and under the table. */
+  .subsubsub {
+    display: none;
+  }
+
+  #posts-filter {
+    > .search-box, > .tablenav.top, > .tablenav.bottom {
+      display: none;
+    }
+  }
+}

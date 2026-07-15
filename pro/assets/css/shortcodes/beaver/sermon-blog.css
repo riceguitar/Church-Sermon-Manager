@@ -1,0 +1,31 @@
+.fl-sermon-columns .wpfc-sermon-inner {
+	flex-direction: column;
+	flex-flow: column;
+}
+.fl-sermon-container-columns {
+	display: flex;
+	flex-wrap: wrap;
+}
+.grid.fl-sermon-container-columns {
+    display: flex;
+}
+.fl-sermon-columns-equal .wpfc-sermon-inner {
+	flex-flow: column;
+	height: 100%;
+}
+.fl-sermon-container .wpfc-sermon-image-img {
+    padding-top: 56.25%;
+}
+.wpfc-sermon-image img {
+    display:none;
+}
+.fl-sermon-container.fl-sermon-container-columns .wpfc-sermon-video {
+	flex: none;
+	display: contents;
+}
+.fl-sermon-container.fl-sermon-container-columns .fl-sermon-columns-equal .wpfc-sermon-video {
+	display: block;
+}
+.fl-sermon-container .smpro-meta-item {
+	margin-top: 10px;
+}

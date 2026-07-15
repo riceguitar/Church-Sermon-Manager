@@ -1,0 +1,25 @@
+body.wpfc_sermon_page_sm-settings .settings-content .sm-nav-tab-wrapper .nav-tab {
+    display:none !important;
+}
+body.wpfc_sermon_page_sm-settings .settings-content .sm-nav-tab-wrapper .nav-tab.is-super-admin-settings {
+    display:block !important;
+}
+.cmb2-id-wpfc-service-type {
+    display: none;
+}
+
+.cmb2-id-bible-passage {
+    display: none;
+}
+
+.cmb2-id--wpfc-sermon-duration {
+    display: none;
+}
+
+.cmb2-id-sermon-video {
+    display: none;
+}
+
+.cmb2-id-sermon-bulletin {
+    display: none;
+}

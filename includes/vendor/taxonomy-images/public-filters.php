@@ -391,13 +391,13 @@ function sermon_images_plugin_get_queried_term_image_id( $default ) {
 		// translators: %4$s effectively <code>tag.php</code>
 		// translators: %5$s effectively <code>taxonomy.php</code>
 		// translators: %6$s see msgid "template hierarchy"
-		trigger_error( wp_sprintf( esc_html__( '%1$s is not a property of the current queried object. This usually happens when the %2$s filter is used in an unsupported template file. This filter has been designed to work in taxonomy archives which are traditionally served by one of the following template files: %3$s, %4$s or %5$s. Learn more about %6$s.', 'sermon-manager-for-wordpress' ),
-			'<code>' . esc_html__( 'term_taxonomy_id', 'sermon-manager-for-wordpress' ) . '</code>',
+		trigger_error( wp_sprintf( esc_html__( '%1$s is not a property of the current queried object. This usually happens when the %2$s filter is used in an unsupported template file. This filter has been designed to work in taxonomy archives which are traditionally served by one of the following template files: %3$s, %4$s or %5$s. Learn more about %6$s.', 'sermon-manager' ),
+			'<code>' . esc_html__( 'term_taxonomy_id', 'sermon-manager' ) . '</code>',
 			'<code>' . esc_html( $filter ) . '</code>',
 			'<code>category.php</code>',
 			'<code>tag.php</code>',
 			'<code>taxonomy.php</code>',
-			'<a href="http://codex.wordpress.org/Template_Hierarchy">' . esc_html__( 'template hierarchy', 'sermon-manager-for-wordpress' ) . '</a>'
+			'<a href="http://codex.wordpress.org/Template_Hierarchy">' . esc_html__( 'template hierarchy', 'sermon-manager' ) . '</a>'
 		) );
 
 		return 0;

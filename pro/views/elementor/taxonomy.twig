@@ -1,0 +1,39 @@
+{% if (args.elementor) %}
+    {% set classes = 'wpfc-sermon-term elementor-post elementor-grid-item sm-pro-term type-wpfc_sermon status-publish hentry ' ~ settings.taxonomy %}
+    {% if (args.thumbnail_html) %}
+        {% set classes = classes ~ ' has-post-thumbnail' %}
+    {% endif %}
+{% else %}
+    {% set classes = 'sm-pro-taxonomy' %}
+{% endif %}
+
+<article class="{{ classes }}" style="align-self: stretch; ">
+    <div class="elementor-post__card">
+        {# Thumbnail #}
+        {% if (settings.show_image and args.thumbnail_html) %}
+            <a class="elementor-post__thumbnail__link sm-pro-term-thumbnail-link" href="{{ fn('get_term_link', term, settings.taxonomy) }}"
+                    style="margin-bottom: 20px;">
+                <div class="elementor-post__thumbnail elementor-fit-height sm-pro-term-thumbnail position-top"
+                        style="padding-bottom: calc( 0.66 * 100% );">{{ args.thumbnail_html|raw }}</div>
+            </a>
+        {% endif %}
+
+        {# Header #}
+        <div class="elementor-post__text sm-pro-term-content">
+            {# Title #}
+            {% if settings.show_title %}
+                <a href="{{ fn('get_term_link', term, settings.taxonomy) }}">
+                    {{ term.name }}
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="elementor-post__text sm-pro-term-content">
+            {% if settings.show_desc %}
+                <div class="elementor-post__excerpt">
+                    {{ TemplateTags('the_description', settings) }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</article>

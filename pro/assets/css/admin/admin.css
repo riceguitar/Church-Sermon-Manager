@@ -1,0 +1,19 @@
+.vc_element-icon {
+    background: none !important;
+}
+
+/*#cmb2-metabox-wpfc_sermon_files .cmb2-id-sermon-video{
+    display:none;
+}
+
+#cmb2-metabox-wpfc_sermon_files .cmb2-id-sermon-bulletin{
+    display:none;
+}
+*/
+.wpfc-templating .side-menu .uk-nav a {
+    font-size: 16px;
+    border: 1px solid #fff;
+    margin: 0px 5px 0px 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}

@@ -1,0 +1,183 @@
+/*
+ * This file is loaded on both Elementor free and pro.
+ */
+
+.elementor-posts .elementor-post__card .elementor-post__text {
+    margin-top: 10px;
+}
+
+.elementor-posts .elementor-post__card .elementor-post__title {
+    margin-bottom: 5px;
+    line-height: 1.3;
+}
+
+.elementor-posts--thumbnail-left .elementor-posts--skin-cards:not(.elementor-posts-masonry) .elementor-post__card.image_position-left,
+.elementor-posts--thumbnail-right .elementor-posts--skin-cards:not(.elementor-posts-masonry) .elementor-post__card.image_position-right {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    display: flex;
+}
+
+.elementor-posts--thumbnail-left .elementor-posts--skin-cards:not(.elementor-posts-masonry) .elementor-post__card.image_position-left .elementor-post__thumbnail_info,
+.elementor-posts--thumbnail-right .elementor-posts--skin-cards:not(.elementor-posts-masonry) .elementor-post__card.image_position-right .elementor-post__thumbnail_info {
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    width: 30%;
+    height: 100%;
+    position: relative;
+}
+
+.elementor-posts--thumbnail-left .elementor-posts--skin-cards:not(.elementor-posts-masonry) .elementor-post__card.image_position-left .elementor-post__thumbnail_info .elementor-post__thumbnail__link,
+.elementor-posts--thumbnail-right .elementor-posts--skin-cards:not(.elementor-posts-masonry) .elementor-post__card.image_position-right .elementor-post__thumbnail_info .elementor-post__thumbnail__link {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.elementor-posts--thumbnail-left .elementor-posts--skin-cards:not(.elementor-posts-masonry) .elementor-post__card.image_position-left .elementor-post__thumbnail_info .elementor-post__thumbnail__link .elementor-post__thumbnail,
+.elementor-posts--thumbnail-right .elementor-posts--skin-cards:not(.elementor-posts-masonry) .elementor-post__card.image_position-right .elementor-post__thumbnail_info .elementor-post__thumbnail__link .elementor-post__thumbnail {
+    padding-bottom: 0;
+    height: 100%;
+}
+
+.elementor-posts--thumbnail-right .elementor-posts--skin-cards:not(.elementor-posts-masonry) .elementor-post__card.image_position-right .elementor-post__thumbnail_info {
+    order: 2;
+}
+
+.elementor-grid .wpfc-term-grid-image {
+	padding-top: 56.25%;
+    display: block;
+    background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.elementor-pagination {
+	margin-top: 20px;
+}
+
+.elementor-grid.elementor-posts--skin-cards.sm-pro-taxonomies .wpfc-term-title {
+    display: block;
+}
+
+.elementor-grid.elementor-posts--skin-cards.sm-pro-taxonomies .wpfc-term-inner {
+	width: 100%;
+}
+
+.elementor-grid-1 .wpfc-term-letter-content.elementor-grid {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    display: block;
+}
+
+.elementor-grid-2 .wpfc-term-letter-content.elementor-grid {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    display: block;
+}
+
+.elementor-grid-3 .wpfc-term-letter-content.elementor-grid {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    display: block;
+}
+
+.elementor-grid-4 .wpfc-term-letter-content.elementor-grid {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+    display: block;
+}
+
+.elementor-grid-5 .wpfc-term-letter-content.elementor-grid {
+    -webkit-column-count: 5;
+    -moz-column-count: 5;
+    column-count: 5;
+    display: block;
+}
+
+.elementor-grid-6 .wpfc-term-letter-content.elementor-grid {
+    -webkit-column-count: 6;
+    -moz-column-count: 6;
+    column-count: 6;
+    display: block;
+}
+
+.elementor-grid .wpfc-term-letter-section {
+	webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.elementor-post__info {
+	width: 100%;
+}
+
+.elementor-posts-masonry {
+	display: block;	
+}
+
+.elementor-grid-2 .elementor-grid.elementor-posts-masonry article {
+	width: calc(100% / 2);	
+	display: inline-flex;
+}
+.elementor-grid-2 .elementor-grid.elementor-posts-masonry {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.elementor-grid-3 .elementor-grid.elementor-posts-masonry article {
+	width: calc(100% / 3);	
+	display: inline-flex;
+}
+.elementor-grid-3 .elementor-grid.elementor-posts-masonry {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.elementor-grid-4 .elementor-grid.elementor-posts-masonry article {
+	width: calc(100% / 4);	
+	display: inline-flex;
+}
+.elementor-grid-4 .elementor-grid.elementor-posts-masonry {
+   display: flex;
+    flex-wrap: wrap;
+}
+
+.elementor-grid-5 .elementor-grid.elementor-posts-masonry article {
+	width: calc(100% / 5);	
+	display: inline-flex;
+}
+.elementor-grid-5 .elementor-grid.elementor-posts-masonry {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.elementor-grid-6 .elementor-grid.elementor-posts-masonry article {
+	width: calc(100% / 6);	
+	display: inline-flex;
+}
+.elementor-grid-6 .elementor-grid.elementor-posts-masonry {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.elementor-posts .elementor-post.elementor-grid-item {
+    margin-bottom: 0px;
+}
+
+@media (max-width: 980px) and (min-width: 601px) {
+   .elementor-grid.elementor-posts-masonry article	{
+		width: calc(100% / 2) !important;
+	}
+}
+
+@media (max-width: 600px) {
+    .elementor-grid.elementor-posts-masonry article {
+		width: 100% !important;
+	}
+}

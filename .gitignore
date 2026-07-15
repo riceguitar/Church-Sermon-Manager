@@ -2,3 +2,4 @@
 **/*.scssc
 node_modules
 vendor/*
+pro/cache/
