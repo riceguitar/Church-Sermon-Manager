@@ -1,3 +1,6 @@
+### 3.1.2 ###
+Changed: Rewrote the plugin-details content (Description, Installation, FAQ) — accurate feature list including the built-in Pro features, switching guide, GitHub-based update/support links; removed the dead vendor's marketing copy, upsells, and stale PHP claims.
+
 ### 3.1.1 ###
 Fixed: Plugin row on the Plugins screen no longer shows the defunct "Premium support" and "Get Sermon Manager Pro" links; Support now points to the GitHub issue tracker.
 
