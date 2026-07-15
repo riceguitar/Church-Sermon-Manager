@@ -9,9 +9,9 @@
 namespace SMP\Templating;
 
 use SMP\Shortcodes\Template_Tags;
-use Twig_Environment;
-use Twig_Loader_Filesystem;
-use Twig_SimpleFunction;
+use Twig\Environment as Twig_Environment;
+use Twig\Loader\FilesystemLoader as Twig_Loader_Filesystem;
+use Twig\TwigFunction as Twig_SimpleFunction;
 
 defined( 'ABSPATH' ) or die;
 
@@ -519,7 +519,14 @@ final class Templating_Manager {
 
 		$GLOBALS['smpro_template'] = true;
 
-		return $template->render( $render_args );
+		try {
+			return $template->render( $render_args );
+		} catch ( \Throwable $e ) {
+			// Twig errors extend \Exception, not \RuntimeException — rethrow so the
+			// callers' catch ( \RuntimeException ) fallbacks actually engage instead
+			// of the error escaping as a fatal.
+			throw new \RuntimeException( 'Error rendering template: ' . $e->getMessage(), 0, $e );
+		}
 	}
 
 	/**

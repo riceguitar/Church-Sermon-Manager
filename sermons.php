@@ -3,7 +3,7 @@
  * Plugin Name: Church Sermon Manager
  * Plugin URI: https://github.com/riceguitar/Church-Sermon-Manager
  * Description: Add audio and video sermons, manage speakers, series, templates, podcasting, and page-builder widgets to your church website. Community-maintained successor to Sermon Manager and Sermon Manager Pro.
- * Version: 3.1.2
+ * Version: 3.2.0
  * Update URI: https://github.com/riceguitar/Church-Sermon-Manager
  * Author: David Sudarma (Sierra.host)
  * Author URI: https://sierra.host/church-sermon-manager/
@@ -11,8 +11,8 @@
  * Original Author URI: http://wpforchurch.com/
  * Requires at least: 6.4
  * Tested up to wordpress: 6.8
- * Tested up to PHP : 7.4
- * Requires PHP: 7.4
+ * Tested up to PHP : 8.2
+ * Requires PHP: 8.1
  *
  * Text Domain: sermon-manager
  * Domain Path: /languages/
@@ -20,7 +20,7 @@
  * @package SM\Core
  */
 
-// All files must be PHP 7.4 compatible!
+// All files must be PHP 8.1 compatible!
 defined( 'ABSPATH' ) or die;
 
 // Refuse to load alongside the legacy standalone plugins this one absorbed —

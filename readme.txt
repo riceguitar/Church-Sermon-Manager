@@ -4,8 +4,8 @@ Donate link: https://sierra.host/church-sermon-manager/
 Tags: church, sermon, sermons, preaching, podcasting, manage, managing, podcasts, itunes
 Requires at least: 6.4
 Tested up to: 7.0
-Requires PHP: 7.4
-Stable tag: 3.1.2
+Requires PHP: 8.1
+Stable tag: 3.2.0
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,11 @@ Go to Appearance → Menus, add a Custom Link with `/sermons/` (or `/?post_type=
 Open an issue on the [GitHub issue tracker](https://github.com/riceguitar/Church-Sermon-Manager/issues).
 
 ## Changelog ##
+
+### 3.2.0 (2026-07-15) ###
+* Major: Twig template engine upgraded 1.36 (EOL) → 3.28 (current). Output verified byte-identical across a production-data page corpus and all bundled template sets.
+* Changed: Minimum PHP is now 8.1. PHP 7.4/8.0 sites should remain on 3.1.2 until hosting is updated.
+* Fixed: Template rendering errors degrade gracefully instead of fataling.
 
 ### 3.1.2 (2026-07-15) ###
 * Changed: Rewrote plugin-details content — accurate features (including built-in Pro features), switching guide, GitHub update/support links; removed dead vendor copy and upsells.

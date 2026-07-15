@@ -59,7 +59,7 @@ GitHub releases.
 ## Requirements
 
 - WordPress 6.4+
-- PHP 7.4+ (tested through 8.2)
+- PHP 8.1+ (tested through 8.4; 3.1.2 is the last release supporting PHP 7.4)
 
 ## Contributing
 

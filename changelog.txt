@@ -1,3 +1,9 @@
+### 3.2.0 ###
+Major: Upgraded the bundled Twig template engine from the end-of-life 1.36 to the current, actively-maintained 3.28. Rendering output is byte-identical (verified across a 22-page production-data corpus and all three bundled template sets), and PHP deprecation noise from the old library is gone entirely.
+Changed: Minimum PHP version is now 8.1 (required by Twig 3). Sites on PHP 7.4/8.0 should stay on 3.1.2 — the last release supporting older PHP — until their hosting is updated; WordPress will not offer them this update.
+Fixed: Template rendering errors now degrade gracefully to the default sermon layout instead of escaping as fatal errors.
+Note: If you hand-customized template files in wp-content/data/sermon-manager-for-wordpress/ using Twig-1-only syntax (spaceless/filter tags, "for…if"), those templates will show an error notice until updated — the bundled template sets are unaffected.
+
 ### 3.1.2 ###
 Changed: Rewrote the plugin-details content (Description, Installation, FAQ) — accurate feature list including the built-in Pro features, switching guide, GitHub-based update/support links; removed the dead vendor's marketing copy, upsells, and stale PHP claims.
 

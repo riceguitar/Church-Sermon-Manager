@@ -10,11 +10,11 @@ defined( 'ABSPATH' ) or die;
 
 
 // Check the PHP version.
-if ( version_compare( PHP_VERSION, '7.4.0', '<' ) ) {
+if ( version_compare( PHP_VERSION, '8.1.0', '<' ) ) {
 	add_action( 'admin_notices', 'sm_render_php_version_error' );
 
 	/**
-	 * Renders the error notice when PHP is less than 7.4
+	 * Renders the error notice when PHP is less than 8.1
 	 *
 	 * @since 2.30.0
 	 */
@@ -25,7 +25,7 @@ if ( version_compare( PHP_VERSION, '7.4.0', '<' ) ) {
 				<?php
 				// translators: %1$s current PHP version, see msgid "PHP %s", effectively <strong>PHP %s</strong>.
 				// translators: %2$s required PHP version, see msgid "PHP %s", effectively <strong>PHP %s</strong>.
-				echo wp_sprintf( esc_html__( 'You are running %1$s, but Sermon Manager requires at least %2$s.', 'sermon-manager' ), '<strong>' . wp_sprintf( esc_html__( 'PHP %s', 'sermon-manager' ), PHP_VERSION ) . '</strong>', '<strong>' . wp_sprintf( esc_html__( 'PHP %s', 'sermon-manager' ), '7.4.0' ) . '</strong>' );
+				echo wp_sprintf( esc_html__( 'You are running %1$s, but Sermon Manager requires at least %2$s.', 'sermon-manager' ), '<strong>' . wp_sprintf( esc_html__( 'PHP %s', 'sermon-manager' ), PHP_VERSION ) . '</strong>', '<strong>' . wp_sprintf( esc_html__( 'PHP %s', 'sermon-manager' ), '8.1.0' ) . '</strong>' );
 				?>
 			</p>
 		</div>

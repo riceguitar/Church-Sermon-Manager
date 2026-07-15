@@ -1,11 +1,46 @@
 <?php
 
+/*
+ * This file is part of Twig.
+ *
+ * (c) Fabien Potencier
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Twig\Sandbox;
 
-class_exists('Twig_Sandbox_SecurityPolicyInterface');
+/**
+ * Interface that all security policy classes must implements.
+ *
+ * @author Fabien Potencier <fabien@symfony.com>
+ */
+interface SecurityPolicyInterface
+{
+    /**
+     * @param string[] $tags
+     * @param string[] $filters
+     * @param string[] $functions
+     * @param string[] $tests
+     *
+     * @throws SecurityError
+     */
+    public function checkSecurity($tags, $filters, $functions/* , array $tests */): void;
 
-if (\false) {
-    interface SecurityPolicyInterface extends \Twig_Sandbox_SecurityPolicyInterface
-    {
-    }
+    /**
+     * @param object $obj
+     * @param string $method
+     *
+     * @throws SecurityNotAllowedMethodError
+     */
+    public function checkMethodAllowed($obj, $method): void;
+
+    /**
+     * @param object $obj
+     * @param string $property
+     *
+     * @throws SecurityNotAllowedPropertyError
+     */
+    public function checkPropertyAllowed($obj, $property): void;
 }
