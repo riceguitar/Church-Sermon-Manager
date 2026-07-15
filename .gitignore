@@ -2,7 +2,11 @@
 **/*.scssc
 node_modules
 vendor/*
-pro/cache/CLAUDE.md
+pro/cache/
+.DS_Store
+
+# Local editor/agent config — never committed.
+CLAUDE.md
 CLAUDE.local.md
 .claude/
 AGENTS.md
