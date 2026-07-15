@@ -890,6 +890,17 @@ class SermonManager { // phpcs:ignore
 				if ( $parsed_audio_url !== $parsed_website_url ) {
 					$audio_id = '';
 					update_post_meta( $post_ID, 'sermon_audio_id', $audio_id );
+
+					// Remote audio: duration isn't available locally. Schedule an async job to
+					// fetch and compute it instead of doing it here, so saves stay fast.
+					$posted_duration   = isset( $_POST['_wpfc_sermon_duration'] ) ? sanitize_text_field( $_POST['_wpfc_sermon_duration'] ) : '';
+					$existing_duration = get_post_meta( $post_ID, '_wpfc_sermon_duration', true );
+
+					if ( empty( $posted_duration ) && empty( $existing_duration ) ) {
+						if ( ! wp_next_scheduled( 'sm_fill_remote_audio_duration_event', array( $post_ID ) ) ) {
+							wp_schedule_single_event( time(), 'sm_fill_remote_audio_duration_event', array( $post_ID ) );
+						}
+					}
 				}
 
 				// Attempt to get audio file duration.

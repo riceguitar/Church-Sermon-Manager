@@ -48,6 +48,22 @@ class SM_Admin_Assets {
 		if ( in_array( $screen_id, sm_get_screen_ids() ) ) {
 			do_action( 'sm_enqueue_admin_js' );
 		}
+
+		// Register the sermon audio duration auto-fill script.
+		wp_register_script( 'sm_admin_audio_duration', SM_URL . 'assets/js/admin/audio-duration.js', array(), SM_VERSION, true );
+
+		// Only needed on the single sermon edit screen, where the audio URL and duration fields live.
+		if ( 'wpfc_sermon' === $screen_id ) {
+			wp_localize_script(
+				'sm_admin_audio_duration',
+				'smAudioDuration',
+				array(
+					'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+					'nonce'   => wp_create_nonce( 'sm_remote_duration' ),
+				)
+			);
+			wp_enqueue_script( 'sm_admin_audio_duration' );
+		}
 	}
 }
 

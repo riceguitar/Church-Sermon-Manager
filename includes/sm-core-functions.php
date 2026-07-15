@@ -1188,3 +1188,242 @@ function sm_sermon_image_in_content( $image_url, $post = null ) {
 	return false;
 }
 
+/**
+ * Computes and stores the duration of a sermon's remote (non-attachment) audio
+ * file, without ever running synchronously in the save path.
+ *
+ * Downloads only the first 256 KB of the remote file (via an HTTP Range
+ * request), then hands that partial file to WordPress' bundled getID3 library
+ * to read the MPEG header. For VBR files with a Xing/VBR header, getID3 can
+ * usually compute the exact playtime from the header alone. For CBR files (or
+ * VBR files without a usable header), the duration is estimated from the total
+ * file size and the bitrate found in the header.
+ *
+ * Intended to run only via the `sm_fill_remote_audio_duration_event` cron
+ * event, scheduled from the sermon save handler - never called directly from
+ * a page load.
+ *
+ * @param int $post_id The sermon ID.
+ *
+ * @return void
+ *
+ * @since 2.15.18
+ */
+function sm_fill_remote_audio_duration( $post_id ) {
+	if ( 'wpfc_sermon' !== get_post_type( $post_id ) ) {
+		return;
+	}
+
+	// Duration already known - nothing to do.
+	if ( '' !== (string) get_post_meta( $post_id, '_wpfc_sermon_duration', true ) ) {
+		return;
+	}
+
+	$audio_url = get_post_meta( $post_id, 'sermon_audio', true );
+
+	if ( empty( $audio_url ) ) {
+		return;
+	}
+
+	// If it's actually a local attachment that still resolves, this isn't our job.
+	$audio_id = get_post_meta( $post_id, 'sermon_audio_id', true );
+
+	if ( ! empty( $audio_id ) && wp_get_attachment_url( $audio_id ) ) {
+		return;
+	}
+
+	$duration = sm_calculate_remote_audio_duration( $audio_url, get_post_meta( $post_id, '_wpfc_sermon_size', true ) );
+
+	if ( null !== $duration ) {
+		update_post_meta( $post_id, '_wpfc_sermon_duration', gmdate( 'H:i:s', (int) round( $duration ) ) );
+	}
+}
+
+add_action( 'sm_fill_remote_audio_duration_event', 'sm_fill_remote_audio_duration' );
+
+/**
+ * Calculates the playtime of a remote audio file by fetching only its header.
+ *
+ * Downloads the first 256 KB, parses the MP3 frame/Xing header with getID3, and
+ * returns the duration in seconds without ever pulling the whole file — so it
+ * works for large remote-hosted sermons that the browser's own <audio> metadata
+ * probe can't read quickly (VBR files force the browser to download large spans).
+ *
+ * @param string     $audio_url The remote audio URL.
+ * @param int|string $size_hint Optional known total file size in bytes.
+ *
+ * @return float|null Duration in seconds, or null if it couldn't be determined.
+ */
+function sm_calculate_remote_audio_duration( $audio_url, $size_hint = null ) {
+	if ( empty( $audio_url ) || ! wp_http_validate_url( $audio_url ) ) {
+		return null;
+	}
+
+	$response = wp_remote_get(
+		$audio_url,
+		array(
+			'timeout'             => 10,
+			'headers'             => array( 'Range' => 'bytes=0-262143' ),
+			'limit_response_size' => 262144,
+			'user-agent'          => 'ChurchSermonManager/duration',
+		)
+	);
+
+	if ( is_wp_error( $response ) ) {
+		return null;
+	}
+
+	$code = (int) wp_remote_retrieve_response_code( $response );
+
+	if ( 200 !== $code && 206 !== $code ) {
+		return null;
+	}
+
+	$body = wp_remote_retrieve_body( $response );
+
+	if ( empty( $body ) ) {
+		return null;
+	}
+
+	// Cheap sanity check that we actually got audio back - either an ID3v2 tag,
+	// or an MPEG frame sync (11 set bits: 0xFF followed by top 3 bits of next byte set).
+	$looks_like_audio = ( 0 === strncmp( $body, 'ID3', 3 ) )
+		|| ( strlen( $body ) > 1 && "\xFF" === $body[0] && ( 0xE0 === ( ord( $body[1] ) & 0xE0 ) ) );
+
+	if ( ! $looks_like_audio ) {
+		return null;
+	}
+
+	// Figure out the total remote file size, preferring the cheapest/most authoritative source.
+	$total_size = null;
+
+	if ( 206 === $code ) {
+		$content_range = wp_remote_retrieve_header( $response, 'content-range' );
+
+		if ( $content_range && preg_match( '#/(\d+)\s*$#', (string) $content_range, $matches ) ) {
+			$total_size = (int) $matches[1];
+		}
+	}
+
+	if ( null === $total_size && is_numeric( $size_hint ) && (int) $size_hint > 0 ) {
+		$total_size = (int) $size_hint;
+	}
+
+	if ( null === $total_size ) {
+		$head_response = wp_remote_head(
+			$audio_url,
+			array(
+				'timeout'    => 10,
+				'user-agent' => 'ChurchSermonManager/duration',
+			)
+		);
+
+		if ( ! is_wp_error( $head_response ) ) {
+			$content_length = wp_remote_retrieve_header( $head_response, 'content-length' );
+
+			if ( is_numeric( $content_length ) && (int) $content_length > 0 ) {
+				$total_size = (int) $content_length;
+			}
+		}
+	}
+
+	$tmp_file = wp_tempnam( 'sm-audio-duration' );
+
+	if ( ! $tmp_file ) {
+		return null;
+	}
+
+	try {
+		if ( false === file_put_contents( $tmp_file, $body ) ) {
+			return null;
+		}
+
+		if ( ! class_exists( 'getID3' ) ) {
+			require_once ABSPATH . WPINC . '/ID3/getid3.php';
+		}
+
+		if ( ! class_exists( 'getID3' ) ) {
+			return null;
+		}
+
+		$getid3 = new getID3();
+		$info   = $getid3->analyze( $tmp_file );
+
+		if ( ! empty( $info['error'] ) || empty( $info['audio'] ) ) {
+			return null;
+		}
+
+		$duration = null;
+
+		// VBR files with a Xing/VBR header - the header carries the *whole* file's total
+		// frame count, so frames * samples_per_frame / sample_rate gives the exact
+		// playtime even though we only downloaded the first 256 KB. getID3's own
+		// playtime_seconds is NOT usable here as a first choice: since we only ever hand
+		// it a truncated file, it derives playtime from the truncated data length
+		// (avdataend - avdataoffset), not from the Xing header total - it's only kept as
+		// a last-resort fallback if the frame math can't be done.
+		$has_vbr_header = ! empty( $info['mpeg']['audio']['VBR_frames'] );
+
+		if ( $has_vbr_header ) {
+			if ( ! empty( $info['audio']['sample_rate'] ) ) {
+				$mpeg_version      = isset( $info['mpeg']['audio']['version'] ) ? (string) $info['mpeg']['audio']['version'] : '1';
+				$samples_per_frame = ( '1' === $mpeg_version ) ? 1152 : 576; // MPEG-1 vs MPEG-2/2.5, Layer III.
+				$duration          = ( (float) $info['mpeg']['audio']['VBR_frames'] * $samples_per_frame ) / (float) $info['audio']['sample_rate'];
+			} elseif ( ! empty( $info['playtime_seconds'] ) ) {
+				$duration = (float) $info['playtime_seconds'];
+			}
+		}
+
+		// CBR (or a VBR file we couldn't read a header for) - estimate from size and bitrate.
+		if ( null === $duration ) {
+			if ( null === $total_size || empty( $info['audio']['bitrate'] ) ) {
+				return null;
+			}
+
+			$avdataoffset = isset( $info['avdataoffset'] ) ? (int) $info['avdataoffset'] : 0;
+			$duration     = ( $total_size - $avdataoffset ) * 8 / (float) $info['audio']['bitrate'];
+		}
+
+		// Sanity bounds - refuse to trust obviously broken estimates.
+		if ( null === $duration || $duration <= 10 || $duration >= DAY_IN_SECONDS ) {
+			return null;
+		}
+
+		return $duration;
+	} finally {
+		if ( file_exists( $tmp_file ) ) {
+			unlink( $tmp_file );
+		}
+	}
+}
+
+/**
+ * Ajax: return the H:i:s duration for a remote sermon audio URL.
+ *
+ * Backs the sermon edit screen's duration auto-fill — the browser can't reliably
+ * read metadata for large remote MP3s, so the server does the header-only parse.
+ */
+function sm_ajax_remote_audio_duration() {
+	check_ajax_referer( 'sm_remote_duration', 'nonce' );
+
+	if ( ! current_user_can( 'edit_posts' ) ) {
+		wp_send_json_error( 'forbidden', 403 );
+	}
+
+	$url = isset( $_POST['url'] ) ? esc_url_raw( wp_unslash( $_POST['url'] ) ) : '';
+
+	if ( empty( $url ) ) {
+		wp_send_json_error( 'no-url', 400 );
+	}
+
+	$duration = sm_calculate_remote_audio_duration( $url );
+
+	if ( null === $duration ) {
+		wp_send_json_error( 'not-found' );
+	}
+
+	wp_send_json_success( array( 'duration' => gmdate( 'H:i:s', (int) round( $duration ) ) ) );
+}
+
+add_action( 'wp_ajax_sm_remote_audio_duration', 'sm_ajax_remote_audio_duration' );
+
