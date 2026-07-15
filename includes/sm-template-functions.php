@@ -44,6 +44,59 @@ if ( ! SermonManager::getOption( 'disable_layouts', false ) ) {
 	if ( ! SermonManager::getOption( 'disable_the_excerpt' ) ) {
 		add_filter( 'the_excerpt', 'add_wpfc_sermon_content' );
 	}
+
+	/**
+	 * Safety net: make sure sermon media (audio/video players) always renders on
+	 * single sermon pages. When the the_content filter above was disabled, themes
+	 * that render post content directly stopped receiving the plugin's sermon
+	 * markup entirely — sermons showed description text with no players (media
+	 * disappearing after 2.16.x→2.17.x updates; upstream issue #306). This only
+	 * appends players composed live from meta, only on the singular main query,
+	 * and only when no player markup is already present, so every existing
+	 * rendering path (partials, templating, page-builder widgets) is unaffected.
+	 *
+	 * @param string $content The post content.
+	 *
+	 * @return string Content with media players prepended when they were missing.
+	 */
+	function sm_append_missing_sermon_media( $content ) {
+		if ( 'wpfc_sermon' !== get_post_type() || ! is_singular( 'wpfc_sermon' ) || ! in_the_loop() || ! is_main_query() || is_feed() ) {
+			return $content;
+		}
+
+		// Respect any path that already rendered players (or a theme's own).
+		foreach ( array( 'wpfc-sermon-player', 'wpfc-sermon-single-audio', 'wpfc-sermon-video-player', 'plyr__video-embed', 'wpfc-sermon-single-video', '<audio', '<video', 'wp-audio-shortcode' ) as $marker ) {
+			if ( false !== strpos( $content, $marker ) ) {
+				return $content;
+			}
+		}
+
+		if ( ! apply_filters( 'sm_append_missing_media', true, get_the_ID() ) ) {
+			return $content;
+		}
+
+		$media = '';
+
+		$video_link = get_wpfc_sermon_meta( 'sermon_video_link' );
+		if ( $video_link ) {
+			$media .= '<div class="wpfc-sermon-single-video wpfc-sermon-single-video-link">' . wpfc_render_video( $video_link ) . '</div>';
+		}
+
+		$video_embed = get_wpfc_sermon_meta( 'sermon_video' );
+		if ( $video_embed ) {
+			$media .= '<div class="wpfc-sermon-single-video wpfc-sermon-single-video-embed">' . do_shortcode( $video_embed ) . '</div>';
+		}
+
+		if ( get_wpfc_sermon_meta( 'sermon_audio' ) || get_wpfc_sermon_meta( 'sermon_audio_id' ) ) {
+			$audio_url = get_wpfc_sermon_audio_url();
+			if ( $audio_url ) {
+				$media .= '<div class="wpfc-sermon-single-audio player-' . esc_attr( strtolower( \SermonManager::getOption( 'player', 'plyr' ) ) ) . '">' . wpfc_render_audio( $audio_url ) . '</div>';
+			}
+		}
+
+		return $media ? $media . $content : $content;
+	}
+	add_filter( 'the_content', 'sm_append_missing_sermon_media', 99 );
 }
 
 /**

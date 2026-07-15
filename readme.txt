@@ -5,7 +5,7 @@ Tags: church, sermon, sermons, preaching, podcasting, manage, managing, podcasts
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 3.2.1
+Stable tag: 3.2.2
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,11 @@ Go to Appearance → Menus, add a Custom Link with `/sermons/` (or `/?post_type=
 Open an issue on the [GitHub issue tracker](https://github.com/riceguitar/Church-Sermon-Manager/issues).
 
 ## Changelog ##
+
+### 3.2.2 (2026-07-15) ###
+* Fixed: [sermons] shortcode rendered an empty list and could fatal on PHP 8; the real renderers (templating pipeline) are authoritative again and shortcode pagination works across pages.
+* Fixed: audio/video players no longer disappear on single sermon pages when a theme renders post content directly ("media missing after 2.16/2.17 updates", upstream #306) — players compose live from sermon data when absent; unaffected sites render byte-identically.
+* Fixed: PHP 8 fatal in the sort-fields date dropdown.
 
 ### 3.2.1 (2026-07-15) ###
 * Fixed: YouTube videos added by URL never started playing in Chrome (player stuck loading) — bundled Plyr upgraded 3.4.7 → 3.7.8; YouTube and Vimeo playback verified, audio regression-checked.

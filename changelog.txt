@@ -1,3 +1,8 @@
+### 3.2.2 ###
+Fixed: The [sermons] shortcode rendered an empty list (and could fatal on PHP 8) — a 3.0-era refactor had silently replaced the real shortcode renderers with incomplete reimplementations. The original handlers, which render through the templating pipeline, are authoritative again; shortcode pagination across pages works (the long-unanswered "pagination not working" report).
+Fixed: Sermon audio/video players no longer disappear on single sermon pages when a theme renders post content directly — the class of "media missing after updating from 2.16.x/2.17.x" (upstream issue #306). Players are now composed live from sermon data whenever no player markup is present; sites where media already renders are byte-for-byte unaffected. Opt out with the sm_append_missing_media filter.
+Fixed: PHP 8 fatal in the [sermon_sort_fields] date dropdown pagination link builder.
+
 ### 3.2.1 ###
 Fixed: YouTube videos added by URL never started playing in Chrome — the player showed but stayed stuck loading. The bundled Plyr player is upgraded from 3.4.7 (2018) to 3.7.8; YouTube and Vimeo playback verified in Chrome, audio playback regression-checked.
 Note: playing videos from a pasted URL requires the "Plyr" player under Sermons → Settings; with the player set to "none" a video URL cannot render a working player.
