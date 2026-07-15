@@ -1,3 +1,7 @@
+### 3.2.1 ###
+Fixed: YouTube videos added by URL never started playing in Chrome — the player showed but stayed stuck loading. The bundled Plyr player is upgraded from 3.4.7 (2018) to 3.7.8; YouTube and Vimeo playback verified in Chrome, audio playback regression-checked.
+Note: playing videos from a pasted URL requires the "Plyr" player under Sermons → Settings; with the player set to "none" a video URL cannot render a working player.
+
 ### 3.2.0 ###
 Major: Upgraded the bundled Twig template engine from the end-of-life 1.36 to the current, actively-maintained 3.28. Rendering output is byte-identical (verified across a 22-page production-data corpus and all three bundled template sets), and PHP deprecation noise from the old library is gone entirely.
 Changed: Minimum PHP version is now 8.1 (required by Twig 3). Sites on PHP 7.4/8.0 should stay on 3.1.2 — the last release supporting older PHP — until their hosting is updated; WordPress will not offer them this update.
