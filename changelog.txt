@@ -1,3 +1,15 @@
+### 3.2.3 ###
+Fixed: Saving a sermon silently destroyed its taxonomy term dates (broken input handling collapsed the term list), the root cause of "latest series" displaying a years-old series.
+Fixed: Sermons with a future preached date no longer appear on archive and taxonomy pages before their date arrives.
+Fixed: All preached-date comparisons use the site's timezone instead of the server clock.
+Fixed: Previous/next sermon navigation orders by preached date (not publish date), including sermons preached the same day.
+Fixed: Sermon image no longer displays twice on single pages when it is also embedded in the description.
+Fixed: Podcast feed — enclosure URLs keep their query strings intact (Dropbox-style links), episode art uses the full-size image, and subtitle truncation is multibyte-safe (no more invalid XML from split UTF-8 characters).
+Fixed: Videos set through the REST API now save to the fields the editor and templates read.
+Fixed: Divi rendered the comments block twice on sermon pages.
+Fixed: PHP 8 warning when saving nav menus; missing wrapper class on the Twenty Nineteen theme; dead "More Details" links on the Import/Export screen.
+Verified: A further set of long-open upstream reports were confirmed already fixed in earlier releases (feed fatal under PHP 8, admin fatal on date-less sermons, media missing on singles, pagination, description formatting) — no action needed.
+
 ### 3.2.2 ###
 Fixed: The [sermons] shortcode rendered an empty list (and could fatal on PHP 8) — a 3.0-era refactor had silently replaced the real shortcode renderers with incomplete reimplementations. The original handlers, which render through the templating pipeline, are authoritative again; shortcode pagination across pages works (the long-unanswered "pagination not working" report).
 Fixed: Sermon audio/video players no longer disappear on single sermon pages when a theme renders post content directly — the class of "media missing after updating from 2.16.x/2.17.x" (upstream issue #306). Players are now composed live from sermon data whenever no player markup is present; sites where media already renders are byte-for-byte unaffected. Opt out with the sm_append_missing_media filter.

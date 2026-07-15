@@ -5,7 +5,7 @@ Tags: church, sermon, sermons, preaching, podcasting, manage, managing, podcasts
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 3.2.2
+Stable tag: 3.2.3
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,11 @@ Go to Appearance → Menus, add a Custom Link with `/sermons/` (or `/?post_type=
 Open an issue on the [GitHub issue tracker](https://github.com/riceguitar/Church-Sermon-Manager/issues).
 
 ## Changelog ##
+
+### 3.2.3 (2026-07-16) ###
+* Fixed: saving a sermon destroyed its taxonomy term dates (root cause of "latest series" showing an old series); future-preached sermons excluded from archives; date comparisons use the site timezone; prev/next navigation ordered by preached date.
+* Fixed: podcast feed — enclosure query strings preserved, full-size episode art, multibyte-safe subtitles.
+* Fixed: duplicate sermon image on singles; REST video fields saved to correct meta; Divi double comments; PHP 8 nav-menu warning; Twenty Nineteen wrapper class; Import/Export dead links.
 
 ### 3.2.2 (2026-07-15) ###
 * Fixed: [sermons] shortcode rendered an empty list and could fatal on PHP 8; the real renderers (templating pipeline) are authoritative again and shortcode pagination works across pages.
