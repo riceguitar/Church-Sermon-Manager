@@ -1,3 +1,8 @@
+### 3.4.0 ###
+Removed: the chat widget on the settings page that sent your name, email, and license key to the former vendor's support system — a privacy fix.
+Removed: leftover "expert support" and "Get Pro" upsell boxes and dead chat code from the old plugin.
+Changed: Support now points to Sierra Marketing (the maintainer) and the GitHub issue tracker instead of the discontinued vendor. Admin menu reads "Sermons" again; various "Sermon Manager Pro" labels updated to Church Sermon Manager.
+
 ### 3.3.0 ###
 Added: MP3 duration is now calculated automatically for remote audio files, not just local uploads. The sermon edit screen fills the duration field for you when you enter a remote URL, and imports/REST-created sermons get it filled in the background on save. You can still type a value manually to override it.
 

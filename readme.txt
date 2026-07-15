@@ -5,7 +5,7 @@ Tags: church, sermon, sermons, preaching, podcasting, manage, managing, podcasts
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 3.3.0
+Stable tag: 3.4.0
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,11 @@ Go to Appearance → Menus, add a Custom Link with `/sermons/` (or `/?post_type=
 Open an issue on the [GitHub issue tracker](https://github.com/riceguitar/Church-Sermon-Manager/issues).
 
 ## Changelog ##
+
+### 3.4.0 (2026-07-16) ###
+* Privacy: removed a chat widget that sent your name, email, and license key to the former vendor's support system on every settings-page view.
+* Removed: leftover "expert support"/"Get Pro" upsells and dead chat code.
+* Changed: Support now points to Sierra Marketing and the GitHub issue tracker; admin menu reads "Sermons"; "Sermon Manager Pro" labels updated to Church Sermon Manager.
 
 ### 3.3.0 (2026-07-16) ###
 * Added: MP3 duration auto-calculated for remote audio files (not just local uploads) — the edit screen fills it from a remote URL, and imports/REST sermons get it filled on save. Manual entry still overrides.
