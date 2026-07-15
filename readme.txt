@@ -1,5 +1,5 @@
 # Church Sermon Manager #
-Contributors: riceguitar, wpforchurch, Alex Gutierrez
+Contributors: riceguitar
 Donate link: https://sierra.host/church-sermon-manager/
 Tags: church, sermon, sermons, preaching, podcasting, manage, managing, podcasts, itunes
 Requires at least: 6.4
@@ -56,7 +56,7 @@ Your data carries over in place — same post types, settings, meta fields, temp
 
 The plugin updates itself from [GitHub releases](https://github.com/riceguitar/Church-Sermon-Manager/releases) — no marketplace account, no license key. Report bugs or request features on the [issue tracker](https://github.com/riceguitar/Church-Sermon-Manager/issues). Development happens in the open at [github.com/riceguitar/Church-Sermon-Manager](https://github.com/riceguitar/Church-Sermon-Manager).
 
-Originally created by [WP for Church](https://wpforchurch.com/); maintained by [David Sudarma](https://sierra.host/church-sermon-manager/).
+Originally based on Sermon Manager by WP for Church. Now maintained by [Sierra Marketing](https://sierra.host/church-sermon-manager/).
 
 ## Installation ##
 

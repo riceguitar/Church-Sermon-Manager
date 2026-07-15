@@ -5,10 +5,9 @@
  * Description: Add audio and video sermons, manage speakers, series, templates, podcasting, and page-builder widgets to your church website. Community-maintained successor to Sermon Manager and Sermon Manager Pro.
  * Version: 3.3.0
  * Update URI: https://github.com/riceguitar/Church-Sermon-Manager
- * Author: David Sudarma (Sierra.host)
+ * Author: Sierra Marketing (David Sudarma)
  * Author URI: https://sierra.host/church-sermon-manager/
- * Original Author: WP for Church
- * Original Author URI: http://wpforchurch.com/
+ * Original Author: Based on the original Sermon Manager by WP for Church.
  * Requires at least: 6.4
  * Tested up to wordpress: 6.8
  * Tested up to PHP : 8.2

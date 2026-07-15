@@ -862,7 +862,7 @@ class Skin_Cards extends Skin_Base {
 			echo Templating_Manager::render( 'archive-elementor', null, $args );
 		} catch ( \RuntimeException $e ) {
 			define( 'SMPRO_RENDER_ERROR', true );
-			echo '<div class="notice notice-error"><p><strong>Sermon Manager Pro</strong>: Error in rendering the view, error message: "' . $e->getMessage() . '"</p></div>';
+			echo '<div class="notice notice-error"><p><strong>Church Sermon Manager</strong>: Error in rendering the view, error message: "' . $e->getMessage() . '"</p></div>';
 		}
 	}
 

@@ -123,13 +123,13 @@ final class Template {
 		} else {
 			$this->metadata         = array();
 			$this->name             = 'Sermon Manager';
-			$this->author           = 'WP For Church';
+			$this->author           = 'Sierra Marketing';
 			$this->version          = SM_VERSION;
 			$this->path             = 'Default';
 			$this->default_settings = null;
 			$this->date_created     = 'June 9, 2018';
 			$this->date_updated     = file_exists( SM_PATH . 'views/archive-wpfc_sermon.php' ) ? date( 'F j, Y', filemtime( SM_PATH . 'views/archive-wpfc_sermon.php' ) ) : 'Unknown';
-			$this->url              = 'https://wpforchurch.com';
+			$this->url              = 'https://sierra.host/church-sermon-manager/';
 
 			$this->is_invalid = false;
 		}

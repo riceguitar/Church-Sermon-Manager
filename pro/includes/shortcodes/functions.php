@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) or exit;
 
 function support_smpro_menu() {
     global $submenu;
-    $permalink = 'https://wpforchurch.com/my/clientarea.php';
+    $permalink = 'https://sierra.host/church-sermon-manager/';
     $submenu['edit.php?post_type=wpfc_sermon'][] = array( '<div id="sm-support-db">Support</div>', 'manage_options', $permalink );
 }
 add_action( 'admin_menu',  'support_smpro_menu' , 150 );

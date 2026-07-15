@@ -85,7 +85,7 @@ class Install_Manager {
 		$this->_update_saved_version();
 
 		/**
-		 * Executes after an update of Sermon Manager Pro.
+		 * Executes after an update of the Pro feature modules.
 		 *
 		 * @since 1.0.0-beta.2
 		 */

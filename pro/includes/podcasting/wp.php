@@ -184,7 +184,7 @@ class WP {
 	 * @since 1.0.0-beta.8
 	 */
 	public function add_tutorial_metabox() {
-		add_meta_box( 'podcast_tutorial', __( 'Sermon Manager Pro Podcasting Tutorial', 'sermon-manager' ), array(
+		add_meta_box( 'podcast_tutorial', __( 'Podcasting Tutorial', 'sermon-manager' ), array(
 			$this,
 			'render_tutorial_metabox',
 		), $this->post_type, 'advanced', 'high' );
@@ -197,10 +197,9 @@ class WP {
 	 */
 	public function render_tutorial_metabox() {
 		?>
-		<p>In Sermon Manager, you are only able to create one main podcast, however in Sermon Manager Pro we've made it
-			possible to create multiple podcasts for different categories of sermons. For example, you can have a
-			default podcast where all sermons are contained, but then you can also create a separate podcast where only
-			Youth Group sermons are located.</p>
+		<p>Church Sermon Manager lets you create multiple podcasts for different categories of sermons. For example, you
+			can have a default podcast where all sermons are contained, but then you can also create a separate podcast
+			where only Youth Group sermons are located.</p>
 		<p>Here are some tips:</p>
 		<ul style="list-style: initial;padding-left: 20px;">
 			<li>You will find the main podcast settings below this tutorial. By default each podcast you create will

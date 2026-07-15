@@ -58,67 +58,27 @@ $current_tab = empty( $current_tab ) ? 'general' : $current_tab;
 					
 				</div>
 			</div>
-			<?php if ( ! defined('SMP_SM_VERSION') ) : ?>
-			<div class="postbox sm-box" style="background: #f6fbff;">
-				<h3><span>Sermon Manager Pro</span>
-				</h3>
-				<div class="inside">
-					<p>Imagine being able to change the look of your sermons with one click or use your favorite page
-						builder, or create multiple podcasts...well now you can with Sermon Manager Pro, plus a lot
-						more. </p>
-					<div style="text-align:center">
-						<a href="https://sermonmanager.pro/?utm_source=sermon-manager&amp;utm_medium=wordpress"
-								target="_blank" class="button-secondary">Get Pro</a>&nbsp;
-						<a href="https://sermonmanager.pro/?utm_source=sermon-manager&amp;utm_medium=wordpress"
-								class="button-primary">Learn More</a>
-					</div>
-					<div class="description">
-						<span>Early Adopter pricing ends Nov 23</span>
-					</div>
-				</div>
-			</div>
 			<div class="postbox sm-box">
 				<h3><span><?php esc_html_e( 'Need Some Help?', 'sermon-manager' ); ?></span>
 				</h3>
 				<div class="inside">
-					<?php // translators: %s Sign up URL. ?>
-					<p><?php echo wp_sprintf( esc_html__( 'Did you know you can get expert support for only $49 per year! %s today and get support from the developers who are building the Sermon Manager.', 'sermon-manager' ), '<a href="https://wpforchurch.com/wordpress-plugins/sermon-manager/?utm_source=sermon-manager&utm_medium=wordpress" target="_blank">' . esc_html__( 'Sign up', 'sermon-manager' ) . '</a>' ); ?></p>
+					<p><?php esc_html_e( 'Church Sermon Manager is maintained by Sierra Marketing and offered free to churches.', 'sermon-manager' ); ?></p>
 					<div style="text-align:center">
-						<a href="https://wordpress.org/support/plugin/sermon-manager-for-wordpress"
+						<a href="https://sierra.host/church-sermon-manager/"
+								target="_blank" class="button-primary">
+							<?php esc_html_e( 'Get Support', 'sermon-manager' ); ?></a>&nbsp;
+						<a href="https://github.com/riceguitar/Church-Sermon-Manager/issues"
 								target="_blank" class="button-secondary">
-							<?php esc_html_e( 'Free&nbsp;Support', 'sermon-manager' ); ?></a>&nbsp;
-						<a href="https://wpforchurch.com/my/clientarea.php?utm_source=sermon-manager&utm_medium=wordpress"
-								class="button-primary">
-							<?php esc_html_e( 'Priority&nbsp;Support', 'sermon-manager' ); ?></a>
-					</div>
-					<div class="description">
-						<span><?php esc_html_e( 'We offer limited free support via WordPress.org', 'sermon-manager' ); ?></span>
+							<?php esc_html_e( 'Report a Bug', 'sermon-manager' ); ?></a>
 					</div>
 				</div>
 			</div>
-			<?php endif; ?>
 			<div class="postbox sm-box">
 				<h3>
-					<span><?php esc_html_e( 'Frequently Asked Questions', 'sermon-manager' ); ?></span>
+					<span><?php esc_html_e( 'Documentation', 'sermon-manager' ); ?></span>
 				</h3>
 				<div class="inside">
-					<ol>
-						<li>
-							<a href="https://www.wpforchurch.com/my/knowledgebase/72/Getting-Started-with-Sermon-Manager-for-WordPress.html?utm_source=sermon-manager&utm_medium=wordpress"
-									title="" target="_blank">Getting Started with Sermon Manager</a></li>
-						<li>
-							<a href="https://www.wpforchurch.com/my/knowledgebase/75/Sermon-Manager-Shortcodes.html?utm_source=sermon-manager&utm_medium=wordpress"
-									title="Sermon Manager Shortcodes" target="_blank">
-								Sermon Manager Shortcodes</a></li>
-						<li>
-							<a href="https://www.wpforchurch.com/my/knowledgebase/67/Troubleshooting-Sermon-Manager.html?utm_source=sermon-manager&utm_medium=wordpress"
-									title="Troubleshooting Sermon Manager" target="_blank">
-								Troubleshooting Sermon Manager</a></li>
-					</ol>
-					<div class="text-align:center;font-size:0.85em;padding:0.4rem 0 0">
-						<?php // translators: %s Knowledgebase URL. ?>
-						<span><?php echo wp_sprintf( esc_html__( 'Find out more in our %s', 'sermon-manager' ), '<a href="https://www.wpforchurch.com/my/knowledgebase.php?utm_source=sermon-manager&utm_medium=wordpress" title="Knowledgebase" target="_blank">' . esc_html__( 'knowledge base', 'sermon-manager' ) . '</a>' ); ?></span>
-					</div>
+					<p><?php echo wp_sprintf( esc_html__( 'Guides, shortcode reference, and troubleshooting are in the %s.', 'sermon-manager' ), '<a href="https://github.com/riceguitar/Church-Sermon-Manager#readme" target="_blank">' . esc_html__( 'documentation', 'sermon-manager' ) . '</a>' ); ?></p>
 				</div>
 			</div>
 

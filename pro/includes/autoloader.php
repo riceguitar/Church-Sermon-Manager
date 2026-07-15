@@ -10,7 +10,7 @@ namespace SMP;
 defined( 'ABSPATH' ) or die;
 
 /**
- * Sermon Manager Pro Autoloader
+ * Pro feature modules autoloader
  *
  * @since 2.0.4
  */

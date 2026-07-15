@@ -126,7 +126,7 @@ class SM_Settings_Debug extends SM_Settings_Page {
 				'title'    => __( 'Force Background Updates', 'sermon-manager' ),
 				'type'     => 'checkbox',
 				'desc'     => __( 'Override other plugin\'s class with same name. (<code>WP_Background_Updater</code>)', 'sermon-manager' ),
-				'desc_tip' => __( 'Typically, you won\'t need to have this checked, unless you know what it does or if WP For Church support instructs you to do it. Default unchecked.', 'sermon-manager' ),
+				'desc_tip' => __( 'Typically, you won\'t need to have this checked, unless you know what it does or if the plugin maintainers instructs you to do it. Default unchecked.', 'sermon-manager' ),
 				'id'       => 'in_house_background_update',
 				'default'  => 'no',
 			),
@@ -136,7 +136,7 @@ class SM_Settings_Debug extends SM_Settings_Page {
 				'id'      => 'execute_specific_unexecuted_function',
 				'default' => '',
 				'options' => sm_debug_get_update_functions(),
-				'desc'    => __( 'The option named "Background updates" executes all un-executed update functions. This option allows you to execute a specific one, even if it\'s already been executed. Usually used when WP For Church support instructs to do so. Just select a function and save settings.<br><code>[AE]</code> - Already Executed; <code>[NE]</code> - Not Executed', 'sermon-manager' ),
+				'desc'    => __( 'The option named "Background updates" executes all un-executed update functions. This option allows you to execute a specific one, even if it\'s already been executed. Usually used when the plugin maintainers instructs to do so. Just select a function and save settings.<br><code>[AE]</code> - Already Executed; <code>[NE]</code> - Not Executed', 'sermon-manager' ),
 			),
 			array(
 				'title'   => __( 'Automatic Excerpt Creation', 'sermon-manager' ),

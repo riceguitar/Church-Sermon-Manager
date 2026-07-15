@@ -52,7 +52,7 @@ class WP {
 			} catch ( \RuntimeException $e ) {
 				define( 'SMPRO_RENDER_ERROR', true );
 
-				return '<div class="notice notice-error"><p><strong>Sermon Manager Pro</strong>: Error in rendering the view, error message: "' . $e->getMessage() . '"</p></div>';
+				return '<div class="notice notice-error"><p><strong>Church Sermon Manager</strong>: Error in rendering the view, error message: "' . $e->getMessage() . '"</p></div>';
 			}
 		}, 10, 2 );
 
@@ -91,7 +91,7 @@ class WP {
 			} catch ( \RuntimeException $e ) {
 				define( 'SMPRO_RENDER_ERROR', true );
 
-				return '<div class="notice notice-error"><p><strong>Sermon Manager Pro</strong>: Error in rendering the view, error message: "' . $e->getMessage() . '"</p></div>';
+				return '<div class="notice notice-error"><p><strong>Church Sermon Manager</strong>: Error in rendering the view, error message: "' . $e->getMessage() . '"</p></div>';
 			}
 		}, 10, 3 );
 		// Merge divs if templating is used and we are in SM shortcode.

@@ -127,7 +127,7 @@ defined( 'ABSPATH' ) or die;
 									<?php _e( 'Import', 'sermon-manager' ); ?></a>
 							</li>
 							<li>
-								<a href="https://wpforchurch.com/my/knowledgebase/96/Importing.html#sermon-browser?utm_source=sermon-manager&utm_medium=wordpress"
+								<a href="https://github.com/riceguitar/Church-Sermon-Manager#readme"
 										target="_blank"
 										aria-label="<?php esc_attr_e( 'More Details', 'sermon-manager' ); ?>">
 									<?php _e( 'More Details', 'sermon-manager' ); ?></a>
@@ -144,7 +144,7 @@ defined( 'ABSPATH' ) or die;
 						<p class="import-note">
 							<?php
 							// translators: %s Documentation URL.
-							echo wp_sprintf( __( 'Note: Some restrictions apply. Click %s for more details.', 'sermon-manager' ), ' <a href="https://wpforchurch.com/my/knowledgebase/96/Importing.html#sermon-browser?utm_source=sermon-manager&utm_medium=wordpress" target="_blank">here</a>' );
+							echo wp_sprintf( __( 'Note: Some restrictions apply. Click %s for more details.', 'sermon-manager' ), ' <a href="https://github.com/riceguitar/Church-Sermon-Manager#readme" target="_blank">here</a>' );
 							?>
 						</p>
 					</div>
@@ -168,7 +168,7 @@ defined( 'ABSPATH' ) or die;
 									<?php _e( 'Import', 'sermon-manager' ); ?></a>
 							</li>
 							<li>
-								<a href="https://wpforchurch.com/my/knowledgebase/96/Importing.html#series-engine?utm_source=sermon-manager&utm_medium=wordpress"
+								<a href="https://github.com/riceguitar/Church-Sermon-Manager#readme"
 										target="_blank"
 										aria-label="<?php esc_attr_e( 'More Details', 'sermon-manager' ); ?>">
 									<?php _e( 'More Details', 'sermon-manager' ); ?></a>
@@ -185,7 +185,7 @@ defined( 'ABSPATH' ) or die;
 						<p class="import-note">
 							<?php
 							// translators: %s Documentation URL.
-							echo wp_sprintf( __( 'Note: Some restrictions apply. Click %s for more details.', 'sermon-manager' ), ' <a href="https://wpforchurch.com/my/knowledgebase/96/Importing.html#series-engine?utm_source=sermon-manager&utm_medium=wordpress" target="_blank">here</a>' );
+							echo wp_sprintf( __( 'Note: Some restrictions apply. Click %s for more details.', 'sermon-manager' ), ' <a href="https://github.com/riceguitar/Church-Sermon-Manager#readme" target="_blank">here</a>' );
 							?>
 						</p>
 					</div>

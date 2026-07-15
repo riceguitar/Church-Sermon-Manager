@@ -14,7 +14,7 @@ Contributions via [pull request](https://github.com/WP-for-Church/Sermon-Manager
 and [bug reports](https://github.com/WP-for-Church/Sermon-Manager/issues) are welcome!
 Please submit your pull request to the `develop` branch and use the GitHub issue tracker to report issues.
 
-**Note!** If you have detected any security issues, please write an email to nikola@wpforchurch.com. Do not submit it on the 
+**Note!** If you have detected any security issues, please use GitHub's private security advisory reporting. Do not submit it on the 
 public forum or in a public GitHub issue.
 
 ### Translations
@@ -40,7 +40,7 @@ The **"master"** branch is a stable branch, and gets updated only on releases. W
 downloaded the latest version on WordPress)
 
 ### dev branch
-The **"dev"** branch, is where commits during development are integrated into. It is where the WP For Church team
+The **"dev"** branch, is where commits during development are integrated into. It is where the maintainers
 pushes or merges their actual changes together and where contributions from the community (Pull requests) are
 integrated into the development version of the plugin. Anyone who wish to try the cutting edge version of Sermon Manager
 can download the develop branch and install it on their website.

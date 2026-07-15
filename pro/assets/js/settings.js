@@ -28,7 +28,7 @@ jQuery(function ($) {
                     form.removeClass('status-checking');
                     form.addClass('status-valid');
                 }else {
-                    status.html('There was an error validating your license. Please try <a href="https://wpforchurch.com/my/" target="_blank">reissuing</a> the license or contact support. Error message: ' + data);
+                    status.html('There was an error. Please try again or contact support. Error message: ' + data);
                     form.removeClass('status-checking');
                     form.addClass('status-error');
                 } 

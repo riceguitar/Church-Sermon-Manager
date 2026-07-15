@@ -1,6 +1,6 @@
 <?php
 /**
- * Main Sermon Manager Pro file.
+ * Church Sermon Manager — Pro feature modules bootstrap.
  *
  * @since   2.0.4
  * @package SMP\Core
@@ -89,7 +89,7 @@ class Plugin {
 			add_action(
 				'admin_notices',
 				function () {
-					echo '<div class="notice notice-error"><p>Sermon Manager Pro was not built properly (Composer not did not run). Please report this to support.</p></div>';
+					echo '<div class="notice notice-error"><p>Church Sermon Manager could not load its bundled libraries. Please reinstall the plugin, or <a href="https://github.com/riceguitar/Church-Sermon-Manager/issues" target="_blank">report the issue</a>.</p></div>';
 				}
 			);
 
@@ -155,7 +155,7 @@ class Plugin {
 	/**
 	 * Init.
 	 *
-	 * Initialize Sermon Manager Pro Plugin.
+	 * Initialize the Pro feature modules.
 	 */
 	public function init() {
 		$this->_include_files();
@@ -168,7 +168,7 @@ class Plugin {
 		}
 
 		/**
-		 * Sermon Manager Pro init.
+		 * Pro modules init.
 		 *
 		 * @since 2.0.4
 		 */
@@ -201,7 +201,7 @@ class Plugin {
 	/**
 	 * Init components.
 	 *
-	 * Initialize Sermon Manager Pro components.
+	 * Initialize the Pro feature module components.
 	 *
 	 * @access private
 	 */
@@ -227,7 +227,7 @@ class Plugin {
 			}
 		);
 
-		// Enqueue assets that are supposed to show up only on Sermon Manager and Sermon Manager Pro pages.
+		// Enqueue assets that are supposed to show up only on Sermon Manager pages.
 		add_action(
 			'sm_enqueue_admin_css',
 			function () {
@@ -235,10 +235,6 @@ class Plugin {
 				wp_enqueue_style( 'sm_pro_templating', SMP_URL . 'assets/css/admin/templating.min.css', array(), SMP_VERSION );
 				wp_enqueue_style( 'sm_pro_podcasting', SMP_URL . 'assets/css/admin/podcasting.min.css', array(), SMP_VERSION );
 				wp_enqueue_style( 'sm_pro_templating_color_picker', SMP_URL . 'assets/vendor/colorpicker/css/colorpicker.css', array(), SMP_VERSION );
-
-				// Temporarily disable chat. @since 2018-11-22
-				// wp_enqueue_script( 'sm_pro_support', SMP_URL . 'assets/js/chat.js', array(), SMP_VERSION, true );
-				// wp_enqueue_script( 'sm_pro_support_js', 'https://wchat.freshchat.com/js/widget.js', array(), SMP_VERSION, false );
 
 				wp_enqueue_script(
 					'sm_pro_templating',
@@ -395,7 +391,7 @@ class Plugin {
 								id="smp-notice-<?php echo $notice['id']; ?>">
 							<p>
 								<?php if ( ! $notice['hide_plugin_name'] ) : ?>
-									<strong><?php echo __( 'Sermon Manager Pro', 'sermon-manager' ); ?></strong>&nbsp;
+									<strong><?php echo __( 'Church Sermon Manager', 'sermon-manager' ); ?></strong>&nbsp;
 								<?php endif; ?>
 								<?php echo $notice['message']; ?>
 							</p>
@@ -421,7 +417,7 @@ class Plugin {
 				if ( ! empty( $smp_new_templates ) ) {
 					?>
 					<div class="notice notice-info is-dismissible">
-						<h3 style="margin:0">Sermon Manager Pro</h3>
+						<h3 style="margin:0">Church Sermon Manager</h3>
 						<p><?php echo __( 'Hi there! There are new versions available for some of installed templates:', 'sermon-manager' ); ?></p>
 						<table class="template-versions">
 							<tr>
@@ -635,7 +631,7 @@ class Plugin {
 			self::$instance = new self();
 
 			/**
-			 * Sermon Manager Pro loaded.
+			 * Pro modules loaded.
 			 *
 			 * Fires when plugin was fully loaded and instantiated.
 			 *
@@ -653,12 +649,10 @@ class Plugin {
 	 * @access private
 	 */
 	private function _add_filters() {
-		// Change SM post type label to include "Pro" in name and to support editor.
+		// Enable the block/classic editor for sermons.
 		add_filter(
 			'sm_register_post_type_wpfc_sermon',
 			function ( $args ) {
-				$args['labels']['menu_name'] .= ' Pro';
-
 				$args['supports'][] = 'editor';
 
 				return $args;
