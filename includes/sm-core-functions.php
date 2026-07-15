@@ -791,6 +791,105 @@ function wpfc_get_media_url_seconds( $url ) {
 }
 
 /**
+ * Gets the sermon's "preached on" timestamp (sermon_date meta), falling back to
+ * the post's publish date when the meta isn't set.
+ *
+ * @param WP_Post $post The sermon.
+ *
+ * @return int Unix timestamp.
+ *
+ * @since 2.15.17
+ */
+function sm_get_sermon_adjacent_date( $post ) {
+	$sermon_date = get_post_meta( $post->ID, 'sermon_date', true );
+
+	if ( '' === $sermon_date || ! is_numeric( $sermon_date ) ) {
+		// Local (not GMT) epoch — matches the site-local convention every stored
+		// sermon_date uses (see SM_Dates_WP).
+		$sermon_date = get_post_time( 'U', false, $post );
+	}
+
+	return (int) $sermon_date;
+}
+
+/**
+ * Finds the adjacent sermon (previous or next) ordered by the `sermon_date` meta,
+ * instead of WordPress' default post_date-based adjacency.
+ *
+ * @param WP_Post $post     The current sermon.
+ * @param bool    $previous Whether to look for the previous (true) or next (false) sermon.
+ *
+ * @return WP_Post|null The sermon if found, null otherwise.
+ *
+ * @since 2.15.17
+ */
+function sm_get_adjacent_sermon_by_date( $post, $previous ) {
+	$current_date = sm_get_sermon_adjacent_date( $post );
+
+	// Note: the flat 'meta_value_num'/'meta_compare' query vars are NOT wired into
+	// the WHERE clause by WP_Query (only 'meta_value' is) - an explicit, named
+	// 'meta_query' clause is required so both the comparison and the "orderby"
+	// reference to it are unambiguous. The named clause also gives the meta
+	// table a stable SQL alias ("sermon_date_clause") for the filter below.
+	$args = array(
+		'post_type'           => 'wpfc_sermon',
+		'post_status'         => 'publish',
+		'posts_per_page'      => 1,
+		'post__not_in'        => array( $post->ID ),
+		'meta_query'          => array(
+			'sermon_date_clause' => array(
+				'key'     => 'sermon_date',
+				'compare' => 'EXISTS',
+				'type'    => 'NUMERIC',
+			),
+		),
+		'orderby'             => array(
+			'sermon_date_clause' => $previous ? 'DESC' : 'ASC',
+			'ID'                 => $previous ? 'DESC' : 'ASC',
+		),
+		'ignore_sticky_posts' => true,
+		'no_found_rows'       => true,
+		// Some "custom post ordering" plugins (e.g. Post Types Order) globally
+		// prepend `menu_order` to every front-end query's ORDER BY, which would
+		// silently override the sermon_date sort below. `ignore_custom_sort` is
+		// their documented opt-out flag for queries that manage their own order.
+		'ignore_custom_sort'  => true,
+	);
+
+	// Strict (date, ID) lexicographic comparison so sermons sharing the exact
+	// same preached date (common for imported, date-only sermons) are still
+	// mutually navigable without loops.
+	$operator     = $previous ? '<' : '>';
+	$where_filter = function ( $where ) use ( $current_date, $post, $operator ) {
+		global $wpdb;
+
+		// Self-contained subquery: WordPress gives the first meta_query clause no
+		// SQL alias (it joins the bare postmeta table), so a named-alias reference
+		// here would break. Note: candidates are already restricted to sermons
+		// HAVING a sermon_date (the EXISTS clause above joins inner), so the
+		// COALESCE is defensive only.
+		$date_sql = "COALESCE( (SELECT CAST(pm.meta_value AS SIGNED) FROM {$wpdb->postmeta} pm WHERE pm.post_id = {$wpdb->posts}.ID AND pm.meta_key = 'sermon_date' LIMIT 1), 0 )";
+
+		return $where . $wpdb->prepare(
+			" AND ( {$date_sql} {$operator} %d OR ( {$date_sql} = %d AND {$wpdb->posts}.ID {$operator} %d ) )",
+			$current_date,
+			$current_date,
+			$post->ID
+		);
+	};
+
+	add_filter( 'posts_where', $where_filter );
+	$query = new WP_Query( $args );
+	remove_filter( 'posts_where', $where_filter );
+
+	$the_post = ! empty( $query->posts[0] ) ? $query->posts[0] : null;
+
+	wp_reset_postdata();
+
+	return $the_post;
+}
+
+/**
  * Gets previous latest sermon. I.e. orders sermons by meta and finds the previous one.
  *
  * @param WP_Post $post The current sermon, will use global if not defined.
@@ -806,9 +905,11 @@ function sm_get_previous_sermon( $post = null ) {
 
 	if ( ! $post instanceof WP_Post || 'wpfc_sermon' !== $post->post_type ) {
 		_doing_it_wrong( __FUNCTION__, '$post must be an instance of WP_Post.', '2.12.5' );
+
+		return apply_filters( 'sm_get_previous_sermon', null );
 	}
 
-	$the_post = get_previous_post();
+	$the_post = sm_get_adjacent_sermon_by_date( $post, true );
 
 	/**
 	 * Allows to filter the return value.
@@ -834,9 +935,11 @@ function sm_get_next_sermon( $post = null ) {
 
 	if ( ! $post instanceof WP_Post || 'wpfc_sermon' !== $post->post_type ) {
 		_doing_it_wrong( __FUNCTION__, '$post must be an instance of WP_Post.', '2.12.5' );
+
+		return apply_filters( 'sm_get_next_sermon', null );
 	}
 
-	$the_post = get_next_post();
+	$the_post = sm_get_adjacent_sermon_by_date( $post, false );
 
 	/**
 	 * Allows to filter the return value.
@@ -1020,5 +1123,68 @@ function sm_migrate_pro_content( $overwrite = false ) {
 		'updated' => $updated,
 		'skipped' => $skipped,
 	);
+}
+
+/**
+ * Checks whether a sermon/series image is already embedded in the sermon's own
+ * description (legacy `sermon_description` meta) or post content, so the
+ * plugin-rendered copy of the image can be skipped to avoid showing it twice.
+ *
+ * Uses cheap string checks only (no extra queries beyond the attachment URL the
+ * caller already computed): first a direct URL match, then a match on the
+ * attachment's base filename with any WordPress size suffix (e.g. `-150x150`)
+ * stripped, so a differently-sized copy of the same image is still detected.
+ *
+ * @param string       $image_url The sermon/series image URL to look for.
+ * @param WP_Post|null $post      The sermon, will use global if not defined.
+ *
+ * @return bool True if the image already appears in the description/content.
+ *
+ * @since 2.15.17
+ */
+function sm_sermon_image_in_content( $image_url, $post = null ) {
+	if ( empty( $image_url ) ) {
+		return false;
+	}
+
+	if ( null === $post ) {
+		global $post;
+	}
+
+	if ( ! $post instanceof WP_Post ) {
+		return false;
+	}
+
+	$haystack = (string) get_post_field( 'post_content', $post->ID );
+
+	$sermon_description = get_post_meta( $post->ID, 'sermon_description', true );
+	if ( ! empty( $sermon_description ) ) {
+		$haystack .= ' ' . $sermon_description;
+	}
+
+	if ( '' === trim( $haystack ) ) {
+		return false;
+	}
+
+	if ( false !== strpos( $haystack, $image_url ) ) {
+		return true;
+	}
+
+	// Fall back to matching the attachment's base filename, stripping any
+	// WordPress-generated size suffix (e.g. "image-300x200.jpg" -> "image.jpg"),
+	// since the description may embed a different registered size of the image.
+	// Strip suffixes from the haystack too, so content embedding a sized
+	// variant (photo-1024x576.jpg) still matches the original (photo.jpg).
+	$filename      = wp_basename( $image_url );
+	$base_filename = preg_replace( '/-\d+x\d+(?=\.[a-zA-Z0-9]{2,5}\b)/', '', $filename );
+	$haystack_norm = preg_replace( '/-\d+x\d+(?=\.[a-zA-Z0-9]{2,5}\b)/', '', $haystack );
+
+	// Boundary-anchored match ("/photo.jpg", quoted, or parenthesized) so
+	// "photo.jpg" never matches a different file like "myphoto.jpg".
+	if ( '' !== $base_filename && preg_match( '#[/"\'(]' . preg_quote( $base_filename, '#' ) . '#', $haystack_norm ) ) {
+		return true;
+	}
+
+	return false;
 }
 

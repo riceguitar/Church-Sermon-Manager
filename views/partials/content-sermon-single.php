@@ -28,10 +28,11 @@ if(!function_exists('is_plugin_active')){
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php endif; ?>
 	<div class="wpfc-sermon-single-inner">
-		<?php if ( get_sermon_image_url() && ! \SermonManager::getOption( 'disable_image_single' ) ) : ?>
+		<?php $sm_single_image_url = get_sermon_image_url(); ?>
+		<?php if ( $sm_single_image_url && ! \SermonManager::getOption( 'disable_image_single' ) && ! sm_sermon_image_in_content( $sm_single_image_url, $post ) ) : ?>
 			<div class="wpfc-sermon-single-image">
 				<img class="wpfc-sermon-single-image-img" alt="<?php the_title(); ?>"
-						src="<?php echo get_sermon_image_url(); ?>">
+						src="<?php echo $sm_single_image_url; ?>">
 			</div>
 		<?php endif; ?>
 		<div class="wpfc-sermon-single-main">
@@ -156,11 +157,9 @@ if(!function_exists('is_plugin_active')){
 			<?php endif; ?>
 		</div>
 		<?php
-		if ( 'Divi' === get_option( 'template' ) && function_exists( 'et_get_option' ) ) {
-			if ( ( comments_open() || get_comments_number() ) && 'on' == et_get_option( 'divi_show_postcomments', 'on' ) ) {
-				comments_template( '', true );
-			}
-		}
+		// Note: comments render once in views/single-wpfc_sermon.php for every
+		// theme. The Divi-specific comments_template() call that lived here made
+		// them render twice on Divi (upstream issue #248) and was removed.
 		?>
 	</div>
 	<?php if ( ! \SermonManager::getOption( 'theme_compatibility' ) ) : ?>

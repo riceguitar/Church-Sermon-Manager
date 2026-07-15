@@ -33,9 +33,14 @@ $theme = get_option( 'template' );
 
 $sm_image_html = '';
 
+$sm_archive_image_url = get_sermon_image_url( true, $args['image_size'] );
+
+// Note: no sm_sermon_image_in_content() dedupe here — archive cards render a
+// tag-stripped excerpt, so an image embedded in content never shows on cards;
+// skipping would hide the card's only image. The dedupe applies on singles only.
 if ( get_sermon_image_url() && ! \SermonManager::getOption( 'disable_image_archive' ) ) {
 	$sm_image_html .= '<div class="wpfc-sermon-image"><a href="' . get_the_permalink() . '">';
-	$sm_image_html .= '<div class="wpfc-sermon-image-img" style="background-image: url(' . get_sermon_image_url( true, $args['image_size'] ) . ')"></div>';
+	$sm_image_html .= '<div class="wpfc-sermon-image-img" style="background-image: url(' . $sm_archive_image_url . ')"></div>';
 	$sm_image_html .= '</a></div>';
 }
 
