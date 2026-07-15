@@ -5,7 +5,7 @@ Tags: church, sermon, sermons, preaching, podcasting, manage, managing, podcasts
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 3.2.3
+Stable tag: 3.3.0
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,9 @@ Go to Appearance → Menus, add a Custom Link with `/sermons/` (or `/?post_type=
 Open an issue on the [GitHub issue tracker](https://github.com/riceguitar/Church-Sermon-Manager/issues).
 
 ## Changelog ##
+
+### 3.3.0 (2026-07-16) ###
+* Added: MP3 duration auto-calculated for remote audio files (not just local uploads) — the edit screen fills it from a remote URL, and imports/REST sermons get it filled on save. Manual entry still overrides.
 
 ### 3.2.3 (2026-07-16) ###
 * Fixed: saving a sermon destroyed its taxonomy term dates (root cause of "latest series" showing an old series); future-preached sermons excluded from archives; date comparisons use the site timezone; prev/next navigation ordered by preached date.

@@ -1,3 +1,6 @@
+### 3.3.0 ###
+Added: MP3 duration is now calculated automatically for remote audio files, not just local uploads. The sermon edit screen fills the duration field for you when you enter a remote URL, and imports/REST-created sermons get it filled in the background on save. You can still type a value manually to override it.
+
 ### 3.2.3 ###
 Fixed: Saving a sermon silently destroyed its taxonomy term dates (broken input handling collapsed the term list), the root cause of "latest series" displaying a years-old series.
 Fixed: Sermons with a future preached date no longer appear on archive and taxonomy pages before their date arrives.
