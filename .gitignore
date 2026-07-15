@@ -2,4 +2,7 @@
 **/*.scssc
 node_modules
 vendor/*
-pro/cache/
+pro/cache/CLAUDE.md
+CLAUDE.local.md
+.claude/
+AGENTS.md
