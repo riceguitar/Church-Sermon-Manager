@@ -342,6 +342,45 @@ class SermonManager { // phpcs:ignore
 	}
 
 	/**
+	 * Stops the sermon archive from shadowing a same-slug page in the Elementor editor.
+	 *
+	 * The sermon archive is served from a configurable rewrite slug (Settings →
+	 * Sermon Manager → Archive slug). If a WordPress page happens to share that slug,
+	 * WordPress routes the URL to the sermon archive, so opening that page in Elementor
+	 * loads a preview of the archive instead of the page — and the editor sits on its
+	 * loading spinner forever, because the preview never contains the document being
+	 * edited. When Elementor is previewing a specific non-sermon post, re-point the main
+	 * query at that post so its own content renders in the preview.
+	 *
+	 * @param array $query_vars The requested query vars, straight from WP routing.
+	 *
+	 * @return array
+	 */
+	public static function fix_elementor_preview_shadowing( $query_vars ) {
+		if ( empty( $_GET['elementor-preview'] ) ) {
+			return $query_vars;
+		}
+
+		$preview_id = absint( $_GET['elementor-preview'] );
+
+		// Only act when our archive rewrite claimed the URL but the post being
+		// previewed is something else (typically a page with the same slug).
+		if ( ! $preview_id || ! isset( $query_vars['post_type'] ) || 'wpfc_sermon' !== $query_vars['post_type'] ) {
+			return $query_vars;
+		}
+
+		$preview_type = get_post_type( $preview_id );
+
+		if ( ! $preview_type || 'wpfc_sermon' === $preview_type ) {
+			return $query_vars;
+		}
+
+		return 'page' === $preview_type
+			? array( 'page_id' => $preview_id )
+			: array( 'p' => $preview_id, 'post_type' => $preview_type );
+	}
+
+	/**
 	 * Load plugin translations
 	 *
 	 * @return void
@@ -599,6 +638,7 @@ class SermonManager { // phpcs:ignore
 		add_action( 'after_setup_theme', array( $this, 'add_image_sizes' ) );
 		// Fix Sermon ordering.
 		add_action( 'pre_get_posts', array( $this, 'fix_sermons_ordering' ), 90 );
+		add_filter( 'request', array( $this, 'fix_elementor_preview_shadowing' ) );
 		// No idea... better not touch it for now.
 		add_filter( 'sermon-images-disable-public-css', '__return_true' );
 		// Attach to fix WP dates.

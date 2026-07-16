@@ -41,6 +41,10 @@ class Shortcodes_Manager {
 	 * Loads Elementor related functionality.
 	 */
 	public function init_elementor() {
+		// Define stand-ins for the Elementor scheme classes removed in Elementor
+		// 3.0, before any widget registers controls that reference them.
+		require_once __DIR__ . '/elementor/scheme-compat.php';
+
 		// Create controls.
 		add_action( 'elementor/controls/register', function ( Controls_Manager $controls_manager ) {
 			require_once __DIR__ . '/elementor/group-control-sermons.php';
