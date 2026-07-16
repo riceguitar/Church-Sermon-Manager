@@ -53,6 +53,21 @@ class Sermon_Archive extends Widget_Base {
 	}
 
 	/**
+	 * Returns the styles the widget depends on.
+	 *
+	 * The sermon skins reuse Elementor Pro's Posts widget markup (elementor-post,
+	 * elementor-grid, elementor-post__card), whose grid and card layout live in
+	 * the "widget-posts" stylesheet. Elementor only enqueues that on the front
+	 * end when a widget declares it as a dependency, so without this the cards
+	 * render unstyled outside the editor (the editor loads every widget's CSS).
+	 *
+	 * @return array The list of style handles.
+	 */
+	public function get_style_depends() {
+		return array( 'widget-posts' );
+	}
+
+	/**
 	 * Gets the query.
 	 *
 	 * @return \WP_Query
