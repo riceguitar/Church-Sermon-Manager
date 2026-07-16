@@ -403,7 +403,6 @@ class Sermon_Archive extends Widget_Base {
 			array(
 				'name'     => 'pagination_typography',
 				'selector' => '{{WRAPPER}} .elementor-pagination',
-				'scheme'   => 'TYPOGRAPHY_2', //Typography::TYPOGRAPHY_2,
 			)
 		);
 

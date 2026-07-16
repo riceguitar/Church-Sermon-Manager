@@ -517,10 +517,6 @@ class Skin_Cards extends Skin_Base {
 			array(
 				'label'     => __( 'Color', 'elementor-pro' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => 'COLOR', //Color::get_type(),
-					'value' => 'COLOR_2', //Color::COLOR_2,
-				),
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__title, {{WRAPPER}} .elementor-post__title a' => 'color: {{VALUE}};',
 				),
@@ -534,7 +530,6 @@ class Skin_Cards extends Skin_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'title_typography',
-				'scheme'    => 'TYPOGRAPHY_1', //Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .elementor-post__title, {{WRAPPER}} .elementor-post__title a',
 				'condition' => array(
 					$this->get_control_id( 'show_title' ) => 'yes',
@@ -608,7 +603,6 @@ class Skin_Cards extends Skin_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'meta_typography',
-				'scheme'    => 'TYPOGRAPHY_2', //Typography::TYPOGRAPHY_2,
 				'selector'  => '{{WRAPPER}} .elementor-post__meta-data',
 				'condition' => array(
 					$this->get_control_id( 'meta_data_header!' ) => array(),
@@ -647,7 +641,6 @@ class Skin_Cards extends Skin_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'excerpt_typography',
-				'scheme'    => 'TYPOGRAPHY_3', //Typography::TYPOGRAPHY_3,
 				'selector'  => '{{WRAPPER}} .elementor-post__excerpt',
 				'condition' => array(
 					$this->get_control_id( 'show_excerpt' ) => 'yes',
@@ -691,10 +684,6 @@ class Skin_Cards extends Skin_Base {
 			array(
 				'label'     => __( 'Color', 'elementor-pro' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => 'TYPE', //Color::get_type(),
-					'value' => 'COLOR_4', //Color::COLOR_4,
-				),
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__read-more' => 'color: {{VALUE}};',
 				),
@@ -709,7 +698,6 @@ class Skin_Cards extends Skin_Base {
 			array(
 				'name'      => 'read_more_typography',
 				'selector'  => '{{WRAPPER}} .elementor-post__read-more',
-				'scheme'    => 'TYPOGRAPHY_4', //Typography::TYPOGRAPHY_4,
 				'condition' => array(
 					$this->get_control_id( 'show_read_more' ) => 'yes',
 				),

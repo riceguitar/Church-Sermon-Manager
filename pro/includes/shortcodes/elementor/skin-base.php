@@ -246,7 +246,6 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__card .elementor-post__badge' => 'background-color: {{VALUE}};',
 				),
-				'scheme'    => 'COLOR_4', //$this->get_color_scheme('COLOR_4'),
 				'condition' => array(
 					$this->get_control_id( 'show_badge' ) => 'yes',
 				),
@@ -332,7 +331,6 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'badge_typography',
-				'scheme'    => 'TYPOGRAPHY_4', //$this->get_typography_scheme('TYPOGRAPHY_4'),
 				'selector'  => '{{WRAPPER}} .elementor-post__card .elementor-post__badge',
 				'exclude'   => array( 'font_size', 'line-height' ),
 				'condition' => array(
@@ -408,7 +406,6 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			array(
 				'label'     => __( 'Color', 'elementor-pro' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => $this->get_color_scheme('COLOR_2'),
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__title, {{WRAPPER}} .elementor-post__title a' => 'color: {{VALUE}};',
 				),
@@ -422,7 +419,6 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'title_typography',
-				'scheme'    => $this->get_typography_scheme('TYPOGRAPHY_1'),
 				'selector'  => '{{WRAPPER}} .elementor-post__title, {{WRAPPER}} .elementor-post__title a',
 				'condition' => array(
 					$this->get_control_id( 'show_title' ) => 'yes',
@@ -493,7 +489,6 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'meta_typography',
-				'scheme'    => $this->get_typography_scheme('TYPOGRAPHY_2'),
 				'selector'  => '{{WRAPPER}} .elementor-post__meta-data',
 				'condition' => array(
 					$this->get_control_id( 'meta_data!' ) => array(),
@@ -550,7 +545,6 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'excerpt_typography',
-				'scheme'    => $this->get_typography_scheme('TYPOGRAPHY_3'),
 				'selector'  => '{{WRAPPER}} .elementor-post__excerpt p',
 				'condition' => array(
 					$this->get_control_id( 'show_excerpt' ) => 'yes',
@@ -594,7 +588,6 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			array(
 				'label'     => __( 'Color', 'elementor-pro' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => $this->get_color_scheme('COLOR_4'),
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__read-more' => 'color: {{VALUE}};',
 				),
@@ -609,7 +602,6 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			array(
 				'name'      => 'read_more_typography',
 				'selector'  => '{{WRAPPER}} .elementor-post__read-more',
-				'scheme'    => $this->get_typography_scheme('TYPOGRAPHY_4'),
 				'condition' => array(
 					$this->get_control_id( 'show_read_more' ) => 'yes',
 				),
