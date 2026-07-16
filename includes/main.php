@@ -349,8 +349,15 @@ class SermonManager { // phpcs:ignore
 	 * WordPress routes the URL to the sermon archive, so opening that page in Elementor
 	 * loads a preview of the archive instead of the page — and the editor sits on its
 	 * loading spinner forever, because the preview never contains the document being
-	 * edited. When Elementor is previewing a specific non-sermon post, re-point the main
-	 * query at that post so its own content renders in the preview.
+	 * edited. When such a page is being previewed, re-point the main query at that
+	 * page so its own content renders in the preview.
+	 *
+	 * Deliberately narrow: it acts only on a genuine, authenticated editor preview
+	 * of a *page* (the only post type that can shadow a post-type-archive slug).
+	 * It ignores Theme Builder templates (elementor_library) previewed against the
+	 * archive, and — because it requires edit_post on the previewed page — it can
+	 * never be triggered by an anonymous request, so the public archive URL cannot
+	 * be re-pointed via a crafted ?elementor-preview link.
 	 *
 	 * @param array $query_vars The requested query vars, straight from WP routing.
 	 *
@@ -363,21 +370,17 @@ class SermonManager { // phpcs:ignore
 
 		$preview_id = absint( $_GET['elementor-preview'] );
 
-		// Only act when our archive rewrite claimed the URL but the post being
-		// previewed is something else (typically a page with the same slug).
-		if ( ! $preview_id || ! isset( $query_vars['post_type'] ) || 'wpfc_sermon' !== $query_vars['post_type'] ) {
+		// Only re-point when our archive rewrite claimed the URL, the previewed
+		// post is a page (the sole post type that can collide with the archive
+		// slug), and the current user is genuinely editing that page.
+		if ( ! $preview_id
+			|| ! isset( $query_vars['post_type'] ) || 'wpfc_sermon' !== $query_vars['post_type']
+			|| 'page' !== get_post_type( $preview_id )
+			|| ! current_user_can( 'edit_post', $preview_id ) ) {
 			return $query_vars;
 		}
 
-		$preview_type = get_post_type( $preview_id );
-
-		if ( ! $preview_type || 'wpfc_sermon' === $preview_type ) {
-			return $query_vars;
-		}
-
-		return 'page' === $preview_type
-			? array( 'page_id' => $preview_id )
-			: array( 'p' => $preview_id, 'post_type' => $preview_type );
+		return array( 'page_id' => $preview_id );
 	}
 
 	/**
