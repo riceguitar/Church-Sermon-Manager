@@ -1470,6 +1470,15 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 	 */
 	public function get_instance_value( $key ) {
 		$settings = $this->parent->get_settings_for_display();
+
+		// Skin controls are stored under a skin-prefixed key (e.g.
+		// "wpfc_cards_show_title"), matching Elementor's own Skin_Base. Resolve
+		// that first; fall back to the bare key for any non-skin control.
+		$control_id = $this->get_control_id( $key );
+		if ( isset( $settings[ $control_id ] ) ) {
+			return $settings[ $control_id ];
+		}
+
 		return isset( $settings[ $key ] ) ? $settings[ $key ] : null;
 	}
 }
