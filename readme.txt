@@ -5,7 +5,7 @@ Tags: church, sermon, sermons, preaching, podcasting, manage, managing, podcasts
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 3.4.0
+Stable tag: 3.4.1
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,11 @@ Go to Appearance → Menus, add a Custom Link with `/sermons/` (or `/?post_type=
 Open an issue on the [GitHub issue tracker](https://github.com/riceguitar/Church-Sermon-Manager/issues).
 
 ## Changelog ##
+
+### 3.4.1 (2026-07-16) ###
+* Fixed: Elementor editor no longer hangs on the loading spinner when editing a page whose slug matches the sermon archive slug.
+* Fixed: the Sermon Archive and Sermon Taxonomy widgets rendered blank cards on the front end — titles, images, and meta now display, with the correct card layout styles loaded.
+* Fixed: bundled Elementor widgets no longer error or fill the PHP log on Elementor 3.0+ (removed references to Elementor's removed color/typography scheme API).
 
 ### 3.4.0 (2026-07-16) ###
 * Privacy: removed a chat widget that sent your name, email, and license key to the former vendor's support system on every settings-page view.

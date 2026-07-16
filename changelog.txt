@@ -1,3 +1,9 @@
+### 3.4.1 ###
+Fixed: the Elementor editor no longer hangs on the loading spinner when you edit a page whose slug matches the sermon archive slug.
+Fixed: the Sermon Archive and Sermon Taxonomy Elementor widgets rendered blank cards on the front end — titles, images, and meta now display.
+Fixed: sermon cards now load their layout styles on the front end (they previously looked unstyled outside the Elementor editor).
+Fixed: the bundled Elementor widgets no longer error or fill the log on newer Elementor versions (removed references to Elementor's old color/typography scheme API).
+
 ### 3.4.0 ###
 Removed: the chat widget on the settings page that sent your name, email, and license key to the former vendor's support system — a privacy fix.
 Removed: leftover "expert support" and "Get Pro" upsell boxes and dead chat code from the old plugin.
