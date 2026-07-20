@@ -80,6 +80,7 @@ $args = array(
 	'post_type'      => 'wpfc_sermon',
 	'posts_per_page' => $settings['podcasts_per_page'],
 	'order'          => strtoupper( SermonManager::getOption( 'archive_order' ) ),
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
 	'paged'          => isset( $_GET['paged'] ) ? intval( $_GET['paged'] ) : 1,
 	'meta_query'     => array(
 		'relation' => 'AND',
@@ -143,8 +144,10 @@ foreach (
 		'wpfc_service_type',
 	) as $taxonomy
 ) {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
 	if ( isset( $_GET[ $taxonomy ] ) ) {
-		$terms = sanitize_text_field($_GET[ $taxonomy ]);
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+		$terms = sanitize_text_field( wp_unslash( $_GET[ $taxonomy ] ) );
 
 		// Override the default tax_query for that taxonomy.
 		if ( ! empty( $args['tax_query'] ) ) {

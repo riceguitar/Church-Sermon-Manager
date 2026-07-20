@@ -15,8 +15,10 @@ wp_enqueue_script( 'wp-color-picker' );
 
 $all_settings              = apply_filters( 'sm_pro_get_templating_settings', array() );
 $tabs                      = \SMP\Templating\Settings::get_tabs();
-$template                  = \SMP\Templating\Templating_Manager::get_template( $_GET['post'] );
-$post                      = get_post( $_GET['post'] );
+// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+$sm_template_post_id       = isset( $_GET['post'] ) ? absint( $_GET['post'] ) : 0;
+$template                  = \SMP\Templating\Templating_Manager::get_template( $sm_template_post_id );
+$post                      = get_post( $sm_template_post_id );
 $template_settings         = get_post_meta( $post->ID, 'sm_template_settings', true );
 $default_template_settings = $template->default_settings;
 

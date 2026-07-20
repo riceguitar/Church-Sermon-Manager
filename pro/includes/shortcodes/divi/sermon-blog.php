@@ -693,7 +693,8 @@ class Sermon_Blog extends ET_Builder_Module {
 		$show_filter_topics       = $this->props['show_filter_topics'];
 		$featured_type            = $this->props['featured_type'];
 
-		$page_number = (isset($_GET['page_number']))?$_GET['page_number']:1;
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+		$page_number = isset( $_GET['page_number'] ) ? absint( $_GET['page_number'] ) : 1;
 		$paged = get_query_var('page_number', $page_number );
 
 		$args = array(
@@ -723,7 +724,8 @@ class Sermon_Blog extends ET_Builder_Module {
 		}
 
 		$format = 'page_number=%#%';
-		if ( ! empty( $_GET ) && is_array( $_GET ) && !$_GET['page_number'] ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+		if ( ! empty( $_GET ) && is_array( $_GET ) && empty( $_GET['page_number'] ) ) {
 			$format = '&' . $format;
 		} else {
 			$format = '?' . $format;

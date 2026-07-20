@@ -104,14 +104,17 @@ class Sermon_Taxonomy extends Widget_Base {
 				}
 
 				if ( 2 < $page_limit ) {
-					$url      = "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-					$url      = preg_replace( '/(\?|&)term_page=\d+/', '', $url );
-					$base_url = htmlspecialchars( $url, ENT_QUOTES, 'UTF-8' );
+					$http_host   = isset( $_SERVER['HTTP_HOST'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) : '';
+					$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+					$url         = "//{$http_host}{$request_uri}";
+					$url         = preg_replace( '/(\?|&)term_page=\d+/', '', $url );
+					$base_url    = htmlspecialchars( $url, ENT_QUOTES, 'UTF-8' );
 
 					$pagination_args = array(
 						'base'               => $base_url . '%_%',
 						'format'             => ( strpos( $url, '?' ) !== false ? '&' : '?' ) . 'term_page=%#%',
 						'type'               => 'array',
+						// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
 						'current'            => isset( $_GET['term_page'] ) ? intval( $_GET['term_page'] ) ?: 1 : 1,
 						'total'              => min(round( ( wp_count_terms( array( 'taxonomy' => $taxonomy, 'hide_empty' => 'yes' === $settings['hide_empty'] ) ) - intval( $settings['offset'] ) ) / $page_limit, 0, PHP_ROUND_HALF_UP ), $settings['pagination_page_limit']),
 						'show_all'           => 'yes' !== $settings['pagination_numbers_shorten'],
@@ -175,6 +178,7 @@ class Sermon_Taxonomy extends Widget_Base {
 		$show_all = $settings['show_alphabetically'] && 'wpfc-list-taxonomy' === $settings['_skin'];
 
 		// Calculate the offset.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
 		$current_page   = isset( $_GET['term_page'] ) ? intval( $_GET['term_page'] ) ?: 1 : 1; // 1-indexed.
 		$terms_per_page = intval( $settings['terms_per_page'] );
 		$offset         = intval( $settings['offset'] );

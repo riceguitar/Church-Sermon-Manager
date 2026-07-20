@@ -56,8 +56,10 @@ function smp_add_taxonomy_to_query( $args ) {
 			'wpfc_date'
 		) as $taxonomy
 	) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
 		if ( isset( $_GET[ $taxonomy ] ) ) {
-			$terms = $_GET[ $taxonomy ];
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+			$terms = sanitize_text_field( wp_unslash( $_GET[ $taxonomy ] ) );
 
 			// Override the default tax_query for that taxonomy.
 			if ( ! empty( $args['tax_query'] ) ) {

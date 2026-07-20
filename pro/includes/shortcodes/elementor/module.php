@@ -214,8 +214,10 @@ class Module extends Module_Base {
 		$post__not_in = array();
 		if ( ! empty( $settings['exclude'] ) ) {
 			if ( in_array( 'current_post', $settings['exclude'] ) ) {
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
 				if ( Utils::is_ajax() && ! empty( $_REQUEST['post_id'] ) ) {
-					$post__not_in[] = $_REQUEST['post_id'];
+					// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+					$post__not_in[] = absint( $_REQUEST['post_id'] );
 				} elseif ( is_singular() ) {
 					$post__not_in[] = get_queried_object_id();
 				}

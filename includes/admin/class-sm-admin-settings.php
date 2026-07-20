@@ -81,21 +81,28 @@ class SM_Admin_Settings {
 		self::get_settings_pages();
 
 		// Get current tab/section.
-		$current_tab     = empty( $_GET['tab'] ) ? 'general' : sanitize_title( $_GET['tab'] );
-		$current_section = empty( $_REQUEST['section'] ) ? '' : sanitize_title( $_REQUEST['section'] );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+		$current_tab = empty( $_GET['tab'] ) ? 'general' : sanitize_title( wp_unslash( $_GET['tab'] ) );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+		$current_section = empty( $_REQUEST['section'] ) ? '' : sanitize_title( wp_unslash( $_REQUEST['section'] ) );
 
 		// Save settings if data has been posted.
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce is verified in self::save().
 		if ( ! empty( $_POST ) ) {
 			self::save();
 		}
 
 		// Add any posted messages.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
 		if ( ! empty( $_GET['sm_error'] ) ) {
-			self::add_error( stripslashes( $_GET['sm_error'] ) );
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+			self::add_error( sanitize_text_field( wp_unslash( $_GET['sm_error'] ) ) );
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
 		if ( ! empty( $_GET['sm_message'] ) ) {
-			self::add_message( stripslashes( $_GET['sm_message'] ) );
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+			self::add_message( sanitize_text_field( wp_unslash( $_GET['sm_message'] ) ) );
 		}
 
 		switch ( $current_tab ) {
@@ -142,14 +149,14 @@ class SM_Admin_Settings {
 	public static function save() {
 		global $current_tab, $wpdb;
 
-		if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'sm-settings' ) ) {
+		if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_REQUEST['_wpnonce'] ) ), 'sm-settings' ) ) {
 			die( esc_html( __( 'Action failed. Please refresh the page and retry.', 'church-sermon-manager' ) ) );
 		}
 
 		/**
 		 * Flush rewrite rules on archive page slug change.
 		 */
-		if ( 'general' === $current_tab && SermonManager::getOption( 'archive_slug' ) !== $_POST['archive_slug'] ) {
+		if ( 'general' === $current_tab && isset( $_POST['archive_slug'] ) && SermonManager::getOption( 'archive_slug' ) !== sanitize_text_field( wp_unslash( $_POST['archive_slug'] ) ) ) {
 			flush_rewrite_rules( true );
 		}
 
@@ -786,6 +793,7 @@ class SM_Admin_Settings {
 	 */
 	public static function save_fields( $options, $data = null ) {
 		if ( is_null( $data ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in self::save() before save_fields() runs; values are unslashed and sanitized per-type below.
 			$data = $_POST;
 		}
 		if ( empty( $data ) ) {

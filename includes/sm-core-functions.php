@@ -957,8 +957,10 @@ function sm_get_next_sermon( $post = null ) {
  * @param int $post_ID The sermon ID.
  */
 function sm_set_service_type( $post_ID ) {
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- fires on save_post; WP core's post edit flow (check_admin_referer + current_user_can in wp-admin/post.php) runs before this hook.
 	if ( isset( $_POST['wpfc_service_type'] ) ) {
-		$term = get_term_by( 'id', sanitize_text_field($_POST['wpfc_service_type']), 'wpfc_service_type' );
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- fires on save_post; WP core's post edit flow runs before this hook.
+		$term = get_term_by( 'id', sanitize_text_field( wp_unslash( $_POST['wpfc_service_type'] ) ), 'wpfc_service_type' );
 
 		if ( $term ) {
 			$service_type = $term->slug;
@@ -969,11 +971,14 @@ function sm_set_service_type( $post_ID ) {
 		return;
 	}
 
-	$get  = isset( $_GET['tax_input'] ) && isset( $_GET['tax_input']['wpfc_service_type'] ) && $_GET['tax_input']['wpfc_service_type'];
-	$post = isset( $_POST['tax_input'] ) && isset( $_POST['tax_input']['wpfc_service_type'] ) && $_POST['tax_input']['wpfc_service_type'];
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- fires on save_post; WP core's post edit flow runs before this hook.
+	$get = ! empty( $_GET['tax_input']['wpfc_service_type'] );
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- fires on save_post; WP core's post edit flow runs before this hook.
+	$post = ! empty( $_POST['tax_input']['wpfc_service_type'] );
 
 	if ( $get || $post ) {
-		$field = $get ? sanitize_text_field($_GET['tax_input']['wpfc_service_type']) : sanitize_text_field($_POST['tax_input']['wpfc_service_type']);
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing -- fires on save_post; WP core's post edit flow runs before this hook.
+		$field = $get ? sanitize_text_field( wp_unslash( $_GET['tax_input']['wpfc_service_type'] ) ) : sanitize_text_field( wp_unslash( $_POST['tax_input']['wpfc_service_type'] ) );
 		$terms = explode( ',', $field );
 
 		if ( $terms ) {
@@ -1071,7 +1076,7 @@ function update_sermon_posts() {
 function ajax_sync_sermon_data() {
     // Verify nonce for security
     $isverified=false;
-   if ( isset( $_POST['sync_sermon_content_nonce'] ) && wp_verify_nonce( $_POST['sync_sermon_content_nonce'], 'sync_sermon_content_action' ) ) {
+   if ( isset( $_POST['sync_sermon_content_nonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['sync_sermon_content_nonce'] ) ), 'sync_sermon_content_action' ) ) {
    		// Call your update_sermon_posts() function
     	update_sermon_posts();
     	$isverified=true;

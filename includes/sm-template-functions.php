@@ -727,7 +727,8 @@ function wpfc_get_term_dropdown( $taxonomy, $default = '' ) {
         sort( $terms );
 	}
 
-	$current_slug = get_query_var( $taxonomy ) ?: ( isset( $_GET[ $taxonomy ] ) ? $_GET[ $taxonomy ] : '' );
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+	$current_slug = get_query_var( $taxonomy ) ?: ( isset( $_GET[ $taxonomy ] ) ? sanitize_text_field( wp_unslash( $_GET[ $taxonomy ] ) ) : '' );
 
 	foreach ( $terms as $term ) {
 		$html .= '<option value="' . $term->slug . '" ' . ( ( '' === $default ? $current_slug === $term->slug : $default === $term->slug ) ? 'selected' : '' ) . '>' . $term->name . '</option>';

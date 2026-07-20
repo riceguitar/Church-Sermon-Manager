@@ -59,6 +59,7 @@ class SM_Admin_Post_Types {
 			3  => esc_html__( 'Custom field deleted.', 'church-sermon-manager' ),
 			4  => esc_html__( 'Sermon updated.', 'church-sermon-manager' ),
 			// translators: %s: Date and time of the revision.
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
 			5  => isset( $_GET['revision'] ) ? wp_sprintf( esc_html__( 'Sermon restored to revision from %s', 'church-sermon-manager' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
 			// translators: %s: The URL to the sermon.
 			6  => wp_sprintf( esc_html__( 'Sermon published. %s', 'church-sermon-manager' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">' . esc_html__( 'View sermon', 'church-sermon-manager' ) . '</a>' ),

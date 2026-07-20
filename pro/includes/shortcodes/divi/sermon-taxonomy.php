@@ -463,7 +463,7 @@ class Sermon_Taxonomy extends ET_Builder_Module {
 
 		ob_start();
 
-		$url          = $_SERVER['REQUEST_URI'];
+		$url          = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 		$segments     = explode( '/', $url );
 		$page         = is_numeric( $segments[ count( $segments ) - 2 ] ) ? $segments[ count( $segments ) - 2 ] : 1;
 		$next         = $page + 1;

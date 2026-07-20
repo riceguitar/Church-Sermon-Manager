@@ -459,8 +459,10 @@ class Plugin {
 		add_action(
 			'wp_ajax_smp_notice_handler',
 			function () {
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- logged-in-only admin-ajax notice dismissal; the id is reduced to a known notice slug via sanitize_title and only toggles a "seen" flag.
 				if ( isset( $_POST['id'] ) ) {
-					echo Plugin::instance()->notice_manager->set_seen( sanitize_title( str_replace( 'smp-notice', '', $_POST['id'] ) ) ) ? 1 : 0;
+					// phpcs:ignore WordPress.Security.NonceVerification.Missing -- logged-in-only admin-ajax notice dismissal; the id is reduced to a known notice slug via sanitize_title and only toggles a "seen" flag.
+					echo Plugin::instance()->notice_manager->set_seen( sanitize_title( str_replace( 'smp-notice', '', sanitize_text_field( wp_unslash( $_POST['id'] ) ) ) ) ) ? 1 : 0;
 				} else {
 					echo 0;
 				}
@@ -606,9 +608,11 @@ class Plugin {
 		add_action(
 			'wp_insert_post',
 			function ( $post_ID ) {
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- fires on wp_insert_post; the admin post edit flow (check_admin_referer + current_user_can in wp-admin/post.php) runs before this hook.
 				if ( ! isset( $_POST['content'] ) || 'wpfc_sermon' !== get_post_type( $post_ID ) ) {
 					return;
-				}			
+				}
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- raw editor content intentionally mirrored into sermon_description meta (same trust level as post_content, saved by the cap-checked post edit flow); update_post_meta() expects slashed data and unslashes internally, so unslashing or sanitizing here would corrupt legitimate content.
 				update_post_meta( $post_ID, 'sermon_description', $_POST['content'] );
 				
 				// Update date mapping.

@@ -19,7 +19,8 @@ add_action( 'do_feed_podcast', 'wpfc_podcast_render', 10, 1 );
 add_action( 'parse_request', function () {
 	if ( SermonManager::getOption( 'enable_podcast_redirection' ) ) {
 		$old_url     = wp_make_link_relative( preg_replace( '{/$}', '', SermonManager::getOption( 'podcast_redirection_old_url' ) ) );
-		$current_url = preg_replace( '{/$}', '', $_SERVER['REQUEST_URI'] );
+		$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+		$current_url = preg_replace( '{/$}', '', $request_uri );
 
 		if ( strpos( $current_url, $old_url ) !== false ) {
 			// phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect -- destination is an admin-configured external podcast URL; wp_safe_redirect() refuses off-site hosts.

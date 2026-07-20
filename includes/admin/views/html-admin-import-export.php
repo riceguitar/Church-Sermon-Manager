@@ -6,6 +6,8 @@
  */
 
 defined( 'ABSPATH' ) or die;
+
+$sm_current_url = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 ?>
 <div class="sm wrap">
 	<div class="intro">
@@ -45,7 +47,7 @@ defined( 'ABSPATH' ) or die;
 								<?php else : ?>
 									<form enctype="multipart/form-data" id="sm-import-upload-form" method="post"
 											class="wp-upload-form"
-											action="<?php echo esc_url( wp_nonce_url( $_SERVER['REQUEST_URI'] . '&doimport=sm', 'sm' ) ); ?>">
+											action="<?php echo esc_url( wp_nonce_url( $sm_current_url . '&doimport=sm', 'sm' ) ); ?>">
 										<p>
 											<input type="file" id="upload" name="import" size="25"/>
 											<input type="hidden" name="action" value="save"/>
@@ -87,7 +89,7 @@ defined( 'ABSPATH' ) or die;
 					<div class="action-links">
 						<ul class="plugin-action-buttons">
 							<li>
-								<a href="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>&doimport=exsm"
+								<a href="<?php echo esc_url( $sm_current_url ); ?>&doimport=exsm"
 										class="button activate-now" id="sm-export-content"
 										aria-label="<?php esc_attr_e( 'Export to file', 'church-sermon-manager' ); ?>">
 									<?php esc_html_e( 'Export', 'church-sermon-manager' ); ?>
@@ -121,7 +123,7 @@ defined( 'ABSPATH' ) or die;
 					</div>
 					<div class="action-links">
 						<ul class="plugin-action-buttons">
-							<li><a href="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>&doimport=sb"
+							<li><a href="<?php echo esc_url( $sm_current_url ); ?>&doimport=sb"
 										class="button activate-now <?php echo SM_Import_SB::is_installed() ? '' : 'disabled'; ?>"
 										aria-label="<?php esc_attr_e( 'Import from Sermon Browser', 'church-sermon-manager' ); ?>">
 									<?php esc_html_e( 'Import', 'church-sermon-manager' ); ?></a>
@@ -162,7 +164,7 @@ defined( 'ABSPATH' ) or die;
 					</div>
 					<div class="action-links">
 						<ul class="plugin-action-buttons">
-							<li><a href="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>&doimport=se"
+							<li><a href="<?php echo esc_url( $sm_current_url ); ?>&doimport=se"
 										class="button activate-now <?php echo SM_Import_SE::is_installed() ? '' : 'disabled'; ?>"
 										aria-label="<?php esc_attr_e( 'Import from Series Engine', 'church-sermon-manager' ); ?>">
 									<?php esc_html_e( 'Import', 'church-sermon-manager' ); ?></a>

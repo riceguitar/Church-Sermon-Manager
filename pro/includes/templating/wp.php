@@ -520,6 +520,7 @@ class WP {
 	 * Callback for rescanning for Templates.
 	 */
 	public function rescan_templates() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- is-this-my-screen check on load-post-new.php; value only compared against the plugin post type, no request data is written.
 		if ( ! isset( $_GET['post_type'] ) || $this->post_type !== $_GET['post_type'] ) {
 			return;
 		}
@@ -577,6 +578,7 @@ class WP {
 	 * @param int $post_id The template post ID to save.
 	 */
 	public function save( $post_id ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- fires on save_post_wpfc_sm_template; WP core's post edit flow (check_admin_referer + current_user_can in wp-admin/post.php) runs before this hook.
 		if ( defined( 'SM_DOING_SAVE' ) || empty( $_POST['title'] ) ) {
 			return;
 		}
@@ -586,6 +588,7 @@ class WP {
 
 		wp_update_post( array(
 			'ID'         => $post_id,
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- reached via the cap-checked save_post flow; wp_update_post() expects slashed data and unslashes + sanitizes the title internally (title_save_pre), so unslashing here would corrupt legitimate titles.
 			'post_title' => $_POST['title'],
 		) );
 	}

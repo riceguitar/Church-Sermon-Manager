@@ -145,7 +145,8 @@ class Settings {
 
 				// Get posted value.
 				$option_name = $setting['id'];
-				$raw_value   = isset( $_POST[ $setting['id'] ] ) ? wp_unslash( $_POST[ $setting['id'] ] ) : null;
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- reached via save_post_wpfc_sm_template (WP core's post edit flow verifies nonce and capability first); the raw value is sanitized per-type below (checkbox whitelist / sm_clean).
+				$raw_value = isset( $_POST[ $setting['id'] ] ) ? wp_unslash( $_POST[ $setting['id'] ] ) : null;
 
 				// Format the value based on option type.
 				switch ( $setting['type'] ) {

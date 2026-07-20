@@ -37,8 +37,10 @@ defined( 'ABSPATH' ) or die;
 function wpfc_maybe_change_downloads_upload_dir() {
 	global $pagenow;
 
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
 	if ( ! empty( $_REQUEST['post_id'] ) && ( 'async-upload.php' == $pagenow || 'media-upload.php' == $pagenow ) ) {
-		if ( 'wpfc_sermon' == get_post_type( $_REQUEST['post_id'] ) ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+		if ( 'wpfc_sermon' == get_post_type( absint( wp_unslash( $_REQUEST['post_id'] ) ) ) ) {
 			add_filter( 'upload_dir', 'wpfc_change_downloads_upload_dir' );
 		}
 	}

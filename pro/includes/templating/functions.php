@@ -851,7 +851,8 @@ add_filter( 'render_wpfc_sorting_visibility_mapping', 'smp_add_additional_filter
  */
 function sm_query_filtering_shortcode( $query ) {
 	$taxonomy      = 'wpfc_dates';
-	$current_value = get_query_var( $taxonomy ) ?: ( isset( $_GET[ $taxonomy ] ) ? $_GET[ $taxonomy ] : '' );
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+	$current_value = get_query_var( $taxonomy ) ?: ( isset( $_GET[ $taxonomy ] ) ? sanitize_text_field( wp_unslash( $_GET[ $taxonomy ] ) ) : '' );
 
 	if ( ! empty( $current_value ) ) {
 
@@ -895,7 +896,8 @@ add_filter( 'smp/shortcodes/wpbakery/sermon_query', 'sm_query_filtering_shortcod
 function sm_query_filtering( $query ) {
 	if ( ! is_admin() ) {
 		$taxonomy      = 'wpfc_dates';
-		$current_value = get_query_var( $taxonomy ) ?: ( isset( $_GET[ $taxonomy ] ) ? $_GET[ $taxonomy ] : '' );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+		$current_value = get_query_var( $taxonomy ) ?: ( isset( $_GET[ $taxonomy ] ) ? sanitize_text_field( wp_unslash( $_GET[ $taxonomy ] ) ) : '' );
 
 		if ( ! empty( $current_value ) ) {
 			$date = explode( '-', $current_value );
@@ -926,7 +928,8 @@ add_action( 'sm_query', 'sm_query_filtering', 0 );
 function sm_query_date_filter_pro( $query ) {
 	if ( ! is_admin() ) {
 			$taxonomy      = 'wpfc_dates';
-			$current_value = get_query_var( $taxonomy ) ?: ( isset( $_GET[ $taxonomy ] ) ? $_GET[ $taxonomy ] : '' );
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+			$current_value = get_query_var( $taxonomy ) ?: ( isset( $_GET[ $taxonomy ] ) ? sanitize_text_field( wp_unslash( $_GET[ $taxonomy ] ) ) : '' );
 			if ( ! empty( $current_value ) ) {
 				$date = explode( '-', $current_value );
 				if ( ! empty( $date[1] ) && ! empty( $date[1] ) ) {
@@ -1085,6 +1088,7 @@ function smp_maybe_install_default_templates() {
 
 					if ( version_compare( $installed_version, $source_version, '<' ) ) {
 						// If we should install now.
+						// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- admin-only bulk template refresh triggered from the plugin's own "Update all" button; action value is compared against fixed strings only and the update copies the plugin's bundled template files, no request data is written.
 						if ( 'edit.php' === $pagenow && ( isset( $_GET['post_type'] ) && 'wpfc_sm_template' === $_GET['post_type'] ) && ( isset( $_GET['doaction'] ) && 'updateall' === $_GET['doaction'] ) ) {
 							// Replace the installed template with updated one.
 							$wp_filesystem->rmdir( $installed_templates_dir . $template, true );
@@ -1104,6 +1108,7 @@ function smp_maybe_install_default_templates() {
 						} else {
 							$existing_updates = get_option( 'smp_new_templates', array(), true );
 							$existing_updates = is_array( $existing_updates ) ? $existing_updates : array();
+							// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- admin-only post-update notice cleanup; action value is compared against a fixed string only, no request data is written.
 							if ( isset( $_GET['doaction'] ) && 'updated' === $_GET['doaction'] ) {
 
 								if ( isset( $existing_updates[ $installed_template->name ] ) ) {

@@ -8,6 +8,7 @@
 
 defined( 'ABSPATH' ) or die;
 
+// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
 $post_id          = isset( $_GET['post'] ) ? intval( $_GET['post'] ) : 0;
 $show_notice      = get_option( 'sm_podcasting_saved_notice', 0 );
 $all_settings     = apply_filters( 'sm_pro_get_podcasting_settings', array() );

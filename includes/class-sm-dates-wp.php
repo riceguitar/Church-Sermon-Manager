@@ -130,12 +130,14 @@ class SM_Dates_WP extends SM_Dates {
 	 * @since 2.15.11
 	 */
 	public static function save_terms_dates( $post_ID, $post, $update ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- fires on save_post_wpfc_sermon; WP core's post edit flow (check_admin_referer + current_user_can in wp-admin/post.php) runs before this hook.
 		if ( ! isset( $_POST['tax_input'] ) ) {
 			return;
 		}
 
 		$original_terms = $GLOBALS['sm_original_terms'];
-		$updated_terms  = isset( $_POST['tax_input'] ) ? $_POST['tax_input'] : null;
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- fires on save_post_wpfc_sermon; WP core's post edit flow (check_admin_referer + current_user_can in wp-admin/post.php) runs before this hook.
+		$updated_terms = isset( $_POST['tax_input'] ) ? map_deep( wp_unslash( $_POST['tax_input'] ), 'sanitize_text_field' ) : null;
 
 		// Convert terms to term array of term IDs if it's not already that way.
 		
@@ -305,6 +307,7 @@ class SM_Dates_WP extends SM_Dates {
 
 		if ( $update ) {
 			// Compare sermon date and if user changed it update sermon date and disable auto update.
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- fires on save_post_wpfc_sermon; WP core's post edit flow (check_admin_referer + current_user_can in wp-admin/post.php) runs before this hook.
 			if ( ! empty( $_POST['sermon_date'] ) ) {
 				switch ( \SermonManager::getOption( 'date_format' ) ) {
 					case '0':
@@ -324,7 +327,8 @@ class SM_Dates_WP extends SM_Dates {
 						break;
 				}
 
-				$dt      = DateTime::createFromFormat( $date_format, sanitize_text_field($_POST['sermon_date']) );
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- fires on save_post_wpfc_sermon; WP core's post edit flow (check_admin_referer + current_user_can in wp-admin/post.php) runs before this hook.
+				$dt      = DateTime::createFromFormat( $date_format, sanitize_text_field( wp_unslash( $_POST['sermon_date'] ) ) );
 				// Deliberately kept as the historical "site-local wall time as epoch"
 				// convention: every stored sermon_date and the display path
 				// (SM_Dates::get → date_i18n) assume it. Comparisons against "now"
@@ -362,6 +366,7 @@ class SM_Dates_WP extends SM_Dates {
 		 * If sermon date is blank (not set on sermon create or removed later on update), mark
 		 * this post for auto updating and update date now.
 		 */
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- fires on save_post_wpfc_sermon; WP core's post edit flow (check_admin_referer + current_user_can in wp-admin/post.php) runs before this hook.
 		if ( isset( $_POST['sermon_date'] ) && '' == $_POST['sermon_date'] ) {
 			$update_date = true;
 			$auto        = true;

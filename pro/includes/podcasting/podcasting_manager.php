@@ -40,10 +40,12 @@ class Podcasting_Manager {
 			return;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
 		if ( ! isset( $_GET['id'] ) ) {
 			$this->_render( $this->get_default_podcast_id() );
 		} else {
-			$this->_render( $_GET['id'] );
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+			$this->_render( sanitize_text_field( wp_unslash( $_GET['id'] ) ) );
 		}
 	}
 
@@ -106,11 +108,13 @@ class Podcasting_Manager {
 	 * @return array Modified args.
 	 */
 	public function filter_the_query( $args ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
 		if ( ! isset( $_GET['id'] ) ) {
 			return $args;
 		}
 
-		$podcast = $this->get_the_podcast( $_GET['id'] );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request state, no data mutation.
+		$podcast = $this->get_the_podcast( sanitize_text_field( wp_unslash( $_GET['id'] ) ) );
 
 		if ( ! $podcast instanceof \WP_Post ) {
 			return $args;
