@@ -1,0 +1,13 @@
+# label	path
+single-sermon	/podcasts/shepherd-shepherds-and-sheep/
+archive-p1	/podcasts/
+archive-p2	/podcasts/page/2/
+tax-preacher	/podcasts/teacher/angela-houk/
+tax-series	/podcasts/series/60-seconds-with-robert-e-webber/
+tax-topics	/podcasts/topics/reaching-out-without-dumbing-down/
+tax-book	/podcasts/book/1-john-47-21/
+tax-service-type	/podcasts/service-type/advent/
+shortcode-page	/parity-shortcode/
+elementor-classic	/test-2/
+elementor-cards	/parity-cards/
+podcast-feed	/?feed=rss2&post_type=wpfc_sermon
