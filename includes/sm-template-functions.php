@@ -268,7 +268,7 @@ function render_wpfc_sorting( $args = array() ) {
  * @param string $after    Content after key value.
  */
 function wpfc_sermon_meta( $meta_key = '', $before = '', $after = '' ) {
-	echo $before . get_wpfc_sermon_meta( $meta_key ) . $after;
+	echo $before . get_wpfc_sermon_meta( $meta_key ) . $after; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- caller-supplied wrapper markup around sermon meta (frozen output contract).
 }
 
 /**
@@ -350,7 +350,8 @@ function wpfc_sermon_description( $before = '', $after = '', $return = false ) {
 	$output = $before . wpautop( process_wysiwyg_output( 'sermon_description', get_the_ID() ) ) . $after;
 
 	if ( ! $return ) {
-		echo $output;
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- composed sermon markup from the rendering pipeline.
+echo $output;
 	}
 
 	return $output;
@@ -570,7 +571,8 @@ function wpfc_sermon_single_v2( $return = false, $post = null ) {
 	$GLOBALS['post'] = ! empty( $GLOBALS['post'] ) ? ! empty( $old_post ) ? $old_post : $post : null;
 
 	if ( ! $return ) {
-		echo $output;
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- composed sermon markup from the rendering pipeline.
+echo $output;
 	}
 
 	return $output;
@@ -606,7 +608,8 @@ function wpfc_sermon_excerpt_v2( $return = false, $args = array() ) {
 	$output = apply_filters( 'wpfc_sermon_excerpt_v2', $output, $post, $args );
 
 	if ( ! $return ) {
-		echo $output;
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- composed sermon markup from the rendering pipeline.
+echo $output;
 	}
 
 	return $output;
@@ -791,7 +794,7 @@ function wpfc_get_partial( $name = '', $args = array() ) {
 				if ( file_exists( SM_PATH . 'views/partials/' . $name ) ) {
 					load_template( SM_PATH . 'views/partials/' . $name, false );
 				} else {
-					echo '<p><b>Sermon Manager</b>: Failed loading partial "<i>' . str_replace( '.php', '', $name ) . '</i>", file does not exist.</p>';
+					echo '<p><b>Sermon Manager</b>: Failed loading partial "<i>' . esc_html( str_replace( '.php', '', $name ) ) . '</i>", file does not exist.</p>';
 				}
 			}
 
@@ -879,7 +882,7 @@ function sm_pagination() {
 		elseif ( function_exists( 'pagination' ) ) :
 			pagination();
 		elseif ( function_exists( 'mfn_pagination' ) ) :
-			echo mfn_pagination();
+			echo mfn_pagination(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pagination markup from the active BeTheme helper.
 		elseif ( function_exists( 'presscore_complex_pagination' ) ) :
 			presscore_complex_pagination( $GLOBALS['wp_query'] );
 		elseif ( function_exists( 'cro_paging' ) ) :

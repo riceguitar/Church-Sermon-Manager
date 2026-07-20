@@ -106,7 +106,7 @@ function wpfc_dashboard() {
 
 	$count .= '</li>';
 	$count .= "<style>.sermon-count a:before { content: '\\f330' !important;}</style>";
-	echo $count;
+	echo $count; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Dashboard glance markup composed above from esc_html'd count text and admin_url().
 }
 
 add_action( 'dashboard_glance_items', 'wpfc_dashboard' );

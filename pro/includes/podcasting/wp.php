@@ -151,7 +151,7 @@ class WP {
 			return;
 		}
 
-		echo get_sample_permalink_html( $post->ID );
+		echo get_sample_permalink_html( $post->ID ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core sample-permalink editor markup.
 	}
 
 	/**
@@ -288,7 +288,7 @@ class WP {
 
 		?>
 		<style>
-			body.post-<?php echo Plugin::instance()->podcasting_manager->get_default_podcast_id(); ?> #delete-action {
+			body.post-<?php echo absint( Plugin::instance()->podcasting_manager->get_default_podcast_id() ); ?> #delete-action {
 				display: none;
 			}
 		</style>
@@ -445,7 +445,7 @@ class WP {
 			$data = __( 'Error', 'church-sermon-manager' );
 		}
 
-		echo $data;
+		echo esc_html( $data );
 	}
 
 	/**

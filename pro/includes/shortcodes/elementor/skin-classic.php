@@ -100,10 +100,10 @@ class Skin_Classic extends Skin_Base {
 		$args = apply_filters( 'smp/shortcodes/archive/skin_classic/render_args', $args );
 
 		try {
-			echo Templating_Manager::render( 'archive-elementor', null, $args );
+			echo Templating_Manager::render( 'archive-elementor', null, $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- rendered view markup from the templating pipeline.
 		} catch ( \RuntimeException $e ) {
 			define( 'SMPRO_RENDER_ERROR', true );
-			echo '<div class="notice notice-error"><p><strong>Church Sermon Manager</strong>: Error in rendering the view, error message: "' . $e->getMessage() . '"</p></div>';
+			echo '<div class="notice notice-error"><p><strong>Church Sermon Manager</strong>: Error in rendering the view, error message: "' . esc_html( $e->getMessage() ) . '"</p></div>';
 		}
 	}
 
@@ -234,7 +234,7 @@ class Skin_Classic extends Skin_Base {
 			),
 		) );
 		?>
-	<div <?php echo $this->parent->get_render_attribute_string( 'container' ); ?>>
+	<div <?php echo $this->parent->get_render_attribute_string( 'container' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- attribute string built and escaped by Elementor. ?>>
 		<?php
 	}
 }

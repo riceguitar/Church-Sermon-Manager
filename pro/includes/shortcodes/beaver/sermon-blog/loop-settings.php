@@ -28,7 +28,7 @@ $settings = (object) array_merge( $defaults, (array) $settings );
 	<div class="fl-custom-query fl-loop-data-source" data-source="custom_query">
 		<div id="fl-builder-settings-section-general" class="fl-builder-settings-section">
 			<h3 class="fl-builder-settings-title">
-				<span class="fl-builder-settings-title-text-wrap"><?php _e( 'Custom Query', 'fl-builder' ); ?></span>
+				<span class="fl-builder-settings-title-text-wrap"><?php esc_html_e( 'Custom Query', 'fl-builder' ); ?></span>
 			</h3>
 			<table class="fl-form-table">
 				<?php
@@ -90,7 +90,7 @@ $settings = (object) array_merge( $defaults, (array) $settings );
 		</div>
 		<div id="fl-builder-settings-section-filter" class="fl-builder-settings-section">
 			<h3 class="fl-builder-settings-title">
-				<span class="fl-builder-settings-title-text-wrap"><?php _e( 'Filter', 'fl-builder' ); ?></span>
+				<span class="fl-builder-settings-title-text-wrap"><?php esc_html_e( 'Filter', 'fl-builder' ); ?></span>
 			</h3>
 			<?php foreach ( FLBuilderLoop::post_types() as $slug => $type ) : ?>
 				<table class="fl-form-table fl-custom-query-filter fl-custom-query-<?php echo $slug; ?>-filter" <?php echo $slug == $settings->post_type ? 'style="display:table;"' : ''; ?>>

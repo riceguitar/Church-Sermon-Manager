@@ -74,7 +74,7 @@ function smp_render_color_picker_field( $value, $option_value, $description, $to
 	<tr valign="top">
 		<th scope="row" class="titledesc">
 			<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-			<?php echo $tooltip_html; ?>
+			<?php echo $tooltip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- tooltip markup from wc-style help-tip helper. ?>
 		</th>
 		<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ); ?>">
 			<input
@@ -86,7 +86,7 @@ function smp_render_color_picker_field( $value, $option_value, $description, $to
 					class="<?php echo esc_attr( $value['class'] ); ?>"
 					size="<?php echo esc_attr( $value['size'] ); ?>"
 					placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
-				<?php echo implode( ' ', $custom_attributes ); ?>
+				<?php echo implode( ' ', $custom_attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- attribute strings pre-escaped when the settings field array is built. ?>
 			/><span>Current color: <?php echo esc_attr( $option_value ); ?></span>
 			<?php echo $description; ?>
 		</td>

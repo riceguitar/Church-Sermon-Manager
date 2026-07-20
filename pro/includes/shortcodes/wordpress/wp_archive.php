@@ -47,7 +47,7 @@ class WP_Archive extends WP_Shortcode {
 			<h3>All good!</h3>
 			<p>Page assignment is successfully set up. This is the page which will be used for
 				sermons <?php echo $is_archive_page ? 'archive' : 'taxonomy'; ?> views.</p>
-			<p>To try it out, just go to the <a href="<?php echo get_post_type_archive_link( 'wpfc_sermon' ); ?>">sermons <?php echo $archive_page ? 'archive' : 'taxonomy'; ?>
+			<p>To try it out, just go to the <a href="<?php echo esc_url( get_post_type_archive_link( 'wpfc_sermon' ) ); ?>">sermons <?php echo $archive_page ? 'archive' : 'taxonomy'; ?>
 					page</a>, as usual.</p>
 			<?php
 			return ob_get_clean();
@@ -78,11 +78,11 @@ class WP_Archive extends WP_Shortcode {
 		<div class="smpro-items">
 			<?php
 			if ( $attributes['filtering'] ) {
-				echo render_wpfc_sorting( $attributes['filtering_args'] );
+				echo render_wpfc_sorting( $attributes['filtering_args'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- filtering UI markup composed by the plugin.
 			}
 
 			if ( $attributes['columns'] ) {
-				echo '<style>', wp_sprintf( '.smpro-items-container, .smpro-items {--smpro-layout-columns: %s !important}', $attributes['columns'] ), '</style>';
+				echo '<style>', esc_html( wp_sprintf( '.smpro-items-container, .smpro-items {--smpro-layout-columns: %s !important}', $attributes['columns'] ) ), '</style>';
 			}
 
 			$args = array(
@@ -90,16 +90,16 @@ class WP_Archive extends WP_Shortcode {
 			);
 
 			if ( have_posts() ) :
-				echo apply_filters( 'smp/shortcodes/wordpress/archive/before_loop', '' );
+				echo apply_filters( 'smp/shortcodes/wordpress/archive/before_loop', '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- filterable markup slot (frozen public filter name).
 
 				while ( have_posts() ) :
 					the_post();
 					wpfc_sermon_excerpt_v2( false, $args ); // You can edit the content of this function in `partials/content-sermon-archive.php`.
 				endwhile;
 
-				echo apply_filters( 'smp/shortcodes/wordpress/archive/after_loop', '' );
+				echo apply_filters( 'smp/shortcodes/wordpress/archive/after_loop', '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- filterable markup slot (frozen public filter name).
 			else :
-				echo __( 'Sorry, but there aren\'t any posts matching your query.', 'church-sermon-manager' );
+				echo esc_html__( 'Sorry, but there aren\'t any posts matching your query.', 'church-sermon-manager' );
 			endif;
 			?>
 		</div>

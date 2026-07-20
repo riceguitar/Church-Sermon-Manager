@@ -151,7 +151,7 @@ class Shortcodes {
                     $label = apply_filters('wpfc_podcast_label_' . esc_attr($key), $label);
 
                     // Print link.
-                    echo '<li><a class="' . esc_attr($key) . '" title="' . esc_attr($label) . '" href="' . esc_url($url) . '" target="_blank" rel="noopener">' . $label . '</a></li>';
+                    echo '<li><a class="' . esc_attr($key) . '" title="' . esc_attr($label) . '" href="' . esc_url($url) . '" target="_blank" rel="noopener">' . esc_html($label) . '</a></li>';
                 }
             }
             echo '</ul>';
@@ -412,6 +412,7 @@ class Shortcodes {
 
                 echo '<div class="sermon-taxonomy-item">';
                 echo '<a href="' . esc_url(get_term_link($term)) . '">';
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- image markup built by the plugin from get_the_post_thumbnail().
                 echo $image;
                 echo '<span class="sermon-taxonomy-title">' . esc_html($term->name) . '</span>';
                 echo '</a>';
@@ -487,6 +488,7 @@ class Shortcodes {
         ob_start();
         echo '<div class="latest-series-image">';
         echo '<a href="' . esc_url(get_term_link($series)) . '">';
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- image markup built by the plugin from get_the_post_thumbnail().
         echo $image;
         echo '<span class="series-title">' . esc_html($series->name) . '</span>';
         echo '</a>';
@@ -620,7 +622,8 @@ class Shortcodes {
         // Add pagination if not hidden.
         if (!$args['hide_pagination']) {
             echo '<div class="sermon-pagination">';
-            echo paginate_links([
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core paginate_links() markup.
+        echo paginate_links([
                 'base'    => str_replace('999999999', '%#%', esc_url(get_pagenum_link(999999999))),
                 'format'  => '?paged=%#%',
                 'current' => max(1, $args['paged']),

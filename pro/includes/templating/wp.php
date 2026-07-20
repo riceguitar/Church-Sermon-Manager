@@ -114,7 +114,7 @@ class WP {
 				ob_start();
 				?>
 				<div class="sm-filtering">
-					<?php echo $content; ?>
+					<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- editor form markup composed by the templating admin views. ?>
 				</div>
 				<?php
 				return ob_get_clean();
@@ -430,7 +430,7 @@ class WP {
 			$data = __( 'Error', 'church-sermon-manager' );
 		}
 
-		echo $data;
+		echo esc_html( $data );
 	}
 
 	/**

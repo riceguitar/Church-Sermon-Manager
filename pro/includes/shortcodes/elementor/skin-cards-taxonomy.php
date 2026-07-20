@@ -481,11 +481,11 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 						if ( $image_id ) {
 							/* @noinspection CssUnknownTarget */
 							echo sprintf(
-								'<a href="' . get_term_link( $term, $taxonomy ) . '" class="wpfc-term-grid-image" style="background-image:url(%s);"></a>',
+								'<a href="' . esc_url( get_term_link( $term, $taxonomy ) ) . '" class="wpfc-term-grid-image" style="background-image:url(%s);"></a>',
 								wp_get_attachment_image_url( $image_id, array( 300, 300 ) )
 							);
 						} else {
-							echo sprintf( '<a href="' . get_term_link( $term, $taxonomy ) . '" class="wpfc-term-grid-image" style="background-color:#cecece;"></a>' );
+							echo sprintf( '<a href="' . esc_url( get_term_link( $term, $taxonomy ) ) . '" class="wpfc-term-grid-image" style="background-color:#cecece;"></a>' );
 						}
 					}
 					?>
@@ -495,14 +495,14 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 						<div class="wpfc-term-inner">
 						
 							<?php if ($settings['show_title']) { ?>
-							<<?php echo $settings['title_tag']; ?>> 
-								<a href="<?php echo get_term_link( $term, $taxonomy ); ?>"
-									class="wpfc-term-title"><?php echo $term->name; ?></a>
-							</<?php echo $settings['title_tag']; ?>> 
+							<<?php echo tag_escape( $settings['title_tag'] ); ?>> 
+								<a href="<?php echo esc_url( get_term_link( $term, $taxonomy ) ); ?>"
+									class="wpfc-term-title"><?php echo esc_html( $term->name ); ?></a>
+							</<?php echo tag_escape( $settings['title_tag'] ); ?>> 
 							<?php } ?>
 							
 							<?php if ($settings['show_desc']) { ?>
-								<div class="wpfc-term-description"><?php echo wp_trim_words( $term->description, $settings['desc_length'], '...' ); ?></div>
+								<div class="wpfc-term-description"><?php echo wp_trim_words( $term->description, $settings['desc_length'], '...' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_trim_words() strips tags; remaining entities would be double-encoded by esc_html(). ?></div>
 							<?php } ?>
 							
 						</div>
@@ -514,7 +514,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 				<?php endforeach; ?>
 			<?php else : ?>
 				<div class="terms-404">
-					<?php echo __( 'No terms found.', 'church-sermon-manager' ); ?>
+					<?php echo esc_html__( 'No terms found.', 'church-sermon-manager' ); ?>
 				</div>
 			<?php endif; ?>
 		</div>

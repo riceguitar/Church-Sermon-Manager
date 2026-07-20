@@ -847,10 +847,10 @@ class Skin_Cards extends Skin_Base {
 		$args = apply_filters( 'smp/shortcodes/archive/skin_cards/render_args', $args );
 
 		try {
-			echo Templating_Manager::render( 'archive-elementor', null, $args );
+			echo Templating_Manager::render( 'archive-elementor', null, $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- rendered view markup from the templating pipeline.
 		} catch ( \RuntimeException $e ) {
 			define( 'SMPRO_RENDER_ERROR', true );
-			echo '<div class="notice notice-error"><p><strong>Church Sermon Manager</strong>: Error in rendering the view, error message: "' . $e->getMessage() . '"</p></div>';
+			echo '<div class="notice notice-error"><p><strong>Church Sermon Manager</strong>: Error in rendering the view, error message: "' . esc_html( $e->getMessage() ) . '"</p></div>';
 		}
 	}
 
@@ -897,9 +897,9 @@ class Skin_Cards extends Skin_Base {
 			'masonry'            => $this->get_instance_value( 'masonry' ),
         );
         if ( $settings['masonry'] == 'yes' ) {
-            echo '<div ' . $this->parent->get_render_attribute_string( 'container' ) . ' data-masonry=\'{ "gutter": 0 }\' >';
+            echo '<div ' . $this->parent->get_render_attribute_string( 'container' ) . ' data-masonry=\'{ "gutter": 0 }\' >'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- attribute string built and escaped by Elementor.
         } else {
-            echo '<div ' . $this->parent->get_render_attribute_string( 'container' ) . ' >';
+            echo '<div ' . $this->parent->get_render_attribute_string( 'container' ) . ' >'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- attribute string built and escaped by Elementor.
         }
 	}
 
@@ -907,7 +907,7 @@ class Skin_Cards extends Skin_Base {
 	 * Render post header.
 	 */
 	protected function render_post_header() {
-		echo '<article' . post_class( array( 'elementor-post elementor-grid-item' ) ) . '>';
+		echo '<article' . post_class( array( 'elementor-post elementor-grid-item' ) ) . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core post_class() output.
 		echo '<div class="elementor-post__card">';
 
 	}
@@ -939,8 +939,8 @@ class Skin_Cards extends Skin_Base {
 			return;
 		}
 		?>
-       	<a class="elementor-post__thumbnail__link" href="<?php echo get_permalink(); ?>">
-			<div class="elementor-post__thumbnail"><?php echo $thumbnail_html; ?></div>
+       	<a class="elementor-post__thumbnail__link" href="<?php echo esc_url( get_permalink() ); ?>">
+			<div class="elementor-post__thumbnail"><?php echo $thumbnail_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- image markup from Elementor Group_Control_Image_Size. ?></div>
 		</a>
 		<?php
 		if ( $this->get_instance_value( 'show_badge' ) ) {
@@ -966,7 +966,7 @@ class Skin_Cards extends Skin_Base {
 			return;
 		}
 		?>
-		<div class="elementor-post__badge"><?php echo $terms[0]->name; ?></div>
+		<div class="elementor-post__badge"><?php echo esc_html( $terms[0]->name ); ?></div>
 		<?php
 	}
 
@@ -976,7 +976,7 @@ class Skin_Cards extends Skin_Base {
 	protected function render_avatar() {
 		?>
 		<div class="elementor-post__avatar">
-			<?php echo get_avatar( get_the_author_meta( 'ID' ), 128, '', get_the_author_meta( 'display_name' ) ); ?>
+			<?php echo get_avatar( get_the_author_meta( 'ID' ), 128, '', get_the_author_meta( 'display_name' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core get_avatar() markup. ?>
 		</div>
 		<?php
 	}

@@ -132,8 +132,8 @@ class Sermon_Taxonomy extends Widget_Base {
 
 					?>
 					<nav class="elementor-pagination" role="navigation"
-							aria-label="<?php _e( 'Pagination', 'elementor-pro' ); ?>">
-						<?php echo implode( PHP_EOL, $links ); ?>
+							aria-label="<?php esc_attr_e( 'Pagination', 'elementor-pro' ); ?>">
+						<?php echo implode( PHP_EOL, $links ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core paginate_links() markup. ?>
 					</nav>
 					<?php
 				}

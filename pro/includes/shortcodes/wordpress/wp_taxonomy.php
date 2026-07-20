@@ -66,7 +66,7 @@ class WP_Taxonomy extends WP_Archive {
 			<h3>All good!</h3>
 			<p>Page assignment is successfully set up. This is the page which will be used for sermons taxonomy
 				views.</p>
-			<p>To try it out, just go to <a href="<?php echo $term_url ?: '#'; ?>">any sermons taxonomy page</a>, as
+			<p>To try it out, just go to <a href="<?php echo esc_url( $term_url ?: '#' ); ?>">any sermons taxonomy page</a>, as
 				usual.</p>
 			<?php
 			return ob_get_clean();
@@ -97,7 +97,7 @@ class WP_Taxonomy extends WP_Archive {
 		<div class="smpro-items smpro-items-container <?php echo 'yes' === $settings['masonry_layout'] ? 'smpro-masonry-layout grid js-masonry' : ''; ?>" <?php echo 'yes' === $settings['masonry_layout'] ? 'data-masonry="{ \'gutter\': 24 }"' : ''; ?>>
 			<?php
 			if ( $attributes['filtering'] ) {
-				echo render_wpfc_sorting( $attributes['filtering_args'] );
+				echo render_wpfc_sorting( $attributes['filtering_args'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- filtering UI markup composed by the plugin.
 			}
 
 			if ( have_posts() ) :
@@ -106,7 +106,7 @@ class WP_Taxonomy extends WP_Archive {
 					wpfc_sermon_excerpt_v2(); // You can edit the content of this function in `partials/content-sermon-archive.php`.
 				endwhile;
 			else :
-				echo __( "Sorry, but there aren't any sermons matching your query.", 'church-sermon-manager' );
+				echo esc_html__( "Sorry, but there aren't any sermons matching your query.", 'church-sermon-manager' );
 			endif;
 			?>
 		</div>

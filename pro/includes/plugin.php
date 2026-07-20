@@ -389,13 +389,13 @@ class Plugin {
 						}
 
 						?>
-						<div class="notice smp-notice notice-<?php echo $notice['type']; ?> <?php echo true === $notice['preserve'] ? 'is-dismissible' : ''; ?>"
-								id="smp-notice-<?php echo $notice['id']; ?>">
+						<div class="notice smp-notice notice-<?php echo esc_attr( $notice['type'] ); ?> <?php echo true === $notice['preserve'] ? 'is-dismissible' : ''; ?>"
+								id="smp-notice-<?php echo esc_attr( $notice['id'] ); ?>">
 							<p>
 								<?php if ( ! $notice['hide_plugin_name'] ) : ?>
-									<strong><?php echo __( 'Church Sermon Manager', 'church-sermon-manager' ); ?></strong>&nbsp;
+									<strong><?php echo esc_html__( 'Church Sermon Manager', 'church-sermon-manager' ); ?></strong>&nbsp;
 								<?php endif; ?>
-								<?php echo $notice['message']; ?>
+								<?php echo $notice['message']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- notice HTML composed by the plugin's notice manager. ?>
 							</p>
 							<?php
 							// Set as seen if it's single show only.
@@ -420,7 +420,7 @@ class Plugin {
 					?>
 					<div class="notice notice-info is-dismissible">
 						<h3 style="margin:0">Church Sermon Manager</h3>
-						<p><?php echo __( 'Hi there! There are new versions available for some of installed templates:', 'church-sermon-manager' ); ?></p>
+						<p><?php echo esc_html__( 'Hi there! There are new versions available for some of installed templates:', 'church-sermon-manager' ); ?></p>
 						<table class="template-versions">
 							<tr>
 								<th style="text-align: left;">Name</th>
@@ -429,15 +429,15 @@ class Plugin {
 							</tr>
 							<?php foreach ( $smp_new_templates as $name => $versions ) : ?>
 								<tr>
-									<td style="text-align: left;"><?php echo $name; ?></td>
-									<td><?php echo $versions['old_version']; ?></td>
-									<td><?php echo $versions['new_version']; ?></td>
+									<td style="text-align: left;"><?php echo esc_html( $name ); ?></td>
+									<td><?php echo esc_html( $versions['old_version'] ); ?></td>
+									<td><?php echo esc_html( $versions['new_version'] ); ?></td>
 								</tr>
 							<?php endforeach; ?>
 						</table>
 						<p>
 							<a class="button button-primary"
-									href="<?php echo admin_url( 'edit.php?post_type=wpfc_sm_template&doaction=updateall' ); ?>">
+									href="<?php echo esc_url( admin_url( 'edit.php?post_type=wpfc_sm_template&doaction=updateall' ) ); ?>">
 								Update all</a>
 							<span style="color: #bbb; font-style: italic;">Only the listed templates will be affected. Copies will not be modified or removed. The settings of all templates will be preserved.</span>
 						</p>

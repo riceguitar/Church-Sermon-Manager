@@ -81,7 +81,7 @@ class Sermon_Filtering extends Widget_Base {
 		 *
 		 * @param string $content The HTML.
 		 */
-		echo apply_filters( 'smp/shortcodes/elementor/sermon_filtering', $content );
+		echo apply_filters( 'smp/shortcodes/elementor/sermon_filtering', $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- filtering UI markup composed by the plugin, filterable.
 	}
 
 	/**

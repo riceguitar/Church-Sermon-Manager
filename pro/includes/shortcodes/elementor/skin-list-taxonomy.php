@@ -165,7 +165,7 @@ class Skin_List_Taxonomy extends Skin_Base {
 					<div class="wpfc-term-list">
 						<?php foreach ( $terms as $term ) : ?>
 							<div class="wpfc-term">
-								<a href="<?php echo get_term_link( $term, $settings['taxonomy'] ); ?>"><?php echo $term->name; ?></a>
+								<a href="<?php echo esc_url( get_term_link( $term, $settings['taxonomy'] ) ); ?>"><?php echo esc_html( $term->name ); ?></a>
 							</div>
 						<?php endforeach; ?>
 					</div>
@@ -179,7 +179,7 @@ class Skin_List_Taxonomy extends Skin_Base {
 				<div class="wpfc-term-list elementor-grid">
 					<?php foreach ( $terms as $term ) : ?>
 						<div class="wpfc-term">
-							<a href="<?php echo get_term_link( $term, $settings['taxonomy'] ); ?>"><?php echo $term->name; ?></a>
+							<a href="<?php echo esc_url( get_term_link( $term, $settings['taxonomy'] ) ); ?>"><?php echo esc_html( $term->name ); ?></a>
 						</div>
 					<?php endforeach; ?>
 				</div>

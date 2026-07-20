@@ -463,7 +463,7 @@ final class Templating_Manager {
 		try {
 			$template = $twig->load( $context . '.twig' );
 		} catch ( \Exception $e ) {
-			throw new \RuntimeException( 'Error in loading template file: ' . $e->getMessage() );
+			throw new \RuntimeException( 'Error in loading template file: ' . esc_html( $e->getMessage() ) );
 		}
 
 		$settings = Settings::get_settings();
@@ -525,7 +525,7 @@ final class Templating_Manager {
 			// Twig errors extend \Exception, not \RuntimeException — rethrow so the
 			// callers' catch ( \RuntimeException ) fallbacks actually engage instead
 			// of the error escaping as a fatal.
-			throw new \RuntimeException( 'Error rendering template: ' . $e->getMessage(), 0, $e );
+			throw new \RuntimeException( 'Error rendering template: ' . esc_html( $e->getMessage() ), 0, $e );
 		}
 	}
 

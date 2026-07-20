@@ -143,7 +143,7 @@ class SM_Admin_Settings {
 		global $current_tab, $wpdb;
 
 		if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'sm-settings' ) ) {
-			die( __( 'Action failed. Please refresh the page and retry.', 'church-sermon-manager' ) );
+			die( esc_html( __( 'Action failed. Please refresh the page and retry.', 'church-sermon-manager' ) ) );
 		}
 
 		/**
@@ -274,7 +274,7 @@ class SM_Admin_Settings {
 						echo '<h2 class="forminp-title">' . esc_html( $option['title'] ) . '</h2>';
 					}
 					if ( ! empty( $option['desc'] ) ) {
-						echo wpautop( wptexturize( wp_kses_post( $option['desc'] ) ) );
+						echo wpautop( wptexturize( wp_kses_post( $option['desc'] ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Sanitized with wp_kses_post() before wpautop/wptexturize.
 					}
 					echo '<table class="form-table">' . "\n\n";
 					if ( ! empty( $option['id'] ) ) {
@@ -306,9 +306,9 @@ class SM_Admin_Settings {
 					<tr valign="top">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $option['id'] ); ?>"><?php echo esc_html( $option['title'] ); ?></label>
-							<?php echo $tooltip_html; ?>
+							<?php echo $tooltip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Tooltip HTML built by get_field_description(); sm_help_tip() esc_attr's the tip text. ?>
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $option['type'] ); ?>">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $option['type'] ) ); ?>">
 							<input
 									name="<?php echo esc_attr( $option['id'] ); ?>"
 									id="<?php echo esc_attr( $option['id'] ); ?>"
@@ -321,8 +321,8 @@ class SM_Admin_Settings {
 								<?php if ( $option['disabled'] ) : ?>
 									disabled="disabled"
 								<?php endif; ?>
-								<?php echo implode( ' ', $custom_attributes ); ?>
-							/> <?php echo $description; ?>
+								<?php echo implode( ' ', $custom_attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Attribute strings are esc_attr()-escaped (or plugin-defined literals) when built above. ?>
+							/> <?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Description HTML composed by get_field_description() from plugin settings config (wp_kses_post'd). ?>
 						</td>
 					</tr>
 					<?php
@@ -334,9 +334,9 @@ class SM_Admin_Settings {
 					<tr valign="top">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $option['id'] ); ?>"><?php echo esc_html( $option['title'] ); ?></label>
-							<?php echo $tooltip_html; ?>
+							<?php echo $tooltip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Tooltip HTML built by get_field_description(); sm_help_tip() esc_attr's the tip text. ?>
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $option['type'] ); ?>">&lrm;
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $option['type'] ) ); ?>">&lrm;
 							<span class="colorpickpreview"
 									style="background: <?php echo esc_attr( $option_value ); ?>"></span>
 							<input
@@ -351,8 +351,8 @@ class SM_Admin_Settings {
 								<?php if ( $option['disabled'] ) : ?>
 									disabled="disabled"
 								<?php endif; ?>
-								<?php echo implode( ' ', $custom_attributes ); ?>
-							/>&lrm; <?php echo $description; ?>
+								<?php echo implode( ' ', $custom_attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Attribute strings are esc_attr()-escaped (or plugin-defined literals) when built above. ?>
+							/>&lrm; <?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Description HTML composed by get_field_description() from plugin settings config (wp_kses_post'd). ?>
 							<div id="colorPickerDiv_<?php echo esc_attr( $option['id'] ); ?>" class="colorpickdiv"
 									style="z-index: 100;background:#eee;border:1px solid #ccc;position:absolute;display:none;"></div>
 						</td>
@@ -366,10 +366,10 @@ class SM_Admin_Settings {
 					<tr valign="top">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $option['id'] ); ?>"><?php echo esc_html( $option['title'] ); ?></label>
-							<?php echo $tooltip_html; ?>
+							<?php echo $tooltip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Tooltip HTML built by get_field_description(); sm_help_tip() esc_attr's the tip text. ?>
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $option['type'] ); ?>">
-							<?php echo $description; ?>
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $option['type'] ) ); ?>">
+							<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Description HTML composed by get_field_description() from plugin settings config (wp_kses_post'd). ?>
 
 							<textarea
 									name="<?php echo esc_attr( $option['id'] ); ?>"
@@ -377,7 +377,7 @@ class SM_Admin_Settings {
 									style="<?php echo esc_attr( $option['css'] ); ?>"
 									class="<?php echo esc_attr( $option['class'] ); ?>"
 									placeholder="<?php echo esc_attr( $option['placeholder'] ); ?>"
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo implode( ' ', $custom_attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Attribute strings are esc_attr()-escaped (or plugin-defined literals) when built above. ?>
 								<?php if ( $option['disabled'] ) : ?>
 									disabled="disabled"
 								<?php endif; ?>
@@ -394,15 +394,15 @@ class SM_Admin_Settings {
 					<tr valign="top">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $option['id'] ); ?>"><?php echo esc_html( $option['title'] ); ?></label>
-							<?php echo $tooltip_html; ?>
+							<?php echo $tooltip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Tooltip HTML built by get_field_description(); sm_help_tip() esc_attr's the tip text. ?>
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $option['type'] ); ?>">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $option['type'] ) ); ?>">
 							<select
 									name="<?php echo esc_attr( $option['id'] ); ?><?php echo ( 'multiselect' === $option['type'] ) ? '[]' : ''; ?>"
 									id="<?php echo esc_attr( $option['id'] ); ?>"
 									style="<?php echo esc_attr( $option['css'] ); ?>"
 									class="<?php echo esc_attr( $option['class'] ); ?>"
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo implode( ' ', $custom_attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Attribute strings are esc_attr()-escaped (or plugin-defined literals) when built above. ?>
 								<?php echo ( 'multiselect' == $option['type'] ) ? 'multiple="multiple"' : ''; ?>
 								<?php if ( $option['disabled'] ) : ?>
 									disabled="disabled"
@@ -421,11 +421,11 @@ class SM_Admin_Settings {
 										}
 
 										?>
-									><?php echo $val; ?></option>
+									><?php echo esc_html( $val ); ?></option>
 									<?php
 								}
 								?>
-							</select> <?php echo $description; ?>
+							</select> <?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Description HTML composed by get_field_description() from plugin settings config (wp_kses_post'd). ?>
 						</td>
 					</tr>
 					<?php
@@ -437,15 +437,15 @@ class SM_Admin_Settings {
 					<tr valign="top">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $option['id'] ); ?>"><?php echo esc_html( $option['title'] ); ?></label>
-							<?php echo $tooltip_html; ?>
+							<?php echo $tooltip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Tooltip HTML built by get_field_description(); sm_help_tip() esc_attr's the tip text. ?>
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $option['type'] ); ?>">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $option['type'] ) ); ?>">
 							<fieldset
 								<?php if ( $option['disabled'] ) : ?>
 									disabled="disabled"
 								<?php endif; ?>
 							>
-								<?php echo $description; ?>
+								<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Description HTML composed by get_field_description() from plugin settings config (wp_kses_post'd). ?>
 								<ul>
 									<?php
 									foreach ( $option['options'] as $key => $val ) {
@@ -454,13 +454,13 @@ class SM_Admin_Settings {
 											<label>
 												<input
 														name="<?php echo esc_attr( $option['id'] ); ?>"
-														value="<?php echo $key; ?>"
+														value="<?php echo esc_attr( $key ); ?>"
 														type="radio"
 														style="<?php echo esc_attr( $option['css'] ); ?>"
 														class="<?php echo esc_attr( $option['class'] ); ?>"
-													<?php echo implode( ' ', $custom_attributes ); ?>
+													<?php echo implode( ' ', $custom_attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Attribute strings are esc_attr()-escaped (or plugin-defined literals) when built above. ?>
 													<?php checked( $key, $option_value ); ?>
-												/> <?php echo $val; ?>
+												/> <?php echo esc_html( $val ); ?>
 											</label>
 										</li>
 										<?php
@@ -513,7 +513,7 @@ class SM_Admin_Settings {
 									<?php
 								}
 								?>
-								<label for="<?php echo $option['id']; ?>">
+								<label for="<?php echo esc_attr( $option['id'] ); ?>">
 									<input
 											name="<?php echo esc_attr( $option['id'] ); ?>"
 											id="<?php echo esc_attr( $option['id'] ); ?>"
@@ -521,9 +521,9 @@ class SM_Admin_Settings {
 											class="<?php echo esc_attr( isset( $option['class'] ) ? $option['class'] : '' ); ?>"
 											value="1"
 										<?php checked( $option_value, 'yes' ); ?>
-										<?php echo implode( ' ', $custom_attributes ); ?>
-									/> <?php echo $description; ?>
-								</label> <?php echo $tooltip_html; ?>
+										<?php echo implode( ' ', $custom_attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Attribute strings are esc_attr()-escaped (or plugin-defined literals) when built above. ?>
+									/> <?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Description HTML composed by get_field_description() from plugin settings config (wp_kses_post'd). ?>
+								</label> <?php echo $tooltip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Tooltip HTML built by get_field_description(); sm_help_tip() esc_attr's the tip text. ?>
 							</fieldset>
 						</td>
 					</tr>
@@ -537,9 +537,9 @@ class SM_Admin_Settings {
 						<!--suppress XmlDefaultAttributeValue -->
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $option['id'] ); ?>"><?php echo esc_html( $option['title'] ); ?></label>
-							<?php echo $tooltip_html; ?>
+							<?php echo $tooltip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Tooltip HTML built by get_field_description(); sm_help_tip() esc_attr's the tip text. ?>
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $option['type'] ); ?>">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $option['type'] ) ); ?>">
 							<div class="image-picker-form-container">
 								<input
 										name="<?php echo esc_attr( $option['id'] ); ?>"
@@ -552,7 +552,7 @@ class SM_Admin_Settings {
 									<?php if ( $option['disabled'] ) : ?>
 										disabled="disabled"
 									<?php endif; ?>
-									<?php echo implode( ' ', $custom_attributes ); ?>
+									<?php echo implode( ' ', $custom_attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Attribute strings are esc_attr()-escaped (or plugin-defined literals) when built above. ?>
 								/>
 								<a
 										id="upload_<?php echo esc_attr( $option['id'] ); ?>"
@@ -560,7 +560,7 @@ class SM_Admin_Settings {
 										class="button upload-image"
 										title="Choose Default Image">
 									<img
-											src="<?php echo admin_url( '/images/media-button.png' ); ?>"
+											src="<?php echo esc_url( admin_url( '/images/media-button.png' ) ); ?>"
 											alt="Upload Default Image"
 											width="15"
 											height="15"
@@ -569,7 +569,7 @@ class SM_Admin_Settings {
 									&nbsp;Upload Image
 								</a>
 							</div>
-							<?php echo $description; ?>
+							<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Description HTML composed by get_field_description() from plugin settings config (wp_kses_post'd). ?>
 							<div id="default-image-thumb-load" style="width: 250px;">
 								<br/>
 								<?php if ( ! empty( $option_value ) ) : ?>
@@ -586,8 +586,8 @@ class SM_Admin_Settings {
 				case 'description':
 					?>
 					<tr valign="top">
-						<td class="forminp forminp-<?php echo sanitize_title( $option['type'] ); ?>" colspan="2">
-							<p><?php echo $option['desc']; ?></p>
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $option['type'] ) ); ?>" colspan="2">
+							<p><?php echo $option['desc']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Plugin-defined description HTML from the settings config array. ?></p>
 						</td>
 					</tr>
 					<?php
@@ -595,7 +595,7 @@ class SM_Admin_Settings {
 				case 'separator':
 					?>
 					<tr valign="top">
-						<td class="forminp forminp-<?php echo sanitize_title( $option['type'] ); ?>" colspan="2">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $option['type'] ) ); ?>" colspan="2">
 							<hr/>
 						</td>
 					</tr>
@@ -604,7 +604,7 @@ class SM_Admin_Settings {
 				case 'separator_title':
 					?>
 					<tr valign="top">
-						<td class="forminp forminp-<?php echo sanitize_title( $option['type'] ); ?>" colspan="2">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $option['type'] ) ); ?>" colspan="2">
 							<h2><?php echo esc_html( $option['title'] ); ?></h2>
 						</td>
 					</tr>

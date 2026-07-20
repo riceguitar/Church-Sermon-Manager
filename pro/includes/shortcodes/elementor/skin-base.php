@@ -1108,7 +1108,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		 * @param string $content The HTML.
 		 */
 		if ( $settings['show_filter'] == 'yes' ) {
-			echo apply_filters( 'smp/shortcodes/elementor/sermon_filtering', $content );
+			echo apply_filters( 'smp/shortcodes/elementor/sermon_filtering', $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- filtering UI markup composed by the plugin, filterable.
 		}
 		
 	}	
@@ -1125,7 +1125,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				$this->get_container_class(),
 			),
 		) );
-		echo '<div' . $this->parent->get_render_attribute_string( 'container' ) . '>';
+		echo '<div' . $this->parent->get_render_attribute_string( 'container' ) . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- attribute string built and escaped by Elementor.
 		
 	}
 
@@ -1168,7 +1168,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 	 * Render post header.
 	 */
 	protected function render_post_header() {
-		echo '<article' . post_class( array( 'elementor-post elementor-grid-item' ) ) . '>';
+		echo '<article' . post_class( array( 'elementor-post elementor-grid-item' ) ) . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core post_class() output.
 	}
 
 	/**
@@ -1192,8 +1192,8 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			return;
 		}
 		?>
-		<a class="elementor-post__thumbnail__link" href="<?php echo get_permalink(); ?>">
-			<div class="elementor-post__thumbnail"><?php echo $thumbnail_html; ?></div>
+		<a class="elementor-post__thumbnail__link" href="<?php echo esc_url( get_permalink() ); ?>">
+			<div class="elementor-post__thumbnail"><?php echo $thumbnail_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- image markup from Elementor Group_Control_Image_Size. ?></div>
 		</a>
 		<?php
 	}
@@ -1217,11 +1217,11 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 
 		$tag = $this->get_instance_value( 'title_tag' );
 		?>
-		<<?php echo $tag; ?> class="elementor-post__title">
-		<a href="<?php echo get_permalink(); ?>">
+		<<?php echo tag_escape( $tag ); ?> class="elementor-post__title">
+		<a href="<?php echo esc_url( get_permalink() ); ?>">
 			<?php the_title(); ?>
 		</a>
-		</<?php echo $tag; ?>>
+		</<?php echo tag_escape( $tag ); ?>>
 		<?php
 	}
 
@@ -1280,7 +1280,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		<span class="elementor-post-date">
 			<?php
 			/** This filter is documented in wp-includes/general-template.php */
-			echo apply_filters( 'the_date', get_the_date(), get_option( 'date_format' ), '', '' );
+			echo apply_filters( 'the_date', get_the_date(), get_option( 'date_format' ), '', '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core the_date filter output.
 			?>
 		</span>
 		<?php
@@ -1330,8 +1330,8 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			return;
 		}
 		?>
-		<a class="elementor-post__read-more" href="<?php echo get_permalink(); ?>">
-			<?php echo $this->get_instance_value( 'read_more_text' ); ?>
+		<a class="elementor-post__read-more" href="<?php echo esc_url( get_permalink() ); ?>">
+			<?php echo esc_html( $this->get_instance_value( 'read_more_text' ) ); ?>
 		</a>
 		<?php
 	}
@@ -1398,8 +1398,8 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		}
 
 		?>
-		<nav class="elementor-pagination" role="navigation" aria-label="<?php _e( 'Pagination', 'elementor-pro' ); ?>">
-			<?php echo implode( PHP_EOL, $links ); ?>
+		<nav class="elementor-pagination" role="navigation" aria-label="<?php esc_attr_e( 'Pagination', 'elementor-pro' ); ?>">
+			<?php echo implode( PHP_EOL, $links ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core paginate_links() markup. ?>
 		</nav>
 		<?php
 	}

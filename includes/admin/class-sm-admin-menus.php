@@ -81,7 +81,7 @@ class SM_Admin_Menus {
 	 */
 	public function migrate_pro_content_page() {
 		if ( ! current_user_can( 'manage_wpfc_sm_settings' ) ) {
-			wp_die( __( 'You do not have sufficient permissions to access this page.', 'church-sermon-manager' ) );
+			wp_die( esc_html( __( 'You do not have sufficient permissions to access this page.', 'church-sermon-manager' ) ) );
 		}
 
 		$updated = false;
@@ -94,22 +94,22 @@ class SM_Admin_Menus {
 		}
 		?>
 		<div class="wrap">
-			<h1><?php _e( 'Migrate Pro Content to Native', 'church-sermon-manager' ); ?></h1>
-			<p><?php _e( 'This tool will copy the content from the Pro plugin\'s "sermon_description" meta field into the native post_content field for all sermons. Use with caution.', 'church-sermon-manager' ); ?></p>
+			<h1><?php esc_html_e( 'Migrate Pro Content to Native', 'church-sermon-manager' ); ?></h1>
+			<p><?php esc_html_e( 'This tool will copy the content from the Pro plugin\'s "sermon_description" meta field into the native post_content field for all sermons. Use with caution.', 'church-sermon-manager' ); ?></p>
 			<form method="post">
 				<?php wp_nonce_field( 'sm_migrate_pro_content_action', 'sm_migrate_pro_content_nonce' ); ?>
-				<label><input type="checkbox" name="sm_migrate_overwrite" value="1" <?php checked( $overwrite ); ?> /> <?php _e( 'Overwrite existing post content (if any)', 'church-sermon-manager' ); ?></label><br><br>
+				<label><input type="checkbox" name="sm_migrate_overwrite" value="1" <?php checked( $overwrite ); ?> /> <?php esc_html_e( 'Overwrite existing post content (if any)', 'church-sermon-manager' ); ?></label><br><br>
 				<input type="submit" name="sm_migrate_pro_content" class="button button-primary" value="<?php esc_attr_e( 'Run Migration', 'church-sermon-manager' ); ?>" />
 			</form>
 			<?php if ( $updated ) : ?>
-				<h2><?php _e( 'Migration Results', 'church-sermon-manager' ); ?></h2>
+				<h2><?php esc_html_e( 'Migration Results', 'church-sermon-manager' ); ?></h2>
 				<ul>
 					/* translators: %d: number of sermons checked. */
-					<li><?php printf( __( 'Total sermons checked: %d', 'church-sermon-manager' ), $results['total'] ); ?></li>
+					<li><?php echo esc_html( sprintf( __( 'Total sermons checked: %d', 'church-sermon-manager' ), $results['total'] ) ); ?></li>
 					/* translators: %d: number of posts updated. */
-					<li><?php printf( __( 'Posts updated: %d', 'church-sermon-manager' ), $results['updated'] ); ?></li>
+					<li><?php echo esc_html( sprintf( __( 'Posts updated: %d', 'church-sermon-manager' ), $results['updated'] ) ); ?></li>
 					/* translators: %d: number of posts skipped. */
-					<li><?php printf( __( 'Posts skipped: %d', 'church-sermon-manager' ), $results['skipped'] ); ?></li>
+					<li><?php echo esc_html( sprintf( __( 'Posts skipped: %d', 'church-sermon-manager' ), $results['skipped'] ) ); ?></li>
 				</ul>
 			<?php endif; ?>
 		</div>

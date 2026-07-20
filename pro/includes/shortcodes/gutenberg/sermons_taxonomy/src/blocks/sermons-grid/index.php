@@ -33,24 +33,24 @@ function sermons_taxonomy_layout_render_sermons_grid( $attributes ){
 	$i            = 1;
 	?>
 
-	<div class="wpfc-term-content" <?php echo 'style="--item-padding-left-right : '.$attributes['columnGap'].'px; --item-margin-bottom : '.($attributes['columnGap']*2).'px; --item-height : '.(300-$attributes['columnGap']).'px"' ;  ?>>
+	<div class="wpfc-term-content" <?php echo 'style="--item-padding-left-right : '.esc_attr( $attributes['columnGap'] ).'px; --item-margin-bottom : '.esc_attr( $attributes['columnGap']*2 ).'px; --item-height : '.esc_attr( 300-$attributes['columnGap'] ).'px"' ;  ?>>
 		<?php echo $attributes['postLayout'] === 'grid' ? '<div class="wp-block-sermons-taxonomy-layout-sermons-grid sermons-grid-view gpl-d-flex gpl-flex-wrap sermon_skin wpfc-term-grid">' 
 		: '<div class="wp-block-sermons-taxonomy-layout-sermons-grid sermons-grid-view gpl-d-flex gpl-flex-wrap sermon_skin wpfc-term-list">'; ?>
 		<?php foreach ( $terms as $term ) : ?>
 			<?php
 			if ( $attributes['postLayout'] === 'list' && 1 == $i ) {
-				echo '<div class="wpfc-term post-item wpfc-sermon gpl-mb-30 gpl-column-' . $attributes['columns'] . ' term-list sermon_skin">';
+				echo '<div class="wpfc-term post-item wpfc-sermon gpl-mb-30 gpl-column-' . esc_attr( $attributes['columns'] ) . ' term-list sermon_skin">';
 			}
 
 			if ( $attributes['displayAlphabeticalList'] && $attributes['postLayout'] === 'list' ) {
 				if ( $first_letter != $term->name[0] || 1 == $i ) {
 					$first_letter = $term->name[0];
-					echo '<div class="wpfc-term-first-letter ' . $attributes['align'] . '" style="padding-bottom:' . $attributes['letterBottomPadding'] . 'px;padding-top:' . $attributes['letterTopPadding'] . 'px;">' . $first_letter . '</div>';
+					echo '<div class="wpfc-term-first-letter ' . esc_attr( $attributes['align'] ) . '" style="padding-bottom:' . esc_attr( $attributes['letterBottomPadding'] ) . 'px;padding-top:' . esc_attr( $attributes['letterTopPadding'] ) . 'px;">' . esc_html( $first_letter ) . '</div>';
 				}
 			}
 			?>
 
-			<?php echo $attributes['postLayout'] === 'grid' ? '<div class="wpfc-term post-item wpfc-sermon gpl-mb-30 gpl-column-' . $attributes['columns'] . ' sermon_skin">' : ''; ?>
+			<?php echo $attributes['postLayout'] === 'grid' ? '<div class="wpfc-term post-item wpfc-sermon gpl-mb-30 gpl-column-' . esc_attr( $attributes['columns'] ) . ' sermon_skin">' : ''; ?>
 
 			<?php
 			if ( $attributes['postLayout'] === 'grid' && $attributes['displayTermImage'] ) {
@@ -67,19 +67,19 @@ function sermons_taxonomy_layout_render_sermons_grid( $attributes ){
 				if ( $image_id ) {
 					/* @noinspection CssUnknownTarget */
 					echo sprintf(
-						'<a href="' . get_term_link( $term, $attributes['showTaxonomy'] ) . '" class="wpfc-term-grid-image" style="background-image:url(%s);margin-bottom:' . $css_margin . ';"></a>',
-						wp_get_attachment_image_url( $image_id, array( 300, 300 ) )
+						'<a href="' . esc_url( get_term_link( $term, $attributes['showTaxonomy'] ) ) . '" class="wpfc-term-grid-image" style="background-image:url(%s);margin-bottom:' . esc_attr( $css_margin ) . ';"></a>',
+						esc_url( wp_get_attachment_image_url( $image_id, array( 300, 300 ) ) )
 					);
 				} else {
-					echo sprintf( '<a href="' . get_term_link( $term, $attributes['showTaxonomy'] ) . '" class="wpfc-term-grid-image" style="background-color:#cecece;margin-bottom:' . $css_margin . ';"></a>' );
+					echo sprintf( '<a href="' . esc_url( get_term_link( $term, $attributes['showTaxonomy'] ) ) . '" class="wpfc-term-grid-image" style="background-color:#cecece;margin-bottom:' . esc_attr( $css_margin ) . ';"></a>' );
 				}
 			}
 			?>
 
-			<div class="wpfc-term-inner <?php echo $attributes['align'];?>"
+			<div class="wpfc-term-inner <?php echo esc_attr( $attributes['align'] );?>"
 				<?php
 				if ( $attributes['postLayout'] === 'grid' && $attributes['displayTermDescription'] ) {
-					echo 'style="padding:' . $attributes['termDescriptionPadding'] . 'px;"';
+					echo 'style="padding:' . esc_attr( $attributes['termDescriptionPadding'] ) . 'px;"';
 				}
 				?>
 			>
@@ -87,18 +87,18 @@ function sermons_taxonomy_layout_render_sermons_grid( $attributes ){
 				<?php
 				if ( ( $attributes['postLayout'] === 'grid' && $attributes['displayTermTitle'] ) or ( ( $attributes['postLayout'] === 'list' ) ) ) {
 					?>
-					<a href="<?php echo get_term_link( $term, $attributes['showTaxonomy'] ); ?>"
-							class="wpfc-term-title" <?php if ( $attributes['postLayout'] === 'grid' ) { echo 'style="padding-bottom:' . $attributes['termTitlePadding'] . 'px;"'; } ?>><?php echo $term->name; ?></a>
+					<a href="<?php echo esc_url( get_term_link( $term, $attributes['showTaxonomy'] ) ); ?>"
+							class="wpfc-term-title" <?php if ( $attributes['postLayout'] === 'grid' ) { echo 'style="padding-bottom:' . esc_attr( $attributes['termTitlePadding'] ) . 'px;"'; } ?>><?php echo esc_html( $term->name ); ?></a>
 					<?php } ?>
 
 				<?php
 				if ( $attributes['postLayout'] === 'grid' && $attributes['displayTermDescription'] ) {
 					?>
-					<div class="wpfc-term-description"><?php echo wp_trim_words( $term->description, 25, '...' ); ?></div>
+					<div class="wpfc-term-description"><?php echo esc_html( wp_trim_words( $term->description, 25, '...' ) ); ?></div>
 						
 					<?php if ( ( str_word_count( $term->description ) > 0  ) && $attributes['displayTermReadMoreButton'] ) : ?>
 					<div class="wpfc-term-description-read-more">
-						<a href="<?php echo get_permalink(); ?>"><?php echo $attributes['termReadMoreButtonText']; ?></a>
+						<a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo esc_html( $attributes['termReadMoreButtonText'] ); ?></a>
 					</div>
 				<?php endif; ?>
 						
@@ -128,11 +128,11 @@ function sermons_taxonomy_layout_render_sermons_grid( $attributes ){
 		
 		<?php
 	if ( ( $attributes['displayPagination'] ) && ( 1 != $lastpage ) ) { ?>
-		<div class="wpfc-term-pagination" style="text-align:<?php echo $attributes['paginationAlignment']; ?>;">
+		<div class="wpfc-term-pagination" style="text-align:<?php echo esc_attr( $attributes['paginationAlignment'] ); ?>;">
 			<?php
 				if ( ( $prev > 0 ) && ( $attributes['displayPrevNext'] ) ) {
 					?>
-					<a href="?page=<?php echo $prev; ?>"><?php echo $attributes['previousLabel']; ?></a>
+					<a href="?page=<?php echo esc_attr( $prev ); ?>"><?php echo esc_html( $attributes['previousLabel'] ); ?></a>
 					<?php
 				}
 
@@ -140,18 +140,18 @@ function sermons_taxonomy_layout_render_sermons_grid( $attributes ){
 
 					if ( $page == $i ) {
 						?>
-						<span><?php echo $i; ?></span>
+						<span><?php echo esc_html( $i ); ?></span>
 						<?php
 					} else {
 						?>
-						<a href="?page=<?php echo $i; ?>" class="page-numbers"><?php echo $i; ?></a>
+						<a href="?page=<?php echo esc_attr( $i ); ?>" class="page-numbers"><?php echo esc_html( $i ); ?></a>
 						<?php
 					}
 				}
 
 				if ( ( $page < $lastpage ) && ( $attributes['displayPrevNext'] ) ) {
 					?>
-					<a href="?page=<?php echo $next; ?>"><?php echo $attributes['nextLabel']; ?></a>
+					<a href="?page=<?php echo esc_attr( $next ); ?>"><?php echo esc_html( $attributes['nextLabel'] ); ?></a>
 					<?php
 				} ?>
 		</div>

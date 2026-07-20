@@ -152,7 +152,7 @@ class SM_Admin_Post_Types {
 			$data = __( 'Error', 'church-sermon-manager' );
 		}
 
-		echo $data;
+		echo $data; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Column HTML from get_the_term_list() (core-built term links) or markup composed above from gmdate()/translated strings.
 	}
 
 	/**
@@ -328,7 +328,7 @@ class SM_Admin_Post_Types {
 
 		$output .= '</select>';
 
-		echo apply_filters( 'sm_sermon_filters', $output );
+		echo apply_filters( 'sm_sermon_filters', $output ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Select markup built above from term slugs/names and passed through the sm_sermon_filters filter.
 	}
 }
 

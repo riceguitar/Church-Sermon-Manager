@@ -49,13 +49,13 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 	<div class="settings-main">
 		<div class="settings-content">
 			<form name="post"
-					action="post.php?post=<?php echo $post_id; ?>&action=edit"
+					action="post.php?post=<?php echo absint( $post_id ); ?>&action=edit"
 					method="post">
 				<div class="inside">
 					<?php \SM_Admin_Settings::output_fields( $all_settings, $values ); ?>
 
 					<p>The feed URL:
-						<code><?php echo $post_id ? ( site_url( '/' ) . '?feed=rss2&post_type=wpfc_sermon&id=' . $post_id ) : __( 'Please save the feed to get the URL.', 'church-sermon-manager' ); ?></code>
+						<code><?php echo $post_id ? esc_url( site_url( '/' ) . '?feed=rss2&post_type=wpfc_sermon&id=' . $post_id ) : esc_html__( 'Please save the feed to get the URL.', 'church-sermon-manager' ); ?></code>
 					</p>
 					<p class="submit">
 						<?php if ( empty( $GLOBALS['hide_save_button'] ) ) : ?>
@@ -63,7 +63,7 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 									value="<?php esc_attr_e( 'Save changes', 'church-sermon-manager' ); ?>"/>
 						<?php endif; ?>
 						<input type="hidden" name="post_id"
-								value="<?php echo $post_id; ?>">
+								value="<?php echo absint( $post_id ); ?>">
 						<?php wp_nonce_field( 'sm-settings-podcasting' ); ?>
 					</p>
 				</div>

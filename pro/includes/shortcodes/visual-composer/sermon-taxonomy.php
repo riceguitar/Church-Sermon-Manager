@@ -85,18 +85,18 @@ if ( ! class_exists( 'Sermon_Taxonomy_Shortcode' ) ) {
 			<?php foreach ( $terms as $term ) : ?>
 				<?php
 				if ( 'off' == $show_grid && 1 == $i ) {
-					echo '<div class="wpfc-term ' . $term_classes . '" style="width: calc((100% - ' . 30 * ( $list_columns - 1 ) . 'px) / ' . $list_columns . ');">';
+					echo '<div class="wpfc-term ' . esc_attr( $term_classes ) . '" style="width: calc((100% - ' . esc_attr( 30 * ( $list_columns - 1 ) ) . 'px) / ' . esc_attr( $list_columns ) . ');">';
 				}
 
 				if ( $alphabetical_list && 'off' == $show_grid ) {
 					if ( $first_letter != $term->name[0] || 1 == $i ) {
 						$first_letter = $term->name[0];
-						echo '<div class="wpfc-term-first-letter" style="padding-bottom:' . $letter_padding_b . 'px;padding-top:' . $letter_padding_t . 'px;font-size:' . $letter_font_size . 'px;color:' . $letter_color . ';">' . $first_letter . '</div>';
+						echo '<div class="wpfc-term-first-letter" style="padding-bottom:' . esc_attr( $letter_padding_b ) . 'px;padding-top:' . esc_attr( $letter_padding_t ) . 'px;font-size:' . esc_attr( $letter_font_size ) . 'px;color:' . esc_attr( $letter_color ) . ';">' . esc_html( $first_letter ) . '</div>';
 					}
 				}
 				?>
 
-				<?php echo 'on' === $show_grid ? '<div class="wpfc-term ' . $term_classes . '" style="width: calc((100% - ' . 30 * ( $grid_columns - 1 ) . 'px) / ' . $grid_columns . ');">' : '<div class="wpfc-term-inner" >'; ?>
+				<?php echo 'on' === $show_grid ? '<div class="wpfc-term ' . esc_attr( $term_classes ) . '" style="width: calc((100% - ' . esc_attr( 30 * ( $grid_columns - 1 ) ) . 'px) / ' . esc_attr( $grid_columns ) . ');">' : '<div class="wpfc-term-inner" >'; ?>
 
 				<?php
 				if ( ( 'on' == $show_grid ) && ( $show_grid_image ) ) {
@@ -114,11 +114,11 @@ if ( ! class_exists( 'Sermon_Taxonomy_Shortcode' ) ) {
 					if ( $image_id ) {
 						/* @noinspection CssUnknownTarget */
 						echo sprintf(
-							'<a href="' . get_term_link( $term, $show_taxonomy ) . '" class="wpfc-term-grid-image" style="background-image:url(%s);height:' . $css_height . ';margin-bottom:' . $css_margin . ';"></a>',
-							wp_get_attachment_image_url( $image_id, array( 300, 300 ) )
+							'<a href="' . esc_url( get_term_link( $term, $show_taxonomy ) ) . '" class="wpfc-term-grid-image" style="background-image:url(%s);height:' . esc_attr( $css_height ) . ';margin-bottom:' . esc_attr( $css_margin ) . ';"></a>',
+							esc_url( wp_get_attachment_image_url( $image_id, array( 300, 300 ) ) )
 						);
 					} else {
-						echo sprintf( '<a href="' . get_term_link( $term, $show_taxonomy ) . '" class="wpfc-term-grid-image" style="background-color:#cecece;height:' . $css_height . ';margin-bottom:' . $css_margin . ';"></a>' );
+						echo sprintf( '<a href="' . esc_url( get_term_link( $term, $show_taxonomy ) ) . '" class="wpfc-term-grid-image" style="background-color:#cecece;height:' . esc_attr( $css_height ) . ';margin-bottom:' . esc_attr( $css_margin ) . ';"></a>' );
 					}
 				}
 				?>
@@ -126,7 +126,7 @@ if ( ! class_exists( 'Sermon_Taxonomy_Shortcode' ) ) {
 				<div class="wpfc-term-inner"
 					<?php
 					if ( ( 'on' == $show_grid ) && ( $show_grid_title or $show_grid_description  ) ) {
-						echo 'style="padding:' . $description_padding . 'px;"';
+						echo 'style="padding:' . esc_attr( $description_padding ) . 'px;"';
 					}
 					?>
 				>
@@ -134,10 +134,10 @@ if ( ! class_exists( 'Sermon_Taxonomy_Shortcode' ) ) {
 					<?php
 					if ( ( ( 'on' == $show_grid ) && ( $show_grid_title ) ) or ( ( 'off' == $show_grid ) ) ) {
 						?>
-						<a href="<?php echo get_term_link( $term, $show_taxonomy ); ?>"
+						<a href="<?php echo esc_url( get_term_link( $term, $show_taxonomy ) ); ?>"
 								class="wpfc-term-title"
-								<?php echo 'style="padding-bottom:' . $title_padding . 'px;color:' . $title_color . ';text-align:' . $title_alignment . ';font-size:' . $title_font_size . 'px;"'; ?>
-								><?php echo $term->name; ?></a>
+								<?php echo 'style="padding-bottom:' . esc_attr( $title_padding ) . 'px;color:' . esc_attr( $title_color ) . ';text-align:' . esc_attr( $title_alignment ) . ';font-size:' . esc_attr( $title_font_size ) . 'px;"'; ?>
+								><?php echo esc_html( $term->name ); ?></a>
 
 					<?php } ?>
 
@@ -145,8 +145,8 @@ if ( ! class_exists( 'Sermon_Taxonomy_Shortcode' ) ) {
 					if ( ( 'on' == $show_grid ) && ( $show_grid_description ) ) {
 						?>
 						<div class="wpfc-term-description"
-						<?php echo 'style="color:' . $description_color . ';text-align:' . $description_alignment . ';font-size:' . $description_font_size . 'px;"'; ?>
-						><?php echo wp_trim_words( $term->description, 25, '...' ); ?></div>
+						<?php echo 'style="color:' . esc_attr( $description_color ) . ';text-align:' . esc_attr( $description_alignment ) . ';font-size:' . esc_attr( $description_font_size ) . 'px;"'; ?>
+						><?php echo esc_html( wp_trim_words( $term->description, 25, '...' ) ); ?></div>
 					<?php } ?>
 
 				</div>
@@ -174,11 +174,11 @@ if ( ! class_exists( 'Sermon_Taxonomy_Shortcode' ) ) {
 
 		<?php
 		if ( ( $show_pagination ) && ( 1 != $lastpage ) ) { ?>
-			<div class="wpfc-term-pagination" style="text-align:<?php echo $pagination_alignment; ?>;">
+			<div class="wpfc-term-pagination" style="text-align:<?php echo esc_attr( $pagination_alignment ); ?>;">
 				<?php
 					if ( ( $prev > 0 ) && ( $show_prev_next ) ) {
 						?>
-						<a href="?page=<?php echo $prev; ?>"><?php echo $previous_label; ?></a>
+						<a href="?page=<?php echo esc_attr( $prev ); ?>"><?php echo esc_html( $previous_label ); ?></a>
 						<?php
 					}
 
@@ -186,18 +186,18 @@ if ( ! class_exists( 'Sermon_Taxonomy_Shortcode' ) ) {
 
 						if ( $page == $i ) {
 							?>
-							<span><?php echo $i; ?></span>
+							<span><?php echo esc_html( $i ); ?></span>
 							<?php
 						} else {
 							?>
-							<a href="?page=<?php echo $i; ?>" class="page-numbers"><?php echo $i; ?></a>
+							<a href="?page=<?php echo esc_attr( $i ); ?>" class="page-numbers"><?php echo esc_html( $i ); ?></a>
 							<?php
 						}
 					}
 
 					if ( ( $page < $lastpage ) && ( $show_prev_next ) ) {
 						?>
-						<a href="?page=<?php echo $next; ?>"><?php echo $next_label; ?></a>
+						<a href="?page=<?php echo esc_attr( $next ); ?>"><?php echo esc_html( $next_label ); ?></a>
 						<?php
 					} ?>
 			</div>

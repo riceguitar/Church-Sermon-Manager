@@ -46,7 +46,7 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 
 			<ul style="padding: 19px" class="uk-nav  wpfc-nav" uk-switcher="connect: #settings-container">
 				<?php foreach ( $tabs as $tab ) : ?>
-					<li style="float:left;"><a href="#<?php echo sanitize_title( $tab ); ?>"><?php echo $tab; ?></a></li>
+					<li style="float:left;"><a href="#<?php echo esc_attr( sanitize_title( $tab ) ); ?>"><?php echo esc_html( $tab ); ?></a></li>
 				<?php endforeach; ?>
 			</ul>
 
@@ -67,12 +67,12 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 					<div class="uk-flex uk-flex-between uk-flex-wrap uk-margin-bottom" uk-margin>
 						<div class="">
 							<input class="uk-input" type="text" id="title"
-									value="<?php echo $post->post_title; ?>" name="title"
+									value="<?php echo esc_attr( $post->post_title ); ?>" name="title"
 									title="Template Title">
 						</div>
 
 						<div class="" uk-margin>
-							<a href="<?php echo admin_url( 'edit.php?post_type=wpfc_sm_template' ); ?>"
+							<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=wpfc_sm_template' ) ); ?>"
 									class="uk-button uk-button-default">
 								Cancel
 							</a>
@@ -88,7 +88,7 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 					<ul id="settings-container" class="uk-switcher uk-background-muted uk-padding">
 						<?php foreach ( $all_settings as $tab => $settings ) : ?>
 							<li>
-								<h2 class="uk-heading-divider"><?php echo $tab; ?></h2>
+								<h2 class="uk-heading-divider"><?php echo esc_html( $tab ); ?></h2>
 
 								<?php foreach ( $settings as $field ) : ?>
 									<div class="uk-margin-bottom">
@@ -128,7 +128,7 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 										) ) ) :
 											?>
 											<h1 class="<?php echo 'title' === $field['type'] ? 'uk-heading-divider uk-text-left' : 'uk-heading-divider uk-margin-medium-top'; ?> uk-text-large">
-												<span><?php echo $field['title']; ?></span></h1>
+												<span><?php echo esc_html( $field['title'] ); ?></span></h1>
 											<?php continue; ?>
 										<?php endif; ?>
 
@@ -138,9 +138,9 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 
 										<?php if ( $field['title'] ) : ?>
 											<label class="uk-form-label"
-													for="<?php echo $field['id']; ?>"
-												<?php echo isset( $field['desc_tip'] ) ? 'uk-tooltip="title: ' . $field['desc_tip'] . '; pos: top-left"' : ''; ?>>
-												<?php echo $field['title']; ?>
+													for="<?php echo esc_attr( $field['id'] ); ?>"
+												<?php echo isset( $field['desc_tip'] ) ? 'uk-tooltip="title: ' . esc_attr( $field['desc_tip'] ) . '; pos: top-left"' : ''; ?>>
+												<?php echo esc_html( $field['title'] ); ?>
 											</label>
 										<?php endif; ?>
 
@@ -209,7 +209,7 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 															type="<?php echo esc_attr( $field['type'] ); ?>"
 															id="<?php echo esc_attr( $field['id'] ); ?>"
 															class="<?php echo $field['disabled'] ? 'uk-disabled' : ''; ?>"
-														<?php echo 'checkbox' !== $field['type'] ? ( 'value="' . esc_attr( $value ) . '"' ) : ''; ?>
+														<?php echo 'checkbox' !== $field['type'] ? 'value="' . esc_attr( $value ) . '"' : ''; ?>
 														<?php echo $field['disabled'] ? 'disabled="disabled"' : ''; ?>
 														<?php echo 'color' === $field['type'] && $field['default'] ? 'data-default-color="' . esc_attr( $field['default'] ) . '"' : ''; ?>
 														<?php echo 'checkbox' === $field['type'] ? checked( is_bool( $value ) ? ( $value ? 'yes' : 'no' ) : $value, 'yes', false ) : ''; ?>
@@ -219,9 +219,9 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 												case 'description':
 													?>
 													<tr valign="top">
-														<td class="forminp forminp-<?php echo sanitize_title( $field['type'] ); ?>"
+														<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $field['type'] ) ); ?>"
 																colspan="2">
-															<p><?php echo $field['desc']; ?></p>
+															<p><?php echo $field['desc']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Plugin-defined description HTML from the templating settings config. ?></p>
 														</td>
 													</tr>
 													<?php
@@ -248,7 +248,7 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 												$result = call_user_func_array( $function, $field['dynamic_message'] );
 											}
 
-											echo $result ?: '';
+											echo $result ?: ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Pre-composed message HTML returned by the field's dynamic_message callback.
 										}
 										?>
 									</div>
@@ -258,7 +258,7 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 					</ul>
 					<?php wp_nonce_field( 'update-post_' . $post->ID ); ?>
 					<input type="hidden" id="post-id" name="post_ID"
-							value="<?php echo $post->ID; ?>">
+							value="<?php echo esc_attr( $post->ID ); ?>">
 					<input type="hidden" id="user-id" name="user_ID"
 							value="<?php echo (int) get_current_user_id(); ?>"/>
 					<input type="hidden" id="hiddenaction" name="action"
@@ -278,7 +278,7 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 					<div class="uk-modal-dialog uk-modal-body">
 						<h2 class="uk-modal-title">Are you sure?</h2>
 						<p>Are you sure that you want to delete the template named
-							<b><?php echo $post->post_title; ?></b>? </p>
+							<b><?php echo esc_html( $post->post_title ); ?></b>? </p>
 						<p class="uk-text-danger">All <b>changes</b> and <b>filesystem modifications</b> will be
 							permanently lost.</p>
 						<p class="uk-text-right">
