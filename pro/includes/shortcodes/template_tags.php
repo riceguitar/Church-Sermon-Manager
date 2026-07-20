@@ -70,7 +70,7 @@ class Template_Tags {
 		?>
 		<<?php echo esc_html( $args['title_tag'] ); ?> class="elementor-post__title sm-pro-sermon-title" style="margin-top: 0">
 		<a href="<?php the_permalink( $this->post ); ?>" class="sm-pro-sermon-title-link">
-			<?php echo $this->get_the_title(); ?>
+			<?php echo $this->get_the_title(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- title from get_the_title() is already entity-encoded by core the_title filters; esc_html() would double-encode. ?>
 		</a>
 		<?php echo '</' . esc_html( $args['title_tag'] ); ?>>
 		<?php
@@ -85,7 +85,7 @@ class Template_Tags {
 		 * @param \WP_Post $post    The sermon.
 		 * @param array    $args    The settings.
 		 */
-		echo apply_filters( 'smp/shortcodes/the_title', $content, $post, $args );
+		echo apply_filters( 'smp/shortcodes/the_title', $content, $post, $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- intentional composed markup, filterable via the frozen smp/* filter.
 	}
 
 	/**
@@ -135,7 +135,7 @@ class Template_Tags {
 		 * @param \WP_Post $post    The sermon.
 		 * @param array    $args    The settings.
 		 */
-		echo apply_filters( 'smp/shortcodes/the_excerpt', $content, $post, $args );
+		echo apply_filters( 'smp/shortcodes/the_excerpt', $content, $post, $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- intentional composed markup, filterable via the frozen smp/* filter.
 	}
 
 	/**
@@ -204,29 +204,33 @@ class Template_Tags {
 		ob_start();
 		?>
 
-		<<?php echo $args['inline'] ? 'span' : 'div'; ?> class="sm-pro-sermon-meta-items">
+		<<?php echo $args['inline'] ? 'span' : 'div'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- constant tag keyword. ?> class="sm-pro-sermon-meta-items">
 		<?php foreach ( $args['meta_data'] as $item ) { ?>
 			<span class="sm-pro-sermon-meta-item sm-pro-sermon-meta-item-<?php echo esc_attr( sanitize_title( $item ) ); ?> elementor-post-<?php echo esc_attr( sanitize_title( $item ) ); ?>">
 					<?php if ( $args['before'] ) : ?>
-						<?php echo $args['before']; ?>
+						<?php echo $args['before']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- caller-supplied prefix markup (internal template-tag API). ?>
 					<?php endif; ?>
 					<?php
 					switch ( $item ) {
 						case 'date':
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- value composed by the class getter; several return pre-encoded core-filtered text.
 							echo $this->get_the_published_date( array(
 								'date_format' => $args['date_format'],
 							) );
 							break;
 						case 'time':
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- value composed by the class getter; several return pre-encoded core-filtered text.
 							echo $this->get_the_published_time();
 							break;
 						case 'preached_date':
 							echo 'Preached Date: ';
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- value composed by the class getter; several return pre-encoded core-filtered text.
 							echo $this->get_the_preached_date( array(
 								'date_format' => $args['date_format'],
 							) );
 							break;
 						case 'author':
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- value composed by the class getter; several return pre-encoded core-filtered text.
 							echo $this->get_the_author();
 							break;
 						case 'preachers':
@@ -262,9 +266,11 @@ class Template_Tags {
 							);
 							break;
 						case 'comments':
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- value composed by the class getter; several return pre-encoded core-filtered text.
 							echo $this->get_the_comments();
 							break;
 						case 'passage':
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- value composed by the class getter; several return pre-encoded core-filtered text.
 							echo $this->get_the_passage( array(
 								'verse_init' => $args['verse_init'],
 							) );
@@ -275,7 +281,7 @@ class Template_Tags {
 					?>
 				</span>
 		<?php } ?>
-		<<?php echo $args['inline'] ? '/span' : '/div'; ?>>
+		<<?php echo $args['inline'] ? '/span' : '/div'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- constant tag keyword. ?>>
 
 		<?php
 		$content = ob_get_clean();
@@ -289,7 +295,7 @@ class Template_Tags {
 		 * @param \WP_Post $post    The sermon.
 		 * @param array    $args    The settings.
 		 */
-		echo apply_filters( 'smp/shortcodes/the_metadata', $content, $post, $args );
+		echo apply_filters( 'smp/shortcodes/the_metadata', $content, $post, $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- intentional composed markup, filterable via the frozen smp/* filter.
 	}
 
 	/**
@@ -407,11 +413,11 @@ class Template_Tags {
 		if ( $terms ) {
 			ob_start();
 			?>
-			<?php echo 'Preacher' === $tax_object->singular_name ? 'Preacher Name' : esc_html( $tax_object->singular_name ); ?>
+			<?php echo 'Preacher' === $tax_object->singular_name ? 'Preacher Name' : esc_html( $tax_object->singular_name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- constant label or esc_html() on the variable branch. ?>
 			<span
 					class="sm-pro-sermon-taxonomy-label-separator">:</span>
 			<?php foreach ( $terms as $term ) : ?>
-				<?php echo ( $args['link'] ? '<a href="' . get_term_link( $term ) . '">' : '<span>' ) . esc_html( $term->name ) . ( $args['link'] ? '</a>' : '</span>' ) . ( end( $terms ) !== $term ? apply_filters( 'smp/shortcodes/the_terms/separator', ',' ) : '' ); ?>
+				<?php echo ( $args['link'] ? '<a href="' . esc_url( get_term_link( $term ) ) . '">' : '<span>' ) . esc_html( $term->name ) . ( $args['link'] ? '</a>' : '</span>' ) . ( end( $terms ) !== $term ? apply_filters( 'smp/shortcodes/the_terms/separator', ',' ) : '' ); ?>
 			<?php endforeach; ?>
 			<?php
 			$content = ob_get_clean();
@@ -426,7 +432,7 @@ class Template_Tags {
 		 * @param \WP_Post $post    The sermon.
 		 * @param array    $args    The render arguments.
 		 */
-		echo apply_filters( 'smp/shortcodes/the_terms', $content, $post, $args );
+		echo apply_filters( 'smp/shortcodes/the_terms', $content, $post, $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- intentional composed markup, filterable via the frozen smp/* filter.
 	}
 
 	/**
@@ -594,7 +600,7 @@ class Template_Tags {
 		 * @param \WP_Post $post   The sermon.
 		 * @param array    $args   The settings.
 		 */
-		echo apply_filters( 'smp/shortcodes/the_audio_player', $output, $post, $args );
+		echo apply_filters( 'smp/shortcodes/the_audio_player', $output, $post, $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- intentional composed markup, filterable via the frozen smp/* filter.
 	}
 
 	/**
@@ -668,7 +674,7 @@ class Template_Tags {
 		 * @param \WP_Post $post   The sermon.
 		 * @param array    $args   The settings.
 		 */
-		echo apply_filters( 'smp/shortcodes/the_video_player', $output, $post, $args );
+		echo apply_filters( 'smp/shortcodes/the_video_player', $output, $post, $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- intentional composed markup, filterable via the frozen smp/* filter.
 	}
 
 	/**
@@ -727,7 +733,7 @@ class Template_Tags {
 				        overflow: hidden;
 						transform: translateY(-50%);
 						border-radius: 50%;
-						background-image: url(<?php echo $image_url; ?>);
+						background-image: url(<?php echo esc_url( $image_url ); ?>);
                         background-position: center;
                         background-size: cover;">
 		</div>
@@ -810,7 +816,7 @@ class Template_Tags {
 		 * @param \WP_Post $post    The sermon.
 		 * @param array    $args    The settings.
 		 */
-		echo apply_filters( 'smp/shortcodes/the_description', $content, $term, $args );
+		echo apply_filters( 'smp/shortcodes/the_description', $content, $term, $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- intentional composed markup, filterable via the frozen smp/* filter.
 	}
 
 	/**

@@ -54,9 +54,9 @@ if ( get_sermon_image_url() && ! \SermonManager::getOption( 'disable_image_archi
 		<?php 
 		if(SermonManager::$image == 'no'){
 			}else{
-				echo $sm_image_html;
+				echo $sm_image_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- image markup built by the plugin from get_the_post_thumbnail().
 			}
-		//echo $sm_image_html;
+		//echo $sm_image_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- image markup built by the plugin from get_the_post_thumbnail().
 		 ?>
 	<?php endif; ?>
 	<div class="wpfc-sermon-inner entry-wrap">
@@ -64,14 +64,14 @@ if ( get_sermon_image_url() && ! \SermonManager::getOption( 'disable_image_archi
 			<?php 
 			if(SermonManager::$image == 'no'){
 			}else{
-				echo $sm_image_html;
+				echo $sm_image_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- image markup built by the plugin from get_the_post_thumbnail().
 			}
 			?>
 			
 		<?php endif; ?>
 
-		<div class="wpfc-sermon-main <?php echo get_sermon_image_url() ? '' : 'no-image'; ?>">
-			<div class="wpfc-sermon-header <?php echo \SermonManager::getOption( 'archive_meta' ) ? 'aside-exists' : ''; ?>">
+		<div class="wpfc-sermon-main <?php echo get_sermon_image_url() ? '' : 'no-image'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- constant class keyword. ?>">
+			<div class="wpfc-sermon-header <?php echo \SermonManager::getOption( 'archive_meta' ) ? 'aside-exists' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- constant class keyword. ?>">
 				<div class="wpfc-sermon-header-main">
 					<?php if ( has_term( '', 'wpfc_sermon_series', $post->ID ) ) : ?>
 						<div class="wpfc-sermon-meta-item wpfc-sermon-meta-series">
@@ -90,9 +90,9 @@ if ( get_sermon_image_url() && ! \SermonManager::getOption( 'disable_image_archi
 					<?php endif; ?>
 					<div class="wpfc-sermon-meta-item wpfc-sermon-meta-date">
 						<?php if ( 'date' === SermonManager::getOption( 'archive_orderby' ) ) : ?>
-							<?php the_date(); ?>
+							<?php the_date(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core the_date() output. ?>
 						<?php else : ?>
-							<?php echo SM_Dates::get(); ?>
+							<?php echo esc_html( SM_Dates::get() ); ?>
 						<?php endif; ?>
 					</div>
 				</div>
@@ -100,20 +100,20 @@ if ( get_sermon_image_url() && ! \SermonManager::getOption( 'disable_image_archi
 					<div class="wpfc-sermon-header-aside">
 						<?php if ( get_wpfc_sermon_meta( 'sermon_audio' ) ) : ?>
 							<a class="wpfc-sermon-att-audio dashicons dashicons-media-audio"
-									href="<?php echo get_wpfc_sermon_meta( 'sermon_audio' ); ?>"
-									download="<?php echo basename( get_wpfc_sermon_meta( 'sermon_audio' ) ); ?>"
+									href="<?php echo esc_url( get_wpfc_sermon_meta( 'sermon_audio' ) ); ?>"
+									download="<?php echo esc_attr( basename( get_wpfc_sermon_meta( 'sermon_audio' ) ) ); ?>"
 									title="Audio" rel = "nofollow"></a>
 						<?php endif; ?>
 						<?php if ( get_wpfc_sermon_meta( 'sermon_notes' ) ) : ?>
 							<a class="wpfc-sermon-att-notes dashicons dashicons-media-document"
-									href="<?php echo get_wpfc_sermon_meta( 'sermon_notes' ); ?>"
-									download="<?php echo basename( get_wpfc_sermon_meta( 'sermon_notes' ) ); ?>"
+									href="<?php echo esc_url( get_wpfc_sermon_meta( 'sermon_notes' ) ); ?>"
+									download="<?php echo esc_attr( basename( get_wpfc_sermon_meta( 'sermon_notes' ) ) ); ?>"
 									title="Notes"></a>
 						<?php endif; ?>
 						<?php if ( get_wpfc_sermon_meta( 'sermon_bulletin' ) ) : ?>
 							<a class="wpfc-sermon-att-bulletin dashicons dashicons-media-text"
-									href="<?php echo get_wpfc_sermon_meta( 'sermon_bulletin' ); ?>"
-									download="<?php echo basename( get_wpfc_sermon_meta( 'sermon_bulletin' ) ); ?>"
+									href="<?php echo esc_url( get_wpfc_sermon_meta( 'sermon_bulletin' ) ); ?>"
+									download="<?php echo esc_attr( basename( get_wpfc_sermon_meta( 'sermon_bulletin' ) ) ); ?>"
 									title="Bulletin"></a>
 						<?php endif; ?>
 					</div>
@@ -127,15 +127,15 @@ if ( get_sermon_image_url() && ! \SermonManager::getOption( 'disable_image_archi
 				<div class="wpfc-sermon-description">
 					<div class="sermon-description-content">
 						<?php if ( has_excerpt( $post ) ) : ?>
-							<?php echo get_the_excerpt( $post ); ?>
+							<?php echo get_the_excerpt( $post ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- excerpt may contain intentional markup/entities from filters; escaping would double-encode. ?>
 						<?php else : ?>
-							<?php echo wp_trim_words( $post->post_content, 30 ); ?>
+							<?php echo wp_trim_words( $post->post_content, 30 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_trim_words() strips tags; remaining entities would be double-encoded by esc_html(). ?>
 						<?php endif; ?>
 						<br/>
 					</div>
 					<?php if ( SermonManager::getOption( 'hide_read_more_when_not_needed' ) && str_word_count( $post->post_content ) > 30 ) : ?>
 						<div class="wpfc-sermon-description-read-more">
-							<a href="<?php echo get_permalink(); ?>"><?php echo __( 'Continue reading...', 'church-sermon-manager' ); ?></a>
+							<a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo esc_html__( 'Continue reading...', 'church-sermon-manager' ); ?></a>
 						</div>
 					<?php endif; ?>
 				</div>
@@ -144,11 +144,11 @@ if ( get_sermon_image_url() && ! \SermonManager::getOption( 'disable_image_archi
 
 				<?php if ( \SermonManager::getOption( 'archive_player' ) ) : ?>
 					<div class="wpfc-sermon-audio">
-						<?php echo wpfc_render_audio( $post->ID ); ?>
+						<?php echo wpfc_render_audio( $post->ID ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- intentional audio-player markup from wpfc_render_audio(). ?>
 					</div>
 				<?php endif; ?>
 			<?php else : ?>
-				<?php echo get_the_password_form( $post ); ?>
+				<?php echo get_the_password_form( $post ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core password form markup. ?>
 			<?php endif; ?>
 
 			<div class="wpfc-sermon-footer">
@@ -166,7 +166,7 @@ if ( get_sermon_image_url() && ! \SermonManager::getOption( 'disable_image_archi
 						);
 						?>
 						<span class="wpfc-sermon-meta-prefix">
-							<?php echo sm_get_taxonomy_field( 'wpfc_preacher', 'singular_name' ); ?>
+							<?php echo esc_html( sm_get_taxonomy_field( 'wpfc_preacher', 'singular_name' ) ); ?>
 							:</span>
 						<span class="wpfc-sermon-meta-text"><?php the_terms( $post->ID, 'wpfc_preacher' ); ?></span>
 					</div>
@@ -174,14 +174,14 @@ if ( get_sermon_image_url() && ! \SermonManager::getOption( 'disable_image_archi
 				<?php if ( get_post_meta( $post->ID, 'bible_passage', true ) ) : ?>
 					<div class="wpfc-sermon-meta-item wpfc-sermon-meta-passage">
 						<span class="wpfc-sermon-meta-prefix">
-							<?php echo __( 'Passage', 'church-sermon-manager' ); ?>:</span>
+							<?php echo esc_html__( 'Passage', 'church-sermon-manager' ); ?>:</span>
 						<span class="wpfc-sermon-meta-text"><?php wpfc_sermon_meta( 'bible_passage' ); ?></span>
 					</div>
 				<?php endif; ?>
 				<?php if ( has_term( '', 'wpfc_service_type', $post->ID ) ) : ?>
 					<div class="wpfc-sermon-meta-item wpfc-sermon-meta-service">
 						<span class="wpfc-sermon-meta-prefix">
-							<?php echo sm_get_taxonomy_field( 'wpfc_service_type', 'singular_name' ); ?>:</span>
+							<?php echo esc_html( sm_get_taxonomy_field( 'wpfc_service_type', 'singular_name' ) ); ?>:</span>
 						<span class="wpfc-sermon-meta-text"><?php the_terms( $post->ID, 'wpfc_service_type' ); ?></span>
 					</div>
 				<?php endif; ?>

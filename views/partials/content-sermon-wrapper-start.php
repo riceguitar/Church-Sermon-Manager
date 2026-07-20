@@ -23,52 +23,52 @@ $additional_classes = implode( ' ', $additional_classes );
 
 switch ( $template ) {
 	case 'twentyeleven':
-		echo '<div id="primary"><div id="content" role="main" class="wpfc-sermon-container wpfc-twentyeleven ' . $additional_classes . '">';
+		echo '<div id="primary"><div id="content" role="main" class="wpfc-sermon-container wpfc-twentyeleven ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'twentytwelve':
-		echo '<div id="primary" class="site-content"><div id="content" role="main" class="wpfc-sermon-container wpfc-twentytwelve ' . $additional_classes . '">';
+		echo '<div id="primary" class="site-content"><div id="content" role="main" class="wpfc-sermon-container wpfc-twentytwelve ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'twentythirteen':
-		echo '<div id="primary" class="content-area"><div id="content" role="main" class="site-content wpfc-sermon-container wpfc-twentythirteen ' . $additional_classes . '">';
+		echo '<div id="primary" class="content-area"><div id="content" role="main" class="site-content wpfc-sermon-container wpfc-twentythirteen ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'twentyfourteen':
-		echo '<div id="main-content" class="main-content"><div id="primary" class="content-area"><div id="content" class="site-content wpfc-sermon-container wpfc-twentyfourteen ' . $additional_classes . '" role="main">';
+		echo '<div id="main-content" class="main-content"><div id="primary" class="content-area"><div id="content" class="site-content wpfc-sermon-container wpfc-twentyfourteen ' . esc_attr( $additional_classes ) . '" role="main">';
 		break;
 	case 'twentyfifteen':
-		echo '<div id="primary" class="content-area"><div id="main" role="main" class="site-main wpfc-sermon-container wpfc-twentyfifteen ' . $additional_classes . '">';
+		echo '<div id="primary" class="content-area"><div id="main" role="main" class="site-main wpfc-sermon-container wpfc-twentyfifteen ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'twentysixteen':
-		echo '<div id="primary" class="content-area"><main id="main" class="site-main wpfc-sermon-container wpfc-twentysixteen ' . $additional_classes . '" role="main">';
+		echo '<div id="primary" class="content-area"><main id="main" class="site-main wpfc-sermon-container wpfc-twentysixteen ' . esc_attr( $additional_classes ) . '" role="main">';
 		break;
 	case 'twentyseventeen':
-		echo '<div class="wrap"><div id="primary" class="content-area"><main id="main" class="site-main wpfc-sermon-container wpfc-twentyseventeen ' . $additional_classes . '">';
+		echo '<div class="wrap"><div id="primary" class="content-area"><main id="main" class="site-main wpfc-sermon-container wpfc-twentyseventeen ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'twentynineteen':
-		echo '<section id="primary" class="content-area"><main id="main" class="site-main wpfc-sermon-container wpfc-twentynineteen ' . $additional_classes . '">';
+		echo '<section id="primary" class="content-area"><main id="main" class="site-main wpfc-sermon-container wpfc-twentynineteen ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'twentytwentyfour':
-		echo '<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained"><div id="primary" class="content-area"><main id="main" class="site-main wpfc-sermon-container wpfc-twentytwentyfour ' . $additional_classes . '">';
+		echo '<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained"><div id="primary" class="content-area"><main id="main" class="site-main wpfc-sermon-container wpfc-twentytwentyfour ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'Divi':
-		echo '<div id="main-content"><div class="container"><div id="content-area" class="clearfix"><main id="left-area" class="wpfc-sermon-container wpfc-divi ' . $additional_classes . '">';
+		echo '<div id="main-content"><div class="container"><div id="content-area" class="clearfix"><main id="left-area" class="wpfc-sermon-container wpfc-divi ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'salient':
-		echo '<div class="container-wrap"><div class="container main-container"><div class="row"><div class="post-area col span_9"><div class="post-container wpfc-sermon-container wpfc-salient ' . $additional_classes . '">';
+		echo '<div class="container-wrap"><div class="container main-container"><div class="row"><div class="post-area col span_9"><div class="post-container wpfc-sermon-container wpfc-salient ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'Avada':
-		echo '<div class=""><div class=""><div class="wpfc-sermon-container wpfc-avada ' . $additional_classes . '">';
+		echo '<div class=""><div class=""><div class="wpfc-sermon-container wpfc-avada ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'wpfc-morgan':
-		echo '<section id="primary" class="content-area"><div id="content" class="wpfc-sermon-container site-content wpfc-morgan ' . $additional_classes . '" role="main">';
+		echo '<section id="primary" class="content-area"><div id="content" class="wpfc-sermon-container site-content wpfc-morgan ' . esc_attr( $additional_classes ) . '" role="main">';
 		break;
 	case 'bb-theme':
-		echo '<div class="container"><div class="row"><div class="wpfc-sermon-container fl-content fl-content-left col-md-8 wpfc-bb-theme' . $additional_classes . '">';
+		echo '<div class="container"><div class="row"><div class="wpfc-sermon-container fl-content fl-content-left col-md-8 wpfc-bb-theme' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'bb-theme-builder':
-		echo '<div class="container"><div class="row"><div class="wpfc-sermon-container fl-content fl-content-left col-md-8 wpfc-bb-theme-builder ' . $additional_classes . '">';
+		echo '<div class="container"><div class="row"><div class="wpfc-sermon-container fl-content fl-content-left col-md-8 wpfc-bb-theme-builder ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'oceanwp':
-		echo '<div id="content-wrap" class="container clr"><div id="primary" class="content-area clr"><div id="content" class="wpfc-sermon-container site-content clr wpfc-oceanwp ' . $additional_classes . '">';
+		echo '<div id="content-wrap" class="container clr"><div id="primary" class="content-area clr"><div id="content" class="wpfc-sermon-container site-content clr wpfc-oceanwp ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'pro':
 	case 'x':
@@ -80,29 +80,29 @@ switch ( $template ) {
 			$additional_classes .= 'x-main left'; // Use some default.
 		}
 
-		echo '<div class="x-container max width offset"><div class="' . $additional_classes . '" role="main">';
+		echo '<div class="x-container max width offset"><div class="' . esc_attr( $additional_classes ) . '" role="main">';
 		break;
 	case 'genesis':
-		echo '<div class="content-sidebar-wrap"><main class="content wpfc-sermon-container wpfc-genesis ' . $additional_classes . '" id="genesis-content">';
+		echo '<div class="content-sidebar-wrap"><main class="content wpfc-sermon-container wpfc-genesis ' . esc_attr( $additional_classes ) . '" id="genesis-content">';
 		break;
 	case 'maranatha':
-		echo '<main id="maranatha-content"><div id="maranatha-content-inner" class="maranatha-centered-large maranatha-entry-content"><div id="maranatha-loop-multiple" class="maranatha-clearfix maranatha-loop-two-columns wpfc-sermon-container wpfc-maranatha ' . $additional_classes . '">';
+		echo '<main id="maranatha-content"><div id="maranatha-content-inner" class="maranatha-centered-large maranatha-entry-content"><div id="maranatha-loop-multiple" class="maranatha-clearfix maranatha-loop-two-columns wpfc-sermon-container wpfc-maranatha ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'saved':
-		echo '<main id="saved-content" class="saved-bg-contrast"><div id="saved-content-inner" class="saved-centered-large saved-entry-content"><div id="saved-loop-multiple" class="saved-clearfix saved-loop-entries saved-loop-three-columns wpfc-sermon-container wpfc-saved ' . $additional_classes . '">';
+		echo '<main id="saved-content" class="saved-bg-contrast"><div id="saved-content-inner" class="saved-centered-large saved-entry-content"><div id="saved-loop-multiple" class="saved-clearfix saved-loop-entries saved-loop-three-columns wpfc-sermon-container wpfc-saved ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'brandon':
-		echo '<div id="Content"><div class="content_wrapper clearfix wpfc-sermon-container wpfc-brandon ' . $additional_classes . '">';
+		echo '<div id="Content"><div class="content_wrapper clearfix wpfc-sermon-container wpfc-brandon ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'hueman':
 	case 'hueman-pro':
-		echo '<section class="content"><div class="pad group wpfc-sermon-container wpfc-hueman ' . $additional_classes . '">';
+		echo '<section class="content"><div class="pad group wpfc-sermon-container wpfc-hueman ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'NativeChurch':
-		echo '<div id="content" class="content full"><div class="container"><div class="row"><div class="col-md-12 posts-archive wpfc-sermon-container wpfc-NativeChurch ' . $additional_classes . '" id="content-col">';
+		echo '<div id="content" class="content full"><div class="container"><div class="row"><div class="col-md-12 posts-archive wpfc-sermon-container wpfc-NativeChurch ' . esc_attr( $additional_classes ) . '" id="content-col">';
 		break;
 	case 'betheme':
-		echo '<div id="Content"><div class="content_wrapper clearfix"><!-- .sections_group --><div class="sections_group"><div class="section "><div class="section_wrapper clearfix"><div class="column one column_blog"><div class="blog_wrapper isotope_wrapper wpfc-sermon-container wpfc-betheme ' . $additional_classes . '">';
+		echo '<div id="Content"><div class="content_wrapper clearfix"><!-- .sections_group --><div class="sections_group"><div class="section "><div class="section_wrapper clearfix"><div class="column one column_blog"><div class="blog_wrapper isotope_wrapper wpfc-sermon-container wpfc-betheme ' . esc_attr( $additional_classes ) . '">';
 		break;
 	case 'dt-the7':
 	case 'the7':
@@ -133,8 +133,8 @@ switch ( $template ) {
 			}
 		}
 
-		echo '<div class="', $sidebarclass, ' column">';
-		echo '<div class=', $padclass, '">';
+		echo '<div class="', esc_attr( $sidebarclass ), ' column">';
+		echo '<div class=', esc_attr( $padclass ), '">';
 
 		break;
 	case 'exodoswp':
@@ -279,7 +279,7 @@ switch ( $template ) {
 				$header_html = $page_header->html;
 				if ( $header_html !== '' ) {
 					echo '<div id="page-header">';
-					echo uncode_remove_p_tag( $page_header->html );
+					echo uncode_remove_p_tag( $page_header->html ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- markup generated by the active Uncode theme's own header helper.
 					echo '</div>';
 				}
 			}
@@ -295,6 +295,7 @@ switch ( $template ) {
 
 				$content_breadcrumb = uncode_breadcrumbs();
 				$breadcrumb_title   = '<div class="breadcrumb-title h5 text-bold">' . uncode_archive_title() . '</div>';
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- markup generated by the active Uncode theme's own row-template helper.
 				echo uncode_get_row_template( $breadcrumb_title . $content_breadcrumb, '', ( $page_custom_width !== '' ? ' limit-width' : $limit_content_width ), $style, ' row-breadcrumb row-breadcrumb-' . $style . $breadcrumb_align, 'half', true, 'half' );
 			}
 
@@ -497,7 +498,7 @@ switch ( $template ) {
 				$header_html = $page_header->html;
 				if ( $header_html !== '' ) {
 					echo '<div id="page-header">';
-					echo uncode_remove_p_tag( $page_header->html );
+					echo uncode_remove_p_tag( $page_header->html ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- markup generated by the active Uncode theme's own header helper.
 					echo '</div>';
 				}
 
@@ -516,6 +517,7 @@ switch ( $template ) {
 
 				$content_breadcrumb = uncode_breadcrumbs();
 				$breadcrumb_title   = '<div class="breadcrumb-title h5 text-bold">' . get_the_title() . '</div>';
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- markup generated by the active Uncode theme's own row-template helper.
 				echo uncode_get_row_template( $breadcrumb_title . $content_breadcrumb, '', ( $page_custom_width !== '' ? ' limit-width' : $limit_content_width ), $style, ' row-breadcrumb row-breadcrumb-' . $style . $breadcrumb_align, 'half', true, 'half' );
 			}
 
@@ -784,7 +786,7 @@ switch ( $template ) {
 			}
 
 			/** Display post html **/
-			echo '<article id="post-' . get_the_ID() . '" class="' . implode( ' ', get_post_class( 'page-body' . $bg_color ) ) . '">
+			echo '<article id="post-' . esc_attr( get_the_ID() ) . '" class="' . esc_attr( implode( ' ', get_post_class( 'page-body' . $bg_color ) ) ) . '">
           <div class="post-wrapper">
           	<div class="post-body">';
 
@@ -792,6 +794,7 @@ switch ( $template ) {
 		}
 		break;
 	default:
-		echo apply_filters( 'sm_templates_wrapper_start', '<div class="wrap"><div id="primary" class="content-area"><main id="main" class="site-main wpfc-sermon-container ' . $additional_classes . '">' );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- intentional wrapper markup, filterable by themes via sm_templates_wrapper_start.
+		echo apply_filters( 'sm_templates_wrapper_start', '<div class="wrap"><div id="primary" class="content-area"><main id="main" class="site-main wpfc-sermon-container ' . esc_attr( $additional_classes ) . '">' );
 		break;
 }

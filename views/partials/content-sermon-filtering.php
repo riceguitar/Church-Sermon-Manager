@@ -53,14 +53,14 @@ foreach (
 		<?php endif; ?>
 
 		<?php if ( ( ! empty( $args[ $filter['taxonomy'] ] ) && 'none' !== $args['visibility'] ) || empty( $args[ $filter['taxonomy'] ] ) ) : ?>
-			<div class="<?php echo $filter['className']; ?>" style="display: inline-block">
-				<form action="<?php echo $args['action']; ?>" method="get">
-					<select name="<?php echo $filter['taxonomy']; ?>"
+			<div class="<?php echo esc_attr( $filter['className'] ); ?>" style="display: inline-block">
+				<form action="<?php echo esc_url( $args['action'] ); ?>" method="get">
+					<select name="<?php echo esc_attr( $filter['taxonomy'] ); ?>"
 							title="<?php echo $filter['title']; ?>"
 							id="<?php echo $filter['taxonomy']; ?>"
 							onchange="if(this.options[this.selectedIndex].value !== ''){return this.form.submit()}else{window.location = window.location.href.split('?')[0];}"
 							autocomplete="off"
-						<?php echo ! empty( $args[ $filter['taxonomy'] ] ) && 'disable' === $args['visibility'] ? 'disabled' : ''; ?>>
+						<?php echo ! empty( $args[ $filter['taxonomy'] ] ) && 'disable' === $args['visibility'] ? 'disabled' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- constant attribute keyword. ?>>
 						<option value=""><?php echo $filter['title']; ?></option>
 						<?php echo wpfc_get_term_dropdown( $filter['taxonomy'], ! empty( $args[ $filter['taxonomy'] ] ) ? $args[ $filter['taxonomy'] ] : '' ); ?>
 					</select>

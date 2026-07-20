@@ -9,11 +9,11 @@ defined( 'ABSPATH' ) or die;
 
 get_header(); ?>
 
-<?php echo wpfc_get_partial( 'content-sermon-wrapper-start' ); ?>
+<?php echo wpfc_get_partial( 'content-sermon-wrapper-start' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- theme-overridable partial markup from wpfc_get_partial(). ?>
 
 <?php
 
-echo apply_filters( 'single-wpfc_sermon-before-sermons', '' );
+echo apply_filters( 'single-wpfc_sermon-before-sermons', '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- filterable markup slot (frozen public filter name).
 
 while ( have_posts() ) :
 	global $post;
@@ -22,7 +22,7 @@ while ( have_posts() ) :
 	if ( ! post_password_required( $post ) ) {
 		wpfc_sermon_single_v2(); // You can edit the content of this function in `partials/content-sermon-single.php`.
 	} else {
-		echo get_the_password_form( $post );
+		echo get_the_password_form( $post ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core password form markup.
 	}
 
 	if ( comments_open() || get_comments_number() ) :
@@ -32,11 +32,11 @@ while ( have_posts() ) :
 	endif;
 endwhile;
 
-echo apply_filters( 'single-wpfc_sermon-after-sermons', '' );
+echo apply_filters( 'single-wpfc_sermon-after-sermons', '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- filterable markup slot (frozen public filter name).
 
 ?>
 
-<?php echo wpfc_get_partial( 'content-sermon-wrapper-end' ); ?>
+<?php echo wpfc_get_partial( 'content-sermon-wrapper-end' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- theme-overridable partial markup from wpfc_get_partial(). ?>
 
 <?php
 get_footer();
