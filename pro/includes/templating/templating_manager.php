@@ -409,13 +409,16 @@ final class Templating_Manager {
 			throw new \RuntimeException( 'Could not find the root directory for template files.' );
 		}
 
-		// Define Twig arguments. Recreate the cache dir if something removed it,
-		// otherwise Twig silently recompiles templates on every render.
-		wp_mkdir_p( SMP_PATH . 'cache/twig' );
+		// Define Twig arguments. The compile cache lives under uploads — the
+		// plugin directory is replaced on every update, and plugins must not
+		// write into their own folder. Recreate the dir if something removed
+		// it, otherwise Twig silently recompiles templates on every render.
+		$twig_cache = trailingslashit( wp_upload_dir( null, false )['basedir'] ) . 'sm-twig-cache';
+		wp_mkdir_p( $twig_cache );
 		$twig_args = array();
-		if ( wp_is_writable( SMP_PATH . 'cache/twig' ) ) {
+		if ( wp_is_writable( $twig_cache ) ) {
 			$twig_args = array(
-				'cache'       => SMP_PATH . 'cache/twig',
+				'cache'       => $twig_cache,
 				'auto_reload' => true,
 			);
 		}
