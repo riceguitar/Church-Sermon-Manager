@@ -558,14 +558,14 @@ class VC_Blog {
 					'value'      => array(
 						__( 'Default', 'church-sermon-manager' ) => 0,
 
-						date( 'M j, Y' ) => 'M j, Y',
-						date( 'F j, Y' ) => 'F j, Y',
-						date( 'm/d/Y' )  => 'm/d/Y',
-						date( 'm-d-Y' )  => 'm-d-Y',
-						date( 'd M Y' )  => 'd M Y',
-						date( 'd F Y' )  => 'd F Y',
-						date( 'Y-m-d' )  => 'Y-m-d',
-						date( 'Y/m/d' )  => 'Y/m/d',
+						gmdate( 'M j, Y' ) => 'M j, Y',
+						gmdate( 'F j, Y' ) => 'F j, Y',
+						gmdate( 'm/d/Y' )  => 'm/d/Y',
+						gmdate( 'm-d-Y' )  => 'm-d-Y',
+						gmdate( 'd M Y' )  => 'd M Y',
+						gmdate( 'd F Y' )  => 'd F Y',
+						gmdate( 'Y-m-d' )  => 'Y-m-d',
+						gmdate( 'Y/m/d' )  => 'Y/m/d',
 					),
 					'dependency' => array(
 						'element'   => 'show_date',

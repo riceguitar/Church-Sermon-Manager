@@ -21,7 +21,7 @@ function smp_divi_include_taxonomies() {
 
 	foreach ( sm_get_taxonomies() as $taxonomy ) {
 		$labels = get_taxonomy_labels( get_taxonomy( $taxonomy ) );
-		$terms  = get_terms( $taxonomy, array( 'hide_empty' => false ) );
+		$terms  = get_terms( array( 'taxonomy' => $taxonomy, 'hide_empty' => false ) );
 
 		$output .= '<label>' . esc_html( $labels->name ) . ':<select multiple="multiple" class="et_pb_include_taxonomies-select">';
 

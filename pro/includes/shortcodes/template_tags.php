@@ -622,7 +622,7 @@ class Template_Tags {
 			if ( strpos( $args['url'], 'facebook.' ) !== false ) {
 				wp_enqueue_script( 'wpfc-sm-fb-player' );
 
-				parse_str( parse_url( $args['url'], PHP_URL_QUERY ), $query );
+				parse_str( wp_parse_url( $args['url'], PHP_URL_QUERY ), $query );
 
 				$output = '<div class="fb-video" data-href="' . $args['url'] . '" data-width="' . ( isset( $query['width'] ) ? ( is_numeric( $query['width'] ) ? $query['width'] : '600' ) : '600' ) . '" data-allowfullscreen="' . ( isset( $query['fullscreen'] ) ? ( 'yes' === $query['width'] ? 'true' : 'false' ) : 'true' ) . '"></div>';
 			} else {

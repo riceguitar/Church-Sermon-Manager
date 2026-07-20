@@ -93,7 +93,7 @@ class SM_Import_SB {
 	 * Do the import.
 	 */
 	public function import() {
-		$this->log( 'Init info:' . PHP_EOL . 'Sermon Manager ' . SM_VERSION . PHP_EOL . 'Release Date: ' . date( 'Y-m-d', filemtime( SM_PLUGIN_FILE ) ), 255 );
+		$this->log( 'Init info:' . PHP_EOL . 'Sermon Manager ' . SM_VERSION . PHP_EOL . 'Release Date: ' . gmdate( 'Y-m-d', filemtime( SM_PLUGIN_FILE ) ), 255 );
 		if ( ! doing_action( 'admin_init' ) ) {
 			$this->log( 'Scheduling for `admin_init` action.', 0 );
 			add_action( 'admin_init', array( $this, __FUNCTION__ ) );
@@ -455,7 +455,7 @@ class SM_Import_SB {
 				$url = $item->name;
 
 				if ( 'file' === $item->type || 'url' === $item->type ) {
-					if ( parse_url( $url, PHP_URL_SCHEME ) === null ) {
+					if ( wp_parse_url( $url, PHP_URL_SCHEME ) === null ) {
 						$url = site_url( ( ! empty( $options['upload_dir'] ) ? $options['upload_dir'] : 'wp-content/uploads/sermons/' ) . rawurlencode( $url ) );
 						$this->log( 'File URL is local, created a full URL. ("' . $url . '")', 253 );
 					}
@@ -538,7 +538,7 @@ class SM_Import_SB {
 
 			// Set date.
 			update_post_meta( $id, 'sermon_date', strtotime( $sermon->datetime ) );
-			$this->log( 'Set sermon_date to ' . date( 'c', strtotime( $sermon->datetime ) ), 253 );
+			$this->log( 'Set sermon_date to ' . gmdate( 'c', strtotime( $sermon->datetime ) ), 253 );
 			update_post_meta( $id, 'sermon_date_auto', SermonManager::getOption( 'import_disable_auto_dates' ) ? '0' : '1' );
 
 			// Set views.

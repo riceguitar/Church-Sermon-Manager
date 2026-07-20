@@ -196,7 +196,7 @@ function render_wpfc_sorting( $args = array() ) {
 			if ( get_query_var( 'paged' ) === 0 ) {
 				$args['action'] = '';
 			} else {	
-				$args['action'] = str_replace( parse_url( get_pagenum_link(), PHP_URL_QUERY ), '', get_pagenum_link() );
+				$args['action'] = str_replace( wp_parse_url( get_pagenum_link(), PHP_URL_QUERY ), '', get_pagenum_link() );
 			}
 			break;
 	}
@@ -376,7 +376,7 @@ function wpfc_render_video( $url = '', $seek = true ) {
 	if ( strpos( $url, 'facebook.' ) !== false ) {
 		wp_enqueue_script( 'wpfc-sm-fb-player' );
 
-		parse_str( parse_url( $url, PHP_URL_QUERY ), $query );
+		parse_str( wp_parse_url( $url, PHP_URL_QUERY ), $query );
 
 		return '<div class="fb-video" data-href="' . $url . '" data-width="' . ( isset( $query['width'] ) ? ( is_numeric( $query['width'] ) ? $query['width'] : '600' ) : '600' ) . '" data-allowfullscreen="' . ( isset( $query['fullscreen'] ) ? ( 'yes' === $query['width'] ? 'true' : 'false' ) : 'true' ) . '"></div>';
 	}

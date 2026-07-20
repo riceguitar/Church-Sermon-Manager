@@ -260,7 +260,7 @@ class SM_Import_SM {
 	 * Do the import
 	 */
 	public function import() {
-		$this->log( 'Init info:' . PHP_EOL . 'Sermon Manager ' . SM_VERSION . PHP_EOL . 'Release Date: ' . date( 'Y-m-d', filemtime( SM_PLUGIN_FILE ) ), 255 );
+		$this->log( 'Init info:' . PHP_EOL . 'Sermon Manager ' . SM_VERSION . PHP_EOL . 'Release Date: ' . gmdate( 'Y-m-d', filemtime( SM_PLUGIN_FILE ) ), 255 );
 		if ( ! doing_action( 'admin_init' ) ) {
 			$this->log( 'Scheduling for `admin_init` action.', 0 );
 			add_action( 'admin_init', array( $this, __FUNCTION__ ) );
@@ -1006,46 +1006,59 @@ class SM_Import_SM {
 		$file_name = basename( $url );
 
 		// get placeholder file in the upload dir with a unique, sanitized filename.
-		$upload = wp_upload_bits( $file_name, 0, '', $post['upload_date'] );
+		$upload = wp_upload_bits( $file_name, null, '', $post['upload_date'] );
 		if ( $upload['error'] ) {
 			return new WP_Error( 'upload_dir_error', $upload['error'] );
 		}
 
 		// fetch the remote url and write it to the placeholder file.
-		$headers = wp_get_http( $url, $upload['file'] );
+		$response = wp_remote_get(
+			$url,
+			array(
+				'stream'   => true,
+				'filename' => $upload['file'],
+				'timeout'  => 300,
+			)
+		);
 
 		// request failed.
-		if ( ! $headers ) {
-			@unlink( $upload['file'] );
+		if ( is_wp_error( $response ) ) {
+			wp_delete_file( $upload['file'] );
 
 			return new WP_Error( 'import_file_error', __( 'Remote server did not respond', 'wordpress-importer' ) );
 		}
 
+		$headers             = wp_remote_retrieve_headers( $response );
+		$headers             = is_object( $headers ) ? $headers->getAll() : (array) $headers;
+		$headers['response'] = wp_remote_retrieve_response_code( $response );
+
 		// make sure the fetch was successful.
 		if ( $headers['response'] != '200' ) {
-			@unlink( $upload['file'] );
+			wp_delete_file( $upload['file'] );
 
+			/* translators: 1: HTTP response code, 2: HTTP status description. */
 			return new WP_Error( 'import_file_error', sprintf( __( 'Remote server returned error response %1$d %2$s', 'wordpress-importer' ), esc_html( $headers['response'] ), get_status_header_desc( $headers['response'] ) ) );
 		}
 
 		$filesize = filesize( $upload['file'] );
 
 		if ( isset( $headers['content-length'] ) && $filesize != $headers['content-length'] ) {
-			@unlink( $upload['file'] );
+			wp_delete_file( $upload['file'] );
 
 			return new WP_Error( 'import_file_error', __( 'Remote file is incorrect size', 'wordpress-importer' ) );
 		}
 
 		if ( 0 == $filesize ) {
-			@unlink( $upload['file'] );
+			wp_delete_file( $upload['file'] );
 
 			return new WP_Error( 'import_file_error', __( 'Zero size file downloaded', 'wordpress-importer' ) );
 		}
 
 		$max_size = (int) $this->max_attachment_size();
 		if ( ! empty( $max_size ) && $filesize > $max_size ) {
-			@unlink( $upload['file'] );
+			wp_delete_file( $upload['file'] );
 
+			/* translators: %s: maximum allowed file size. */
 			return new WP_Error( 'import_file_error', sprintf( __( 'Remote file is too large, limit is %s', 'wordpress-importer' ), size_format( $max_size ) ) );
 		}
 

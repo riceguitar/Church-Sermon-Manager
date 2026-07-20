@@ -53,7 +53,7 @@ class WP_Taxonomy extends WP_Archive {
 
 			$terms = get_terms(
 				array(
-					'taxonomy'   => $taxonomies[ rand( 0, count( $taxonomies ) ) ],
+					'taxonomy'   => $taxonomies[ wp_rand( 0, count( $taxonomies ) ) ],
 					'hide_empty' => false,
 					'number'     => 1,
 					'order'      => 'RAND',

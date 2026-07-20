@@ -174,7 +174,7 @@ class WP {
 		// Add a delete notice.
 		Plugin::instance()->notice_manager->add_success( 'podcast_delete', 'Podcast successfully deleted.', 10, '', false, true );
 
-		wp_redirect( admin_url( 'edit.php?post_type=wpfc_sm_podcast' ) );
+		wp_safe_redirect( admin_url( 'edit.php?post_type=wpfc_sm_podcast' ) );
 		exit;
 	}
 

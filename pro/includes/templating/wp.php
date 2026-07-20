@@ -495,7 +495,7 @@ class WP {
 			Plugin::instance()->notice_manager->add_error( 'template_duplicating_fail', 'Failed duplicating the template. ' . $e->getMessage(), 10, 'templating' );
 		}
 
-		wp_redirect( admin_url( 'edit.php?post_type=' . $this->post_type ) );
+		wp_safe_redirect( admin_url( 'edit.php?post_type=' . $this->post_type ) );
 		exit;
 	}
 
@@ -512,7 +512,7 @@ class WP {
 			Plugin::instance()->notice_manager->add_error( 'templating_switch_fail', 'Failed to switch to the template.', 10, 'templating' );
 		}
 
-		wp_redirect( admin_url( 'edit.php?post_type=' . $this->post_type ) );
+		wp_safe_redirect( admin_url( 'edit.php?post_type=' . $this->post_type ) );
 		exit;
 	}
 
@@ -529,7 +529,7 @@ class WP {
 			Plugin::instance()->notice_manager->add_error( 'templating_rescan_fail', 'Failed rescanning the templates.', 10, 'templating' );
 		}
 
-		wp_redirect( admin_url( 'edit.php?post_type=' . $this->post_type ) );
+		wp_safe_redirect( admin_url( 'edit.php?post_type=' . $this->post_type ) );
 		exit;
 	}
 
@@ -567,7 +567,7 @@ class WP {
 			Plugin::instance()->notice_manager->add_success( 'templating_delete_success', 'Template removed.', 10, 'templating' );
 		}
 
-		wp_redirect( admin_url( 'edit.php?post_type=' . $this->post_type ) );
+		wp_safe_redirect( admin_url( 'edit.php?post_type=' . $this->post_type ) );
 		exit;
 	}
 

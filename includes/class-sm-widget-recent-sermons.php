@@ -166,7 +166,7 @@ class SM_Widget_Recent_Sermons extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 		$instance                  = $old_instance;
-		$instance['title']         = strip_tags( $new_instance['title'] );
+		$instance['title']         = wp_strip_all_tags( $new_instance['title'] );
 		$instance['number']        = (int) $new_instance['number'];
 		$instance['before_widget'] = wp_kses_post( $new_instance['before_widget'] );
 		$instance['after_widget']  = wp_kses_post( $new_instance['after_widget'] );

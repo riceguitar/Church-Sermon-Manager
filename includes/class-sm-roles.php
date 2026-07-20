@@ -7,6 +7,8 @@
  * @package SermonManager
  */
 
+defined( 'ABSPATH' ) or die;
+
 /**
  * Define SM_Roles.
  */

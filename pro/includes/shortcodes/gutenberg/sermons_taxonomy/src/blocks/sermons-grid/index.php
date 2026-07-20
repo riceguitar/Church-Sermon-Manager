@@ -1,4 +1,6 @@
 <?php
+
+defined( 'ABSPATH' ) or die;
 function sermons_taxonomy_layout_render_sermons_grid( $attributes ){
 		
 	ob_start();

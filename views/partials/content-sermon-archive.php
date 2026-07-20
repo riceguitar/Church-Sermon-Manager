@@ -16,6 +16,8 @@
  * @since   2.15.2 - fix $args not being loaded from shortcode.
  */
 
+defined( 'ABSPATH' ) or die;
+
 global $post;
 
 

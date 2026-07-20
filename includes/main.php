@@ -667,7 +667,7 @@ class SermonManager { // phpcs:ignore
 			function ( $url, $attachment_id ) {
 				$db_url = get_post_meta( $attachment_id, '_wp_attached_file', true );
 
-				if ( $db_url && parse_url( $db_url, PHP_URL_SCHEME ) !== null ) {
+				if ( $db_url && wp_parse_url( $db_url, PHP_URL_SCHEME ) !== null ) {
 					return $db_url;
 				}
 
@@ -927,8 +927,8 @@ class SermonManager { // phpcs:ignore
 					return;
 				}
 
-				$parsed_audio_url   = parse_url( $audio_url, PHP_URL_HOST );
-				$parsed_website_url = parse_url( home_url(), PHP_URL_HOST );
+				$parsed_audio_url   = wp_parse_url( $audio_url, PHP_URL_HOST );
+				$parsed_website_url = wp_parse_url( home_url(), PHP_URL_HOST );
 
 				if ( $parsed_audio_url !== $parsed_website_url ) {
 					$audio_id = '';
@@ -952,7 +952,7 @@ class SermonManager { // phpcs:ignore
 
 					if ( $the_file ) {
 						if ( isset( $the_file['length'] ) ) {
-							$length                         = date( 'H:i:s', $the_file['length'] );
+							$length                         = gmdate( 'H:i:s', $the_file['length'] );
 							$_POST['_wpfc_sermon_duration'] = $length;
 							update_post_meta( $post_ID, '_wpfc_sermon_duration', $length );
 						}

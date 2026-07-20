@@ -24,19 +24,19 @@ function smp_templating_set_settings() {
 				'id'       => 'date_format',
 				'options'  => array(
 					0            => 'Default', // Checks what's in Settings.
-					'Y-m-d'      => date( 'Y-m-d' ),
-					'm-d-Y'      => date( 'm-d-Y' ),
-					'd-m-Y'      => date( 'd-m-Y' ),
-					'M d, Y'     => date( 'M d, Y' ),
-					'D, M d, Y'  => date( 'D, M d, Y' ),
-					'M d'        => date( 'M d' ),
-					'F d, Y'     => date( 'F d, Y' ),
-					'l, F d, Y'  => date( 'l, F d, Y' ),
-					'd. M. Y'    => date( 'd. M. Y' ),
-					'd. F Y'     => date( 'd. F Y' ),
-					'd.m.Y'      => date( 'd.m.Y' ),
-					'D, d. M. Y' => date( 'D, d. M. Y' ),
-					'l, j. F Y'  => date( 'l, j. F Y' ),
+					'Y-m-d'      => gmdate( 'Y-m-d' ),
+					'm-d-Y'      => gmdate( 'm-d-Y' ),
+					'd-m-Y'      => gmdate( 'd-m-Y' ),
+					'M d, Y'     => gmdate( 'M d, Y' ),
+					'D, M d, Y'  => gmdate( 'D, M d, Y' ),
+					'M d'        => gmdate( 'M d' ),
+					'F d, Y'     => gmdate( 'F d, Y' ),
+					'l, F d, Y'  => gmdate( 'l, F d, Y' ),
+					'd. M. Y'    => gmdate( 'd. M. Y' ),
+					'd. F Y'     => gmdate( 'd. F Y' ),
+					'd.m.Y'      => gmdate( 'd.m.Y' ),
+					'D, d. M. Y' => gmdate( 'D, d. M. Y' ),
+					'l, j. F Y'  => gmdate( 'l, j. F Y' ),
 				),
 				'default'  => 0,
 				'desc_tip' => 'It will use format defined in Sermon Manager settings by default',
@@ -866,7 +866,7 @@ function sm_query_filtering_shortcode( $query ) {
 			$start_date = strtotime( $year . $month . '01' );
 
 			// Last day of the month.
-			$end_date = strtotime( date( $year . $month . 't' ) );
+			$end_date = strtotime( gmdate( $year . $month . 't' ) );
 
 			$query['meta_key']     = 'sermon_date';
 			$query['meta_value']   = array( $start_date, $end_date );
@@ -909,7 +909,7 @@ function sm_query_filtering( $query ) {
 				$start_date = strtotime( $year . $month . '01' );
 
 				// Last day of the month.
-				$end_date = strtotime( date( $year . $month . 't' ) );
+				$end_date = strtotime( gmdate( $year . $month . 't' ) );
 
 				$query->set( 'meta_key', 'sermon_date' );
 				$query->set( 'meta_value', array( $start_date, $end_date ) );
@@ -935,7 +935,7 @@ function sm_query_date_filter_pro( $query ) {
 					// First day of the month.
 					$start_date = strtotime( $year . $month . '01' );
 					// Last day of the month.
-					$end_date = strtotime( date( $year . $month . 't' ) );
+					$end_date = strtotime( gmdate( $year . $month . 't' ) );
 					$query['meta_query'][] = array(
 							'key'     => 'sermon_date',
 							'value'   =>array( $start_date, $end_date ),
@@ -973,8 +973,8 @@ function wpfc_get_term_dropdown_date( $html, $taxonomy, $default, $terms, $curre
 
 	// Grab dates.
 	foreach ( $sermon_dates as $sermon_id => $sermon_date ) {
-		$date      = date( 'm-Y', $sermon_date );
-		$nice_date = date( 'M Y', $sermon_date );
+		$date      = gmdate( 'm-Y', $sermon_date );
+		$nice_date = gmdate( 'M Y', $sermon_date );
 
 		$month_year[ $date ] = $nice_date;
 	}
@@ -1099,7 +1099,7 @@ function smp_maybe_install_default_templates() {
 							}
 
 							update_option( 'smp_new_templates', $existing_updates );
-							wp_redirect( admin_url( 'edit.php?post_type=wpfc_sm_template&doaction=updated' ) );
+							wp_safe_redirect( admin_url( 'edit.php?post_type=wpfc_sm_template&doaction=updated' ) );
 							exit;
 						} else {
 							$existing_updates = get_option( 'smp_new_templates', array(), true );
@@ -1110,7 +1110,7 @@ function smp_maybe_install_default_templates() {
 									unset( $existing_updates[ $installed_template->name ] );
 								}
 								update_option( 'smp_new_templates', $existing_updates );
-								wp_redirect( admin_url( 'edit.php?post_type=wpfc_sm_template' ) );
+								wp_safe_redirect( admin_url( 'edit.php?post_type=wpfc_sm_template' ) );
 								exit;
 							} else {
 								$existing_updates[ $installed_template->name ] = array(

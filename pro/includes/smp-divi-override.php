@@ -5,6 +5,8 @@
  * @package SMP
  */
 
+defined( 'ABSPATH' ) or die;
+
 if ( ! function_exists( 'et_divi_post_meta' ) ) {
 	/**
 	 * Disables the post meta output for page override pages.

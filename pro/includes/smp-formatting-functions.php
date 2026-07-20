@@ -5,6 +5,8 @@
  * @package SMP
  */
 
+defined( 'ABSPATH' ) or die;
+
 /**
  * Converts a string (e.g. 'yes' or 'no') to a bool.
  *

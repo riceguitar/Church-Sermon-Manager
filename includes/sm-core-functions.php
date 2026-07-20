@@ -1392,7 +1392,7 @@ function sm_calculate_remote_audio_duration( $audio_url, $size_hint = null ) {
 		return $duration;
 	} finally {
 		if ( file_exists( $tmp_file ) ) {
-			unlink( $tmp_file );
+			wp_delete_file( $tmp_file );
 		}
 	}
 }

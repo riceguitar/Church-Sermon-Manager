@@ -13,6 +13,9 @@
  * Tested up to PHP : 8.2
  * Requires PHP: 8.1
  *
+ * License: GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ *
  * Text Domain: church-sermon-manager
  * Domain Path: /languages/
  *

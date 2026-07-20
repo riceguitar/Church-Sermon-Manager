@@ -271,7 +271,7 @@ $cover_image_url  = $settings['itunes_cover_image'];
 		<atom:link href="<?php self_link(); ?>" rel="self" type="application/rss+xml"/>
 		<description><?php echo $description; ?></description>
 		<language><?php echo $language; ?></language>
-		<lastBuildDate><?php echo $last_sermon_date ? date( 'r', intval( $last_sermon_date ) ) : date( 'r' ); ?></lastBuildDate>
+		<lastBuildDate><?php echo $last_sermon_date ? gmdate( 'r', intval( $last_sermon_date ) ) : gmdate( 'r' ); ?></lastBuildDate>
 		<sy:updatePeriod>hourly</sy:updatePeriod>
 		<sy:updateFrequency>1</sy:updateFrequency>
 		<copyright><?php echo $copyright; ?></copyright>
@@ -313,11 +313,11 @@ $cover_image_url  = $settings['itunes_cover_image'];
 				$audio_p   = strrpos( $audio_raw, '/' ) + 1;
 				$audio_raw = urldecode( $audio_raw );
 				$audio     = substr( $audio_raw, 0, $audio_p ) . rawurlencode( substr( $audio_raw, $audio_p ) ) . $audio_query;
-				$speakers  = strip_tags( get_the_term_list( $post->ID, 'wpfc_preacher', '', ' &amp; ', '' ) );
+				$speakers  = wp_strip_all_tags( get_the_term_list( $post->ID, 'wpfc_preacher', '', ' &amp; ', '' ) );
 				$speakers_terms    = get_the_terms( $post->ID, 'wpfc_preacher' );
 				$speaker           = $speakers_terms ? $speakers_terms[0]->name : '';
-				$series            = strip_tags( get_the_term_list( $post->ID, 'wpfc_sermon_series', '', ', ', '' ) );
-				$topics            = strip_tags( get_the_term_list( $post->ID, 'wpfc_sermon_topics', '', ', ', '' ) );
+				$series            = wp_strip_all_tags( get_the_term_list( $post->ID, 'wpfc_sermon_series', '', ', ', '' ) );
+				$topics            = wp_strip_all_tags( get_the_term_list( $post->ID, 'wpfc_sermon_topics', '', ', ', '' ) );
 				$post_image        = get_sermon_image_url( $settings['podcast_sermon_image_series'], 'full' );
 				$post_image        =  $use_https ? str_ireplace( 'http://', 'https://', ! empty( $post_image ) ? $post_image : '' ) :  str_ireplace( 'https://', 'http://', ! empty( $post_image ) ? $post_image : '' );
 				$audio_duration    = get_post_meta( $post->ID, '_wpfc_sermon_duration', true ) ?: '0:00';

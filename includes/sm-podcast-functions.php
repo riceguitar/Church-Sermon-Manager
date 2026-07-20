@@ -22,6 +22,7 @@ add_action( 'parse_request', function () {
 		$current_url = preg_replace( '{/$}', '', $_SERVER['REQUEST_URI'] );
 
 		if ( strpos( $current_url, $old_url ) !== false ) {
+			// phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect -- destination is an admin-configured external podcast URL; wp_safe_redirect() refuses off-site hosts.
 			wp_redirect( SermonManager::getOption( 'podcast_redirection_new_url' ), 301 );
 			exit;
 		}

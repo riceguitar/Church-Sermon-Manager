@@ -378,8 +378,8 @@ function sm_update_2150_audio_file_ids() {
 		$audio_url = get_post_meta( $id, 'sermon_audio', true );
 
 		if ( $audio_url && $audio_id ) {
-			$parsed_audio_url   = parse_url( $audio_url, PHP_URL_HOST );
-			$parsed_website_url = parse_url( home_url(), PHP_URL_HOST );
+			$parsed_audio_url   = wp_parse_url( $audio_url, PHP_URL_HOST );
+			$parsed_website_url = wp_parse_url( home_url(), PHP_URL_HOST );
 
 			if ( $parsed_audio_url !== $parsed_website_url ) {
 				update_post_meta( $id, 'sermon_audio_id', '' );
@@ -410,7 +410,7 @@ function sm_update_2150_audio_duration_and_size() {
 
 			if ( $attachment_data ) {
 				if ( isset( $attachment_data['length'] ) ) {
-					update_post_meta( $id, '_wpfc_sermon_duration', date( 'H:i:s', $attachment_data['length'] ) );
+					update_post_meta( $id, '_wpfc_sermon_duration', gmdate( 'H:i:s', $attachment_data['length'] ) );
 				}
 
 				if ( isset( $attachment_data['filesize'] ) ) {

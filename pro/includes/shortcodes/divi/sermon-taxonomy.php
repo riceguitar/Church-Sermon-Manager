@@ -9,6 +9,8 @@
 
 namespace SMP\Shortcodes\Divi;
 
+defined( 'ABSPATH' ) or die;
+
 use ET_Builder_Module;
 
 /**

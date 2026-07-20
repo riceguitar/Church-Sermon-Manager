@@ -9,6 +9,8 @@
 
 namespace SMP\Settings;
 
+defined( 'ABSPATH' ) or die;
+
 use SM_Settings_Page;
 
 /**

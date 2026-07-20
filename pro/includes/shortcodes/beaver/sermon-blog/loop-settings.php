@@ -102,6 +102,7 @@ $settings = (object) array_merge( $defaults, (array) $settings );
 						'action'   => 'fl_as_posts',
 						'data'     => $slug,
 						'label'    => $type->label,
+						/* translators: %1$s: post type or taxonomy label. */
 						'help'     => sprintf( __( 'Enter a list of %1$s.', 'fl-builder' ), $type->label ),
 						'matching' => true,
 					), $settings );
@@ -115,6 +116,7 @@ $settings = (object) array_merge( $defaults, (array) $settings );
 							'action'   => 'fl_as_terms',
 							'data'     => $tax_slug,
 							'label'    => $tax->label,
+							/* translators: %1$s: post type or taxonomy label. */
 							'help'     => sprintf( __( 'Enter a list of %1$s.', 'fl-builder' ), $tax->label ),
 							'matching' => true,
 						), $settings );

@@ -1124,8 +1124,8 @@ class SM_Shortcodes {
 						);
 						break;
 					case 'month':
-						$year  = $args['year'] ?: date( 'Y' );
-						$month = intval( $args['month'] ) ?: date( 'm' );
+						$year  = $args['year'] ?: gmdate( 'Y' );
+						$month = intval( $args['month'] ) ?: gmdate( 'm' );
 
 						$query_args['meta_query'][] = array(
 							'key'     => 'sermon_date',

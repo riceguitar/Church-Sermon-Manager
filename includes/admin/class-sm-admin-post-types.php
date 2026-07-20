@@ -137,10 +137,10 @@ class SM_Admin_Post_Types {
 					// translators: %s: The time. Such as "12 hours".
 					$data = sprintf( __( '%s ago', 'church-sermon-manager' ), human_time_diff( $unix_preached ) );
 				} else {
-					$data = date( 'Y/m/d', $unix_preached );
+					$data = gmdate( 'Y/m/d', $unix_preached );
 				}
 
-				$data = '<abbr title="' . date( 'Y/m/d g:i:s a', $unix_preached ) . '">' . $data . '</abbr>';
+				$data = '<abbr title="' . gmdate( 'Y/m/d g:i:s a', $unix_preached ) . '">' . $data . '</abbr>';
 
 				break;
 			default:

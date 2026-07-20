@@ -309,7 +309,7 @@ switch ( $template ) {
 			$generic_body_content_block = ot_get_option( '_uncode_' . $post_type . '_content_block' );
 
 			$the_content .=
-				'<div id="index-' . rand() . '" class="isotope-system">
+				'<div id="index-' . wp_rand() . '" class="isotope-system">
 				<div class="isotope-wrapper single-gutter">
 					<div class="isotope-container isotope-layout style-masonry isotope-pagination" data-type="masonry" data-layout="masonry" data-lg="800">';
 

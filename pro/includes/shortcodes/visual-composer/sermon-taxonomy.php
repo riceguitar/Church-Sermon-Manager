@@ -5,6 +5,8 @@
  *
  */
 
+defined( 'ABSPATH' ) or die;
+
 if ( ! class_exists( 'Sermon_Taxonomy_Shortcode' ) ) {
 
 	class Sermon_Taxonomy_Shortcode {
@@ -685,6 +687,7 @@ if ( ! class_exists( 'Sermon_Taxonomy_Shortcode' ) ) {
 						'type' => 'el_id',
 						'heading' => __( 'Element ID', 'locale' ),
 						'param_name' => 'el_id',
+						/* translators: %s: URL of the W3C specification for the id attribute. */
 						'description' => sprintf( __( 'Enter element ID (Note: make sure it is unique and valid according to <a href="%s" target="_blank">w3c specification</a>).', 'locale' ), 'http://www.w3schools.com/tags/att_global_id.asp' ),
 					),
 					array(

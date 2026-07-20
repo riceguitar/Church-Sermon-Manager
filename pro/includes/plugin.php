@@ -8,6 +8,8 @@
 
 namespace SMP;
 
+defined( 'ABSPATH' ) or die;
+
 use SMP\Podcasting\Podcasting_Manager;
 use SMP\Shortcodes\Shortcodes_Manager;
 use SMP\Templating\Settings as Templating_Settings;

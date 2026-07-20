@@ -156,14 +156,21 @@ class PostTypes {
                         'name'              => ucwords($labels['wpfc_preacher'] . 's'),
                         'singular_name'     => ucwords($labels['wpfc_preacher']),
                         'menu_name'         => ucwords($labels['wpfc_preacher'] . 's'),
+                        /* translators: %s: taxonomy label. */
                         'search_items'      => wp_sprintf(__('Search %s', 'church-sermon-manager'), $labels['wpfc_preacher']),
+                        /* translators: %s: taxonomy label. */
                         'all_items'         => wp_sprintf(__('All %s', 'church-sermon-manager'), $labels['wpfc_preacher']),
                         'parent_item'       => null,
                         'parent_item_colon' => null,
+                        /* translators: %s: taxonomy label. */
                         'edit_item'         => wp_sprintf(__('Edit %s', 'church-sermon-manager'), $labels['wpfc_preacher']),
+                        /* translators: %s: taxonomy label. */
                         'update_item'       => wp_sprintf(__('Update %s', 'church-sermon-manager'), $labels['wpfc_preacher']),
+                        /* translators: %s: taxonomy label. */
                         'add_new_item'      => wp_sprintf(__('Add new %s', 'church-sermon-manager'), $labels['wpfc_preacher']),
+                        /* translators: %s: taxonomy label. */
                         'new_item_name'     => wp_sprintf(__('New %s name', 'church-sermon-manager'), $labels['wpfc_preacher']),
+                        /* translators: %s: taxonomy label. */
                         'not_found'         => wp_sprintf(__('No %s found', 'church-sermon-manager'), $labels['wpfc_preacher']),
                     ],
                     'show_ui'      => true,

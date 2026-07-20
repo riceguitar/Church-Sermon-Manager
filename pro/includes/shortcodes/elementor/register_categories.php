@@ -6,6 +6,8 @@
  * @package SMP\Shortcodes
  */
 
+defined( 'ABSPATH' ) or die;
+
 // Modern Elementor category registration.
 add_action(
 	'elementor/elements/categories_registered',

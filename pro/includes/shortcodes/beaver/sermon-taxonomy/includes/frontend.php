@@ -1,5 +1,7 @@
 <?php
 
+defined( 'ABSPATH' ) or die;
+
 ob_start();
 
 if ( ! defined( 'SM_ENQUEUE_SCRIPTS_STYLES' ) ) {

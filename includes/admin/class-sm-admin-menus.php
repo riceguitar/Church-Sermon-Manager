@@ -104,8 +104,11 @@ class SM_Admin_Menus {
 			<?php if ( $updated ) : ?>
 				<h2><?php _e( 'Migration Results', 'church-sermon-manager' ); ?></h2>
 				<ul>
+					/* translators: %d: number of sermons checked. */
 					<li><?php printf( __( 'Total sermons checked: %d', 'church-sermon-manager' ), $results['total'] ); ?></li>
+					/* translators: %d: number of posts updated. */
 					<li><?php printf( __( 'Posts updated: %d', 'church-sermon-manager' ), $results['updated'] ); ?></li>
+					/* translators: %d: number of posts skipped. */
 					<li><?php printf( __( 'Posts skipped: %d', 'church-sermon-manager' ), $results['skipped'] ); ?></li>
 				</ul>
 			<?php endif; ?>

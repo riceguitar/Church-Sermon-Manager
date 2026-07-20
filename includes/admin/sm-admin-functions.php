@@ -173,7 +173,7 @@ function wpfc_taxonomy_short_description_columns( $columns ) {
 function wpfc_taxonomy_short_description_rows( $default, $column_name, $term ) {
 	if ( 'short_description' == $column_name ) {
 		global $taxonomy;
-		$default = term_description( $term, $taxonomy );
+		$default = term_description( $term );
 		$default = wp_trim_words( $default, 10 );
 	}
 

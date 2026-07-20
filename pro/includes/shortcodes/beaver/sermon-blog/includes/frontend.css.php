@@ -1,4 +1,6 @@
 <?php if( 'columns' == $settings->layout ) : ?>
+
+defined( 'ABSPATH' ) or die;
 article.wpfc_sermon.fl-sermon-columns-<?php echo $settings->sermon_columns; ?> {
     width: calc((100% - <?php echo $settings->sermon_spacing * ( $settings->sermon_columns - 1 ); ?>px) / <?php echo $settings->sermon_columns; ?>);
     float: left;

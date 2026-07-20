@@ -100,7 +100,7 @@ class SM_Dates {
 		}
 
 		// Format it.
-		$date = $localize ? date_i18n( $format, $date ) : date( $format, $date );
+		$date = $localize ? date_i18n( $format, $date ) : gmdate( $format, $date );
 
 		/**
 		 * Filters the date a post was preached

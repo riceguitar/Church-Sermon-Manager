@@ -16,6 +16,8 @@
  * @since   2.15.2 - fixed filtering 404 error
  */
 
+defined( 'ABSPATH' ) or die;
+
 global $post;
 
 if ( ! empty( $GLOBALS['wpfc_partial_args'] ) ) {

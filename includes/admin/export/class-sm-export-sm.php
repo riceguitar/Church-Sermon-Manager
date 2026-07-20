@@ -37,7 +37,7 @@ class SM_Export_SM {
 		if ( ! empty( $sitename ) ) {
 			$sitename .= '.';
 		}
-		$filename = $sitename . 'wordpress.' . date( 'Y-m-d' ) . '.xml';
+		$filename = $sitename . 'wordpress.' . gmdate( 'Y-m-d' ) . '.xml';
 
 		header( 'Content-Description: File Transfer' );
 		header( 'Content-Disposition: attachment; filename=' . $filename );
@@ -73,7 +73,7 @@ class SM_Export_SM {
 			'wpfc_bible_book',
 			'wpfc_service_type',
 		);
-		$custom_terms      = (array) get_terms( $custom_taxonomies, array( 'get' => 'all' ) );
+		$custom_terms      = (array) get_terms( array( 'taxonomy' => $custom_taxonomies, 'get' => 'all' ) );
 
 		// put terms in order with no child going before its parent.
 		while ( $t = array_shift( $custom_terms ) ) {
@@ -336,7 +336,7 @@ class SM_Export_SM {
 				<title><?php bloginfo_rss( 'name' ); ?></title>
 				<link><?php bloginfo_rss( 'url' ); ?></link>
 				<description><?php bloginfo_rss( 'description' ); ?></description>
-				<pubDate><?php echo date( 'D, d M Y H:i:s +0000' ); ?></pubDate>
+				<pubDate><?php echo gmdate( 'D, d M Y H:i:s +0000' ); ?></pubDate>
 				<language><?php bloginfo_rss( 'language' ); ?></language>
 				<wp:wxr_version><?php echo WXR_VERSION; ?></wp:wxr_version>
 				<wp:base_site_url><?php echo wxr_site_url(); ?></wp:base_site_url>

@@ -113,7 +113,7 @@ class Sermon_Taxonomy extends Widget_Base {
 						'format'             => ( strpos( $url, '?' ) !== false ? '&' : '?' ) . 'term_page=%#%',
 						'type'               => 'array',
 						'current'            => isset( $_GET['term_page'] ) ? intval( $_GET['term_page'] ) ?: 1 : 1,
-						'total'              => min(round( ( wp_count_terms( $taxonomy, array( 'hide_empty' => 'yes' === $settings['hide_empty'] ) ) - intval( $settings['offset'] ) ) / $page_limit, 0, PHP_ROUND_HALF_UP ), $settings['pagination_page_limit']),
+						'total'              => min(round( ( wp_count_terms( array( 'taxonomy' => $taxonomy, 'hide_empty' => 'yes' === $settings['hide_empty'] ) ) - intval( $settings['offset'] ) ) / $page_limit, 0, PHP_ROUND_HALF_UP ), $settings['pagination_page_limit']),
 						'show_all'           => 'yes' !== $settings['pagination_numbers_shorten'],
 						'prev_text'    		 => $settings['pagination_prev_label'],
 						'next_text'    		 => $settings['pagination_next_label'],

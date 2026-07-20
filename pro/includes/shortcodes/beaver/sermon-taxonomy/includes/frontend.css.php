@@ -1,4 +1,6 @@
 <?php if( 'grid' == $settings->taxonomy_layout ) : ?>
+
+defined( 'ABSPATH' ) or die;
 .fl-term-container-grid .wpfc-term-grid-image {
     margin-bottom: <?php echo $settings->term_image_padding; ?>px;
 }

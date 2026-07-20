@@ -1,4 +1,6 @@
 <?php
+
+defined( 'ABSPATH' ) or die;
 function sermons_blog_layout_render_sermons_grid( $attributes ){
 	
 	$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;

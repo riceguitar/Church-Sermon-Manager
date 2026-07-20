@@ -128,7 +128,7 @@ final class Template {
 			$this->path             = 'Default';
 			$this->default_settings = null;
 			$this->date_created     = 'June 9, 2018';
-			$this->date_updated     = file_exists( SM_PATH . 'views/archive-wpfc_sermon.php' ) ? date( 'F j, Y', filemtime( SM_PATH . 'views/archive-wpfc_sermon.php' ) ) : 'Unknown';
+			$this->date_updated     = file_exists( SM_PATH . 'views/archive-wpfc_sermon.php' ) ? gmdate( 'F j, Y', filemtime( SM_PATH . 'views/archive-wpfc_sermon.php' ) ) : 'Unknown';
 			$this->url              = 'https://sierra.host/church-sermon-manager/';
 
 			$this->is_invalid = false;

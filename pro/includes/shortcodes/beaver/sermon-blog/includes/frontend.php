@@ -1,4 +1,6 @@
 <?php
+
+defined( 'ABSPATH' ) or die;
 global $post, $taxonomy, $term;
 
 if ( ! defined( 'SM_ENQUEUE_SCRIPTS_STYLES' ) ) {

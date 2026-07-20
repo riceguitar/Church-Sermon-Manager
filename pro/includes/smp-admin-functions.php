@@ -5,6 +5,8 @@
  * @package SMP
  */
 
+defined( 'ABSPATH' ) or die;
+
 /**
  * Includes additional settings pages for Sermon Manager.
  *

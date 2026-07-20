@@ -15,6 +15,8 @@
  * @since   2.13.0 - added
  */
 
+defined( 'ABSPATH' ) or die;
+
 global $post;
 ?>
 <div id="wpfc-attachments" class="cf">

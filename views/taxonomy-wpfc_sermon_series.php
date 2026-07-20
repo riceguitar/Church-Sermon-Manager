@@ -5,6 +5,8 @@
  * @package SM/Views
  */
 
+defined( 'ABSPATH' ) or die;
+
 get_header();
 ?>
 
