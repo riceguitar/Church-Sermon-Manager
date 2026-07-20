@@ -31,7 +31,7 @@ class Skin_Cards extends Skin_Base {
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'Cards', 'elementor-pro' );
+		return __( 'Cards', 'church-sermon-manager' );
 	}
 
 	/**
@@ -123,7 +123,7 @@ class Skin_Cards extends Skin_Base {
         $this->add_control(
 			'image_position',
 			array(
-				'label'       => __( 'Image Position', 'elementor-pro' ),
+				'label'       => __( 'Image Position', 'church-sermon-manager' ),
 				'type'        => Controls_Manager::SELECT,
 				'label_block' => true,
 				'options'     => array(
@@ -211,10 +211,10 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'show_badge',
 			array(
-				'label'     => __( 'Badge', 'elementor-pro' ),
+				'label'     => __( 'Badge', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SWITCHER,
-				'label_on'  => __( 'Show', 'elementor-pro' ),
-				'label_off' => __( 'Hide', 'elementor-pro' ),
+				'label_on'  => __( 'Show', 'church-sermon-manager' ),
+				'label_off' => __( 'Hide', 'church-sermon-manager' ),
 				'default'   => 'yes',
 				'separator' => 'before',
 			)
@@ -223,7 +223,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'badge_taxonomy',
 			array(
-				'label'       => __( 'Badge Taxonomy', 'elementor-pro' ),
+				'label'       => __( 'Badge Taxonomy', 'church-sermon-manager' ),
 				'type'        => Controls_Manager::SELECT2,
 				'label_block' => true,
 				'default'     => 'wpfc_sermon_series',
@@ -269,10 +269,10 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'show_avatar',
 			array(
-				'label'        => \SermonManager::getOption( 'preacher_label', __( 'Preacher', 'church-sermon-manager' ) ) . ' ' . __( 'Avatar', 'elementor-pro' ),
+				'label'        => \SermonManager::getOption( 'preacher_label', __( 'Preacher', 'church-sermon-manager' ) ) . ' ' . __( 'Avatar', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Show', 'elementor-pro' ),
-				'label_off'    => __( 'Hide', 'elementor-pro' ),
+				'label_on'     => __( 'Show', 'church-sermon-manager' ),
+				'label_off'    => __( 'Hide', 'church-sermon-manager' ),
 				'return_value' => 'show-avatar',
 				'default'      => 'show-avatar',
 				'separator'    => 'before',
@@ -303,7 +303,7 @@ class Skin_Cards extends Skin_Base {
 		$this->start_controls_section(
 			'section_design_card',
 			array(
-				'label' => __( 'Card', 'elementor-pro' ),
+				'label' => __( 'Card', 'church-sermon-manager' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -311,7 +311,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'card_bg_color',
 			array(
-				'label'     => __( 'Background Color', 'elementor-pro' ),
+				'label'     => __( 'Background Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__card' => 'background-color: {{VALUE}}',
@@ -322,7 +322,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'card_border_color',
 			array(
-				'label'     => __( 'Border Color', 'elementor-pro' ),
+				'label'     => __( 'Border Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__card' => 'border-color: {{VALUE}}',
@@ -333,7 +333,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'card_border_width',
 			array(
-				'label'      => __( 'Border Width', 'elementor-pro' ),
+				'label'      => __( 'Border Width', 'church-sermon-manager' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -351,7 +351,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'card_border_radius',
 			array(
-				'label'      => __( 'Border Radius', 'elementor-pro' ),
+				'label'      => __( 'Border Radius', 'church-sermon-manager' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%' ),
 				'range'      => array(
@@ -369,7 +369,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'card_padding',
 			array(
-				'label'      => __( 'Horizontal Padding', 'elementor-pro' ),
+				'label'      => __( 'Horizontal Padding', 'church-sermon-manager' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -389,7 +389,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'card_vertical_padding',
 			array(
-				'label'      => __( 'Vertical Padding', 'elementor-pro' ),
+				'label'      => __( 'Vertical Padding', 'church-sermon-manager' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -407,7 +407,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'box_shadow_box_shadow_type', // The name of this control is like that, for future extensibility to group_control box shadow.
 			array(
-				'label'        => __( 'Box Shadow', 'elementor-pro' ),
+				'label'        => __( 'Box Shadow', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
 				'prefix_class' => 'elementor-card-shadow-',
@@ -418,12 +418,12 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'hover_effect',
 			array(
-				'label'        => __( 'Hover Effect', 'elementor-pro' ),
+				'label'        => __( 'Hover Effect', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::SELECT,
 				'label_block'  => false,
 				'options'      => array(
-					'none'     => __( 'None', 'elementor-pro' ),
-					'gradient' => __( 'Gradient', 'elementor-pro' ),
+					'none'     => __( 'None', 'church-sermon-manager' ),
+					'gradient' => __( 'Gradient', 'church-sermon-manager' ),
 				),
 				'default'      => 'gradient',
 				'separator'    => 'before',
@@ -434,7 +434,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'meta_border_color',
 			array(
-				'label'     => __( 'Meta Border Color', 'elementor-pro' ),
+				'label'     => __( 'Meta Border Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
 				'selectors' => array(
@@ -456,7 +456,7 @@ class Skin_Cards extends Skin_Base {
 		$this->start_controls_section(
 			'section_design_filters',
 			array(
-				'label' => __( 'Filters', 'elementor-pro' ),
+				'label' => __( 'Filters', 'church-sermon-manager' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => array(
 					$this->get_control_id( 'show_filter' ) => 'yes',
@@ -467,7 +467,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'filter_spacing',
 			array(
-				'label'     => __( 'Spacing', 'elementor-pro' ),
+				'label'     => __( 'Spacing', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -496,7 +496,7 @@ class Skin_Cards extends Skin_Base {
 		$this->start_controls_section(
 			'section_design_content',
 			array(
-				'label' => __( 'Content', 'elementor-pro' ),
+				'label' => __( 'Content', 'church-sermon-manager' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -504,7 +504,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'heading_title_style',
 			array(
-				'label'     => __( 'Title', 'elementor-pro' ),
+				'label'     => __( 'Title', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => array(
 					$this->get_control_id( 'show_title' ) => 'yes',
@@ -515,7 +515,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'title_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__title, {{WRAPPER}} .elementor-post__title a' => 'color: {{VALUE}};',
@@ -540,7 +540,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'title_spacing',
 			array(
-				'label'     => __( 'Spacing', 'elementor-pro' ),
+				'label'     => __( 'Spacing', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -559,7 +559,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'heading_meta_style',
 			array(
-				'label'     => __( 'Meta', 'elementor-pro' ),
+				'label'     => __( 'Meta', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => array(
@@ -572,7 +572,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'meta_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__meta-data' => 'color: {{VALUE}};',
@@ -587,7 +587,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'meta_separator_color',
 			array(
-				'label'     => __( 'Separator Color', 'elementor-pro' ),
+				'label'     => __( 'Separator Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__meta-data span:before' => 'color: {{VALUE}};',
@@ -614,7 +614,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'heading_excerpt_style',
 			array(
-				'label'     => __( 'Excerpt', 'elementor-pro' ),
+				'label'     => __( 'Excerpt', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => array(
@@ -626,7 +626,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'excerpt_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__excerpt' => 'color: {{VALUE}};',
@@ -651,7 +651,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'excerpt_spacing',
 			array(
-				'label'     => __( 'Spacing', 'elementor-pro' ),
+				'label'     => __( 'Spacing', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -670,7 +670,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'heading_readmore_style',
 			array(
-				'label'     => __( 'Read More', 'elementor-pro' ),
+				'label'     => __( 'Read More', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => array(
@@ -682,7 +682,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'read_more_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__read-more' => 'color: {{VALUE}};',
@@ -707,7 +707,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'read_more_spacing',
 			array(
-				'label'     => __( 'Spacing', 'elementor-pro' ),
+				'label'     => __( 'Spacing', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(

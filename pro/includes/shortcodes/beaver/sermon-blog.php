@@ -20,9 +20,9 @@ class Sermon_Blog extends \FLBuilderModule {
 	 */
 	public function __construct() {
 		parent::__construct( array(
-			'name'            => __( 'Sermons', 'fl-builder' ),
-			'description'     => __( 'Display a grid of your Sermons.', 'fl-builder' ),
-			'category'        => __( 'Posts', 'fl-builder' ),
+			'name'            => __( 'Sermons', 'church-sermon-manager' ),
+			'description'     => __( 'Display a grid of your Sermons.', 'church-sermon-manager' ),
+			'category'        => __( 'Posts', 'church-sermon-manager' ),
 			'dir'             => SMP_PATH . 'includes/shortcodes/beaver/sermon-blog/',
 			'url'             => SMP_URL . 'includes/shortcodes/beaver/sermon-blog/',
 			'icon'            => 'schedule.svg',
@@ -38,18 +38,18 @@ class Sermon_Blog extends \FLBuilderModule {
 
 \FLBuilder::register_module( '\SMP\Shortcodes\Beaver\Sermon_Blog', array(
 	'layout'     => array(
-		'title'    => __( 'Layout', 'fl-builder' ),
+		'title'    => __( 'Layout', 'church-sermon-manager' ),
 		'sections' => array(
 			'general'     => array(
 				'title'  => '',
 				'fields' => array(
 					'layout' => array(
 						'type'    => 'select',
-						'label'   => __( 'Layout', 'fl-builder' ),
+						'label'   => __( 'Layout', 'church-sermon-manager' ),
 						'default' => 'columns',
 						'options' => array(
-							'columns' => __( 'Columns', 'fl-builder' ),
-							'list'    => __( 'List', 'fl-builder' ),
+							'columns' => __( 'Columns', 'church-sermon-manager' ),
+							'list'    => __( 'List', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'columns' => array(
@@ -86,15 +86,15 @@ class Sermon_Blog extends \FLBuilderModule {
 				),
 			),
 			'sermons'     => array(
-				'title'  => __( 'Sermons', 'fl-builder' ),
+				'title'  => __( 'Sermons', 'church-sermon-manager' ),
 				'fields' => array(
 					'match_height'        => array(
 						'type'    => 'select',
-						'label'   => __( 'Equal Heights', 'fl-builder' ),
+						'label'   => __( 'Equal Heights', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Yes', 'fl-builder' ),
-							'0' => __( 'No', 'fl-builder' ),
+							'1' => __( 'Yes', 'church-sermon-manager' ),
+							'0' => __( 'No', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'0' => array(
@@ -107,11 +107,11 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'show_masonry'        => array(
 						'type'    => 'select',
-						'label'   => __( 'Masonry', 'fl-builder' ),
+						'label'   => __( 'Masonry', 'church-sermon-manager' ),
 						'default' => '0',
 						'options' => array(
-							'1' => __( 'On', 'fl-builder' ),
-							'0' => __( 'Off', 'fl-builder' ),
+							'1' => __( 'On', 'church-sermon-manager' ),
+							'0' => __( 'Off', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'0' => array(
@@ -121,7 +121,7 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'sermon_columns'      => array(
 						'type'       => 'unit',
-						'label'      => __( 'Columns', 'fl-builder' ),
+						'label'      => __( 'Columns', 'church-sermon-manager' ),
 						'responsive' => array(
 							'default' => array(
 								'default'    => '3',
@@ -132,7 +132,7 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'sermon_spacing'      => array(
 						'type'        => 'unit',
-						'label'       => __( 'Spacing Between Columns', 'fl-builder' ),
+						'label'       => __( 'Spacing Between Columns', 'church-sermon-manager' ),
 						'default'     => '30',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -140,7 +140,7 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'list_sermon_spacing' => array(
 						'type'        => 'unit',
-						'label'       => __( 'Spacing Between Sermons', 'fl-builder' ),
+						'label'       => __( 'Spacing Between Sermons', 'church-sermon-manager' ),
 						'default'     => '40',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -148,7 +148,7 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'sermon_margin'       => array(
 						'type'        => 'unit',
-						'label'       => __( 'Sermon Bottom Margin', 'fl-builder' ),
+						'label'       => __( 'Sermon Bottom Margin', 'church-sermon-manager' ),
 						'default'     => '20',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -157,16 +157,16 @@ class Sermon_Blog extends \FLBuilderModule {
 				),
 			),
 			'image'       => array(
-				'title'  => __( 'Featured Image', 'fl-builder' ),
+				'title'  => __( 'Featured Image', 'church-sermon-manager' ),
 				'fields' => array(
 					'featured_type' => array(
 						'type'    => 'select',
-						'label'   => __( 'Featured Type', 'fl-builder' ),
+						'label'   => __( 'Featured Type', 'church-sermon-manager' ),
 						'default' => 'image',
 						'options' => array(
-							'image' => __( 'Image', 'fl-builder' ),
-							'video' => __( 'Video', 'fl-builder' ),
-							'none'  => __( 'None', 'fl-builder' ),
+							'image' => __( 'Image', 'church-sermon-manager' ),
+							'video' => __( 'Video', 'church-sermon-manager' ),
+							'none'  => __( 'None', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'image' => array(
@@ -176,40 +176,40 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'image_spacing' => array(
 						'type'        => 'dimension',
-						'label'       => __( 'Image Spacing', 'fl-builder' ),
+						'label'       => __( 'Image Spacing', 'church-sermon-manager' ),
 						'default'     => '0',
 						'description' => 'px',
 					),
 				),
 			),
 			'info'        => array(
-				'title'  => __( 'Sermon Info', 'fl-builder' ),
+				'title'  => __( 'Sermon Info', 'church-sermon-manager' ),
 				'fields' => array(
 					'show_series'         => array(
 						'type'    => 'select',
-						'label'   => __( 'Series', 'fl-builder' ),
+						'label'   => __( 'Series', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 					),
 					'show_title'          => array(
 						'type'    => 'select',
-						'label'   => __( 'Title', 'fl-builder' ),
+						'label'   => __( 'Title', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 					),
 					'show_date'           => array(
 						'type'    => 'select',
-						'label'   => __( 'Date', 'fl-builder' ),
+						'label'   => __( 'Date', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'1' => array(
@@ -219,7 +219,7 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'date_format'         => array(
 						'type'    => 'select',
-						'label'   => __( 'Date Format', 'fl-builder' ),
+						'label'   => __( 'Date Format', 'church-sermon-manager' ),
 						'default' => 'M j, Y',
 						'options' => array(
 							'M j, Y' => gmdate( 'M j, Y' ),
@@ -234,11 +234,11 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'show_audio'          => array(
 						'type'    => 'select',
-						'label'   => __( 'Audio', 'fl-builder' ),
+						'label'   => __( 'Audio', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'1' => array(
@@ -248,52 +248,52 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'show_download_audio' => array(
 						'type'    => 'select',
-						'label'   => __( 'Audio Download Link', 'fl-builder' ),
+						'label'   => __( 'Audio Download Link', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 					),
 					'show_preacher'       => array(
 						'type'    => 'select',
-						'label'   => __( 'Preacher', 'fl-builder' ),
+						'label'   => __( 'Preacher', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 					),
 					'show_passage'        => array(
 						'type'    => 'select',
-						'label'   => __( 'Bible Passage', 'fl-builder' ),
+						'label'   => __( 'Bible Passage', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 					),
 					'show_service_type'   => array(
 						'type'    => 'select',
-						'label'   => __( 'Service Type', 'fl-builder' ),
+						'label'   => __( 'Service Type', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 					),
 				),
 			),
 			'description' => array(
-				'title'  => __( 'Description', 'fl-builder' ),
+				'title'  => __( 'Description', 'church-sermon-manager' ),
 				'fields' => array(
 					'show_description'   => array(
 						'type'    => 'select',
-						'label'   => __( 'Description', 'fl-builder' ),
+						'label'   => __( 'Description', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'1' => array(
@@ -303,17 +303,17 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'description_length' => array(
 						'type'        => 'unit',
-						'label'       => __( 'Description Length', 'fl-builder' ),
+						'label'       => __( 'Description Length', 'church-sermon-manager' ),
 						'default'     => '30',
-						'description' => __( 'words', 'fl-builder' ),
+						'description' => __( 'words', 'church-sermon-manager' ),
 					),
 					'show_more_link'     => array(
 						'type'    => 'select',
-						'label'   => __( 'More Link', 'fl-builder' ),
+						'label'   => __( 'More Link', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'1' => array(
@@ -323,26 +323,26 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'more_link_text'     => array(
 						'type'    => 'text',
-						'label'   => __( 'More Link Text', 'fl-builder' ),
-						'default' => __( 'Read More', 'fl-builder' ),
+						'label'   => __( 'More Link Text', 'church-sermon-manager' ),
+						'default' => __( 'Read More', 'church-sermon-manager' ),
 					),
 				),
 			),
 		),
 	),
 	'filters'    => array(
-		'title'    => __( 'Filters', 'fl-builder' ),
+		'title'    => __( 'Filters', 'church-sermon-manager' ),
 		'sections' => array(
 			'sm_filters' => array(
 				'title'  => 'Filters',
 				'fields' => array(
 					'show_filters'             => array(
 						'type'    => 'select',
-						'label'   => __( 'Filters', 'fl-builder' ),
+						'label'   => __( 'Filters', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'1' => array(
@@ -359,7 +359,7 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'filter_spacing'           => array(
 						'type'        => 'unit',
-						'label'       => __( 'Filter Bottom Margin', 'fl-builder' ),
+						'label'       => __( 'Filter Bottom Margin', 'church-sermon-manager' ),
 						'default'     => '20',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -367,47 +367,47 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'show_filter_topics'       => array(
 						'type'    => 'select',
-						'label'   => __( 'Filter Topics', 'fl-builder' ),
+						'label'   => __( 'Filter Topics', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 					),
 					'show_filter_series'       => array(
 						'type'    => 'select',
-						'label'   => __( 'Filter Series', 'fl-builder' ),
+						'label'   => __( 'Filter Series', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 					),
 					'show_filter_preacher'     => array(
 						'type'    => 'select',
-						'label'   => __( 'Filter Preacher', 'fl-builder' ),
+						'label'   => __( 'Filter Preacher', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 					),
 					'show_filter_book'         => array(
 						'type'    => 'select',
-						'label'   => __( 'Filter Books', 'fl-builder' ),
+						'label'   => __( 'Filter Books', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 					),
 					'show_filter_service_type' => array(
 						'type'    => 'select',
-						'label'   => __( 'Filter Service Types', 'fl-builder' ),
+						'label'   => __( 'Filter Service Types', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 					),
 				),
@@ -415,27 +415,27 @@ class Sermon_Blog extends \FLBuilderModule {
 		),
 	),
 	'style'      => array(
-		'title'    => __( 'Style', 'fl-builder' ),
+		'title'    => __( 'Style', 'church-sermon-manager' ),
 		'sections' => array(
 			'post_style' => array(
-				'title'  => __( 'Sermons', 'fl-builder' ),
+				'title'  => __( 'Sermons', 'church-sermon-manager' ),
 				'fields' => array(
 					'bg_color'     => array(
 						'type'       => 'color',
-						'label'      => __( 'Sermon Background Color', 'fl-builder' ),
+						'label'      => __( 'Sermon Background Color', 'church-sermon-manager' ),
 						'show_reset' => true,
 						'default'    => 'ffffff',
 					),
 					'border_type'  => array(
 						'type'    => 'select',
-						'label'   => __( 'Sermon Border Type', 'fl-builder' ),
+						'label'   => __( 'Sermon Border Type', 'church-sermon-manager' ),
 						'default' => 'solid',
 						'options' => array(
-							'solid'  => _x( 'Solid', 'Border type.', 'fl-builder' ),
-							'dashed' => _x( 'Dashed', 'Border type.', 'fl-builder' ),
-							'dotted' => _x( 'Dotted', 'Border type.', 'fl-builder' ),
-							'double' => _x( 'Double', 'Border type.', 'fl-builder' ),
-							'none'   => _x( 'None', 'Border type.', 'fl-builder' ),
+							'solid'  => _x( 'Solid', 'Border type.', 'church-sermon-manager' ),
+							'dashed' => _x( 'Dashed', 'Border type.', 'church-sermon-manager' ),
+							'dotted' => _x( 'Dotted', 'Border type.', 'church-sermon-manager' ),
+							'double' => _x( 'Double', 'Border type.', 'church-sermon-manager' ),
+							'none'   => _x( 'None', 'Border type.', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'solid'  => array(
@@ -454,13 +454,13 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'border_color' => array(
 						'type'       => 'color',
-						'label'      => __( 'Sermon Border Color', 'fl-builder' ),
+						'label'      => __( 'Sermon Border Color', 'church-sermon-manager' ),
 						'default'    => 'dddddd',
 						'show_reset' => true,
 					),
 					'border_size'  => array(
 						'type'        => 'unit',
-						'label'       => __( 'Sermon Border Size', 'fl-builder' ),
+						'label'       => __( 'Sermon Border Size', 'church-sermon-manager' ),
 						'default'     => '1',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -469,17 +469,17 @@ class Sermon_Blog extends \FLBuilderModule {
 				),
 			),
 			'text_style' => array(
-				'title'  => __( 'Text', 'fl-builder' ),
+				'title'  => __( 'Text', 'church-sermon-manager' ),
 				'fields' => array(
 					'title_color'           => array(
 						'type'       => 'color',
-						'label'      => __( 'Title Color', 'fl-builder' ),
+						'label'      => __( 'Title Color', 'church-sermon-manager' ),
 						'default'    => '000000',
 						'show_reset' => true,
 					),
 					'title_font_size'       => array(
 						'type'        => 'unit',
-						'label'       => __( 'Title Font Size', 'fl-builder' ),
+						'label'       => __( 'Title Font Size', 'church-sermon-manager' ),
 						'default'     => '22',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -487,7 +487,7 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'title_padding'         => array(
 						'type'        => 'unit',
-						'label'       => __( 'Title Bottom Padding', 'fl-builder' ),
+						'label'       => __( 'Title Bottom Padding', 'church-sermon-manager' ),
 						'default'     => '0',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -495,13 +495,13 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'description_color'     => array(
 						'type'       => 'color',
-						'label'      => __( 'Description Color', 'fl-builder' ),
+						'label'      => __( 'Description Color', 'church-sermon-manager' ),
 						'default'    => '000000',
 						'show_reset' => true,
 					),
 					'description_font_size' => array(
 						'type'        => 'unit',
-						'label'       => __( 'Description Font Size', 'fl-builder' ),
+						'label'       => __( 'Description Font Size', 'church-sermon-manager' ),
 						'default'     => '14',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -509,7 +509,7 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'description_padding'   => array(
 						'type'        => 'unit',
-						'label'       => __( 'Description Bottom Padding', 'fl-builder' ),
+						'label'       => __( 'Description Bottom Padding', 'church-sermon-manager' ),
 						'default'     => '10',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -517,13 +517,13 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'link_color'            => array(
 						'type'       => 'color',
-						'label'      => __( 'Link Color', 'fl-builder' ),
+						'label'      => __( 'Link Color', 'church-sermon-manager' ),
 						'default'    => '2ea3f2',
 						'show_reset' => true,
 					),
 					'link_hover_color'      => array(
 						'type'       => 'color',
-						'label'      => __( 'Link Hover Color', 'fl-builder' ),
+						'label'      => __( 'Link Hover Color', 'church-sermon-manager' ),
 						'default'    => '2ea3f2',
 						'show_reset' => true,
 					),
@@ -532,27 +532,27 @@ class Sermon_Blog extends \FLBuilderModule {
 		),
 	),
 	'content'    => array(
-		'title' => __( 'Content', 'fl-builder' ),
+		'title' => __( 'Content', 'church-sermon-manager' ),
 		'file'  => SMP_PATH . 'includes/shortcodes/beaver/sermon-blog/loop-settings.php',
 	),
 	'pagination' => array(
-		'title'    => __( 'Pagination', 'fl-builder' ),
+		'title'    => __( 'Pagination', 'church-sermon-manager' ),
 		'sections' => array(
 			'pagination' => array(
-				'title'  => __( 'Pagination', 'fl-builder' ),
+				'title'  => __( 'Pagination', 'church-sermon-manager' ),
 				'fields' => array(
 					'sermons_per_page'     => array(
 						'type'    => 'unit',
-						'label'   => __( 'Sermons Per Page', 'fl-builder' ),
+						'label'   => __( 'Sermons Per Page', 'church-sermon-manager' ),
 						'default' => '9',
 					),
 					'show_pagination'      => array(
 						'type'    => 'select',
-						'label'   => __( 'Show Pagination', 'fl-builder' ),
+						'label'   => __( 'Show Pagination', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'1' => array(
@@ -562,16 +562,16 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'pagination_total_num' => array(
 						'type'    => 'unit',
-						'label'   => __( 'Pagination Total Pages', 'fl-builder' ),
+						'label'   => __( 'Pagination Total Pages', 'church-sermon-manager' ),
 						'default' => '5',
 					),
 					'show_prev_next'       => array(
 						'type'    => 'select',
-						'label'   => __( 'Prev/Next Links', 'fl-builder' ),
+						'label'   => __( 'Prev/Next Links', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'1' => array(
@@ -581,22 +581,22 @@ class Sermon_Blog extends \FLBuilderModule {
 					),
 					'previous_label'       => array(
 						'type'    => 'text',
-						'label'   => __( 'Previous Label', 'fl-builder' ),
+						'label'   => __( 'Previous Label', 'church-sermon-manager' ),
 						'default' => '&laquo; Previous',
 					),
 					'next_label'           => array(
 						'type'    => 'text',
-						'label'   => __( 'Next Label', 'fl-builder' ),
+						'label'   => __( 'Next Label', 'church-sermon-manager' ),
 						'default' => 'Next &raquo;',
 					),
 					'pagination_alignment'       => array(
 						'type'    => 'select',
-						'label'   => __( 'Pagination Alignment', 'fl-builder' ),
+						'label'   => __( 'Pagination Alignment', 'church-sermon-manager' ),
 						'default' => 'left',
 						'options' => array(
-							'left' 	 => __( 'Left', 'fl-builder' ),
-							'center' => __( 'Center', 'fl-builder' ),
-							'right'  => __( 'Right', 'fl-builder' ),
+							'left' 	 => __( 'Left', 'church-sermon-manager' ),
+							'center' => __( 'Center', 'church-sermon-manager' ),
+							'right'  => __( 'Right', 'church-sermon-manager' ),
 						),
 					),
 				),

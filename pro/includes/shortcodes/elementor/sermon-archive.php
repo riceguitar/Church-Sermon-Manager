@@ -191,7 +191,7 @@ class Sermon_Archive extends Widget_Base {
 		$this->start_controls_section(
 			'section_layout',
 			array(
-				'label' => __( 'Layout', 'elementor-pro' ),
+				'label' => __( 'Layout', 'church-sermon-manager' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -297,21 +297,21 @@ class Sermon_Archive extends Widget_Base {
 		$this->start_controls_section(
 			'section_pagination',
 			array(
-				'label' => __( 'Pagination', 'elementor-pro' ),
+				'label' => __( 'Pagination', 'church-sermon-manager' ),
 			)
 		);
 
 		$this->add_control(
 			'pagination_type',
 			array(
-				'label'   => __( 'Pagination', 'elementor-pro' ),
+				'label'   => __( 'Pagination', 'church-sermon-manager' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => '',
 				'options' => array(
-					''                      => __( 'None', 'elementor-pro' ),
-					'numbers'               => __( 'Numbers', 'elementor-pro' ),
-					'prev_next'             => __( 'Previous/Next', 'elementor-pro' ),
-					'numbers_and_prev_next' => __( 'Numbers', 'elementor-pro' ) . ' + ' . __( 'Previous/Next', 'elementor-pro' ),
+					''                      => __( 'None', 'church-sermon-manager' ),
+					'numbers'               => __( 'Numbers', 'church-sermon-manager' ),
+					'prev_next'             => __( 'Previous/Next', 'church-sermon-manager' ),
+					'numbers_and_prev_next' => __( 'Numbers', 'church-sermon-manager' ) . ' + ' . __( 'Previous/Next', 'church-sermon-manager' ),
 				),
 			)
 		);
@@ -319,7 +319,7 @@ class Sermon_Archive extends Widget_Base {
 		$this->add_control(
 			'pagination_page_limit',
 			array(
-				'label'     => __( 'Page Limit', 'elementor-pro' ),
+				'label'     => __( 'Page Limit', 'church-sermon-manager' ),
 				'default'   => '5',
 				'condition' => array(
 					'pagination_type!' => '',
@@ -330,7 +330,7 @@ class Sermon_Archive extends Widget_Base {
 		$this->add_control(
 			'pagination_numbers_shorten',
 			array(
-				'label'        => __( 'Shorten', 'elementor-pro' ),
+				'label'        => __( 'Shorten', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::SWITCHER,
 				'default'      => '',
 				'return_value' => 'yes',
@@ -346,8 +346,8 @@ class Sermon_Archive extends Widget_Base {
 		$this->add_control(
 			'pagination_prev_label',
 			array(
-				'label'     => __( 'Previous Label', 'elementor-pro' ),
-				'default'   => __( '&laquo; Previous', 'elementor-pro' ),
+				'label'     => __( 'Previous Label', 'church-sermon-manager' ),
+				'default'   => __( '&laquo; Previous', 'church-sermon-manager' ),
 				'condition' => array(
 					'pagination_type' => array(
 						'prev_next',
@@ -360,8 +360,8 @@ class Sermon_Archive extends Widget_Base {
 		$this->add_control(
 			'pagination_next_label',
 			array(
-				'label'     => __( 'Next Label', 'elementor-pro' ),
-				'default'   => __( 'Next &raquo;', 'elementor-pro' ),
+				'label'     => __( 'Next Label', 'church-sermon-manager' ),
+				'default'   => __( 'Next &raquo;', 'church-sermon-manager' ),
 				'condition' => array(
 					'pagination_type' => array(
 						'prev_next',
@@ -374,19 +374,19 @@ class Sermon_Archive extends Widget_Base {
 		$this->add_control(
 			'pagination_align',
 			array(
-				'label'     => __( 'Alignment', 'elementor-pro' ),
+				'label'     => __( 'Alignment', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => array(
 					'left'   => array(
-						'title' => __( 'Left', 'elementor-pro' ),
+						'title' => __( 'Left', 'church-sermon-manager' ),
 						'icon'  => 'fa fa-align-left',
 					),
 					'center' => array(
-						'title' => __( 'Center', 'elementor-pro' ),
+						'title' => __( 'Center', 'church-sermon-manager' ),
 						'icon'  => 'fa fa-align-center',
 					),
 					'right'  => array(
-						'title' => __( 'Right', 'elementor-pro' ),
+						'title' => __( 'Right', 'church-sermon-manager' ),
 						'icon'  => 'fa fa-align-right',
 					),
 				),
@@ -405,7 +405,7 @@ class Sermon_Archive extends Widget_Base {
 		$this->start_controls_section(
 			'section_pagination_style',
 			array(
-				'label'     => __( 'Pagination', 'elementor-pro' ),
+				'label'     => __( 'Pagination', 'church-sermon-manager' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array(
 					'pagination_type!' => '',
@@ -424,7 +424,7 @@ class Sermon_Archive extends Widget_Base {
 		$this->add_control(
 			'pagination_color_heading',
 			array(
-				'label'     => __( 'Colors', 'elementor-pro' ),
+				'label'     => __( 'Colors', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -435,14 +435,14 @@ class Sermon_Archive extends Widget_Base {
 		$this->start_controls_tab(
 			'pagination_color_normal',
 			array(
-				'label' => __( 'Normal', 'elementor-pro' ),
+				'label' => __( 'Normal', 'church-sermon-manager' ),
 			)
 		);
 
 		$this->add_control(
 			'pagination_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-pagination .page-numbers:not(.dots)' => 'color: {{VALUE}};',
@@ -455,14 +455,14 @@ class Sermon_Archive extends Widget_Base {
 		$this->start_controls_tab(
 			'pagination_color_hover',
 			array(
-				'label' => __( 'Hover', 'elementor-pro' ),
+				'label' => __( 'Hover', 'church-sermon-manager' ),
 			)
 		);
 
 		$this->add_control(
 			'pagination_hover_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-pagination a.page-numbers:hover' => 'color: {{VALUE}};',
@@ -475,14 +475,14 @@ class Sermon_Archive extends Widget_Base {
 		$this->start_controls_tab(
 			'pagination_color_active',
 			array(
-				'label' => __( 'Active', 'elementor-pro' ),
+				'label' => __( 'Active', 'church-sermon-manager' ),
 			)
 		);
 
 		$this->add_control(
 			'pagination_active_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-pagination .page-numbers.current' => 'color: {{VALUE}};',
@@ -497,7 +497,7 @@ class Sermon_Archive extends Widget_Base {
 		$this->add_responsive_control(
 			'pagination_spacing',
 			array(
-				'label'     => __( 'Space Between', 'elementor-pro' ),
+				'label'     => __( 'Space Between', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'separator' => 'before',
 				'default'   => array(

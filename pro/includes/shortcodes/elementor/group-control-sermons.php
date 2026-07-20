@@ -49,12 +49,12 @@ class Group_Control_Sermons extends Group_Control_Base {
 		$fields = array();
 
 		$fields['post_type'] = array(
-			'label' => __( 'Source', 'elementor-pro' ),
+			'label' => __( 'Source', 'church-sermon-manager' ),
 			'type'  => Controls_Manager::SELECT,
 		);
 
 		$fields['posts_ids'] = array(
-			'label'       => __( 'Search & Select', 'elementor-pro' ),
+			'label'       => __( 'Search & Select', 'church-sermon-manager' ),
 			'type'        => 'query',
 			'post_type'   => '',
 			'options'     => array(),
@@ -101,8 +101,8 @@ class Group_Control_Sermons extends Group_Control_Base {
 
 		$post_types_options = $post_types;
 
-		$post_types_options['by_id']         = __( 'Manual Selection', 'elementor-pro' );
-		$post_types_options['current_query'] = __( 'Current Query', 'elementor-pro' );
+		$post_types_options['by_id']         = __( 'Manual Selection', 'church-sermon-manager' );
+		$post_types_options['current_query'] = __( 'Current Query', 'church-sermon-manager' );
 
 		$fields['post_type']['options'] = $post_types_options;
 

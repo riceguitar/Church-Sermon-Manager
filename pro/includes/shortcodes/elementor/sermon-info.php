@@ -103,17 +103,17 @@ class Sermon_Info extends Widget_Base {
 		$repeater->add_control(
 			'date_format',
 			array(
-				'label'       => __( 'Date Format', 'elementor-pro' ),
+				'label'       => __( 'Date Format', 'church-sermon-manager' ),
 				'type'        => Controls_Manager::SELECT,
 				'label_block' => false,
 				'default'     => 'default',
 				'options'     => array(
 					'default' => 'Default',
-					'0'       => _x( 'March 6, 2018 (F j, Y)', 'Date Format', 'elementor-pro' ),
+					'0'       => _x( 'March 6, 2018 (F j, Y)', 'Date Format', 'church-sermon-manager' ),
 					'1'       => '2018-03-06 (Y-m-d)',
 					'2'       => '03/06/2018 (m/d/Y)',
 					'3'       => '06/03/2018 (d/m/Y)',
-					'custom'  => __( 'Custom', 'elementor-pro' ),
+					'custom'  => __( 'Custom', 'church-sermon-manager' ),
 				),
 				'condition'   => array(
 					'type' => 'date preached',
@@ -124,7 +124,7 @@ class Sermon_Info extends Widget_Base {
 		$repeater->add_control(
 			'custom_date_format',
 			array(
-				'label'       => __( 'Custom Date Format', 'elementor-pro' ),
+				'label'       => __( 'Custom Date Format', 'church-sermon-manager' ),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => 'F j, Y',
 				'label_block' => false,
@@ -133,7 +133,7 @@ class Sermon_Info extends Widget_Base {
 					'date_format' => 'custom',
 				),
 				/* translators: %s: Allowed data letters (see: http://php.net/manual/en/function.date.php). */
-				'description' => sprintf( __( 'Use the letters: %s', 'elementor-pro' ),
+				'description' => sprintf( __( 'Use the letters: %s', 'church-sermon-manager' ),
 					'l D d j S F m M n Y y'
 				),
 			)
@@ -142,7 +142,7 @@ class Sermon_Info extends Widget_Base {
 		$repeater->add_control(
 			'time_format',
 			array(
-				'label'       => __( 'Time Format', 'elementor-pro' ),
+				'label'       => __( 'Time Format', 'church-sermon-manager' ),
 				'type'        => Controls_Manager::SELECT,
 				'label_block' => false,
 				'default'     => 'default',
@@ -151,7 +151,7 @@ class Sermon_Info extends Widget_Base {
 					'0'       => '3:31 pm (g:i a)',
 					'1'       => '3:31 PM (g:i A)',
 					'2'       => '15:31 (H:i)',
-					'custom'  => __( 'Custom', 'elementor-pro' ),
+					'custom'  => __( 'Custom', 'church-sermon-manager' ),
 				),
 				'condition'   => array(
 					'type' => 'time preached',
@@ -161,7 +161,7 @@ class Sermon_Info extends Widget_Base {
 		$repeater->add_control(
 			'custom_time_format',
 			array(
-				'label'       => __( 'Custom Time Format', 'elementor-pro' ),
+				'label'       => __( 'Custom Time Format', 'church-sermon-manager' ),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => 'g:i a',
 				'placeholder' => 'g:i a',
@@ -171,7 +171,7 @@ class Sermon_Info extends Widget_Base {
 					'time_format' => 'custom',
 				),
 				/* translators: %s: Allowed time letters (see: http://php.net/manual/en/function.time.php). */
-				'description' => sprintf( __( 'Use the letters: %s', 'elementor-pro' ),
+				'description' => sprintf( __( 'Use the letters: %s', 'church-sermon-manager' ),
 					'g G H i a A'
 				),
 			)
@@ -180,7 +180,7 @@ class Sermon_Info extends Widget_Base {
 		$repeater->add_control(
 			'text_prefix',
 			array(
-				'label'       => __( 'Before', 'elementor-pro' ),
+				'label'       => __( 'Before', 'church-sermon-manager' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => false,
 			)
@@ -189,10 +189,10 @@ class Sermon_Info extends Widget_Base {
 		$repeater->add_control(
 			'link',
 			array(
-				'label'        => __( 'Link', 'elementor-pro' ),
+				'label'        => __( 'Link', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_off'    => __( 'No', 'elementor-pro' ),
-				'label_on'     => __( 'Yes', 'elementor-pro' ),
+				'label_off'    => __( 'No', 'church-sermon-manager' ),
+				'label_on'     => __( 'Yes', 'church-sermon-manager' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 				'condition'    => array(
@@ -204,12 +204,12 @@ class Sermon_Info extends Widget_Base {
 		$repeater->add_control(
 			'show_icon',
 			array(
-				'label'   => __( 'Icon', 'elementor-pro' ),
+				'label'   => __( 'Icon', 'church-sermon-manager' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => array(
-					'none'    => __( 'None', 'elementor-pro' ),
-					'default' => __( 'Default', 'elementor-pro' ),
-					'custom'  => __( 'Custom', 'elementor-pro' ),
+					'none'    => __( 'None', 'church-sermon-manager' ),
+					'default' => __( 'Default', 'church-sermon-manager' ),
+					'custom'  => __( 'Custom', 'church-sermon-manager' ),
 				),
 				'default' => 'default',
 			)
@@ -218,7 +218,7 @@ class Sermon_Info extends Widget_Base {
 		$repeater->add_control(
 			'icon',
 			array(
-				'label'       => __( 'Choose Icon', 'elementor-pro' ),
+				'label'       => __( 'Choose Icon', 'church-sermon-manager' ),
 				'type'        => Controls_Manager::ICON,
 				'label_block' => false,
 				'condition'   => array(
@@ -257,7 +257,7 @@ class Sermon_Info extends Widget_Base {
 		$this->start_controls_section(
 			'section_icon_list',
 			array(
-				'label' => __( 'List', 'elementor-pro' ),
+				'label' => __( 'List', 'church-sermon-manager' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -265,7 +265,7 @@ class Sermon_Info extends Widget_Base {
 		$this->add_responsive_control(
 			'space_between',
 			array(
-				'label'     => __( 'Space Between', 'elementor-pro' ),
+				'label'     => __( 'Space Between', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -286,19 +286,19 @@ class Sermon_Info extends Widget_Base {
 		$this->add_responsive_control(
 			'icon_align',
 			array(
-				'label'        => __( 'Alignment', 'elementor-pro' ),
+				'label'        => __( 'Alignment', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::CHOOSE,
 				'options'      => array(
 					'left'   => array(
-						'title' => __( 'Start', 'elementor-pro' ),
+						'title' => __( 'Start', 'church-sermon-manager' ),
 						'icon'  => 'eicon-h-align-left',
 					),
 					'center' => array(
-						'title' => __( 'Center', 'elementor-pro' ),
+						'title' => __( 'Center', 'church-sermon-manager' ),
 						'icon'  => 'eicon-h-align-center',
 					),
 					'right'  => array(
-						'title' => __( 'End', 'elementor-pro' ),
+						'title' => __( 'End', 'church-sermon-manager' ),
 						'icon'  => 'eicon-h-align-right',
 					),
 				),
@@ -309,10 +309,10 @@ class Sermon_Info extends Widget_Base {
 		$this->add_control(
 			'divider',
 			array(
-				'label'     => __( 'Divider', 'elementor-pro' ),
+				'label'     => __( 'Divider', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SWITCHER,
-				'label_off' => __( 'Off', 'elementor-pro' ),
-				'label_on'  => __( 'On', 'elementor-pro' ),
+				'label_off' => __( 'Off', 'church-sermon-manager' ),
+				'label_on'  => __( 'On', 'church-sermon-manager' ),
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-icon-list-item:not(:last-child):after' => 'content: ""',
 				),
@@ -323,13 +323,13 @@ class Sermon_Info extends Widget_Base {
 		$this->add_control(
 			'divider_style',
 			array(
-				'label'     => __( 'Style', 'elementor-pro' ),
+				'label'     => __( 'Style', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => array(
-					'solid'  => __( 'Solid', 'elementor-pro' ),
-					'double' => __( 'Double', 'elementor-pro' ),
-					'dotted' => __( 'Dotted', 'elementor-pro' ),
-					'dashed' => __( 'Dashed', 'elementor-pro' ),
+					'solid'  => __( 'Solid', 'church-sermon-manager' ),
+					'double' => __( 'Double', 'church-sermon-manager' ),
+					'dotted' => __( 'Dotted', 'church-sermon-manager' ),
+					'dashed' => __( 'Dashed', 'church-sermon-manager' ),
 				),
 				'default'   => 'solid',
 				'condition' => array(
@@ -344,7 +344,7 @@ class Sermon_Info extends Widget_Base {
 		$this->add_control(
 			'divider_weight',
 			array(
-				'label'     => __( 'Weight', 'elementor-pro' ),
+				'label'     => __( 'Weight', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => array(
 					'size' => 1,
@@ -368,7 +368,7 @@ class Sermon_Info extends Widget_Base {
 		$this->add_control(
 			'divider_height',
 			array(
-				'label'      => __( 'Height', 'elementor-pro' ),
+				'label'      => __( 'Height', 'church-sermon-manager' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( '%', 'px' ),
 				'default'    => array(
@@ -397,7 +397,7 @@ class Sermon_Info extends Widget_Base {
 		$this->add_control(
 			'divider_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ddd',
 				'scheme'    => array(
@@ -418,7 +418,7 @@ class Sermon_Info extends Widget_Base {
 		$this->start_controls_section(
 			'section_icon_style',
 			array(
-				'label' => __( 'Icon', 'elementor-pro' ),
+				'label' => __( 'Icon', 'church-sermon-manager' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -426,7 +426,7 @@ class Sermon_Info extends Widget_Base {
 		$this->add_control(
 			'icon_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => array(
@@ -444,7 +444,7 @@ class Sermon_Info extends Widget_Base {
 		$this->start_controls_section(
 			'section_text_style',
 			array(
-				'label' => __( 'Text', 'elementor-pro' ),
+				'label' => __( 'Text', 'church-sermon-manager' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -452,7 +452,7 @@ class Sermon_Info extends Widget_Base {
 		$this->add_control(
 			'text_indent',
 			array(
-				'label'     => __( 'Text Indent', 'elementor-pro' ),
+				'label'     => __( 'Text Indent', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -469,7 +469,7 @@ class Sermon_Info extends Widget_Base {
 		$this->add_control(
 			'text_color',
 			array(
-				'label'     => __( 'Text Color', 'elementor-pro' ),
+				'label'     => __( 'Text Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => array(

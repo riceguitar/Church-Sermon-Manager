@@ -86,12 +86,12 @@ class Module extends Module_Base {
 		$widget->add_control(
 			'exclude',
 			array(
-				'label'       => __( 'Exclude', 'elementor-pro' ),
+				'label'       => __( 'Exclude', 'church-sermon-manager' ),
 				'type'        => Controls_Manager::SELECT2,
 				'multiple'    => true,
 				'options'     => array(
-					'current_post'     => __( 'Current Post', 'elementor-pro' ),
-					'manual_selection' => __( 'Manual Selection', 'elementor-pro' ),
+					'current_post'     => __( 'Current Post', 'church-sermon-manager' ),
+					'manual_selection' => __( 'Manual Selection', 'church-sermon-manager' ),
 				),
 				'label_block' => true,
 			)
@@ -100,7 +100,7 @@ class Module extends Module_Base {
 		$widget->add_control(
 			'exclude_ids',
 			array(
-				'label'       => __( 'Search & Select', 'elementor-pro' ),
+				'label'       => __( 'Search & Select', 'church-sermon-manager' ),
 				'type'        => self::QUERY_CONTROL_ID,
 				'post_type'   => '',
 				'options'     => array(),
@@ -116,10 +116,10 @@ class Module extends Module_Base {
 		$widget->add_control(
 			'avoid_duplicates',
 			array(
-				'label'       => __( 'Avoid Duplicates', 'elementor-pro' ),
+				'label'       => __( 'Avoid Duplicates', 'church-sermon-manager' ),
 				'type'        => Controls_Manager::SWITCHER,
 				'default'     => '',
-				'description' => __( 'Set to Yes to avoid duplicate posts from showing up, This only effects the frontend.', 'elementor-pro' ),
+				'description' => __( 'Set to Yes to avoid duplicate posts from showing up, This only effects the frontend.', 'church-sermon-manager' ),
 			)
 		);
 

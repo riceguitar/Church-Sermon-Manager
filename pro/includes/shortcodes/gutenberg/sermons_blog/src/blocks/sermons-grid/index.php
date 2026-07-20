@@ -434,7 +434,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			); },
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Filters Topics', 'sermons-blog-layout'),
+				'description' => __( 'Filters Topics', 'church-sermon-manager'),
 				'type' => 'string'
 			)
 		)
@@ -457,7 +457,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			); },
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Filters Series', 'sermons-blog-layout'),
+				'description' => __( 'Filters Series', 'church-sermon-manager'),
 				'type' => 'string'
 			)
 		)
@@ -480,7 +480,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			); },
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Filters Preachers', 'sermons-blog-layout'),
+				'description' => __( 'Filters Preachers', 'church-sermon-manager'),
 				'type' => 'string'
 			)
 		)
@@ -503,7 +503,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			); },
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Filters Books', 'sermons-blog-layout'),
+				'description' => __( 'Filters Books', 'church-sermon-manager'),
 				'type' => 'string'
 			)
 		)
@@ -526,7 +526,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			); },
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Filters Service Types', 'sermons-blog-layout'),
+				'description' => __( 'Filters Service Types', 'church-sermon-manager'),
 				'type' => 'string'
 			)
 		)
@@ -549,7 +549,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			); },
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Filters Dates', 'sermons-blog-layout'),
+				'description' => __( 'Filters Dates', 'church-sermon-manager'),
 				'type' => 'string'
 			)
 		)
@@ -562,7 +562,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			'get_callback' => 'get_sermons_blog_image_url',
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Sermon Image Url', 'sermons-blog-layout'),
+				'description' => __( 'Sermon Image Url', 'church-sermon-manager'),
 				'type' => 'array'
 			)
 		)
@@ -575,7 +575,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			'get_callback' => 'get_sermons_blog_video',
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Sermon Video', 'sermons-blog-layout'),
+				'description' => __( 'Sermon Video', 'church-sermon-manager'),
 				'type' => 'array'
 			)
 		)
@@ -588,7 +588,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			'get_callback' => 'get_sermons_blog_series',
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Sermon Series', 'sermons-blog-layout'),
+				'description' => __( 'Sermon Series', 'church-sermon-manager'),
 				'type' => 'array'
 			)
 		)
@@ -601,7 +601,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			'get_callback' => 'get_sermons_blog_meta_sermon_description',
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Sermon Description', 'sermons-blog-layout'),
+				'description' => __( 'Sermon Description', 'church-sermon-manager'),
 				'type' => 'array'
 			)
 		)
@@ -615,7 +615,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			'get_callback' => 'get_sermons_blog_show_readmore',
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Shoe Read More', 'sermons-blog-layout'),
+				'description' => __( 'Shoe Read More', 'church-sermon-manager'),
 				'type' => 'array'
 			)
 		)
@@ -628,7 +628,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			'get_callback' => 'get_sermons_blog_audio',
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Sermon Series Audio', 'sermons-blog-layout'),
+				'description' => __( 'Sermon Series Audio', 'church-sermon-manager'),
 				'type' => 'array'
 			)
 		)
@@ -641,7 +641,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			'get_callback' => 'get_sermons_blog_preacher_image',
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Sermon Series Preacher Image', 'sermons-blog-layout'),
+				'description' => __( 'Sermon Series Preacher Image', 'church-sermon-manager'),
 				'type' => 'array'
 			)
 		)
@@ -654,7 +654,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			'get_callback' => 'get_sermons_blog_preacher',
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Sermon Preacher', 'sermons-blog-layout'),
+				'description' => __( 'Sermon Preacher', 'church-sermon-manager'),
 				'type' => 'array'
 			)
 		)
@@ -667,7 +667,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			'get_callback' => 'get_sermons_blog_bible_passage',
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Sermon Bible Passage', 'sermons-blog-layout'),
+				'description' => __( 'Sermon Bible Passage', 'church-sermon-manager'),
 				'type' => 'array'
 			)
 		)
@@ -680,7 +680,7 @@ function sermons_blog_layout_register_rest_fields(  ) {
 			'get_callback' => 'get_sermons_blog_service_type',
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Sermon Service Type', 'sermons-blog-layout'),
+				'description' => __( 'Sermon Service Type', 'church-sermon-manager'),
 				'type' => 'array'
 			)
 		)

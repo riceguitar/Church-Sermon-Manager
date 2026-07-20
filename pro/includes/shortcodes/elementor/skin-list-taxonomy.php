@@ -59,7 +59,7 @@ class Skin_List_Taxonomy extends Skin_Base {
 		$this->start_controls_section(
 			'section_design_content',
 			array(
-				'label' => __( 'Title', 'elementor-pro' ),
+				'label' => __( 'Title', 'church-sermon-manager' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -67,7 +67,7 @@ class Skin_List_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'title_padding',
 			array(
-				'label'     => __( 'Title Padding', 'elementor-pro' ),
+				'label'     => __( 'Title Padding', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => array(
 					'size' => 0,
@@ -87,7 +87,7 @@ class Skin_List_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'title_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
 					'type'  => Color::get_type(),
@@ -111,20 +111,20 @@ class Skin_List_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'title_alignment',
 			array(
-				'label'        => __( 'Alignment', 'elementor-pro' ),
+				'label'        => __( 'Alignment', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::CHOOSE,
 				'label_block'  => false,
 				'options'      => array(
 					'left'   => array(
-						'title' => __( 'Left', 'elementor-pro' ),
+						'title' => __( 'Left', 'church-sermon-manager' ),
 						'icon'  => 'fa fa-align-left',
 					),
 					'center' => array(
-						'title' => __( 'Center', 'elementor-pro' ),
+						'title' => __( 'Center', 'church-sermon-manager' ),
 						'icon'  => 'fa fa-align-center',
 					),
 					'right'  => array(
-						'title' => __( 'Right', 'elementor-pro' ),
+						'title' => __( 'Right', 'church-sermon-manager' ),
 						'icon'  => 'fa fa-align-right',
 					),
 				),

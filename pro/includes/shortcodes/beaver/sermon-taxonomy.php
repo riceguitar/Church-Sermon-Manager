@@ -20,9 +20,9 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 	 */
 	public function __construct() {
 		parent::__construct( array(
-			'name'            => __( 'Sermon Taxonomies', 'fl-builder' ),
-			'description'     => __( 'Display a grid of your Sermon Taxonomies.', 'fl-builder' ),
-			'category'        => __( 'Posts', 'fl-builder' ),
+			'name'            => __( 'Sermon Taxonomies', 'church-sermon-manager' ),
+			'description'     => __( 'Display a grid of your Sermon Taxonomies.', 'church-sermon-manager' ),
+			'category'        => __( 'Posts', 'church-sermon-manager' ),
 			'dir'             => SMP_PATH . 'includes/shortcodes/beaver/sermon-taxonomy/',
 			'url'             => SMP_URL . 'includes/shortcodes/beaver/sermon-taxonomy/',
 			'icon'            => 'schedule.svg',
@@ -38,18 +38,18 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 
 \FLBuilder::register_module( '\SMP\Shortcodes\Beaver\Sermon_Taxonomy', array(
 	'layout'     => array(
-		'title'    => __( 'Layout', 'fl-builder' ),
+		'title'    => __( 'Layout', 'church-sermon-manager' ),
 		'sections' => array(
 			'general' => array(
 				'title'  => '',
 				'fields' => array(
 					'taxonomy_layout' => array(
 						'type'    => 'select',
-						'label'   => __( 'Layout', 'fl-builder' ),
+						'label'   => __( 'Layout', 'church-sermon-manager' ),
 						'default' => 'grid',
 						'options' => array(
-							'grid' => __( 'Grid', 'fl-builder' ),
-							'list' => __( 'List', 'fl-builder' ),
+							'grid' => __( 'Grid', 'church-sermon-manager' ),
+							'list' => __( 'List', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'grid' => array(
@@ -83,11 +83,11 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 				),
 			),
 			'terms'   => array(
-				'title'  => __( 'Terms', 'fl-builder' ),
+				'title'  => __( 'Terms', 'church-sermon-manager' ),
 				'fields' => array(
 					'term_columns' => array(
 						'type'       => 'unit',
-						'label'      => __( 'Columns', 'fl-builder' ),
+						'label'      => __( 'Columns', 'church-sermon-manager' ),
 						'responsive' => array(
 							'default' => array(
 								'default'    => '3',
@@ -98,7 +98,7 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 					),
 					'term_spacing' => array(
 						'type'        => 'unit',
-						'label'       => __( 'Spacing Between Columns', 'fl-builder' ),
+						'label'       => __( 'Spacing Between Columns', 'church-sermon-manager' ),
 						'default'     => '30',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -106,7 +106,7 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 					),
 					'term_margin'  => array(
 						'type'        => 'unit',
-						'label'       => __( 'Term Bottom Margin', 'fl-builder' ),
+						'label'       => __( 'Term Bottom Margin', 'church-sermon-manager' ),
 						'default'     => '30',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -115,15 +115,15 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 				),
 			),
 			'image'   => array(
-				'title'  => __( 'Featured Image', 'fl-builder' ),
+				'title'  => __( 'Featured Image', 'church-sermon-manager' ),
 				'fields' => array(
 					'show_term_image'    => array(
 						'type'    => 'select',
-						'label'   => __( 'Image', 'fl-builder' ),
+						'label'   => __( 'Image', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'1' => array(
@@ -133,7 +133,7 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 					),
 					'term_image_padding' => array(
 						'type'        => 'unit',
-						'label'       => __( 'Image Bottom Padding', 'fl-builder' ),
+						'label'       => __( 'Image Bottom Padding', 'church-sermon-manager' ),
 						'default'     => '10',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -142,24 +142,24 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 				),
 			),
 			'content' => array(
-				'title'  => __( 'Content', 'fl-builder' ),
+				'title'  => __( 'Content', 'church-sermon-manager' ),
 				'fields' => array(
 					'show_term_title'         => array(
 						'type'    => 'select',
-						'label'   => __( 'Title', 'fl-builder' ),
+						'label'   => __( 'Title', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 					),
 					'show_term_description'   => array(
 						'type'    => 'select',
-						'label'   => __( 'Description', 'fl-builder' ),
+						'label'   => __( 'Description', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'1' => array(
@@ -173,17 +173,17 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 					),
 					'term_description_length' => array(
 						'type'        => 'unit',
-						'label'       => __( 'Content Length', 'fl-builder' ),
+						'label'       => __( 'Content Length', 'church-sermon-manager' ),
 						'default'     => '30',
-						'description' => __( 'words', 'fl-builder' ),
+						'description' => __( 'words', 'church-sermon-manager' ),
 					),
 					'show_term_more_link'     => array(
 						'type'    => 'select',
-						'label'   => __( 'More Link', 'fl-builder' ),
+						'label'   => __( 'More Link', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'1' => array(
@@ -193,16 +193,16 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 					),
 					'term_more_link_text'     => array(
 						'type'    => 'text',
-						'label'   => __( 'More Link Text', 'fl-builder' ),
-						'default' => __( 'Read More', 'fl-builder' ),
+						'label'   => __( 'More Link Text', 'church-sermon-manager' ),
+						'default' => __( 'Read More', 'church-sermon-manager' ),
 					),
 					'show_alphabetical_list'  => array(
 						'type'    => 'select',
-						'label'   => __( 'Show Alphabetical List', 'fl-builder' ),
+						'label'   => __( 'Show Alphabetical List', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 					),
 				),
@@ -210,27 +210,27 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 		),
 	),
 	'style'      => array(
-		'title'    => __( 'Style', 'fl-builder' ),
+		'title'    => __( 'Style', 'church-sermon-manager' ),
 		'sections' => array(
 			'term_style'      => array(
-				'title'  => __( 'Terms', 'fl-builder' ),
+				'title'  => __( 'Terms', 'church-sermon-manager' ),
 				'fields' => array(
 					'bg_color'     => array(
 						'type'       => 'color',
-						'label'      => __( 'Term Background Color', 'fl-builder' ),
+						'label'      => __( 'Term Background Color', 'church-sermon-manager' ),
 						'show_reset' => true,
 						'default'    => 'ffffff',
 					),
 					'border_type'  => array(
 						'type'    => 'select',
-						'label'   => __( 'Term Border Type', 'fl-builder' ),
+						'label'   => __( 'Term Border Type', 'church-sermon-manager' ),
 						'default' => 'none',
 						'options' => array(
-							'solid'  => _x( 'Solid', 'Border type.', 'fl-builder' ),
-							'dashed' => _x( 'Dashed', 'Border type.', 'fl-builder' ),
-							'dotted' => _x( 'Dotted', 'Border type.', 'fl-builder' ),
-							'double' => _x( 'Double', 'Border type.', 'fl-builder' ),
-							'none'   => _x( 'None', 'Border type.', 'fl-builder' ),
+							'solid'  => _x( 'Solid', 'Border type.', 'church-sermon-manager' ),
+							'dashed' => _x( 'Dashed', 'Border type.', 'church-sermon-manager' ),
+							'dotted' => _x( 'Dotted', 'Border type.', 'church-sermon-manager' ),
+							'double' => _x( 'Double', 'Border type.', 'church-sermon-manager' ),
+							'none'   => _x( 'None', 'Border type.', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'solid'  => array(
@@ -249,13 +249,13 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 					),
 					'border_color' => array(
 						'type'       => 'color',
-						'label'      => __( 'Term Border Color', 'fl-builder' ),
+						'label'      => __( 'Term Border Color', 'church-sermon-manager' ),
 						'default'    => 'dddddd',
 						'show_reset' => true,
 					),
 					'border_size'  => array(
 						'type'        => 'unit',
-						'label'       => __( 'Term Border Size', 'fl-builder' ),
+						'label'       => __( 'Term Border Size', 'church-sermon-manager' ),
 						'default'     => '1',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -264,17 +264,17 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 				),
 			),
 			'term_text_style' => array(
-				'title'  => __( 'Text', 'fl-builder' ),
+				'title'  => __( 'Text', 'church-sermon-manager' ),
 				'fields' => array(
 					'title_color'           => array(
 						'type'       => 'color',
-						'label'      => __( 'Title Color', 'fl-builder' ),
+						'label'      => __( 'Title Color', 'church-sermon-manager' ),
 						'default'    => '000000',
 						'show_reset' => true,
 					),
 					'title_font_size'       => array(
 						'type'        => 'unit',
-						'label'       => __( 'Title Font Size', 'fl-builder' ),
+						'label'       => __( 'Title Font Size', 'church-sermon-manager' ),
 						'default'     => '18',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -282,7 +282,7 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 					),
 					'title_padding'         => array(
 						'type'        => 'unit',
-						'label'       => __( 'Title Bottom Padding', 'fl-builder' ),
+						'label'       => __( 'Title Bottom Padding', 'church-sermon-manager' ),
 						'default'     => '10',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -290,18 +290,18 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 					),
 					'title_alignment'       => array(
 						'type'    => 'select',
-						'label'   => __( 'Title Alignment', 'fl-builder' ),
+						'label'   => __( 'Title Alignment', 'church-sermon-manager' ),
 						'default' => 'center',
 						'options' => array(
-							'center'  => _x( 'Center', 'Border type.', 'fl-builder' ),
-							'left'    => _x( 'Left', 'Border type.', 'fl-builder' ),
-							'right'   => _x( 'Right', 'Border type.', 'fl-builder' ),
-							'justify' => _x( 'Justify', 'Border type.', 'fl-builder' ),
+							'center'  => _x( 'Center', 'Border type.', 'church-sermon-manager' ),
+							'left'    => _x( 'Left', 'Border type.', 'church-sermon-manager' ),
+							'right'   => _x( 'Right', 'Border type.', 'church-sermon-manager' ),
+							'justify' => _x( 'Justify', 'Border type.', 'church-sermon-manager' ),
 						),
 					),
 					'content_spacing'       => array(
 						'type'        => 'unit',
-						'label'       => __( 'Content Spacing', 'fl-builder' ),
+						'label'       => __( 'Content Spacing', 'church-sermon-manager' ),
 						'default'     => '0',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -309,13 +309,13 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 					),
 					'description_color'     => array(
 						'type'       => 'color',
-						'label'      => __( 'Description Color', 'fl-builder' ),
+						'label'      => __( 'Description Color', 'church-sermon-manager' ),
 						'default'    => '000000',
 						'show_reset' => true,
 					),
 					'description_font_size' => array(
 						'type'        => 'unit',
-						'label'       => __( 'Description Font Size', 'fl-builder' ),
+						'label'       => __( 'Description Font Size', 'church-sermon-manager' ),
 						'default'     => '14',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -323,7 +323,7 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 					),
 					'description_padding'   => array(
 						'type'        => 'unit',
-						'label'       => __( 'Description Bottom Padding', 'fl-builder' ),
+						'label'       => __( 'Description Bottom Padding', 'church-sermon-manager' ),
 						'default'     => '10',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -331,24 +331,24 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 					),
 					'description_alignment' => array(
 						'type'    => 'select',
-						'label'   => __( 'Description Alignment', 'fl-builder' ),
+						'label'   => __( 'Description Alignment', 'church-sermon-manager' ),
 						'default' => 'left',
 						'options' => array(
-							'left'    => _x( 'Left', 'Border type.', 'fl-builder' ),
-							'right'   => _x( 'Right', 'Border type.', 'fl-builder' ),
-							'center'  => _x( 'Center', 'Border type.', 'fl-builder' ),
-							'justify' => _x( 'Justify', 'Border type.', 'fl-builder' ),
+							'left'    => _x( 'Left', 'Border type.', 'church-sermon-manager' ),
+							'right'   => _x( 'Right', 'Border type.', 'church-sermon-manager' ),
+							'center'  => _x( 'Center', 'Border type.', 'church-sermon-manager' ),
+							'justify' => _x( 'Justify', 'Border type.', 'church-sermon-manager' ),
 						),
 					),
 					'letter_color'          => array(
 						'type'       => 'color',
-						'label'      => __( 'Letter Color', 'fl-builder' ),
+						'label'      => __( 'Letter Color', 'church-sermon-manager' ),
 						'default'    => '000000',
 						'show_reset' => true,
 					),
 					'letter_font_size'      => array(
 						'type'        => 'unit',
-						'label'       => __( 'Letter Font Size', 'fl-builder' ),
+						'label'       => __( 'Letter Font Size', 'church-sermon-manager' ),
 						'default'     => '22',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -356,7 +356,7 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 					),
 					'letter_top_padding'    => array(
 						'type'        => 'unit',
-						'label'       => __( 'Letter Top Padding', 'fl-builder' ),
+						'label'       => __( 'Letter Top Padding', 'church-sermon-manager' ),
 						'default'     => '10',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -364,7 +364,7 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 					),
 					'letter_bottom_padding' => array(
 						'type'        => 'unit',
-						'label'       => __( 'Letter Bottom Padding', 'fl-builder' ),
+						'label'       => __( 'Letter Bottom Padding', 'church-sermon-manager' ),
 						'default'     => '5',
 						'maxlength'   => '3',
 						'size'        => '4',
@@ -375,35 +375,35 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 		),
 	),
 	'pagination' => array(
-		'title'    => __( 'Pagination', 'fl-builder' ),
+		'title'    => __( 'Pagination', 'church-sermon-manager' ),
 		'sections' => array(
 			'pagination' => array(
-				'title'  => __( 'Pagination', 'fl-builder' ),
+				'title'  => __( 'Pagination', 'church-sermon-manager' ),
 				'fields' => array(
 					'show_taxonomy'             => array(
 						'type'    => 'select',
-						'label'   => __( 'Source', 'fl-builder' ),
+						'label'   => __( 'Source', 'church-sermon-manager' ),
 						'default' => 'wpfc_sermon_series',
 						'options' => array(
-							'wpfc_sermon_series' => __( 'Series', 'fl-builder' ),
-							'wpfc_preacher'      => __( 'Preachers', 'fl-builder' ),
-							'wpfc_sermon_topics' => __( 'Topics', 'fl-builder' ),
-							'wpfc_bible_book'    => __( 'Books', 'fl-builder' ),
-							'wpfc_service_type'  => __( 'Service Types', 'fl-builder' ),
+							'wpfc_sermon_series' => __( 'Series', 'church-sermon-manager' ),
+							'wpfc_preacher'      => __( 'Preachers', 'church-sermon-manager' ),
+							'wpfc_sermon_topics' => __( 'Topics', 'church-sermon-manager' ),
+							'wpfc_bible_book'    => __( 'Books', 'church-sermon-manager' ),
+							'wpfc_service_type'  => __( 'Service Types', 'church-sermon-manager' ),
 						),
 					),
 					'taxonomy_number'           => array(
 						'type'    => 'unit',
-						'label'   => __( 'Terms Per Page', 'fl-builder' ),
+						'label'   => __( 'Terms Per Page', 'church-sermon-manager' ),
 						'default' => '9',
 					),
 					'show_term_pagination'      => array(
 						'type'    => 'select',
-						'label'   => __( 'Show Pagination', 'fl-builder' ),
+						'label'   => __( 'Show Pagination', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'1' => array(
@@ -413,16 +413,16 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 					),
 					'term_pagination_total_num' => array(
 						'type'    => 'unit',
-						'label'   => __( 'Pagination Total Pages', 'fl-builder' ),
+						'label'   => __( 'Pagination Total Pages', 'church-sermon-manager' ),
 						'default' => '5',
 					),
 					'term_show_prev_next'       => array(
 						'type'    => 'select',
-						'label'   => __( 'Prev/Next Links', 'fl-builder' ),
+						'label'   => __( 'Prev/Next Links', 'church-sermon-manager' ),
 						'default' => '1',
 						'options' => array(
-							'1' => __( 'Show', 'fl-builder' ),
-							'0' => __( 'Hide', 'fl-builder' ),
+							'1' => __( 'Show', 'church-sermon-manager' ),
+							'0' => __( 'Hide', 'church-sermon-manager' ),
 						),
 						'toggle'  => array(
 							'1' => array(
@@ -432,22 +432,22 @@ class Sermon_Taxonomy extends \FLBuilderModule {
 					),
 					'term_previous_label'       => array(
 						'type'    => 'text',
-						'label'   => __( 'Previous Label', 'fl-builder' ),
+						'label'   => __( 'Previous Label', 'church-sermon-manager' ),
 						'default' => '&laquo; Previous',
 					),
 					'term_next_label'           => array(
 						'type'    => 'text',
-						'label'   => __( 'Next Label', 'fl-builder' ),
+						'label'   => __( 'Next Label', 'church-sermon-manager' ),
 						'default' => 'Next &raquo;',
 					),
 					'term_pagination_alignment'       => array(
 						'type'    => 'select',
-						'label'   => __( 'Pagination Alignment', 'fl-builder' ),
+						'label'   => __( 'Pagination Alignment', 'church-sermon-manager' ),
 						'default' => 'left',
 						'options' => array(
-							'left' 	 => __( 'Left', 'fl-builder' ),
-							'center' => __( 'Center', 'fl-builder' ),
-							'right'  => __( 'Right', 'fl-builder' ),
+							'left' 	 => __( 'Left', 'church-sermon-manager' ),
+							'center' => __( 'Center', 'church-sermon-manager' ),
+							'right'  => __( 'Right', 'church-sermon-manager' ),
 						),
 					),
 				),

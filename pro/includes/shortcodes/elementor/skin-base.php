@@ -74,7 +74,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->start_controls_section(
 			'section_design_layout',
 			array(
-				'label' => __( 'Layout', 'elementor-pro' ),
+				'label' => __( 'Layout', 'church-sermon-manager' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -82,7 +82,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'column_gap',
 			array(
-				'label'     => __( 'Columns Gap', 'elementor-pro' ),
+				'label'     => __( 'Columns Gap', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => array(
 					'size' => 30,
@@ -103,7 +103,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'row_gap',
 			array(
-				'label'     => __( 'Rows Gap', 'elementor-pro' ),
+				'label'     => __( 'Rows Gap', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => array(
 					'size' => 35,
@@ -123,20 +123,20 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'alignment',
 			array(
-				'label'        => __( 'Alignment', 'elementor-pro' ),
+				'label'        => __( 'Alignment', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::CHOOSE,
 				'label_block'  => false,
 				'options'      => array(
 					'left'   => array(
-						'title' => __( 'Left', 'elementor-pro' ),
+						'title' => __( 'Left', 'church-sermon-manager' ),
 						'icon'  => 'fa fa-align-left',
 					),
 					'center' => array(
-						'title' => __( 'Center', 'elementor-pro' ),
+						'title' => __( 'Center', 'church-sermon-manager' ),
 						'icon'  => 'fa fa-align-center',
 					),
 					'right'  => array(
-						'title' => __( 'Right', 'elementor-pro' ),
+						'title' => __( 'Right', 'church-sermon-manager' ),
 						'icon'  => 'fa fa-align-right',
 					),
 				),
@@ -154,7 +154,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->start_controls_section(
 			'section_design_image',
 			array(
-				'label'     => __( 'Image', 'elementor-pro' ),
+				'label'     => __( 'Image', 'church-sermon-manager' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array(
 					$this->get_control_id( 'thumbnail!' ) => 'none',
@@ -165,7 +165,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'img_border_radius',
 			array(
-				'label'      => __( 'Border Radius', 'elementor-pro' ),
+				'label'      => __( 'Border Radius', 'church-sermon-manager' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
@@ -180,7 +180,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'image_spacing',
 			array(
-				'label'     => __( 'Spacing', 'elementor-pro' ),
+				'label'     => __( 'Spacing', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -202,7 +202,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'heading_badge_style',
 			array(
-				'label'     => __( 'Badge', 'elementor-pro' ),
+				'label'     => __( 'Badge', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => array(
@@ -219,11 +219,11 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'type'        => Controls_Manager::CHOOSE,
 				'options'     => array(
 					'left'  => array(
-						'title' => __( 'Left', 'elementor-pro' ),
+						'title' => __( 'Left', 'church-sermon-manager' ),
 						'icon'  => 'eicon-h-align-left',
 					),
 					'right' => array(
-						'title' => __( 'Right', 'elementor-pro' ),
+						'title' => __( 'Right', 'church-sermon-manager' ),
 						'icon'  => 'eicon-h-align-right',
 					),
 				),
@@ -240,7 +240,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'badge_bg_color',
 			array(
-				'label'     => __( 'Background Color', 'elementor-pro' ),
+				'label'     => __( 'Background Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'     => '#818a91',
 				'selectors' => array(
@@ -255,7 +255,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'badge_color',
 			array(
-				'label'     => __( 'Text Color', 'elementor-pro' ),
+				'label'     => __( 'Text Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__card .elementor-post__badge' => 'color: {{VALUE}};',
@@ -269,7 +269,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'badge_radius',
 			array(
-				'label'     => __( 'Border Radius', 'elementor-pro' ),
+				'label'     => __( 'Border Radius', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -288,7 +288,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'badge_size',
 			array(
-				'label'     => __( 'Size', 'elementor-pro' ),
+				'label'     => __( 'Size', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -308,7 +308,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'badge_margin',
 			array(
-				'label'     => __( 'Margin', 'elementor-pro' ),
+				'label'     => __( 'Margin', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -342,7 +342,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'heading_avatar_style',
 			array(
-				'label'     => __( 'Avatar', 'elementor-pro' ),
+				'label'     => __( 'Avatar', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => array(
@@ -355,7 +355,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'avatar_size',
 			array(
-				'label'     => __( 'Size', 'elementor-pro' ),
+				'label'     => __( 'Size', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -385,7 +385,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->start_controls_section(
 			'section_design_content',
 			array(
-				'label' => __( 'Content', 'elementor-pro' ),
+				'label' => __( 'Content', 'church-sermon-manager' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -393,7 +393,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'heading_title_style',
 			array(
-				'label'     => __( 'Title', 'elementor-pro' ),
+				'label'     => __( 'Title', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => array(
 					$this->get_control_id( 'show_title' ) => 'yes',
@@ -404,7 +404,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'title_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__title, {{WRAPPER}} .elementor-post__title a' => 'color: {{VALUE}};',
@@ -429,7 +429,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'title_spacing',
 			array(
-				'label'     => __( 'Spacing', 'elementor-pro' ),
+				'label'     => __( 'Spacing', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -448,7 +448,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'heading_meta_style',
 			array(
-				'label'     => __( 'Meta', 'elementor-pro' ),
+				'label'     => __( 'Meta', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => array(
@@ -460,7 +460,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'meta_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__meta-data' => 'color: {{VALUE}};',
@@ -474,7 +474,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'meta_separator_color',
 			array(
-				'label'     => __( 'Separator Color', 'elementor-pro' ),
+				'label'     => __( 'Separator Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__meta-data span:before' => 'color: {{VALUE}};',
@@ -499,7 +499,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'meta_spacing',
 			array(
-				'label'     => __( 'Spacing', 'elementor-pro' ),
+				'label'     => __( 'Spacing', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -518,7 +518,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'heading_excerpt_style',
 			array(
-				'label'     => __( 'Excerpt', 'elementor-pro' ),
+				'label'     => __( 'Excerpt', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => array(
@@ -530,7 +530,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'excerpt_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__excerpt p' => 'color: {{VALUE}};',
@@ -555,7 +555,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'excerpt_spacing',
 			array(
-				'label'     => __( 'Spacing', 'elementor-pro' ),
+				'label'     => __( 'Spacing', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -574,7 +574,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'heading_readmore_style',
 			array(
-				'label'     => __( 'Read More', 'elementor-pro' ),
+				'label'     => __( 'Read More', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => array(
@@ -586,7 +586,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'read_more_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .elementor-post__read-more' => 'color: {{VALUE}};',
@@ -611,7 +611,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'read_more_spacing',
 			array(
-				'label'     => __( 'Spacing', 'elementor-pro' ),
+				'label'     => __( 'Spacing', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -655,10 +655,10 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'show_filter',
 			array(
-				'label'        => __( 'Filters', 'elementor-pro' ),
+				'label'        => __( 'Filters', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Show', 'elementor-pro' ),
-				'label_off'    => __( 'Hide', 'elementor-pro' ),
+				'label_on'     => __( 'Show', 'church-sermon-manager' ),
+				'label_off'    => __( 'Hide', 'church-sermon-manager' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			)
@@ -733,7 +733,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_responsive_control(
 			'columns',
 			array(
-				'label'              => __( 'Columns', 'elementor-pro' ),
+				'label'              => __( 'Columns', 'church-sermon-manager' ),
 				'type'               => Controls_Manager::SELECT,
 				'default'            => '3',
 				'tablet_default'     => '2',
@@ -761,7 +761,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'posts_per_page',
 			array(
-				'label'   => __( 'Posts Per Page', 'elementor-pro' ),
+				'label'   => __( 'Posts Per Page', 'church-sermon-manager' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => 6,
 			)
@@ -770,10 +770,10 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'masonry',
 			array(
-				'label'              => __( 'Masonry', 'elementor-pro' ),
+				'label'              => __( 'Masonry', 'church-sermon-manager' ),
 				'type'               => Controls_Manager::SWITCHER,
-				'label_off'          => __( 'Off', 'elementor-pro' ),
-				'label_on'           => __( 'On', 'elementor-pro' ),
+				'label_off'          => __( 'Off', 'church-sermon-manager' ),
+				'label_on'           => __( 'On', 'church-sermon-manager' ),
 				'condition'          => array(
 					$this->get_control_id( 'columns!' )  => '1',
 				),
@@ -789,7 +789,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'show_image_video',
 			array(
-				'label'              => __( 'Show Image/Video', 'elementor-pro' ),
+				'label'              => __( 'Show Image/Video', 'church-sermon-manager' ),
 				'type'               => Controls_Manager::SWITCHER,
 				'default' 			 => 'yes',
 				'separator' 		 => 'before',
@@ -799,12 +799,12 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'thumbnail',
 			array(
-				'label'        => __( 'Featured Type', 'elementor-pro' ),
+				'label'        => __( 'Featured Type', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::SELECT,
 				'default'      => 'image',
 				'options'      => array(
-					'image'   => __( 'Image', 'elementor-pro' ),
-					'video'   => __( 'Video', 'elementor-pro' ),
+					'image'   => __( 'Image', 'church-sermon-manager' ),
+					'video'   => __( 'Video', 'church-sermon-manager' ),
 				),
 				'condition'      => array(
 					$this->get_control_id( 'show_image_video' ) => 'yes',
@@ -829,7 +829,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_responsive_control(
 			'item_ratio',
 			array(
-				'label'          => __( 'Image Ratio', 'elementor-pro' ),
+				'label'          => __( 'Image Ratio', 'church-sermon-manager' ),
 				'type'           => Controls_Manager::SLIDER,
 				'default'        => array(
 					'size' => 0.66,
@@ -861,7 +861,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_responsive_control(
 			'image_width',
 			array(
-				'label'          => __( 'Image Width', 'elementor-pro' ),
+				'label'          => __( 'Image Width', 'church-sermon-manager' ),
 				'type'           => Controls_Manager::SLIDER,
 				'range'          => array(
 					'%'  => array(
@@ -904,10 +904,10 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'show_title',
 			array(
-				'label'        => __( 'Title', 'elementor-pro' ),
+				'label'        => __( 'Title', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Show', 'elementor-pro' ),
-				'label_off'    => __( 'Hide', 'elementor-pro' ),
+				'label_on'     => __( 'Show', 'church-sermon-manager' ),
+				'label_off'    => __( 'Hide', 'church-sermon-manager' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 				'separator'    => 'before',
@@ -917,7 +917,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'title_tag',
 			array(
-				'label'     => __( 'Title HTML Tag', 'elementor-pro' ),
+				'label'     => __( 'Title HTML Tag', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => array(
 					'h1'   => 'H1',
@@ -946,10 +946,10 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'show_excerpt',
 			array(
-				'label'        => __( 'Excerpt', 'elementor-pro' ),
+				'label'        => __( 'Excerpt', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Show', 'elementor-pro' ),
-				'label_off'    => __( 'Hide', 'elementor-pro' ),
+				'label_on'     => __( 'Show', 'church-sermon-manager' ),
+				'label_off'    => __( 'Hide', 'church-sermon-manager' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			)
@@ -958,7 +958,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'excerpt_length',
 			array(
-				'label'     => __( 'Excerpt Length', 'elementor-pro' ),
+				'label'     => __( 'Excerpt Length', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::NUMBER,
 				/** This filter is documented in wp-includes/formatting.php */
 				'default'   => apply_filters( 'excerpt_length', 25 ),
@@ -977,16 +977,16 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'meta_data',
 			array(
-				'label'       => __( 'Meta Data', 'elementor-pro' ),
+				'label'       => __( 'Meta Data', 'church-sermon-manager' ),
 				'label_block' => true,
 				'type'        => Controls_Manager::SELECT2,
 				'default'     => array( 'date', 'comments' ),
 				'multiple'    => true,
 				'options'     => array(
-					'author'   => __( 'Author', 'elementor-pro' ),
-					'date'     => __( 'Date', 'elementor-pro' ),
-					'time'     => __( 'Time', 'elementor-pro' ),
-					'comments' => __( 'Comments', 'elementor-pro' ),
+					'author'   => __( 'Author', 'church-sermon-manager' ),
+					'date'     => __( 'Date', 'church-sermon-manager' ),
+					'time'     => __( 'Time', 'church-sermon-manager' ),
+					'comments' => __( 'Comments', 'church-sermon-manager' ),
 				),
 				'separator'   => 'before',
 			)
@@ -995,7 +995,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'meta_separator',
 			array(
-				'label'     => __( 'Separator Between', 'elementor-pro' ),
+				'label'     => __( 'Separator Between', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::TEXT,
 				'default'   => '///',
 				'selectors' => array(
@@ -1015,10 +1015,10 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'show_read_more',
 			array(
-				'label'        => __( 'Read More', 'elementor-pro' ),
+				'label'        => __( 'Read More', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Show', 'elementor-pro' ),
-				'label_off'    => __( 'Hide', 'elementor-pro' ),
+				'label_on'     => __( 'Show', 'church-sermon-manager' ),
+				'label_off'    => __( 'Hide', 'church-sermon-manager' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 				'separator'    => 'before',
@@ -1028,9 +1028,9 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_control(
 			'read_more_text',
 			array(
-				'label'     => __( 'Read More Text', 'elementor-pro' ),
+				'label'     => __( 'Read More Text', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::TEXT,
-				'default'   => __( 'Read More »', 'elementor-pro' ),
+				'default'   => __( 'Read More »', 'church-sermon-manager' ),
 				'condition' => array(
 					$this->get_control_id( 'show_read_more' ) => 'yes',
 				),
@@ -1386,7 +1386,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'total'              => $page_limit,
 				'prev_next'          => false,
 				'show_all'           => 'yes' !== $parent_settings['pagination_numbers_shorten'],
-				'before_page_number' => '<span class="elementor-screen-only">' . __( 'Page', 'elementor-pro' ) . '</span>',
+				'before_page_number' => '<span class="elementor-screen-only">' . __( 'Page', 'church-sermon-manager' ) . '</span>',
 			) );
 		}
 
@@ -1398,7 +1398,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		}
 
 		?>
-		<nav class="elementor-pagination" role="navigation" aria-label="<?php esc_attr_e( 'Pagination', 'elementor-pro' ); ?>">
+		<nav class="elementor-pagination" role="navigation" aria-label="<?php esc_attr_e( 'Pagination', 'church-sermon-manager' ); ?>">
 			<?php echo implode( PHP_EOL, $links ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core paginate_links() markup. ?>
 		</nav>
 		<?php

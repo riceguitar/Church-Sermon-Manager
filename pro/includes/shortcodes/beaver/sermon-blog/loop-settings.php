@@ -28,7 +28,7 @@ $settings = (object) array_merge( $defaults, (array) $settings );
 	<div class="fl-custom-query fl-loop-data-source" data-source="custom_query">
 		<div id="fl-builder-settings-section-general" class="fl-builder-settings-section">
 			<h3 class="fl-builder-settings-title">
-				<span class="fl-builder-settings-title-text-wrap"><?php esc_html_e( 'Custom Query', 'fl-builder' ); ?></span>
+				<span class="fl-builder-settings-title-text-wrap"><?php esc_html_e( 'Custom Query', 'church-sermon-manager' ); ?></span>
 			</h3>
 			<table class="fl-form-table">
 				<?php
@@ -36,29 +36,29 @@ $settings = (object) array_merge( $defaults, (array) $settings );
 				// Order.
 				FLBuilder::render_settings_field( 'order', array(
 					'type'    => 'select',
-					'label'   => __( 'Order', 'fl-builder' ),
+					'label'   => __( 'Order', 'church-sermon-manager' ),
 					'options' => array(
-						'DESC' => __( 'Descending', 'fl-builder' ),
-						'ASC'  => __( 'Ascending', 'fl-builder' ),
+						'DESC' => __( 'Descending', 'church-sermon-manager' ),
+						'ASC'  => __( 'Ascending', 'church-sermon-manager' ),
 					),
 				), $settings );
 
 				// Order by.
 				FLBuilder::render_settings_field( 'order_by', array(
 					'type'    => 'select',
-					'label'   => __( 'Order By', 'fl-builder' ),
+					'label'   => __( 'Order By', 'church-sermon-manager' ),
 					'options' => array(
-						'author'         => __( 'Author', 'fl-builder' ),
-						'comment_count'  => __( 'Comment Count', 'fl-builder' ),
-						'date'           => __( 'Date', 'fl-builder' ),
-						'modified'       => __( 'Date Last Modified', 'fl-builder' ),
-						'ID'             => __( 'ID', 'fl-builder' ),
-						'menu_order'     => __( 'Menu Order', 'fl-builder' ),
-						'meta_value'     => __( 'Meta Value (Alphabetical)', 'fl-builder' ),
-						'meta_value_num' => __( 'Meta Value (Numeric)', 'fl-builder' ),
-						'rand'           => __( 'Random', 'fl-builder' ),
-						'title'          => __( 'Title', 'fl-builder' ),
-						'post__in'       => __( 'Selection Order', 'fl-builder' ),
+						'author'         => __( 'Author', 'church-sermon-manager' ),
+						'comment_count'  => __( 'Comment Count', 'church-sermon-manager' ),
+						'date'           => __( 'Date', 'church-sermon-manager' ),
+						'modified'       => __( 'Date Last Modified', 'church-sermon-manager' ),
+						'ID'             => __( 'ID', 'church-sermon-manager' ),
+						'menu_order'     => __( 'Menu Order', 'church-sermon-manager' ),
+						'meta_value'     => __( 'Meta Value (Alphabetical)', 'church-sermon-manager' ),
+						'meta_value_num' => __( 'Meta Value (Numeric)', 'church-sermon-manager' ),
+						'rand'           => __( 'Random', 'church-sermon-manager' ),
+						'title'          => __( 'Title', 'church-sermon-manager' ),
+						'post__in'       => __( 'Selection Order', 'church-sermon-manager' ),
 					),
 					'toggle'  => array(
 						'meta_value'     => array(
@@ -73,16 +73,16 @@ $settings = (object) array_merge( $defaults, (array) $settings );
 				// Meta Key.
 				FLBuilder::render_settings_field( 'order_by_meta_key', array(
 					'type'  => 'text',
-					'label' => __( 'Meta Key', 'fl-builder' ),
+					'label' => __( 'Meta Key', 'church-sermon-manager' ),
 				), $settings );
 
 				// Offset.
 				FLBuilder::render_settings_field( 'offset', array(
 					'type'    => 'text',
-					'label'   => _x( 'Offset', 'How many posts to skip.', 'fl-builder' ),
+					'label'   => _x( 'Offset', 'How many posts to skip.', 'church-sermon-manager' ),
 					'default' => '0',
 					'size'    => '4',
-					'help'    => __( 'Skip this many posts that match the specified criteria.', 'fl-builder' ),
+					'help'    => __( 'Skip this many posts that match the specified criteria.', 'church-sermon-manager' ),
 				), $settings );
 
 				?>
@@ -90,7 +90,7 @@ $settings = (object) array_merge( $defaults, (array) $settings );
 		</div>
 		<div id="fl-builder-settings-section-filter" class="fl-builder-settings-section">
 			<h3 class="fl-builder-settings-title">
-				<span class="fl-builder-settings-title-text-wrap"><?php esc_html_e( 'Filter', 'fl-builder' ); ?></span>
+				<span class="fl-builder-settings-title-text-wrap"><?php esc_html_e( 'Filter', 'church-sermon-manager' ); ?></span>
 			</h3>
 			<?php foreach ( FLBuilderLoop::post_types() as $slug => $type ) : ?>
 				<table class="fl-form-table fl-custom-query-filter fl-custom-query-<?php echo $slug; ?>-filter" <?php echo $slug == $settings->post_type ? 'style="display:table;"' : ''; ?>>
@@ -103,7 +103,7 @@ $settings = (object) array_merge( $defaults, (array) $settings );
 						'data'     => $slug,
 						'label'    => $type->label,
 						/* translators: %1$s: post type or taxonomy label. */
-						'help'     => sprintf( __( 'Enter a list of %1$s.', 'fl-builder' ), $type->label ),
+						'help'     => sprintf( __( 'Enter a list of %1$s.', 'church-sermon-manager' ), $type->label ),
 						'matching' => true,
 					), $settings );
 
@@ -117,7 +117,7 @@ $settings = (object) array_merge( $defaults, (array) $settings );
 							'data'     => $tax_slug,
 							'label'    => $tax->label,
 							/* translators: %1$s: post type or taxonomy label. */
-							'help'     => sprintf( __( 'Enter a list of %1$s.', 'fl-builder' ), $tax->label ),
+							'help'     => sprintf( __( 'Enter a list of %1$s.', 'church-sermon-manager' ), $tax->label ),
 							'matching' => true,
 						), $settings );
 					}
@@ -132,8 +132,8 @@ $settings = (object) array_merge( $defaults, (array) $settings );
 				FLBuilder::render_settings_field( 'users', array(
 					'type'     => 'suggest',
 					'action'   => 'fl_as_users',
-					'label'    => __( 'Authors', 'fl-builder' ),
-					'help'     => __( 'Enter a list of authors usernames.', 'fl-builder' ),
+					'label'    => __( 'Authors', 'church-sermon-manager' ),
+					'help'     => __( 'Enter a list of authors usernames.', 'church-sermon-manager' ),
 					'matching' => true,
 				), $settings );
 

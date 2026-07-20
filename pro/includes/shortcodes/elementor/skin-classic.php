@@ -207,9 +207,9 @@ class Skin_Classic extends Skin_Base {
 			'thumbnail',
 			array(
 				'options'      => array(
-					'top'  => __( 'Top', 'elementor-pro' ),
-					'left' => __( 'Left', 'elementor-pro' ),
-					'none' => __( 'None', 'elementor-pro' ),
+					'top'  => __( 'Top', 'church-sermon-manager' ),
+					'left' => __( 'Left', 'church-sermon-manager' ),
+					'none' => __( 'None', 'church-sermon-manager' ),
 				),
 				'prefix_class' => 'sm-pro-sermon-thumbnail-',
 			)

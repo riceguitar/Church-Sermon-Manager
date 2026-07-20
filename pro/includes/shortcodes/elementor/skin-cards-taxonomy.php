@@ -68,7 +68,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->start_controls_section(
 			'section_design_layout',
 			array(
-				'label' => __( 'Layout', 'elementor-pro' ),
+				'label' => __( 'Layout', 'church-sermon-manager' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -76,7 +76,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'column_gap',
 			array(
-				'label'     => __( 'Column Gap', 'elementor-pro' ),
+				'label'     => __( 'Column Gap', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => array(
 					'size' => 15,
@@ -103,7 +103,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->start_controls_section(
 			'section_design_image',
 			array(
-				'label'     => __( 'Image', 'elementor-pro' ),
+				'label'     => __( 'Image', 'church-sermon-manager' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array(
 					$this->get_control_id( 'show_image' ) => 'yes',
@@ -114,7 +114,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'image_padding',
 			array(
-				'label'     => __( 'Image Padding', 'elementor-pro' ),
+				'label'     => __( 'Image Padding', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => array(
 					'size' => 15,
@@ -145,7 +145,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->start_controls_section(
 			'section_design_content',
 			array(
-				'label' => __( 'Content', 'elementor-pro' ),
+				'label' => __( 'Content', 'church-sermon-manager' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -153,7 +153,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'heading_title_style',
 			array(
-				'label'     => __( 'Title', 'elementor-pro' ),
+				'label'     => __( 'Title', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => array(
 					$this->get_control_id( 'show_title' ) => 'yes',
@@ -164,7 +164,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'title_padding',
 			array(
-				'label'     => __( 'Title Padding', 'elementor-pro' ),
+				'label'     => __( 'Title Padding', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => array(
 					'size' => 0,
@@ -187,7 +187,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'title_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
 					'type'  => Color::get_type(),
@@ -217,20 +217,20 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'title_alignment',
 			array(
-				'label'        => __( 'Alignment', 'elementor-pro' ),
+				'label'        => __( 'Alignment', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::CHOOSE,
 				'label_block'  => false,
 				'options'      => array(
 					'left'   => array(
-						'title' => __( 'Left', 'elementor-pro' ),
+						'title' => __( 'Left', 'church-sermon-manager' ),
 						'icon'  => 'fa fa-align-left',
 					),
 					'center' => array(
-						'title' => __( 'Center', 'elementor-pro' ),
+						'title' => __( 'Center', 'church-sermon-manager' ),
 						'icon'  => 'fa fa-align-center',
 					),
 					'right'  => array(
-						'title' => __( 'Right', 'elementor-pro' ),
+						'title' => __( 'Right', 'church-sermon-manager' ),
 						'icon'  => 'fa fa-align-right',
 					),
 				),
@@ -246,7 +246,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'heading_desc_style',
 			array(
-				'label'     => __( 'Description', 'elementor-pro' ),
+				'label'     => __( 'Description', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => array(
 					$this->get_control_id( 'show_desc' ) => 'yes',
@@ -257,7 +257,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'description_padding',
 			array(
-				'label'     => __( 'Description Padding', 'elementor-pro' ),
+				'label'     => __( 'Description Padding', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => array(
 					'size' => 0,
@@ -280,7 +280,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'description_color',
 			array(
-				'label'     => __( 'Color', 'elementor-pro' ),
+				'label'     => __( 'Color', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
 					'type'  => Color::get_type(),
@@ -374,8 +374,8 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 			array(
 				'label'        => __( 'Description', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Show', 'elementor-pro' ),
-				'label_off'    => __( 'Hide', 'elementor-pro' ),
+				'label_on'     => __( 'Show', 'church-sermon-manager' ),
+				'label_off'    => __( 'Hide', 'church-sermon-manager' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 				'separator' => 'before',

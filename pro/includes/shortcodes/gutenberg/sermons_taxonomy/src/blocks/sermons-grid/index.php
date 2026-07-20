@@ -305,7 +305,7 @@ function sermons_taxonomy_layout_register_rest_fields(  ) {
 			'get_callback' => 'get_sermons_taxonomy_image',
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Sermon Tanonomy Image', 'sermons-taxonomy-layout'),
+				'description' => __( 'Sermon Tanonomy Image', 'church-sermon-manager'),
 				'type' => 'array'
 			)
 		)
@@ -318,7 +318,7 @@ function sermons_taxonomy_layout_register_rest_fields(  ) {
 			'get_callback' => 'get_sermons_taxonomy_description',
 			'update_callback' => null,
 			'schema' => array(
-				'description' => __( 'Sermon Taxonomy Description', 'sermons-taxonomy-layout'),
+				'description' => __( 'Sermon Taxonomy Description', 'church-sermon-manager'),
 				'type' => 'array'
 			)
 		)
