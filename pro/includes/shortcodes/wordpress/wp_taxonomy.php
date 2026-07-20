@@ -73,7 +73,7 @@ class WP_Taxonomy extends WP_Archive {
 		}
 
 		if ( defined( 'SMP_SHORTCODE_NO_TAXONOMY' ) ) {
-			return __( 'Error, not in a taxonomy.', 'sermon-manager' );
+			return __( 'Error, not in a taxonomy.', 'church-sermon-manager' );
 		}
 
 		if ( ! defined( 'SM_ENQUEUE_SCRIPTS_STYLES' ) ) {
@@ -106,7 +106,7 @@ class WP_Taxonomy extends WP_Archive {
 					wpfc_sermon_excerpt_v2(); // You can edit the content of this function in `partials/content-sermon-archive.php`.
 				endwhile;
 			else :
-				echo __( "Sorry, but there aren't any sermons matching your query.", 'sermon-manager' );
+				echo __( "Sorry, but there aren't any sermons matching your query.", 'church-sermon-manager' );
 			endif;
 			?>
 		</div>

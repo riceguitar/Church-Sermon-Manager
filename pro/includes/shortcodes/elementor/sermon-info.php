@@ -38,7 +38,7 @@ class Sermon_Info extends Widget_Base {
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'Sermon Info', 'sermon-manager' );
+		return __( 'Sermon Info', 'church-sermon-manager' );
 	}
 
 	/**
@@ -77,7 +77,7 @@ class Sermon_Info extends Widget_Base {
 		$this->start_controls_section(
 			'section_meta_data',
 			array(
-				'label' => __( 'Meta Data', 'sermon-manager' ),
+				'label' => __( 'Meta Data', 'church-sermon-manager' ),
 			)
 		);
 
@@ -86,16 +86,16 @@ class Sermon_Info extends Widget_Base {
 		$repeater->add_control(
 			'type',
 			array(
-				'label'   => __( 'Type', 'sermon-manager' ),
+				'label'   => __( 'Type', 'church-sermon-manager' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'date preached',
 				'options' => array(
-					'preachers'     => __( 'Preachers', 'sermon-manager' ),
-					'series'        => __( 'Series', 'sermon-manager' ),
-					'service type'  => __( 'Service Type', 'sermon-manager' ),
-					'bible book'    => __( 'Bible Book', 'sermon-manager' ),
-					'date preached' => __( 'Date Preached', 'sermon-manager' ),
-					'passage'       => __( 'Passage', 'sermon-manager' ),
+					'preachers'     => __( 'Preachers', 'church-sermon-manager' ),
+					'series'        => __( 'Series', 'church-sermon-manager' ),
+					'service type'  => __( 'Service Type', 'church-sermon-manager' ),
+					'bible book'    => __( 'Bible Book', 'church-sermon-manager' ),
+					'date preached' => __( 'Date Preached', 'church-sermon-manager' ),
+					'passage'       => __( 'Passage', 'church-sermon-manager' ),
 				),
 			)
 		);

@@ -486,7 +486,7 @@ final class Templating_Manager {
 		$settings['post_class'] = $post_class;
 
 		// Add preacher label.
-		$args['preacher_label'] = \SermonManager::getOption( 'preacher_label' ) ?: __( 'Preacher', 'sermon-manager' );
+		$args['preacher_label'] = \SermonManager::getOption( 'preacher_label' ) ?: __( 'Preacher', 'church-sermon-manager' );
 		$args['date_format']    = get_option( 'date_format', 'Y-m-d' );
 
 		// Comments.

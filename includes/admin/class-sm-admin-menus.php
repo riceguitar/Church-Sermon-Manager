@@ -31,7 +31,7 @@ class SM_Admin_Menus {
 	 * Add menu item.
 	 */
 	public function settings_menu() {
-		add_submenu_page( 'edit.php?post_type=wpfc_sermon', __( 'Sermon Manager Settings', 'sermon-manager' ), __( 'Settings', 'sermon-manager' ), 'manage_wpfc_sm_settings', 'sm-settings', array(
+		add_submenu_page( 'edit.php?post_type=wpfc_sermon', __( 'Sermon Manager Settings', 'church-sermon-manager' ), __( 'Settings', 'church-sermon-manager' ), 'manage_wpfc_sm_settings', 'sm-settings', array(
 			$this,
 			'settings_page',
 		) );
@@ -41,7 +41,7 @@ class SM_Admin_Menus {
 	 * Add menu item.
 	 */
 	public function import_export_menu() {
-		add_submenu_page( 'edit.php?post_type=wpfc_sermon', __( 'Sermon Manager Import/Export', 'sermon-manager' ), __( 'Import/Export', 'sermon-manager' ), 'manage_wpfc_sm_settings', 'sm-import-export', array(
+		add_submenu_page( 'edit.php?post_type=wpfc_sermon', __( 'Sermon Manager Import/Export', 'church-sermon-manager' ), __( 'Import/Export', 'church-sermon-manager' ), 'manage_wpfc_sm_settings', 'sm-import-export', array(
 			$this,
 			'import_export_page',
 		) );
@@ -53,8 +53,8 @@ class SM_Admin_Menus {
 	public function migrate_pro_content_menu() {
 		add_submenu_page(
 			'edit.php?post_type=wpfc_sermon',
-			__( 'Migrate Pro Content', 'sermon-manager' ),
-			__( 'Migrate Pro Content', 'sermon-manager' ),
+			__( 'Migrate Pro Content', 'church-sermon-manager' ),
+			__( 'Migrate Pro Content', 'church-sermon-manager' ),
 			'manage_wpfc_sm_settings',
 			'sm-migrate-pro-content',
 			array( $this, 'migrate_pro_content_page' )
@@ -81,7 +81,7 @@ class SM_Admin_Menus {
 	 */
 	public function migrate_pro_content_page() {
 		if ( ! current_user_can( 'manage_wpfc_sm_settings' ) ) {
-			wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+			wp_die( __( 'You do not have sufficient permissions to access this page.', 'church-sermon-manager' ) );
 		}
 
 		$updated = false;
@@ -94,19 +94,19 @@ class SM_Admin_Menus {
 		}
 		?>
 		<div class="wrap">
-			<h1><?php _e( 'Migrate Pro Content to Native', 'sermon-manager' ); ?></h1>
-			<p><?php _e( 'This tool will copy the content from the Pro plugin\'s "sermon_description" meta field into the native post_content field for all sermons. Use with caution.', 'sermon-manager' ); ?></p>
+			<h1><?php _e( 'Migrate Pro Content to Native', 'church-sermon-manager' ); ?></h1>
+			<p><?php _e( 'This tool will copy the content from the Pro plugin\'s "sermon_description" meta field into the native post_content field for all sermons. Use with caution.', 'church-sermon-manager' ); ?></p>
 			<form method="post">
 				<?php wp_nonce_field( 'sm_migrate_pro_content_action', 'sm_migrate_pro_content_nonce' ); ?>
-				<label><input type="checkbox" name="sm_migrate_overwrite" value="1" <?php checked( $overwrite ); ?> /> <?php _e( 'Overwrite existing post content (if any)', 'sermon-manager' ); ?></label><br><br>
-				<input type="submit" name="sm_migrate_pro_content" class="button button-primary" value="<?php esc_attr_e( 'Run Migration', 'sermon-manager' ); ?>" />
+				<label><input type="checkbox" name="sm_migrate_overwrite" value="1" <?php checked( $overwrite ); ?> /> <?php _e( 'Overwrite existing post content (if any)', 'church-sermon-manager' ); ?></label><br><br>
+				<input type="submit" name="sm_migrate_pro_content" class="button button-primary" value="<?php esc_attr_e( 'Run Migration', 'church-sermon-manager' ); ?>" />
 			</form>
 			<?php if ( $updated ) : ?>
-				<h2><?php _e( 'Migration Results', 'sermon-manager' ); ?></h2>
+				<h2><?php _e( 'Migration Results', 'church-sermon-manager' ); ?></h2>
 				<ul>
-					<li><?php printf( __( 'Total sermons checked: %d', 'sermon-manager' ), $results['total'] ); ?></li>
-					<li><?php printf( __( 'Posts updated: %d', 'sermon-manager' ), $results['updated'] ); ?></li>
-					<li><?php printf( __( 'Posts skipped: %d', 'sermon-manager' ), $results['skipped'] ); ?></li>
+					<li><?php printf( __( 'Total sermons checked: %d', 'church-sermon-manager' ), $results['total'] ); ?></li>
+					<li><?php printf( __( 'Posts updated: %d', 'church-sermon-manager' ), $results['updated'] ); ?></li>
+					<li><?php printf( __( 'Posts skipped: %d', 'church-sermon-manager' ), $results['skipped'] ); ?></li>
 				</ul>
 			<?php endif; ?>
 		</div>
@@ -132,7 +132,7 @@ class SM_Admin_Menus {
 
 		foreach ( $submenu['edit.php?post_type=wpfc_sermon'] as &$sermon_item ) {
 			if ( 'edit.php?post_type=wpfc_sermon' === $sermon_item[2] ) {
-				$sermon_item[0] = __( 'All Sermons', 'sermon-manager' );
+				$sermon_item[0] = __( 'All Sermons', 'church-sermon-manager' );
 				return;
 			}
 		}

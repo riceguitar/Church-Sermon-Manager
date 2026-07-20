@@ -98,7 +98,7 @@ abstract class Module_Base {
 	 */
 	public function __clone() {
 		// Cloning instances of the class is forbidden.
-		_doing_it_wrong( __FUNCTION__, __( 'Something went wrong.', 'sermon-manager' ), '2.0.4' );
+		_doing_it_wrong( __FUNCTION__, __( 'Something went wrong.', 'church-sermon-manager' ), '2.0.4' );
 	}
 
 	/**
@@ -109,7 +109,7 @@ abstract class Module_Base {
 	 */
 	public function __wakeup() {
 		// Unserializing instances of the class is forbidden.
-		_doing_it_wrong( __FUNCTION__, __( 'Something went wrong.', 'sermon-manager' ), '2.0.4' );
+		_doing_it_wrong( __FUNCTION__, __( 'Something went wrong.', 'church-sermon-manager' ), '2.0.4' );
 	}
 
 	/**

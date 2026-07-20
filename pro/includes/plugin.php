@@ -136,7 +136,7 @@ class Plugin {
 	 */
 	public function __clone() {
 		// Cloning instances of the class is forbidden.
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'sermon-manager' ), '2.0.4' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'church-sermon-manager' ), '2.0.4' );
 	}
 
 	/**
@@ -149,7 +149,7 @@ class Plugin {
 	 */
 	public function __wakeup() {
 		// Unserializing instances of the class is forbidden.
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'sermon-manager' ), '2.0.4' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'church-sermon-manager' ), '2.0.4' );
 	}
 
 	/**
@@ -391,7 +391,7 @@ class Plugin {
 								id="smp-notice-<?php echo $notice['id']; ?>">
 							<p>
 								<?php if ( ! $notice['hide_plugin_name'] ) : ?>
-									<strong><?php echo __( 'Church Sermon Manager', 'sermon-manager' ); ?></strong>&nbsp;
+									<strong><?php echo __( 'Church Sermon Manager', 'church-sermon-manager' ); ?></strong>&nbsp;
 								<?php endif; ?>
 								<?php echo $notice['message']; ?>
 							</p>
@@ -418,7 +418,7 @@ class Plugin {
 					?>
 					<div class="notice notice-info is-dismissible">
 						<h3 style="margin:0">Church Sermon Manager</h3>
-						<p><?php echo __( 'Hi there! There are new versions available for some of installed templates:', 'sermon-manager' ); ?></p>
+						<p><?php echo __( 'Hi there! There are new versions available for some of installed templates:', 'church-sermon-manager' ); ?></p>
 						<table class="template-versions">
 							<tr>
 								<th style="text-align: left;">Name</th>

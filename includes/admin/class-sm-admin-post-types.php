@@ -54,26 +54,26 @@ class SM_Admin_Post_Types {
 		$messages['wpfc_sermon'] = array(
 			0  => '', // Unused. Messages start at index 1.
 			// translators: %s: The URL to the sermon.
-			1  => wp_sprintf( esc_html__( 'Sermon updated. %s', 'sermon-manager' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">' . esc_html__( 'View sermon', 'sermon-manager' ) . '</a>' ),
-			2  => esc_html__( 'Custom field updated.', 'sermon-manager' ),
-			3  => esc_html__( 'Custom field deleted.', 'sermon-manager' ),
-			4  => esc_html__( 'Sermon updated.', 'sermon-manager' ),
+			1  => wp_sprintf( esc_html__( 'Sermon updated. %s', 'church-sermon-manager' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">' . esc_html__( 'View sermon', 'church-sermon-manager' ) . '</a>' ),
+			2  => esc_html__( 'Custom field updated.', 'church-sermon-manager' ),
+			3  => esc_html__( 'Custom field deleted.', 'church-sermon-manager' ),
+			4  => esc_html__( 'Sermon updated.', 'church-sermon-manager' ),
 			// translators: %s: Date and time of the revision.
-			5  => isset( $_GET['revision'] ) ? wp_sprintf( esc_html__( 'Sermon restored to revision from %s', 'sermon-manager' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+			5  => isset( $_GET['revision'] ) ? wp_sprintf( esc_html__( 'Sermon restored to revision from %s', 'church-sermon-manager' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
 			// translators: %s: The URL to the sermon.
-			6  => wp_sprintf( esc_html__( 'Sermon published. %s', 'sermon-manager' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">' . esc_html__( 'View sermon', 'sermon-manager' ) . '</a>' ),
-			7  => esc_html__( 'Sermon saved.', 'sermon-manager' ),
+			6  => wp_sprintf( esc_html__( 'Sermon published. %s', 'church-sermon-manager' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">' . esc_html__( 'View sermon', 'church-sermon-manager' ) . '</a>' ),
+			7  => esc_html__( 'Sermon saved.', 'church-sermon-manager' ),
 			// translators: %s: The URL to the sermon.
-			8  => wp_sprintf( esc_html__( 'Sermon submitted. %s', 'sermon-manager' ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">' . esc_html__( 'Preview sermon', 'sermon-manager' ) . '</a>' ),
+			8  => wp_sprintf( esc_html__( 'Sermon submitted. %s', 'church-sermon-manager' ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">' . esc_html__( 'Preview sermon', 'church-sermon-manager' ) . '</a>' ),
 			// translators: %1$s: The date and time. %2$s: The preview sermon URL.
-			9  => wp_sprintf( esc_html__( 'Sermon scheduled for: %1$s. %2$s', 'sermon-manager' ),
+			9  => wp_sprintf( esc_html__( 'Sermon scheduled for: %1$s. %2$s', 'church-sermon-manager' ),
 				// translators: %1$s: Date. %2$s: Time.
-				'<strong>' . wp_sprintf( esc_html__( '%1$s at %2$s', 'sermon-manager' ), get_post_time( get_option( 'date_format' ), false, null, true ), get_post_time( get_option( 'time_format' ), false, null, true ) ) . '</strong>',
+				'<strong>' . wp_sprintf( esc_html__( '%1$s at %2$s', 'church-sermon-manager' ), get_post_time( get_option( 'date_format' ), false, null, true ), get_post_time( get_option( 'time_format' ), false, null, true ) ) . '</strong>',
 				// translators: %s: The preview sermon URL.
-				'<a target="_blank" href="' . esc_url( get_permalink( $post_ID ) ) . '">' . esc_html__( 'Preview sermon', 'sermon-manager' ) . '</a>'
+				'<a target="_blank" href="' . esc_url( get_permalink( $post_ID ) ) . '">' . esc_html__( 'Preview sermon', 'church-sermon-manager' ) . '</a>'
 			),
 			// translators: %s The URL to the sermon.
-			10 => wp_sprintf( esc_html__( 'Sermon draft updated. %s', 'sermon-manager' ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">' . esc_html__( 'View sermon', 'sermon-manager' ) . '</a>' ),
+			10 => wp_sprintf( esc_html__( 'Sermon draft updated. %s', 'church-sermon-manager' ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">' . esc_html__( 'View sermon', 'church-sermon-manager' ) . '</a>' ),
 		);
 
 		return $messages;
@@ -93,14 +93,14 @@ class SM_Admin_Post_Types {
 
 		$columns             = array();
 		$columns['cb']       = '<input type="checkbox" />';
-		$columns['title']    = __( 'Sermon Title', 'sermon-manager' );
+		$columns['title']    = __( 'Sermon Title', 'church-sermon-manager' );
 		$columns['preacher'] = sm_get_taxonomy_field( 'wpfc_preacher', 'singular_name' );
-		$columns['series']   = __( 'Sermon Series', 'sermon-manager' );
-		$columns['topics']   = __( 'Topics', 'sermon-manager' );
-		$columns['views']    = __( 'Views', 'sermon-manager' );
+		$columns['series']   = __( 'Sermon Series', 'church-sermon-manager' );
+		$columns['topics']   = __( 'Topics', 'church-sermon-manager' );
+		$columns['views']    = __( 'Views', 'church-sermon-manager' );
 		$columns['comments'] = $existing_columns['comments'];
-		$columns['preached'] = __( 'Preached', 'sermon-manager' );
-		$columns['date']     = __( 'Published' );
+		$columns['preached'] = __( 'Preached', 'church-sermon-manager' );
+		$columns['date']     = __( 'Published', 'church-sermon-manager' );
 
 		return $columns + $existing_columns;
 	}
@@ -135,7 +135,7 @@ class SM_Admin_Post_Types {
 
 				if ( time() - $unix_preached < DAY_IN_SECONDS ) {
 					// translators: %s: The time. Such as "12 hours".
-					$data = sprintf( __( '%s ago' ), human_time_diff( $unix_preached ) );
+					$data = sprintf( __( '%s ago', 'church-sermon-manager' ), human_time_diff( $unix_preached ) );
 				} else {
 					$data = date( 'Y/m/d', $unix_preached );
 				}
@@ -149,7 +149,7 @@ class SM_Admin_Post_Types {
 		}
 
 		if ( $data instanceof WP_Error ) {
-			$data = __( 'Error' );
+			$data = __( 'Error', 'church-sermon-manager' );
 		}
 
 		echo $data;
@@ -255,7 +255,7 @@ class SM_Admin_Post_Types {
 	 */
 	public function enter_title_here( $text, $post ) {
 		if ( 'wpfc_sermon' === $post->post_type ) {
-			$text = __( 'Sermon title', 'sermon-manager' );
+			$text = __( 'Sermon title', 'church-sermon-manager' );
 		}
 
 		return $text;
@@ -310,7 +310,7 @@ class SM_Admin_Post_Types {
 
 		$output .= '<select name="wpfc_service_type" id="dropdown_wpfc_service_type">';
 		// translators: %s Taxonomy name. Default: Service Type.
-		$output .= '<option value="">' . wp_sprintf( __( 'Filter by %s', 'sermon-manager' ), sm_get_taxonomy_field( 'wpfc_service_type', 'singular_name' ) ) . '</option>';
+		$output .= '<option value="">' . wp_sprintf( __( 'Filter by %s', 'church-sermon-manager' ), sm_get_taxonomy_field( 'wpfc_service_type', 'singular_name' ) ) . '</option>';
 
 		foreach ( $terms as $term ) {
 			$output .= '<option value="' . $term->slug . '" ';

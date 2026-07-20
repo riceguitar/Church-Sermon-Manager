@@ -22,7 +22,7 @@ class SMP_Settings_css extends SM_Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'smprocss';
-		$this->label = __( 'CSS', 'sermon-manager' );
+		$this->label = __( 'CSS', 'church-sermon-manager' );
 
 		parent::__construct();
 	}
@@ -35,23 +35,23 @@ class SMP_Settings_css extends SM_Settings_Page {
 	public function get_settings() {
 		$settings = apply_filters( 'sm_css_settings', array(
 			array(
-				'title' => __( 'CSS', 'sermon-manager' ),
+				'title' => __( 'CSS', 'church-sermon-manager' ),
 				'type'  => 'title',
 				'desc'  => '',
 				'id'    => 'smprocss_settings',
 			),
 			array(
-				'title'       => __( 'Image Banner Background', 'sermon-manager' ),
+				'title'       => __( 'Image Banner Background', 'church-sermon-manager' ),
 				'type'        => 'smcolor',
-				'desc'        => __( 'Please select Image Banner Background color.', 'sermon-manager' ),
+				'desc'        => __( 'Please select Image Banner Background color.', 'church-sermon-manager' ),
 				'id'          => 'smpro_banner_backgroud',
 				'default'     => '',
 				'placeholder' => ''
 			),
 			array(
-				'title'       => __( 'CSS', 'sermon-manager' ),
+				'title'       => __( 'CSS', 'church-sermon-manager' ),
 				'type'        => 'textarea',
-				'desc'        => __( 'Enter your css for plugin design.', 'sermon-manager' ),
+				'desc'        => __( 'Enter your css for plugin design.', 'church-sermon-manager' ),
 				'id'          => 'additional_css',
 				'default'     => '',
 				'placeholder' => '',

@@ -28,7 +28,7 @@ class Skin_List_Taxonomy extends Skin_Base {
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'List', 'sermon-manager' );
+		return __( 'List', 'church-sermon-manager' );
 	}
 
 	/**

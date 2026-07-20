@@ -59,7 +59,7 @@ class Sermon_Taxonomy extends Widget_Base {
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'Sermon Taxonomy', 'sermon-manager' );
+		return __( 'Sermon Taxonomy', 'church-sermon-manager' );
 	}
 
 	/**
@@ -340,14 +340,14 @@ class Sermon_Taxonomy extends Widget_Base {
 		$this->start_controls_section(
 			'section_layout',
 			array(
-				'label' => __( 'Layout', 'sermon-manager' ),
+				'label' => __( 'Layout', 'church-sermon-manager' ),
 			)
 		);
 
 		$this->add_control(
 			'terms_per_page',
 			array(
-				'label'      => __( 'Terms Per Page', 'sermon-manager' ),
+				'label'      => __( 'Terms Per Page', 'church-sermon-manager' ),
 				'type'       => Controls_Manager::NUMBER,
 				'default'    => 6,
 				'conditions' => array(
@@ -371,7 +371,7 @@ class Sermon_Taxonomy extends Widget_Base {
 		$this->add_responsive_control(
 			'columns',
 			array(
-				'label'              => __( 'Columns', 'sermon-manager' ),
+				'label'              => __( 'Columns', 'church-sermon-manager' ),
 				'type'               => Controls_Manager::SELECT,
 				'default'            => '3',
 				'tablet_default'     => '2',
@@ -392,10 +392,10 @@ class Sermon_Taxonomy extends Widget_Base {
 		$this->add_control(
 			'show_alphabetically',
 			array(
-				'label'        => __( 'Show Alphabetical List', 'sermon-manager' ),
+				'label'        => __( 'Show Alphabetical List', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Show', 'sermon-manager' ),
-				'label_off'    => __( 'Hide', 'sermon-manager' ),
+				'label_on'     => __( 'Show', 'church-sermon-manager' ),
+				'label_off'    => __( 'Hide', 'church-sermon-manager' ),
 				'return_value' => 'yes',
 				'default'      => '',
 				'separator'    => 'before',
@@ -561,7 +561,7 @@ class Sermon_Taxonomy extends Widget_Base {
 		$this->start_controls_section(
 			'section_query',
 			array(
-				'label' => __( 'Query', 'sermon-manager' ),
+				'label' => __( 'Query', 'church-sermon-manager' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -569,16 +569,16 @@ class Sermon_Taxonomy extends Widget_Base {
 		$this->add_control(
 			'taxonomy',
 			array(
-				'label'   => __( 'Source', 'sermon-manager' ),
+				'label'   => __( 'Source', 'church-sermon-manager' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'series',
 				'options' => array(
-					'series'        => __( 'Series', 'sermon-manager' ),
-					'preachers'     => __( 'Preachers', 'sermon-manager' ),
-					'topics'        => __( 'Topics', 'sermon-manager' ),
-					'books'         => __( 'Books', 'sermon-manager' ),
-					'books_order'   => __( 'Books (Book order)', 'sermon-manager' ),
-					'service_types' => __( 'Service Types', 'sermon-manager' ),
+					'series'        => __( 'Series', 'church-sermon-manager' ),
+					'preachers'     => __( 'Preachers', 'church-sermon-manager' ),
+					'topics'        => __( 'Topics', 'church-sermon-manager' ),
+					'books'         => __( 'Books', 'church-sermon-manager' ),
+					'books_order'   => __( 'Books (Book order)', 'church-sermon-manager' ),
+					'service_types' => __( 'Service Types', 'church-sermon-manager' ),
 				),
 			)
 		);
@@ -586,7 +586,7 @@ class Sermon_Taxonomy extends Widget_Base {
 		$this->add_control(
 			'advanced',
 			array(
-				'label'     => __( 'Advanced', 'sermon-manager' ),
+				'label'     => __( 'Advanced', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -595,12 +595,12 @@ class Sermon_Taxonomy extends Widget_Base {
 		$this->add_control(
 			'hide_empty',
 			array(
-				'label'   => __( 'Hide terms with no sermons', 'sermon-manager' ),
+				'label'   => __( 'Hide terms with no sermons', 'church-sermon-manager' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'options' => array(
-					'yes' => __( 'Yes', 'sermon-manager' ),
-					'no'  => __( 'No', 'sermon-manager' ),
+					'yes' => __( 'Yes', 'church-sermon-manager' ),
+					'no'  => __( 'No', 'church-sermon-manager' ),
 				),
 			)
 		);
@@ -608,13 +608,13 @@ class Sermon_Taxonomy extends Widget_Base {
 		$this->add_control(
 			'orderby',
 			array(
-				'label'      => __( 'Order By', 'sermon-manager' ),
+				'label'      => __( 'Order By', 'church-sermon-manager' ),
 				'type'       => Controls_Manager::SELECT,
 				'default'    => 'term_title',
 				'options'    => array(
-					'name'          => __( 'Title', 'sermon-manager' ),
-					'latest_sermon' => __( 'Latest Sermon', 'sermon-manager' ),
-					'count'         => __( 'Sermon Count', 'sermon-manager' ),
+					'name'          => __( 'Title', 'church-sermon-manager' ),
+					'latest_sermon' => __( 'Latest Sermon', 'church-sermon-manager' ),
+					'count'         => __( 'Sermon Count', 'church-sermon-manager' ),
 				),
 				'conditions' => array(
 					'relation' => 'or',
@@ -637,12 +637,12 @@ class Sermon_Taxonomy extends Widget_Base {
 		$this->add_control(
 			'order',
 			array(
-				'label'   => __( 'Order', 'sermon-manager' ),
+				'label'   => __( 'Order', 'church-sermon-manager' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'asc',
 				'options' => array(
-					'asc'  => __( 'ASC', 'sermon-manager' ),
-					'desc' => __( 'DESC', 'sermon-manager' ),
+					'asc'  => __( 'ASC', 'church-sermon-manager' ),
+					'desc' => __( 'DESC', 'church-sermon-manager' ),
 				),
 			)
 		);
@@ -650,10 +650,10 @@ class Sermon_Taxonomy extends Widget_Base {
 		$this->add_control(
 			'offset',
 			array(
-				'label'       => __( 'Offset', 'sermon-manager' ),
+				'label'       => __( 'Offset', 'church-sermon-manager' ),
 				'type'        => Controls_Manager::NUMBER,
 				'default'     => 0,
-				'description' => __( 'Use this setting to skip over terms( e . g . \'2\' to skip over 2 terms).', 'sermon-manager' ),
+				'description' => __( 'Use this setting to skip over terms( e . g . \'2\' to skip over 2 terms).', 'church-sermon-manager' ),
 			)
 		);
 

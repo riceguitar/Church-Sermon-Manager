@@ -817,7 +817,7 @@ function smp_add_additional_filtering( $args ) {
 	$args[] = array(
 		'className' => 'sortDates',
 		'taxonomy'  => 'wpfc_dates',
-		'title'     => __( 'Date', 'sermon-manager' ),
+		'title'     => __( 'Date', 'church-sermon-manager' ),
 	);
 
 	return $args;
@@ -1046,7 +1046,7 @@ function smp_maybe_install_default_templates() {
 		add_action(
 			'init',
 			function () {
-				\SMP\Plugin::instance()->notice_manager->add_warning( 'templating_init_fail', __( 'Could not initialize filesystem API, template updating will not work.', 'sermon-manager' ), 'templating' );
+				\SMP\Plugin::instance()->notice_manager->add_warning( 'templating_init_fail', __( 'Could not initialize filesystem API, template updating will not work.', 'church-sermon-manager' ), 'templating' );
 			}
 		);
 	}

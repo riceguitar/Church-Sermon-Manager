@@ -70,7 +70,7 @@ class Sermon_Taxonomy extends ET_Builder_Module {
 	 * Function init()
 	 */
 	function init() {
-		$this->name = __( 'Sermons Taxonomy', 'sermon-manager' );
+		$this->name = __( 'Sermons Taxonomy', 'church-sermon-manager' );
 
 		$this->whitelisted_fields = array(
 			'show_taxonomy',
@@ -101,15 +101,15 @@ class Sermon_Taxonomy extends ET_Builder_Module {
 		$this->options_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Content', 'sermon-manager' ),
-					'elements'     => esc_html__( 'Elements', 'sermon-manager' ),
+					'main_content' => esc_html__( 'Content', 'church-sermon-manager' ),
+					'elements'     => esc_html__( 'Elements', 'church-sermon-manager' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'layout' => esc_html__( 'Layout', 'sermon-manager' ),
+					'layout' => esc_html__( 'Layout', 'church-sermon-manager' ),
 					'text'   => array(
-						'title'    => esc_html__( 'Text', 'sermon-manager' ),
+						'title'    => esc_html__( 'Text', 'church-sermon-manager' ),
 						'priority' => 49,
 					),
 				),
@@ -149,46 +149,46 @@ class Sermon_Taxonomy extends ET_Builder_Module {
 	function get_fields() {
 		return array(
 			'show_taxonomy'         => array(
-				'label'           => esc_html__( 'Source', 'sermon-manager' ),
+				'label'           => esc_html__( 'Source', 'church-sermon-manager' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
-				'description'     => esc_html__( 'Choose between the various taxonomies.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Choose between the various taxonomies.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'main_content',
 				'tab_slug'        => 'general',
 				'options'         => array(
-					'wpfc_sermon_series' => esc_html__( 'Series', 'sermon-manager' ),
-					'wpfc_preacher'      => esc_html__( 'Preachers', 'sermon-manager' ),
-					'wpfc_sermon_topics' => esc_html__( 'Topics', 'sermon-manager' ),
-					'wpfc_bible_book'    => esc_html__( 'Books', 'sermon-manager' ),
-					'wpfc_service_type'  => esc_html__( 'Service Types', 'sermon-manager' ),
+					'wpfc_sermon_series' => esc_html__( 'Series', 'church-sermon-manager' ),
+					'wpfc_preacher'      => esc_html__( 'Preachers', 'church-sermon-manager' ),
+					'wpfc_sermon_topics' => esc_html__( 'Topics', 'church-sermon-manager' ),
+					'wpfc_bible_book'    => esc_html__( 'Books', 'church-sermon-manager' ),
+					'wpfc_service_type'  => esc_html__( 'Service Types', 'church-sermon-manager' ),
 				),
 			),
 			'taxonomy_number'       => array(
-				'label'            => esc_html__( 'Terms Per Page', 'sermon-manager' ),
+				'label'            => esc_html__( 'Terms Per Page', 'church-sermon-manager' ),
 				'type'             => 'number',
 				'option_category'  => 'configuration',
-				'description'      => esc_html__( 'Choose how much terms you would like to display per page.', 'sermon-manager' ),
+				'description'      => esc_html__( 'Choose how much terms you would like to display per page.', 'church-sermon-manager' ),
 				'computed_affects' => array(
 					'__posts',
 				),
 				'toggle_slug'      => 'main_content',
 			),
 			'show_pagination'       => array(
-				'label'           => esc_html__( 'Show Pagination', 'sermon-manager' ),
+				'label'           => esc_html__( 'Show Pagination', 'church-sermon-manager' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'This will turn pagination on and off.', 'sermon-manager' ),
+				'description'     => esc_html__( 'This will turn pagination on and off.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'main_content',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
 			),
 			'pagination_total_num'  => array(
-				'label'           => esc_html__( 'Page Limit', 'sermon-manager' ),
+				'label'           => esc_html__( 'Page Limit', 'church-sermon-manager' ),
 				'type'            => 'number',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Chose how many pages to display.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Chose how many pages to display.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'main_content',
 				'show_if'         => array(
 					'show_pagination' => 'on',
@@ -196,24 +196,24 @@ class Sermon_Taxonomy extends ET_Builder_Module {
 
 			),
 			'show_prev_next'        => array(
-				'label'           => esc_html__( 'Show Prev/Next Links', 'sermon-manager' ),
+				'label'           => esc_html__( 'Show Prev/Next Links', 'church-sermon-manager' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'This will turn prev/next links on and off.', 'sermon-manager' ),
+				'description'     => esc_html__( 'This will turn prev/next links on and off.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'main_content',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
 				'show_if'         => array(
 					'show_pagination' => 'on',
 				),
 			),
 			'previous_label'        => array(
-				'label'           => esc_html__( 'Previous Label', 'sermon-manager' ),
+				'label'           => esc_html__( 'Previous Label', 'church-sermon-manager' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Chose previous label.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Chose previous label.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'main_content',
 				'show_if'         => array(
 					'show_prev_next'  => 'on',
@@ -221,10 +221,10 @@ class Sermon_Taxonomy extends ET_Builder_Module {
 				),
 			),
 			'next_label'            => array(
-				'label'           => esc_html__( 'Next Label', 'sermon-manager' ),
+				'label'           => esc_html__( 'Next Label', 'church-sermon-manager' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Chose next label.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Chose next label.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'main_content',
 				'show_if'         => array(
 					'show_prev_next'  => 'on',
@@ -232,37 +232,37 @@ class Sermon_Taxonomy extends ET_Builder_Module {
 				),
 			),
 			'pagination_alignment'  => array(
-				'label'           => esc_html__( 'Pagination Alignment', 'sermon-manager' ),
+				'label'           => esc_html__( 'Pagination Alignment', 'church-sermon-manager' ),
 				'type'            => 'select',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Choose pagination alignment.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Choose pagination alignment.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'main_content',
 				'options'         => array(
-					'left'   => esc_html__( 'Left', 'sermon-manager' ),
-					'center' => esc_html__( 'Center', 'sermon-manager' ),
-					'right'  => esc_html__( 'Right', 'sermon-manager' ),
+					'left'   => esc_html__( 'Left', 'church-sermon-manager' ),
+					'center' => esc_html__( 'Center', 'church-sermon-manager' ),
+					'right'  => esc_html__( 'Right', 'church-sermon-manager' ),
 				),
 				'show_if'         => array(
 					'show_pagination' => 'on',
 				),
 			),
 			'show_grid'             => array(
-				'label'           => esc_html__( 'Layout', 'sermon-manager' ),
+				'label'           => esc_html__( 'Layout', 'church-sermon-manager' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
-				'description'     => esc_html__( 'Toggle between the various sermons layout types.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Toggle between the various sermons layout types.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'layout',
 				'tab_slug'        => 'advanced',
 				'options'         => array(
-					'on'  => esc_html__( 'Grid', 'sermon-manager' ),
-					'off' => esc_html__( 'List', 'sermon-manager' ),
+					'on'  => esc_html__( 'Grid', 'church-sermon-manager' ),
+					'off' => esc_html__( 'List', 'church-sermon-manager' ),
 				),
 			),
 			'list_columns'          => array(
-				'label'           => esc_html__( 'Number of Colums', 'sermon-manager' ),
+				'label'           => esc_html__( 'Number of Colums', 'church-sermon-manager' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
-				'description'     => esc_html__( 'Choose how many columns to display.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Choose how many columns to display.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'layout',
 				'tab_slug'        => 'advanced',
 				'range_settings'  => array(
@@ -276,38 +276,38 @@ class Sermon_Taxonomy extends ET_Builder_Module {
 
 			),
 			'alphabetical_list'     => array(
-				'label'           => esc_html__( 'Alphabetical List', 'sermon-manager' ),
+				'label'           => esc_html__( 'Alphabetical List', 'church-sermon-manager' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'layout',
 				'toggle_slug'     => 'layout',
 				'tab_slug'        => 'advanced',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
 				'show_if'         => array(
 					'show_grid' => 'off',
 				),
 			),
 			'letter_padding_b'      => array(
-				'label'           => esc_html__( 'Letter Bottom Padding', 'sermon-manager' ),
+				'label'           => esc_html__( 'Letter Bottom Padding', 'church-sermon-manager' ),
 				'type'            => 'number',
 				'option_category' => 'layout',
 				'toggle_slug'     => 'letter',
 				'tab_slug'        => 'advanced',
 			),
 			'letter_padding_t'      => array(
-				'label'           => esc_html__( 'Letter Top Padding', 'sermon-manager' ),
+				'label'           => esc_html__( 'Letter Top Padding', 'church-sermon-manager' ),
 				'type'            => 'number',
 				'option_category' => 'layout',
 				'toggle_slug'     => 'letter',
 				'tab_slug'        => 'advanced',
 			),
 			'grid_columns'          => array(
-				'label'           => esc_html__( 'Number of Colums', 'sermon-manager' ),
+				'label'           => esc_html__( 'Number of Colums', 'church-sermon-manager' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
-				'description'     => esc_html__( 'Choose how many columns to display.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Choose how many columns to display.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'layout',
 				'tab_slug'        => 'advanced',
 				'range_settings'  => array(
@@ -321,21 +321,21 @@ class Sermon_Taxonomy extends ET_Builder_Module {
 
 			),
 			'show_grid_image'       => array(
-				'label'           => esc_html__( 'Show Image', 'sermon-manager' ),
+				'label'           => esc_html__( 'Show Image', 'church-sermon-manager' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'layout',
 				'toggle_slug'     => 'layout',
 				'tab_slug'        => 'advanced',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
 				'show_if'         => array(
 					'show_grid' => 'on',
 				),
 			),
 			'grid_image_height'     => array(
-				'label'           => esc_html__( 'Image height', 'sermon-manager' ),
+				'label'           => esc_html__( 'Image height', 'church-sermon-manager' ),
 				'type'            => 'number',
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'layout',
@@ -346,7 +346,7 @@ class Sermon_Taxonomy extends ET_Builder_Module {
 				),
 			),
 			'grid_image_padding'    => array(
-				'label'           => esc_html__( 'Image Bottom Padding', 'sermon-manager' ),
+				'label'           => esc_html__( 'Image Bottom Padding', 'church-sermon-manager' ),
 				'type'            => 'range',
 				'option_category' => 'text',
 				'toggle_slug'     => 'layout',
@@ -362,35 +362,35 @@ class Sermon_Taxonomy extends ET_Builder_Module {
 				),
 			),
 			'show_grid_title'       => array(
-				'label'           => esc_html__( 'Show Title', 'sermon-manager' ),
+				'label'           => esc_html__( 'Show Title', 'church-sermon-manager' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'layout',
 				'toggle_slug'     => 'layout',
 				'tab_slug'        => 'advanced',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
 				'show_if'         => array(
 					'show_grid' => 'on',
 				),
 			),
 			'show_grid_description' => array(
-				'label'           => esc_html__( 'Show Description', 'sermon-manager' ),
+				'label'           => esc_html__( 'Show Description', 'church-sermon-manager' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'layout',
 				'toggle_slug'     => 'layout',
 				'tab_slug'        => 'advanced',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
 				'show_if'         => array(
 					'show_grid' => 'on',
 				),
 			),
 			'title_padding'         => array(
-				'label'           => esc_html__( 'Term Title Bottom Padding', 'sermon-manager' ),
+				'label'           => esc_html__( 'Term Title Bottom Padding', 'church-sermon-manager' ),
 				'type'            => 'range',
 				'option_category' => 'text',
 				'toggle_slug'     => 'header',
@@ -402,7 +402,7 @@ class Sermon_Taxonomy extends ET_Builder_Module {
 				),
 			),
 			'description_padding'   => array(
-				'label'           => esc_html__( 'Term Info Padding', 'sermon-manager' ),
+				'label'           => esc_html__( 'Term Info Padding', 'church-sermon-manager' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
 				'toggle_slug'     => 'layout',
@@ -649,7 +649,7 @@ class Sermon_Taxonomy extends ET_Builder_Module {
 					'line_height' => array(
 						'default' => '1.7',
 					),
-					'label'       => esc_html__( 'Term Title', 'sermon-manager' ),
+					'label'       => esc_html__( 'Term Title', 'church-sermon-manager' ),
 				),
 				'body'   => array(
 					'css'         => array(
@@ -665,7 +665,7 @@ class Sermon_Taxonomy extends ET_Builder_Module {
 					'line_height' => array(
 						'default' => '1.7',
 					),
-					'label'       => esc_html__( 'Term Description', 'sermon-manager' ),
+					'label'       => esc_html__( 'Term Description', 'church-sermon-manager' ),
 				),
 				'letter' => array(
 					'css'         => array(
@@ -681,7 +681,7 @@ class Sermon_Taxonomy extends ET_Builder_Module {
 					'line_height' => array(
 						'default' => '1.7',
 					),
-					'label'       => esc_html__( 'Alphabetical Letter', 'sermon-manager' ),
+					'label'       => esc_html__( 'Alphabetical Letter', 'church-sermon-manager' ),
 				),
 			),
 			'background'     => false,

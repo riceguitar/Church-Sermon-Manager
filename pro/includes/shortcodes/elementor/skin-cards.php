@@ -108,7 +108,7 @@ class Skin_Cards extends Skin_Base {
 		$this->update_control(
 			'posts_per_page',
 			array(
-				'label' => __( 'Sermons Per Page', 'sermon-manager' ),
+				'label' => __( 'Sermons Per Page', 'church-sermon-manager' ),
 			)
 		);
 	}
@@ -127,9 +127,9 @@ class Skin_Cards extends Skin_Base {
 				'type'        => Controls_Manager::SELECT,
 				'label_block' => true,
 				'options'     => array(
-					'left'          => __( 'Left', 'sermon-manager' ),
-					'right'         => __( 'Right', 'sermon-manager' ),
-					'top'           => __( 'Top', 'sermon-manager' ),
+					'left'          => __( 'Left', 'church-sermon-manager' ),
+					'right'         => __( 'Right', 'church-sermon-manager' ),
+					'top'           => __( 'Top', 'church-sermon-manager' ),
 				),
                 'default'     => 'left',
 				'condition'   => array(
@@ -151,21 +151,21 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'meta_data_header',
 			array(
-				'label'       => __( 'Meta Data - Header', 'sermon-manager' ),
+				'label'       => __( 'Meta Data - Header', 'church-sermon-manager' ),
 				'label_block' => true,
 				'type'        => 'choices',
 				'default'     => array(),
 				'multiple'    => true,
 				'options'     => array(
-					'date'          => __( 'Publish Date', 'sermon-manager' ),
-					'time'          => __( 'Publish Time', 'sermon-manager' ),
-					'comments'      => __( 'Comments', 'sermon-manager' ),
-					'preached_date' => __( 'Preached Date', 'sermon-manager' ),
-					'preachers'     => __( 'Preachers', 'sermon-manager' ),
-					'passage'       => __( 'Passage', 'sermon-manager' ),
-					'series'        => __( 'Series', 'sermon-manager' ),
-					'service_type'  => __( 'Service Type', 'sermon-manager' ),
-					'books'         => __( 'Bible Books', 'sermon-manager' ),
+					'date'          => __( 'Publish Date', 'church-sermon-manager' ),
+					'time'          => __( 'Publish Time', 'church-sermon-manager' ),
+					'comments'      => __( 'Comments', 'church-sermon-manager' ),
+					'preached_date' => __( 'Preached Date', 'church-sermon-manager' ),
+					'preachers'     => __( 'Preachers', 'church-sermon-manager' ),
+					'passage'       => __( 'Passage', 'church-sermon-manager' ),
+					'series'        => __( 'Series', 'church-sermon-manager' ),
+					'service_type'  => __( 'Service Type', 'church-sermon-manager' ),
+					'books'         => __( 'Bible Books', 'church-sermon-manager' ),
 				),
 				'separator'   => 'before',
 			)
@@ -174,21 +174,21 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'meta_data_footer',
 			array(
-				'label'       => __( 'Meta Data - Footer', 'sermon-manager' ),
+				'label'       => __( 'Meta Data - Footer', 'church-sermon-manager' ),
 				'label_block' => true,
 				'type'        => 'choices',
 				'default'     => array( 'date', 'comments' ),
 				'multiple'    => true,
 				'options'     => array(
-					'date'          => __( 'Publish Date', 'sermon-manager' ),
-					'time'          => __( 'Publish Time', 'sermon-manager' ),
-					'comments'      => __( 'Comments', 'sermon-manager' ),
-					'preached_date' => __( 'Preached Date', 'sermon-manager' ),
-					'preachers'     => __( 'Preachers', 'sermon-manager' ),
-					'passage'       => __( 'Passage', 'sermon-manager' ),
-					'series'        => __( 'Series', 'sermon-manager' ),
-					'service_type'  => __( 'Service Type', 'sermon-manager' ),
-					'books'         => __( 'Bible Books', 'sermon-manager' ),
+					'date'          => __( 'Publish Date', 'church-sermon-manager' ),
+					'time'          => __( 'Publish Time', 'church-sermon-manager' ),
+					'comments'      => __( 'Comments', 'church-sermon-manager' ),
+					'preached_date' => __( 'Preached Date', 'church-sermon-manager' ),
+					'preachers'     => __( 'Preachers', 'church-sermon-manager' ),
+					'passage'       => __( 'Passage', 'church-sermon-manager' ),
+					'series'        => __( 'Series', 'church-sermon-manager' ),
+					'service_type'  => __( 'Service Type', 'church-sermon-manager' ),
+					'books'         => __( 'Bible Books', 'church-sermon-manager' ),
 				),
 			)
 		);
@@ -269,7 +269,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'show_avatar',
 			array(
-				'label'        => \SermonManager::getOption( 'preacher_label', __( 'Preacher', 'sermon-manager' ) ) . ' ' . __( 'Avatar', 'elementor-pro' ),
+				'label'        => \SermonManager::getOption( 'preacher_label', __( 'Preacher', 'church-sermon-manager' ) ) . ' ' . __( 'Avatar', 'elementor-pro' ),
 				'type'         => Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Show', 'elementor-pro' ),
 				'label_off'    => __( 'Hide', 'elementor-pro' ),

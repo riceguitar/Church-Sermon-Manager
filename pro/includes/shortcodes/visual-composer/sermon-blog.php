@@ -47,7 +47,7 @@ class VC_Blog {
 
 		// Set the default attributes.
 		$args = array(
-			'title'                    => __( 'Sermons', 'sermon-manager' ),
+			'title'                    => __( 'Sermons', 'church-sermon-manager' ),
 			'show_grid'                => true,
 			'grid_columns'             => 3,
 			'spacing_columns'          => 15,
@@ -70,7 +70,7 @@ class VC_Blog {
 			'show_excerpt'             => true,
 			'excerpt_length'           => 30,
 			'show_readmore'            => true,
-			'read_more_text'           => __( 'Read More', 'sermon-manager' ),
+			'read_more_text'           => __( 'Read More', 'church-sermon-manager' ),
 			'description_padding'      => 0,
 			'show_sermon_audio'        => true,
 			'show_preacher'            => true,
@@ -235,21 +235,21 @@ class VC_Blog {
 												)
 											);
 											?>
-											<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Preacher', 'sermon-manager' ); ?>
+											<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Preacher', 'church-sermon-manager' ); ?>
 													:</span>
 											<span class="wpfc-sermon-meta-text"><?php the_terms( get_the_ID(), 'wpfc_preacher' ); ?></span>
 										</div>
 									<?php endif; ?>
 									<?php if ( $args['show_passage'] && ( get_wpfc_sermon_meta( 'bible_passage' ) ) ) : ?>
 										<div class="wpfc-sermon-meta-item wpfc-sermon-meta-passage">
-												<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Passage', 'sermon-manager' ); ?>
+												<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Passage', 'church-sermon-manager' ); ?>
 													:</span>
 											<span class="wpfc-sermon-meta-text"><?php wpfc_sermon_meta( 'bible_passage' ); ?></span>
 										</div>
 									<?php endif; ?>
 									<?php if ( $args['show_service_type'] && ( has_term( '', 'wpfc_service_type', get_the_ID() ) ) ) : ?>
 										<div class="wpfc-sermon-meta-item wpfc-sermon-meta-service">
-												<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Service Type', 'sermon-manager' ); ?>
+												<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Service Type', 'church-sermon-manager' ); ?>
 													:</span>
 											<span class="wpfc-sermon-meta-text"><?php the_terms( get_the_ID(), 'wpfc_service_type' ); ?></span>
 										</div>
@@ -322,31 +322,31 @@ class VC_Blog {
 	public static function map() {
 		/* @noinspection HtmlUnknownTarget */
 		return array(
-			'name'        => __( 'Sermons', 'sermon-manager' ),
-			'description' => __( 'Display Sermons', 'sermon-manager' ),
+			'name'        => __( 'Sermons', 'church-sermon-manager' ),
+			'description' => __( 'Display Sermons', 'church-sermon-manager' ),
 			'base'        => 'sermon_blog',
 			'icon'        => 'icon-wpb-ui-accordion',
 			'params'      => array(
 				array(
 					'type'        => 'textfield',
-					'heading'     => __( 'Widget title', 'sermon-manager' ),
+					'heading'     => __( 'Widget title', 'church-sermon-manager' ),
 					'param_name'  => 'title',
-					'description' => __( 'The widget title. Leave blank to use the default widget title.', 'sermon-manager' ),
-					'value'       => __( 'Sermons', 'sermon-manager' ),
+					'description' => __( 'The widget title. Leave blank to use the default widget title.', 'church-sermon-manager' ),
+					'value'       => __( 'Sermons', 'church-sermon-manager' ),
 				),
 				array(
 					'type'        => 'dropdown',
-					'heading'     => __( 'Layout', 'sermon-manager' ),
+					'heading'     => __( 'Layout', 'church-sermon-manager' ),
 					'param_name'  => 'show_grid',
 					'value'       => array(
-						__( 'Fullwidth', 'sermon-manager' ) => 'off',
-						__( 'Grid', 'sermon-manager' )      => 'on', // phpcs:ignore
+						__( 'Fullwidth', 'church-sermon-manager' ) => 'off',
+						__( 'Grid', 'church-sermon-manager' )      => 'on', // phpcs:ignore
 					),
-					'description' => __( 'Toggle between the different sermons layout types.', 'sermon-manager' ),
+					'description' => __( 'Toggle between the different sermons layout types.', 'church-sermon-manager' ),
 				),
 				array(
 					'type'        => 'dropdown',
-					'heading'     => esc_html__( 'Grid Columns', 'sermon-manager' ),
+					'heading'     => esc_html__( 'Grid Columns', 'church-sermon-manager' ),
 					'param_name'  => 'grid_columns',
 					'value'       => array(
 						1 => 1,
@@ -356,7 +356,7 @@ class VC_Blog {
 						5 => 5,
 						6 => 6,
 					),
-					'description' => __( 'How many columns to display.', 'sermon-manager' ),
+					'description' => __( 'How many columns to display.', 'church-sermon-manager' ),
 					'std'         => 3,
 					'dependency'  => array(
 						'element' => 'show_grid',
@@ -366,10 +366,10 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'dropdown',
-					'heading'    => __( 'Spacing Between Columns', 'sermon-manager' ),
+					'heading'    => __( 'Spacing Between Columns', 'church-sermon-manager' ),
 					'param_name' => 'spacing_columns',
 					'value'      => array(
-						__( 'None', 'sermon-manager' ) => 0,
+						__( 'None', 'church-sermon-manager' ) => 0,
 						'1px'                              => 1,
 						'2px'                              => 2,
 						'3px'                              => 3,
@@ -391,16 +391,16 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Filters', 'sermon-manager' ),
+					'heading'    => __( 'Show Filters', 'church-sermon-manager' ),
 					'param_name' => 'show_filters',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Filter Preacher', 'sermon-manager' ),
+					'heading'    => __( 'Show Filter Preacher', 'church-sermon-manager' ),
 					'param_name' => 'show_filter_preacher',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 					'dependency' => array(
 						'element'   => 'show_filters',
@@ -410,9 +410,9 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Filter Series', 'sermon-manager' ),
+					'heading'    => __( 'Show Filter Series', 'church-sermon-manager' ),
 					'param_name' => 'show_filter_series',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 					'dependency' => array(
 						'element'   => 'show_filters',
@@ -422,9 +422,9 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Filter Book', 'sermon-manager' ),
+					'heading'    => __( 'Show Filter Book', 'church-sermon-manager' ),
 					'param_name' => 'show_filter_book',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 					'dependency' => array(
 						'element'   => 'show_filters',
@@ -434,9 +434,9 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Filter Service Type', 'sermon-manager' ),
+					'heading'    => __( 'Show Filter Service Type', 'church-sermon-manager' ),
 					'param_name' => 'show_filter_service_type',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 					'dependency' => array(
 						'element'   => 'show_filters',
@@ -446,9 +446,9 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Filter Topics', 'sermon-manager' ),
+					'heading'    => __( 'Show Filter Topics', 'church-sermon-manager' ),
 					'param_name' => 'show_filter_topics',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 					'dependency' => array(
 						'element'   => 'show_filters',
@@ -458,9 +458,9 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Filter Dates', 'sermon-manager' ),
+					'heading'    => __( 'Show Filter Dates', 'church-sermon-manager' ),
 					'param_name' => 'show_filter_dates',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 					'dependency' => array(
 						'element'   => 'show_filters',
@@ -470,37 +470,37 @@ class VC_Blog {
 				),
 				array(
 					'type'        => 'textfield',
-					'heading'     => __( 'Number of sermons', 'sermon-manager' ),
-					'description' => __( 'Enter the number of sermons to display.', 'sermon-manager' ),
+					'heading'     => __( 'Number of sermons', 'church-sermon-manager' ),
+					'description' => __( 'Enter the number of sermons to display.', 'church-sermon-manager' ),
 					'param_name'  => 'sermons_number',
 					'value'       => 9,
 					'admin_label' => true,
 				),
 				array(
 					'type'       => 'dropdown',
-					'heading'    => esc_html__( 'Sermons Order', 'sermon-manager' ),
+					'heading'    => esc_html__( 'Sermons Order', 'church-sermon-manager' ),
 					'param_name' => 'sermons_order',
 					'value'      => array(
-						esc_html__( 'Descending', 'sermon-manager' ) => 'DESC',
-						esc_html__( 'Ascending', 'sermon-manager' )  => 'ASC',
+						esc_html__( 'Descending', 'church-sermon-manager' ) => 'DESC',
+						esc_html__( 'Ascending', 'church-sermon-manager' )  => 'ASC',
 					),
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Featured Image/Video', 'sermon-manager' ),
+					'heading'    => __( 'Show Featured Image/Video', 'church-sermon-manager' ),
 					'param_name' => 'show_image',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 				),
 				array(
 					'type'        => 'dropdown',
-					'heading'     => esc_html__( 'Featured Type', 'sermon-manager' ),
+					'heading'     => esc_html__( 'Featured Type', 'church-sermon-manager' ),
 					'param_name'  => 'featured_type',
 					'value'       => array(
-						esc_html__( 'Image', 'sermon-manager' ) => 'image',
-						esc_html__( 'Video', 'sermon-manager' ) => 'video',
+						esc_html__( 'Image', 'church-sermon-manager' ) => 'image',
+						esc_html__( 'Video', 'church-sermon-manager' ) => 'video',
 					),
-					'description' => __( 'Toggle between the featured types.', 'sermon-manager' ),
+					'description' => __( 'Toggle between the featured types.', 'church-sermon-manager' ),
 					'dependency'  => array(
 						'element'   => 'show_image',
 						'not_empty' => true,
@@ -509,24 +509,24 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Series', 'sermon-manager' ),
+					'heading'    => __( 'Show Series', 'church-sermon-manager' ),
 					'param_name' => 'show_series',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Title', 'sermon-manager' ),
+					'heading'    => __( 'Show Title', 'church-sermon-manager' ),
 					'param_name' => 'show_title',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 				),
 				array(
 					'type'       => 'dropdown',
-					'heading'    => esc_html__( 'Title Padding', 'sermon-manager' ),
+					'heading'    => esc_html__( 'Title Padding', 'church-sermon-manager' ),
 					'param_name' => 'title_padding',
 					'value'      => array(
-						__( 'None', 'sermon-manager' ) => 0,
+						__( 'None', 'church-sermon-manager' ) => 0,
 						'1px'                              => 1,
 						'2px'                              => 2,
 						'3px'                              => 3,
@@ -546,17 +546,17 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Date', 'sermon-manager' ),
+					'heading'    => __( 'Show Date', 'church-sermon-manager' ),
 					'param_name' => 'show_date',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 				),
 				array(
 					'type'       => 'dropdown',
-					'heading'    => esc_html__( 'Date Format', 'sermon-manager' ),
+					'heading'    => esc_html__( 'Date Format', 'church-sermon-manager' ),
 					'param_name' => 'date_format',
 					'value'      => array(
-						__( 'Default', 'sermon-manager' ) => 0,
+						__( 'Default', 'church-sermon-manager' ) => 0,
 
 						date( 'M j, Y' ) => 'M j, Y',
 						date( 'F j, Y' ) => 'F j, Y',
@@ -574,14 +574,14 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Excerpt', 'sermon-manager' ),
+					'heading'    => __( 'Show Excerpt', 'church-sermon-manager' ),
 					'param_name' => 'show_excerpt',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 				),
 				array(
 					'type'       => 'textfield',
-					'heading'    => __( 'Excerpt Length', 'sermon-manager' ),
+					'heading'    => __( 'Excerpt Length', 'church-sermon-manager' ),
 					'param_name' => 'excerpt_length',
 					'value'      => 30,
 					'dependency' => array(
@@ -591,9 +591,9 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Read More Button', 'sermon-manager' ),
+					'heading'    => __( 'Show Read More Button', 'church-sermon-manager' ),
 					'param_name' => 'show_readmore',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 					'dependency' => array(
 						'element'   => 'show_excerpt',
@@ -602,7 +602,7 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'textfield',
-					'heading'    => __( 'Read More Text', 'sermon-manager' ),
+					'heading'    => __( 'Read More Text', 'church-sermon-manager' ),
 					'param_name' => 'read_more_text',
 					'value'      => 'Read More',
 					'dependency' => array(
@@ -612,10 +612,10 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'dropdown',
-					'heading'    => esc_html__( 'Description Padding', 'sermon-manager' ),
+					'heading'    => esc_html__( 'Description Padding', 'church-sermon-manager' ),
 					'param_name' => 'description_padding',
 					'value'      => array(
-						__( 'None', 'sermon-manager' ) => 0,
+						__( 'None', 'church-sermon-manager' ) => 0,
 						'1px'                              => 1,
 						'2px'                              => 2,
 						'3px'                              => 3,
@@ -635,42 +635,42 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Sermon Audio', 'sermon-manager' ),
+					'heading'    => __( 'Show Sermon Audio', 'church-sermon-manager' ),
 					'param_name' => 'show_sermon_audio',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Preacher', 'sermon-manager' ),
+					'heading'    => __( 'Show Preacher', 'church-sermon-manager' ),
 					'param_name' => 'show_preacher',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Passage', 'sermon-manager' ),
+					'heading'    => __( 'Show Passage', 'church-sermon-manager' ),
 					'param_name' => 'show_passage',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Service Type', 'sermon-manager' ),
+					'heading'    => __( 'Show Service Type', 'church-sermon-manager' ),
 					'param_name' => 'show_service_type',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Pagination', 'sermon-manager' ),
+					'heading'    => __( 'Show Pagination', 'church-sermon-manager' ),
 					'param_name' => 'show_pagination',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 				),
 				array(
 					'type'       => 'textfield',
-					'heading'    => __( 'Page Limit', 'sermon-manager' ),
+					'heading'    => __( 'Page Limit', 'church-sermon-manager' ),
 					'param_name' => 'pagination_total_num',
 					'value'      => 5,
 					'dependency' => array(
@@ -680,9 +680,9 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'checkbox',
-					'heading'    => __( 'Show Prev/Next Links', 'sermon-manager' ),
+					'heading'    => __( 'Show Prev/Next Links', 'church-sermon-manager' ),
 					'param_name' => 'show_prev_next',
-					'value'      => array( __( 'Yes', 'sermon-manager' ) => true ),
+					'value'      => array( __( 'Yes', 'church-sermon-manager' ) => true ),
 					'std'        => 'value',
 					'dependency' => array(
 						'element'   => 'show_pagination',
@@ -691,7 +691,7 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'textfield',
-					'heading'    => __( 'Previous Label', 'sermon-manager' ),
+					'heading'    => __( 'Previous Label', 'church-sermon-manager' ),
 					'param_name' => 'previous_label',
 					'value'      => '&laquo; Previous',
 					'dependency' => array(
@@ -701,7 +701,7 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'textfield',
-					'heading'    => __( 'Next Label', 'sermon-manager' ),
+					'heading'    => __( 'Next Label', 'church-sermon-manager' ),
 					'param_name' => 'next_label',
 					'value'      => 'Next &raquo;',
 					'dependency' => array(
@@ -711,12 +711,12 @@ class VC_Blog {
 				),
 				array(
 					'type'       => 'dropdown',
-					'heading'    => esc_html__( 'Pagination Alignment', 'sermon-manager' ),
+					'heading'    => esc_html__( 'Pagination Alignment', 'church-sermon-manager' ),
 					'param_name' => 'pagination_alignment',
 					'value'      => array(
-						__( 'Left', 'sermon-manager' )   => 'left', // phpcs:ignore
-						__( 'Center', 'sermon-manager' ) => 'center',
-						__( 'Right', 'sermon-manager' )  => 'right', // phpcs:ignore
+						__( 'Left', 'church-sermon-manager' )   => 'left', // phpcs:ignore
+						__( 'Center', 'church-sermon-manager' ) => 'center',
+						__( 'Right', 'church-sermon-manager' )  => 'right', // phpcs:ignore
 					),
 					'dependency' => array(
 						'element'   => 'show_pagination',
@@ -725,22 +725,22 @@ class VC_Blog {
 				),
 				array(
 					'type'        => 'el_id',
-					'heading'     => __( 'Custom HTML element ID', 'sermon-manager' ),
+					'heading'     => __( 'Custom HTML element ID', 'church-sermon-manager' ),
 					'param_name'  => 'el_id',
 					// translators: %s: The link to the W3C spec.
-					'description' => sprintf( __( 'Enter element ID (Note: make sure it is unique and valid according to <a href="%s" target="_blank">W3C specification</a>).', 'sermon-manager' ), 'http://www.w3schools.com/tags/att_global_id.asp' ),
+					'description' => sprintf( __( 'Enter element ID (Note: make sure it is unique and valid according to <a href="%s" target="_blank">W3C specification</a>).', 'church-sermon-manager' ), 'http://www.w3schools.com/tags/att_global_id.asp' ),
 				),
 				array(
 					'type'        => 'textfield',
-					'heading'     => __( 'Custom CSS class', 'sermon-manager' ),
+					'heading'     => __( 'Custom CSS class', 'church-sermon-manager' ),
 					'param_name'  => 'el_class',
-					'description' => __( 'Style particular content element differently - add a class name and refer to it in custom CSS.', 'sermon-manager' ),
+					'description' => __( 'Style particular content element differently - add a class name and refer to it in custom CSS.', 'church-sermon-manager' ),
 				),
 				array(
 					'type'       => 'css_editor',
-					'heading'    => __( 'Custom CSS', 'sermon-manager' ),
+					'heading'    => __( 'Custom CSS', 'church-sermon-manager' ),
 					'param_name' => 'css',
-					'group'      => __( 'Design options', 'sermon-manager' ),
+					'group'      => __( 'Design options', 'church-sermon-manager' ),
 				),
 			),
 		);

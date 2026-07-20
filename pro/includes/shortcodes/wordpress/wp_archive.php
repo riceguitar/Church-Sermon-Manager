@@ -99,7 +99,7 @@ class WP_Archive extends WP_Shortcode {
 
 				echo apply_filters( 'smp/shortcodes/wordpress/archive/after_loop', '' );
 			else :
-				echo __( 'Sorry, but there aren\'t any posts matching your query.' );
+				echo __( 'Sorry, but there aren\'t any posts matching your query.', 'church-sermon-manager' );
 			endif;
 			?>
 		</div>

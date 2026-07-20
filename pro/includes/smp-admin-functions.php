@@ -121,7 +121,7 @@ add_filter( 'request', 'smp_save_query_vars' );
 function smp_get_pages_array() {
 	$pages    = get_pages();
 	$settings = array(
-		0 => '-- ' . __( 'None' ) . ' --',
+		0 => '-- ' . __( 'None', 'church-sermon-manager' ) . ' --',
 	);
 
 	foreach ( $pages as $page ) {

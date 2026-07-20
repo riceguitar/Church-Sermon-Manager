@@ -13,14 +13,14 @@ add_action(
 		$elements_manager->add_category(
 			'sermon-manager-pro-elements',
 			[
-				'title' => __( 'Church Sermon Manager', 'sermon-manager' ),
+				'title' => __( 'Church Sermon Manager', 'church-sermon-manager' ),
 				'icon'  => 'fa fa-plug',
 			]
 		);
 		$elements_manager->add_category(
 			'sermon-manager-pro-theme-elements',
 			[
-				'title' => __( 'Church Sermon Manager (Theme Builder)', 'sermon-manager' ),
+				'title' => __( 'Church Sermon Manager (Theme Builder)', 'church-sermon-manager' ),
 				'icon'  => 'fa fa-plug',
 			]
 		);

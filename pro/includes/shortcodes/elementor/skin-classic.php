@@ -35,7 +35,7 @@ class Skin_Classic extends Skin_Base {
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'Classic', 'sermon-manager' );
+		return __( 'Classic', 'church-sermon-manager' );
 	}
 
 	/**
@@ -135,7 +135,7 @@ class Skin_Classic extends Skin_Base {
 		$this->update_control(
 			'posts_per_page',
 			array(
-				'label' => __( 'Sermons Per Page', 'sermon-manager' ),
+				'label' => __( 'Sermons Per Page', 'church-sermon-manager' ),
 			)
 		);
 	}
@@ -149,21 +149,21 @@ class Skin_Classic extends Skin_Base {
 		$this->add_control(
 			'meta_data_header',
 			array(
-				'label'       => __( 'Meta Data - Header', 'sermon-manager' ),
+				'label'       => __( 'Meta Data - Header', 'church-sermon-manager' ),
 				'label_block' => true,
 				'type'        => Controls_Manager::SELECT2,
 				'default'     => array( 'date', 'comments' ),
 				'multiple'    => true,
 				'options'     => array(
-					'date'          => __( 'Publish Date', 'sermon-manager' ),
-					'time'          => __( 'Publish Time', 'sermon-manager' ),
-					'comments'      => __( 'Comments', 'sermon-manager' ),
-					'preached_date' => __( 'Preached Date', 'sermon-manager' ),
-					'preachers'     => __( 'Preachers', 'sermon-manager' ),
-					'passage'       => __( 'Passage', 'sermon-manager' ),
-					'series'        => __( 'Series', 'sermon-manager' ),
-					'service_type'  => __( 'Service Type', 'sermon-manager' ),
-					'books'         => __( 'Bible Books', 'sermon-manager' ),
+					'date'          => __( 'Publish Date', 'church-sermon-manager' ),
+					'time'          => __( 'Publish Time', 'church-sermon-manager' ),
+					'comments'      => __( 'Comments', 'church-sermon-manager' ),
+					'preached_date' => __( 'Preached Date', 'church-sermon-manager' ),
+					'preachers'     => __( 'Preachers', 'church-sermon-manager' ),
+					'passage'       => __( 'Passage', 'church-sermon-manager' ),
+					'series'        => __( 'Series', 'church-sermon-manager' ),
+					'service_type'  => __( 'Service Type', 'church-sermon-manager' ),
+					'books'         => __( 'Bible Books', 'church-sermon-manager' ),
 				),
 				'separator'   => 'before',
 			)
@@ -172,21 +172,21 @@ class Skin_Classic extends Skin_Base {
 		$this->add_control(
 			'meta_data_footer',
 			array(
-				'label'       => __( 'Meta Data - Footer', 'sermon-manager' ),
+				'label'       => __( 'Meta Data - Footer', 'church-sermon-manager' ),
 				'label_block' => true,
 				'type'        => Controls_Manager::SELECT2,
 				'default'     => array( 'date', 'comments' ),
 				'multiple'    => true,
 				'options'     => array(
-					'date'          => __( 'Publish Date', 'sermon-manager' ),
-					'time'          => __( 'Publish Time', 'sermon-manager' ),
-					'comments'      => __( 'Comments', 'sermon-manager' ),
-					'preached_date' => __( 'Preached Date', 'sermon-manager' ),
-					'preachers'     => __( 'Preachers', 'sermon-manager' ),
-					'passage'       => __( 'Passage', 'sermon-manager' ),
-					'series'        => __( 'Series', 'sermon-manager' ),
-					'service_type'  => __( 'Service Type', 'sermon-manager' ),
-					'books'         => __( 'Bible Books', 'sermon-manager' ),
+					'date'          => __( 'Publish Date', 'church-sermon-manager' ),
+					'time'          => __( 'Publish Time', 'church-sermon-manager' ),
+					'comments'      => __( 'Comments', 'church-sermon-manager' ),
+					'preached_date' => __( 'Preached Date', 'church-sermon-manager' ),
+					'preachers'     => __( 'Preachers', 'church-sermon-manager' ),
+					'passage'       => __( 'Passage', 'church-sermon-manager' ),
+					'series'        => __( 'Series', 'church-sermon-manager' ),
+					'service_type'  => __( 'Service Type', 'church-sermon-manager' ),
+					'books'         => __( 'Bible Books', 'church-sermon-manager' ),
 				),
 			)
 		);

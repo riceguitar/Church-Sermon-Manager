@@ -70,7 +70,7 @@ class Sermon_Blog extends ET_Builder_Module {
 	 * Function init()
 	 */
 	function init() {
-		$this->name = __( 'Sermons', 'sermon-manager' );
+		$this->name = __( 'Sermons', 'church-sermon-manager' );
 
 		$this->whitelisted_fields = array(
 			'sermons_number',
@@ -114,15 +114,15 @@ class Sermon_Blog extends ET_Builder_Module {
 		$this->options_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Content', 'sermon-manager' ),
-					'elements'     => esc_html__( 'Elements', 'sermon-manager' ),
+					'main_content' => esc_html__( 'Content', 'church-sermon-manager' ),
+					'elements'     => esc_html__( 'Elements', 'church-sermon-manager' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'layout' => esc_html__( 'Layout', 'sermon-manager' ),
+					'layout' => esc_html__( 'Layout', 'church-sermon-manager' ),
 					'text'   => array(
-						'title'    => esc_html__( 'Text', 'sermon-manager' ),
+						'title'    => esc_html__( 'Text', 'church-sermon-manager' ),
 						'priority' => 49,
 					),
 				),
@@ -175,24 +175,24 @@ class Sermon_Blog extends ET_Builder_Module {
 	function get_fields() {
 		return array(
 			'show_filters'             => array(
-				'label'           => esc_html__( 'Show Filters', 'sermon-manager' ),
+				'label'           => esc_html__( 'Show Filters', 'church-sermon-manager' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'This will turn filtering on and off.', 'sermon-manager' ),
+				'description'     => esc_html__( 'This will turn filtering on and off.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'main_content',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
 			),
 			'show_filter_preacher'     => array(
-				'label'           => esc_html__( 'Show Preacher', 'sermon-manager' ),
+				'label'           => esc_html__( 'Show Preacher', 'church-sermon-manager' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
 				'show_if'         => array(
 					'show_filters' => 'on',
@@ -200,13 +200,13 @@ class Sermon_Blog extends ET_Builder_Module {
 
 			),
 			'show_filter_series'       => array(
-				'label'           => esc_html__( 'Show Series', 'sermon-manager' ),
+				'label'           => esc_html__( 'Show Series', 'church-sermon-manager' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
 				'show_if'         => array(
 					'show_filters' => 'on',
@@ -214,13 +214,13 @@ class Sermon_Blog extends ET_Builder_Module {
 
 			),
 			'show_filter_book'         => array(
-				'label'           => esc_html__( 'Show Book', 'sermon-manager' ),
+				'label'           => esc_html__( 'Show Book', 'church-sermon-manager' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
 				'show_if'         => array(
 					'show_filters' => 'on',
@@ -228,13 +228,13 @@ class Sermon_Blog extends ET_Builder_Module {
 
 			),
 			'show_filter_service_type' => array(
-				'label'           => esc_html__( 'Show Service Type', 'sermon-manager' ),
+				'label'           => esc_html__( 'Show Service Type', 'church-sermon-manager' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
 				'show_if'         => array(
 					'show_filters' => 'on',
@@ -242,13 +242,13 @@ class Sermon_Blog extends ET_Builder_Module {
 
 			),
 			'show_filter_topics'       => array(
-				'label'           => esc_html__( 'Show Topics', 'sermon-manager' ),
+				'label'           => esc_html__( 'Show Topics', 'church-sermon-manager' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
 				'show_if'         => array(
 					'show_filters' => 'on',
@@ -256,48 +256,48 @@ class Sermon_Blog extends ET_Builder_Module {
 
 			),
 			'sermons_number'           => array(
-				'label'            => esc_html__( 'Sermons Number', 'sermon-manager' ),
+				'label'            => esc_html__( 'Sermons Number', 'church-sermon-manager' ),
 				'type'             => 'number',
 				'option_category'  => 'configuration',
-				'description'      => esc_html__( 'Choose how much sermons you would like to display per page.', 'sermon-manager' ),
+				'description'      => esc_html__( 'Choose how much sermons you would like to display per page.', 'church-sermon-manager' ),
 				'computed_affects' => array(
 					'__posts',
 				),
 				'toggle_slug'      => 'main_content',
 			),
 			'sermons_order'            => array(
-				'label'           => esc_html__( 'Sermons Order', 'sermon-manager' ),
+				'label'           => esc_html__( 'Sermons Order', 'church-sermon-manager' ),
 				'type'            => 'select',
 				'option_category' => 'configuration',
-				'description'     => esc_html__( 'Select order of sermons.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Select order of sermons.', 'church-sermon-manager' ),
 				'options'         => array(
-					'DESC' => esc_html__( 'Descending', 'sermon-manager' ),
-					'ASC'  => esc_html__( 'Ascending', 'sermon-manager' ),
+					'DESC' => esc_html__( 'Descending', 'church-sermon-manager' ),
+					'ASC'  => esc_html__( 'Ascending', 'church-sermon-manager' ),
 				),
 				'toggle_slug'     => 'main_content',
 			),
 			'show_image'               => array(
-				'label'            => esc_html__( 'Show Featured Image/Video', 'sermon-manager' ),
+				'label'            => esc_html__( 'Show Featured Image/Video', 'church-sermon-manager' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
-				'description'      => esc_html__( 'This will turn thumbnails on and off.', 'sermon-manager' ),
+				'description'      => esc_html__( 'This will turn thumbnails on and off.', 'church-sermon-manager' ),
 				'computed_affects' => array(
 					'__posts',
 				),
 				'toggle_slug'      => 'elements',
 			),
 			'featured_type'            => array(
-				'label'           => esc_html__( 'Featured Type', 'sermon-manager' ),
+				'label'           => esc_html__( 'Featured Type', 'church-sermon-manager' ),
 				'type'            => 'select',
 				'option_category' => 'configuration',
-				'description'     => esc_html__( 'Toggle between the featured types.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Toggle between the featured types.', 'church-sermon-manager' ),
 				'options'         => array(
-					'image' => esc_html__( 'Image', 'sermon-manager' ),
-					'video' => esc_html__( 'Video', 'sermon-manager' ),
+					'image' => esc_html__( 'Image', 'church-sermon-manager' ),
+					'video' => esc_html__( 'Video', 'church-sermon-manager' ),
 				),
 				'toggle_slug'     => 'elements',
 				'show_if'         => array(
@@ -305,76 +305,76 @@ class Sermon_Blog extends ET_Builder_Module {
 				),
 			),
 			'show_series'              => array(
-				'label'            => esc_html__( 'Show Series', 'sermon-manager' ),
+				'label'            => esc_html__( 'Show Series', 'church-sermon-manager' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
-				'description'      => esc_html__( 'This will turn series name on and off.', 'sermon-manager' ),
+				'description'      => esc_html__( 'This will turn series name on and off.', 'church-sermon-manager' ),
 				'computed_affects' => array(
 					'__posts',
 				),
 				'toggle_slug'      => 'elements',
 			),
 			'show_title'               => array(
-				'label'            => esc_html__( 'Show Title', 'sermon-manager' ),
+				'label'            => esc_html__( 'Show Title', 'church-sermon-manager' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
-				'description'      => esc_html__( 'This will turn title on and off.', 'sermon-manager' ),
+				'description'      => esc_html__( 'This will turn title on and off.', 'church-sermon-manager' ),
 				'computed_affects' => array(
 					'__posts',
 				),
 				'toggle_slug'      => 'elements',
 			),
 			'show_date'                => array(
-				'label'            => esc_html__( 'Show Publish Date', 'sermon-manager' ),
+				'label'            => esc_html__( 'Show Publish Date', 'church-sermon-manager' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
-				'description'      => esc_html__( 'This will turn publish date on and off.', 'sermon-manager' ),
+				'description'      => esc_html__( 'This will turn publish date on and off.', 'church-sermon-manager' ),
 				'computed_affects' => array(
 					'__posts',
 				),
 				'toggle_slug'      => 'elements',
 			),
 			'meta_date'                => array(
-				'label'            => esc_html__( 'Meta Date Format', 'sermon-manager' ),
+				'label'            => esc_html__( 'Meta Date Format', 'church-sermon-manager' ),
 				'type'             => 'text',
 				'option_category'  => 'configuration',
-				'description'      => esc_html__( 'If you would like to adjust the date format, input the appropriate PHP date format here.', 'sermon-manager' ),
+				'description'      => esc_html__( 'If you would like to adjust the date format, input the appropriate PHP date format here.', 'church-sermon-manager' ),
 				'toggle_slug'      => 'elements',
 				'computed_affects' => array(
 					'__posts',
 				),
 			),
 			'show_excerpt'             => array(
-				'label'            => esc_html__( 'Show Sermon Excerpt', 'sermon-manager' ),
+				'label'            => esc_html__( 'Show Sermon Excerpt', 'church-sermon-manager' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
-				'description'      => esc_html__( 'This will turn sermon excerpt on and off.', 'sermon-manager' ),
+				'description'      => esc_html__( 'This will turn sermon excerpt on and off.', 'church-sermon-manager' ),
 				'computed_affects' => array(
 					'__posts',
 				),
 				'toggle_slug'      => 'elements',
 			),
 			'excerpt_length'           => array(
-				'label'            => esc_html__( 'Excerpt Length', 'sermon-manager' ),
+				'label'            => esc_html__( 'Excerpt Length', 'church-sermon-manager' ),
 				'type'             => 'number',
 				'option_category'  => 'configuration',
-				'description'      => esc_html__( 'Choose excerpt length.', 'sermon-manager' ),
+				'description'      => esc_html__( 'Choose excerpt length.', 'church-sermon-manager' ),
 				'computed_affects' => array(
 					'__posts',
 				),
@@ -384,14 +384,14 @@ class Sermon_Blog extends ET_Builder_Module {
 				),
 			),
 			'show_readmore'            => array(
-				'label'            => esc_html__( 'Show Read More Button', 'sermon-manager' ),
+				'label'            => esc_html__( 'Show Read More Button', 'church-sermon-manager' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
-				'description'      => esc_html__( 'This will turn read more button on and off.', 'sermon-manager' ),
+				'description'      => esc_html__( 'This will turn read more button on and off.', 'church-sermon-manager' ),
 				'computed_affects' => array(
 					'__posts',
 				),
@@ -401,10 +401,10 @@ class Sermon_Blog extends ET_Builder_Module {
 				),
 			),
 			'read_more_text'           => array(
-				'label'            => esc_html__( 'Read More Text', 'sermon-manager' ),
+				'label'            => esc_html__( 'Read More Text', 'church-sermon-manager' ),
 				'type'             => 'text',
 				'option_category'  => 'configuration',
-				'description'      => esc_html__( 'Choose read more text.', 'sermon-manager' ),
+				'description'      => esc_html__( 'Choose read more text.', 'church-sermon-manager' ),
 				'computed_affects' => array(
 					'__posts',
 				),
@@ -415,89 +415,89 @@ class Sermon_Blog extends ET_Builder_Module {
 				),
 			),
 			'show_sermon_audio'        => array(
-				'label'            => esc_html__( 'Show Sermon Audio', 'sermon-manager' ),
+				'label'            => esc_html__( 'Show Sermon Audio', 'church-sermon-manager' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
-				'description'      => esc_html__( 'This will turn sermon audio on and off.', 'sermon-manager' ),
+				'description'      => esc_html__( 'This will turn sermon audio on and off.', 'church-sermon-manager' ),
 				'computed_affects' => array(
 					'__posts',
 				),
 				'toggle_slug'      => 'elements',
 			),
 			'show_preacher'            => array(
-				'label'            => esc_html__( 'Show Preacher', 'sermon-manager' ),
+				'label'            => esc_html__( 'Show Preacher', 'church-sermon-manager' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
-				'description'      => esc_html__( 'This will turn preacher name on and off.', 'sermon-manager' ),
+				'description'      => esc_html__( 'This will turn preacher name on and off.', 'church-sermon-manager' ),
 				'computed_affects' => array(
 					'__posts',
 				),
 				'toggle_slug'      => 'elements',
 			),
 			'show_passage'             => array(
-				'label'            => esc_html__( 'Show Passage', 'sermon-manager' ),
+				'label'            => esc_html__( 'Show Passage', 'church-sermon-manager' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
-				'description'      => esc_html__( 'This will turn passage name on and off.', 'sermon-manager' ),
+				'description'      => esc_html__( 'This will turn passage name on and off.', 'church-sermon-manager' ),
 				'computed_affects' => array(
 					'__posts',
 				),
 				'toggle_slug'      => 'elements',
 			),
 			'show_service_type'        => array(
-				'label'            => esc_html__( 'Show Service Type', 'sermon-manager' ),
+				'label'            => esc_html__( 'Show Service Type', 'church-sermon-manager' ),
 				'type'             => 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
-				'description'      => esc_html__( 'This will turn service type on and off.', 'sermon-manager' ),
+				'description'      => esc_html__( 'This will turn service type on and off.', 'church-sermon-manager' ),
 				'computed_affects' => array(
 					'__posts',
 				),
 				'toggle_slug'      => 'elements',
 			),
 			'show_grid'                => array(
-				'label'           => esc_html__( 'Layout', 'sermon-manager' ),
+				'label'           => esc_html__( 'Layout', 'church-sermon-manager' ),
 				'type'            => 'select',
 				'option_category' => 'layout',
-				'description'     => esc_html__( 'Toggle between the various sermons layout types.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Toggle between the various sermons layout types.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'layout',
 				'tab_slug'        => 'advanced',
 				'options'         => array(
-					'on'  => esc_html__( 'Grid', 'sermon-manager' ),
-					'off' => esc_html__( 'Fullwidth', 'sermon-manager' ),
+					'on'  => esc_html__( 'Grid', 'church-sermon-manager' ),
+					'off' => esc_html__( 'Fullwidth', 'church-sermon-manager' ),
 				),
 			),
 			'show_masonry'             => array(
-				'label'           => esc_html__( 'Masonry', 'sermon-manager' ),
+				'label'           => esc_html__( 'Masonry', 'church-sermon-manager' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'layout',
 				'toggle_slug'     => 'layout',
 				'tab_slug'        => 'advanced',
 				'options'          => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
 				'show_if'         => array(
 					'show_grid' => 'on',
 				),
 			),
 			'title_padding'            => array(
-				'label'           => esc_html__( 'Sermon Title Bottom Padding', 'sermon-manager' ),
+				'label'           => esc_html__( 'Sermon Title Bottom Padding', 'church-sermon-manager' ),
 				'type'            => 'range',
 				'option_category' => 'text',
 				'toggle_slug'     => 'header',
@@ -509,7 +509,7 @@ class Sermon_Blog extends ET_Builder_Module {
 				),
 			),
 			'description_padding'      => array(
-				'label'           => esc_html__( 'Sermon Descritpion Bottom Padding', 'sermon-manager' ),
+				'label'           => esc_html__( 'Sermon Descritpion Bottom Padding', 'church-sermon-manager' ),
 				'type'            => 'range',
 				'option_category' => 'text',
 				'toggle_slug'     => 'body',
@@ -521,10 +521,10 @@ class Sermon_Blog extends ET_Builder_Module {
 				),
 			),
 			'grid_columns'             => array(
-				'label'           => esc_html__( 'Number of Columns', 'sermon-manager' ),
+				'label'           => esc_html__( 'Number of Columns', 'church-sermon-manager' ),
 				'type'            => 'range',
 				'option_category' => 'layout',
-				'description'     => esc_html__( 'Choose how many columns to display.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Choose how many columns to display.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'layout',
 				'tab_slug'        => 'advanced',
 				'range_settings'  => array(
@@ -538,10 +538,10 @@ class Sermon_Blog extends ET_Builder_Module {
 
 			),
 			'spacing_columns'          => array(
-				'label'            => esc_html__( 'Spacing Between Columns', 'sermon-manager' ),
+				'label'            => esc_html__( 'Spacing Between Columns', 'church-sermon-manager' ),
 				'type'             => 'number',
 				'option_category'  => 'configuration',
-				'description'      => esc_html__( 'Choose spacing between columns in px.', 'sermon-manager' ),
+				'description'      => esc_html__( 'Choose spacing between columns in px.', 'church-sermon-manager' ),
 				'computed_affects' => array(
 					'__posts',
 				),
@@ -553,21 +553,21 @@ class Sermon_Blog extends ET_Builder_Module {
 				),
 			),
 			'show_pagination'          => array(
-				'label'           => esc_html__( 'Show Pagination', 'sermon-manager' ),
+				'label'           => esc_html__( 'Show Pagination', 'church-sermon-manager' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'This will turn pagination on and off.', 'sermon-manager' ),
+				'description'     => esc_html__( 'This will turn pagination on and off.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'main_content',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
 			),
 			'pagination_total_num'     => array(
-				'label'           => esc_html__( 'Page Limit', 'sermon-manager' ),
+				'label'           => esc_html__( 'Page Limit', 'church-sermon-manager' ),
 				'type'            => 'number',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Choose how many pages to display.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Choose how many pages to display.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'main_content',
 				'show_if'         => array(
 					'show_pagination' => 'on',
@@ -575,24 +575,24 @@ class Sermon_Blog extends ET_Builder_Module {
 
 			),
 			'show_prev_next'           => array(
-				'label'           => esc_html__( 'Show Prev/Next Links', 'sermon-manager' ),
+				'label'           => esc_html__( 'Show Prev/Next Links', 'church-sermon-manager' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'This will turn prev/next links on and off.', 'sermon-manager' ),
+				'description'     => esc_html__( 'This will turn prev/next links on and off.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'main_content',
 				'options'         => array(
-					'on'  => esc_html__( 'Yes', 'sermon-manager' ),
-					'off' => esc_html__( 'No', 'sermon-manager' ),
+					'on'  => esc_html__( 'Yes', 'church-sermon-manager' ),
+					'off' => esc_html__( 'No', 'church-sermon-manager' ),
 				),
 				'show_if'         => array(
 					'show_pagination' => 'on',
 				),
 			),
 			'previous_label'           => array(
-				'label'           => esc_html__( 'Previous Label', 'sermon-manager' ),
+				'label'           => esc_html__( 'Previous Label', 'church-sermon-manager' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Choose previous label.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Choose previous label.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'main_content',
 				'show_if'         => array(
 					'show_prev_next'  => 'on',
@@ -600,10 +600,10 @@ class Sermon_Blog extends ET_Builder_Module {
 				),
 			),
 			'next_label'               => array(
-				'label'           => esc_html__( 'Next Label', 'sermon-manager' ),
+				'label'           => esc_html__( 'Next Label', 'church-sermon-manager' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Choose next label.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Choose next label.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'main_content',
 				'show_if'         => array(
 					'show_prev_next'  => 'on',
@@ -611,15 +611,15 @@ class Sermon_Blog extends ET_Builder_Module {
 				),
 			),
 			'pagination_alignment'     => array(
-				'label'           => esc_html__( 'Pagination Alignment', 'sermon-manager' ),
+				'label'           => esc_html__( 'Pagination Alignment', 'church-sermon-manager' ),
 				'type'            => 'select',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Choose pagination alignment.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Choose pagination alignment.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'main_content',
 				'options'         => array(
-					'left'   => esc_html__( 'Left', 'sermon-manager' ),
-					'center' => esc_html__( 'Center', 'sermon-manager' ),
-					'right'  => esc_html__( 'Right', 'sermon-manager' ),
+					'left'   => esc_html__( 'Left', 'church-sermon-manager' ),
+					'center' => esc_html__( 'Center', 'church-sermon-manager' ),
+					'right'  => esc_html__( 'Right', 'church-sermon-manager' ),
 				),
 				'show_if'         => array(
 					'show_pagination' => 'on',
@@ -628,10 +628,10 @@ class Sermon_Blog extends ET_Builder_Module {
 			// phpcs:disable
 			// @todo - this is okay, we just don't want to display it until it's fixed.
 			/*'include_taxonomies'   => array(
-				'label'           => esc_html__( 'Include Taxonomies', 'sermon-manager' ),
+				'label'           => esc_html__( 'Include Taxonomies', 'church-sermon-manager' ),
 				'renderer'        => 'smp_divi_include_taxonomies',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Select the taxonomies that you would like to include in the render.', 'sermon-manager' ),
+				'description'     => esc_html__( 'Select the taxonomies that you would like to include in the render.', 'church-sermon-manager' ),
 				'toggle_slug'     => 'main_content',
 			),*/
 			// phpcs:enable
@@ -884,21 +884,21 @@ class Sermon_Blog extends ET_Builder_Module {
 												)
 											);
 											?>
-											<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Preacher', 'sermon-manager' ); ?>
+											<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Preacher', 'church-sermon-manager' ); ?>
 												:</span>
 											<span class="wpfc-sermon-meta-text"><?php the_terms( get_the_ID(), 'wpfc_preacher' ); ?></span>
 										</div>
 									<?php endif; ?>
 									<?php if ( ( 'on' == $show_passage ) && ( get_wpfc_sermon_meta( 'bible_passage' ) ) ) : ?>
 										<div class="wpfc-sermon-meta-item wpfc-sermon-meta-passage">
-											<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Passage', 'sermon-manager' ); ?>
+											<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Passage', 'church-sermon-manager' ); ?>
 												:</span>
 											<span class="wpfc-sermon-meta-text"><?php wpfc_sermon_meta( 'bible_passage' ); ?></span>
 										</div>
 									<?php endif; ?>
 									<?php if ( ( 'on' == $show_service_type ) && ( has_term( '', 'wpfc_service_type', get_the_ID() ) ) ) : ?>
 										<div class="wpfc-sermon-meta-item wpfc-sermon-meta-service">
-											<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Service Type', 'sermon-manager' ); ?>
+											<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Service Type', 'church-sermon-manager' ); ?>
 												:</span>
 											<span class="wpfc-sermon-meta-text"><?php the_terms( get_the_ID(), 'wpfc_service_type' ); ?></span>
 										</div>
@@ -961,7 +961,7 @@ class Sermon_Blog extends ET_Builder_Module {
 					'line_height' => array(
 						'default' => '1.3',
 					),
-					'label'       => esc_html__( 'Sermon Title', 'sermon-manager' ),
+					'label'       => esc_html__( 'Sermon Title', 'church-sermon-manager' ),
 				),
 				'body'   => array(
 					'css'         => array(
@@ -974,7 +974,7 @@ class Sermon_Blog extends ET_Builder_Module {
 					'line_height' => array(
 						'default' => '1.7',
 					),
-					'label'       => esc_html__( 'Sermon Description', 'sermon-manager' ),
+					'label'       => esc_html__( 'Sermon Description', 'church-sermon-manager' ),
 				),
 			),
 			'background'     => false,

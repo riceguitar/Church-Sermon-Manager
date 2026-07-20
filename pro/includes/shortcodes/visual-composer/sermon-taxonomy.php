@@ -236,7 +236,7 @@ if ( ! class_exists( 'Sermon_Taxonomy_Shortcode' ) ) {
 						'heading' => __( 'Widget title', 'locale' ),
 						'param_name' => 'title',
 						'description' => __( 'What text use as a widget title. Leave blank to use default widget title.', 'locale' ),
-						'value' => __( 'Sermons Taxonomy' ),
+						'value' => __( 'Sermons Taxonomy', 'church-sermon-manager' ),
 					),
 					array(
 						'type'       => 'dropdown',

@@ -156,7 +156,7 @@ class Template_Tags {
 		$args    = $args + $default;
 
 		if ( post_password_required( $post ) ) {
-			return __( 'There is no excerpt because this is a protected post.' );
+			return __( 'There is no excerpt because this is a protected post.', 'church-sermon-manager' );
 		}
 
 		$original_excerpt = get_post_meta( $post->ID, 'sermon_description', true );

@@ -91,7 +91,7 @@ class Sermon_Archive extends Widget_Base {
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'Sermons', 'sermon-manager' );
+		return __( 'Sermons', 'church-sermon-manager' );
 	}
 
 	/**
@@ -211,7 +211,7 @@ class Sermon_Archive extends Widget_Base {
 		$this->start_controls_section(
 			'section_query',
 			array(
-				'label' => __( 'Query', 'sermon-manager' ),
+				'label' => __( 'Query', 'church-sermon-manager' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -226,7 +226,7 @@ class Sermon_Archive extends Widget_Base {
 		$this->add_control(
 			'advanced',
 			array(
-				'label'     => __( 'Advanced', 'sermon-manager' ),
+				'label'     => __( 'Advanced', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => array(
 					'posts_post_type!' => 'current_query',
@@ -237,15 +237,15 @@ class Sermon_Archive extends Widget_Base {
 		$this->add_control(
 			'orderby',
 			array(
-				'label'     => __( 'Order By', 'sermon-manager' ),
+				'label'     => __( 'Order By', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'post_date',
 				'options'   => array(
-					'post_date'     => __( 'Published Date', 'sermon-manager' ),
-					'preached_date' => __( 'Preached Date', 'sermon-manager' ),
-					'post_title'    => __( 'Title', 'sermon-manager' ),
-					'menu_order'    => __( 'Menu Order', 'sermon-manager' ),
-					'rand'          => __( 'Random', 'sermon-manager' ),
+					'post_date'     => __( 'Published Date', 'church-sermon-manager' ),
+					'preached_date' => __( 'Preached Date', 'church-sermon-manager' ),
+					'post_title'    => __( 'Title', 'church-sermon-manager' ),
+					'menu_order'    => __( 'Menu Order', 'church-sermon-manager' ),
+					'rand'          => __( 'Random', 'church-sermon-manager' ),
 				),
 				'condition' => array(
 					'posts_post_type!' => 'current_query',
@@ -256,12 +256,12 @@ class Sermon_Archive extends Widget_Base {
 		$this->add_control(
 			'order',
 			array(
-				'label'     => __( 'Order', 'sermon-manager' ),
+				'label'     => __( 'Order', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'desc',
 				'options'   => array(
-					'asc'  => __( 'ASC', 'sermon-manager' ),
-					'desc' => __( 'DESC', 'sermon-manager' ),
+					'asc'  => __( 'ASC', 'church-sermon-manager' ),
+					'desc' => __( 'DESC', 'church-sermon-manager' ),
 				),
 				'condition' => array(
 					'posts_post_type!' => 'current_query',
@@ -272,7 +272,7 @@ class Sermon_Archive extends Widget_Base {
 		$this->add_control(
 			'offset',
 			array(
-				'label'       => __( 'Offset', 'sermon-manager' ),
+				'label'       => __( 'Offset', 'church-sermon-manager' ),
 				'type'        => Controls_Manager::NUMBER,
 				'default'     => 0,
 				'condition'   => array(
@@ -281,7 +281,7 @@ class Sermon_Archive extends Widget_Base {
 						'current_query',
 					),
 				),
-				'description' => __( 'Use this setting to skip over sermons (e.g. \'2\' to skip over 2 sermons).', 'sermon-manager' ),
+				'description' => __( 'Use this setting to skip over sermons (e.g. \'2\' to skip over 2 sermons).', 'church-sermon-manager' ),
 			)
 		);
 

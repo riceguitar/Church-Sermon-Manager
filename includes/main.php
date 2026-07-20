@@ -25,7 +25,7 @@ if ( version_compare( PHP_VERSION, '8.1.0', '<' ) ) {
 				<?php
 				// translators: %1$s current PHP version, see msgid "PHP %s", effectively <strong>PHP %s</strong>.
 				// translators: %2$s required PHP version, see msgid "PHP %s", effectively <strong>PHP %s</strong>.
-				echo wp_sprintf( esc_html__( 'You are running %1$s, but Sermon Manager requires at least %2$s.', 'sermon-manager' ), '<strong>' . wp_sprintf( esc_html__( 'PHP %s', 'sermon-manager' ), PHP_VERSION ) . '</strong>', '<strong>' . wp_sprintf( esc_html__( 'PHP %s', 'sermon-manager' ), '8.1.0' ) . '</strong>' );
+				echo wp_sprintf( esc_html__( 'You are running %1$s, but Sermon Manager requires at least %2$s.', 'church-sermon-manager' ), '<strong>' . wp_sprintf( esc_html__( 'PHP %s', 'church-sermon-manager' ), PHP_VERSION ) . '</strong>', '<strong>' . wp_sprintf( esc_html__( 'PHP %s', 'church-sermon-manager' ), '8.1.0' ) . '</strong>' );
 				?>
 			</p>
 		</div>
@@ -223,7 +223,7 @@ class SermonManager { // phpcs:ignore
 		// $has_series    = has_term( '', 'wpfc_sermon_series', $post );
 
 		// if ( $bible_passage ) {
-		// 	$content .= __( 'Bible Text:', 'sermon-manager' ) . ' ' . $bible_passage;
+		// 	$content .= __( 'Bible Text:', 'church-sermon-manager' ) . ' ' . $bible_passage;
 		// }
 
 		// if ( $has_preachers ) {
@@ -239,7 +239,7 @@ class SermonManager { // phpcs:ignore
 		// 	if ( $has_preachers ) {
 		// 		$content .= ' | ';
 		// 	}
-		// 	$content .= strip_tags( get_the_term_list( $post->ID, 'wpfc_sermon_series', __( 'Series:', 'sermon-manager' ) . ' ', ', ', '' ) );
+		// 	$content .= strip_tags( get_the_term_list( $post->ID, 'wpfc_sermon_series', __( 'Series:', 'church-sermon-manager' ) . ' ', ', ', '' ) );
 		// }
 
 		// $description = strip_tags( trim( get_post_meta( $post->ID, 'sermon_description', true ) ) );
@@ -389,7 +389,7 @@ class SermonManager { // phpcs:ignore
 	 * @return void
 	 */
 	public static function load_translations() {
-		load_plugin_textdomain( 'sermon-manager', false, plugin_basename( dirname( CSM_PLUGIN_FILE ) ) . '/languages' );
+		load_plugin_textdomain( 'church-sermon-manager', false, plugin_basename( dirname( CSM_PLUGIN_FILE ) ) . '/languages' );
 	}
 
 	/**
@@ -748,7 +748,7 @@ class SermonManager { // phpcs:ignore
 									<?php endif; ?>
 
 									<div class="notice notice-success">
-										<p><?php _e( 'Import done!', 'sermon-manager' ); ?></p>
+										<p><?php _e( 'Import done!', 'church-sermon-manager' ); ?></p>
 									</div>
 									<?php
 								}
@@ -992,7 +992,7 @@ class SermonManager { // phpcs:ignore
 						<p>
 							<?php
 							// translators: %s: The plugin name. Effectively "<strong>Sermon Manager</strong>".
-							echo wp_sprintf( __( '%s requires output buffering to be turned on to display content. It is currently off. Please enable it or contact your hosting provider for help. Most of plugin functionality will be disabled until output buffering is enabled.', 'sermon-manager' ), '<strong>' . __( 'Sermon Manager', 'sermon-manager' ) . '</strong>' );
+							echo wp_sprintf( __( '%s requires output buffering to be turned on to display content. It is currently off. Please enable it or contact your hosting provider for help. Most of plugin functionality will be disabled until output buffering is enabled.', 'church-sermon-manager' ), '<strong>' . __( 'Sermon Manager', 'church-sermon-manager' ) . '</strong>' );
 							?>
 						</p>
 					</div>

@@ -35,7 +35,7 @@ $current_tab = empty( $current_tab ) ? 'general' : $current_tab;
 					<p class="submit">
 						<?php if ( empty( $GLOBALS['hide_save_button'] ) ) : ?>
 							<input name="save" class="button-primary sm-save-button" type="submit"
-									value="<?php esc_attr_e( 'Save changes', 'sermon-manager' ); ?>"/>
+									value="<?php esc_attr_e( 'Save changes', 'church-sermon-manager' ); ?>"/>
 						<?php endif; ?>
 						<?php wp_nonce_field( 'sm-settings' ); ?>
 					</p>
@@ -59,39 +59,39 @@ $current_tab = empty( $current_tab ) ? 'general' : $current_tab;
 				</div>
 			</div>
 			<div class="postbox sm-box">
-				<h3><span><?php esc_html_e( 'Need Some Help?', 'sermon-manager' ); ?></span>
+				<h3><span><?php esc_html_e( 'Need Some Help?', 'church-sermon-manager' ); ?></span>
 				</h3>
 				<div class="inside">
-					<p><?php esc_html_e( 'Church Sermon Manager is maintained by Sierra Marketing and offered free to churches.', 'sermon-manager' ); ?></p>
+					<p><?php esc_html_e( 'Church Sermon Manager is maintained by Sierra Marketing and offered free to churches.', 'church-sermon-manager' ); ?></p>
 					<div style="text-align:center">
 						<a href="https://sierra.host/church-sermon-manager/"
 								target="_blank" class="button-primary">
-							<?php esc_html_e( 'Get Support', 'sermon-manager' ); ?></a>&nbsp;
+							<?php esc_html_e( 'Get Support', 'church-sermon-manager' ); ?></a>&nbsp;
 						<a href="https://github.com/riceguitar/Church-Sermon-Manager/issues"
 								target="_blank" class="button-secondary">
-							<?php esc_html_e( 'Report a Bug', 'sermon-manager' ); ?></a>
+							<?php esc_html_e( 'Report a Bug', 'church-sermon-manager' ); ?></a>
 					</div>
 				</div>
 			</div>
 			<div class="postbox sm-box">
 				<h3>
-					<span><?php esc_html_e( 'Documentation', 'sermon-manager' ); ?></span>
+					<span><?php esc_html_e( 'Documentation', 'church-sermon-manager' ); ?></span>
 				</h3>
 				<div class="inside">
-					<p><?php echo wp_sprintf( esc_html__( 'Guides, shortcode reference, and troubleshooting are in the %s.', 'sermon-manager' ), '<a href="https://github.com/riceguitar/Church-Sermon-Manager#readme" target="_blank">' . esc_html__( 'documentation', 'sermon-manager' ) . '</a>' ); ?></p>
+					<p><?php echo wp_sprintf( esc_html__( 'Guides, shortcode reference, and troubleshooting are in the %s.', 'church-sermon-manager' ), '<a href="https://github.com/riceguitar/Church-Sermon-Manager#readme" target="_blank">' . esc_html__( 'documentation', 'church-sermon-manager' ) . '</a>' ); ?></p>
 				</div>
 			</div>
 
 			<div class="postbox sm-box">
 				<h3>
-					<span><?php esc_html_e( 'Lets Make It Even Better!', 'sermon-manager' ); ?></span>
+					<span><?php esc_html_e( 'Lets Make It Even Better!', 'church-sermon-manager' ); ?></span>
 				</h3>
 				<div class="inside">
-					<p><?php esc_html_e( 'If you have ideas on how to make Sermon Manager or any of our products better, let us know!', 'sermon-manager' ); ?></p>
+					<p><?php esc_html_e( 'If you have ideas on how to make Sermon Manager or any of our products better, let us know!', 'church-sermon-manager' ); ?></p>
 					<div style="text-align:center">
 						<a href="https://feedback.userreport.com/05ff651b-670e-4eb7-a734-9a201cd22906/"
 								target="_blank"
-								class="button-secondary"><?php esc_html_e( 'Submit&nbsp;Your&nbsp;Idea', 'sermon-manager' ); ?></a>
+								class="button-secondary"><?php esc_html_e( 'Submit&nbsp;Your&nbsp;Idea', 'church-sermon-manager' ); ?></a>
 					</div>
 				</div>
 			</div>

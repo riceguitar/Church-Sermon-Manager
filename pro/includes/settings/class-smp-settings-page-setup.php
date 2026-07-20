@@ -22,7 +22,7 @@ class SMP_Settings_Page_Setup extends SM_Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'page_setup';
-		$this->label = __( 'Page Setup', 'sermon-manager' );
+		$this->label = __( 'Page Setup', 'church-sermon-manager' );
 
 		parent::__construct();
 	}
@@ -35,7 +35,7 @@ class SMP_Settings_Page_Setup extends SM_Settings_Page {
 	public function get_settings() {
 		$settings = apply_filters( 'sm_page_setup_settings', array(
 			array(
-				'title' => __( 'Page Setup', 'sermon-manager' ),
+				'title' => __( 'Page Setup', 'church-sermon-manager' ),
 				'type'  => 'title',
 				'desc'  => '',
 				'id'    => 'page_setup_settings',

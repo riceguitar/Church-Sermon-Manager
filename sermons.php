@@ -13,7 +13,7 @@
  * Tested up to PHP : 8.2
  * Requires PHP: 8.1
  *
- * Text Domain: sermon-manager
+ * Text Domain: church-sermon-manager
  * Domain Path: /languages/
  *
  * @package SM\Core

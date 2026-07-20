@@ -33,7 +33,7 @@ class Sermon_Filtering extends Widget_Base {
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'Sermon Filtering', 'sermon-manager' );
+		return __( 'Sermon Filtering', 'church-sermon-manager' );
 	}
 
 	/**
@@ -93,7 +93,7 @@ class Sermon_Filtering extends Widget_Base {
 		$this->start_controls_section(
 			'section_display',
 			array(
-				'label'   => __( 'Display', 'sermon-manager' ),
+				'label'   => __( 'Display', 'church-sermon-manager' ),
 				'tab'     => Controls_Manager::TAB_CONTENT,
 				'default' => 'yes',
 			)
@@ -102,7 +102,7 @@ class Sermon_Filtering extends Widget_Base {
 		$this->add_control(
 			'show_preachers',
 			array(
-				'label'   => __( 'Preachers Dropdown', 'sermon-manager' ),
+				'label'   => __( 'Preachers Dropdown', 'church-sermon-manager' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			)
@@ -111,7 +111,7 @@ class Sermon_Filtering extends Widget_Base {
 		$this->add_control(
 			'show_series',
 			array(
-				'label'   => __( 'Series Dropdown', 'sermon-manager' ),
+				'label'   => __( 'Series Dropdown', 'church-sermon-manager' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			)
@@ -120,7 +120,7 @@ class Sermon_Filtering extends Widget_Base {
 		$this->add_control(
 			'show_book',
 			array(
-				'label'   => __( 'Book Dropdown', 'sermon-manager' ),
+				'label'   => __( 'Book Dropdown', 'church-sermon-manager' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			)
@@ -129,7 +129,7 @@ class Sermon_Filtering extends Widget_Base {
 		$this->add_control(
 			'show_service_type',
 			array(
-				'label'   => __( 'Service Type Dropdown', 'sermon-manager' ),
+				'label'   => __( 'Service Type Dropdown', 'church-sermon-manager' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			)
@@ -138,7 +138,7 @@ class Sermon_Filtering extends Widget_Base {
 		$this->add_control(
 			'show_topics',
 			array(
-				'label'   => __( 'Topics Dropdown', 'sermon-manager' ),
+				'label'   => __( 'Topics Dropdown', 'church-sermon-manager' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			)

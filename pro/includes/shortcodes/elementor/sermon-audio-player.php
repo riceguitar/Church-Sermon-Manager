@@ -34,7 +34,7 @@ class Sermon_Audio_Player extends Widget_Base {
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'Audio Player', 'sermon-manager' );
+		return __( 'Audio Player', 'church-sermon-manager' );
 	}
 
 	/**
@@ -75,7 +75,7 @@ class Sermon_Audio_Player extends Widget_Base {
 		$this->start_controls_section(
 			'section_settings',
 			array(
-				'label' => __( 'Settings', 'sermon-manager' ),
+				'label' => __( 'Settings', 'church-sermon-manager' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -83,7 +83,7 @@ class Sermon_Audio_Player extends Widget_Base {
 		$this->add_control(
 			'player',
 			array(
-				'label'   => __( 'Type', 'sermon-manager' ),
+				'label'   => __( 'Type', 'church-sermon-manager' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'plyr',
 				'options' => array(

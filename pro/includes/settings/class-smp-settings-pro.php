@@ -23,7 +23,7 @@ class SMP_Settings_Pro extends SM_Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'advanced';
-		$this->label = __( 'Advanced', 'sermon-manager' );
+		$this->label = __( 'Advanced', 'church-sermon-manager' );
 
 		parent::__construct();
 	}
@@ -36,26 +36,26 @@ class SMP_Settings_Pro extends SM_Settings_Page {
 	public function get_settings() {
 		$settings = apply_filters( 'sm_pro_settings', array(
 			array(
-				'title' => __( 'Advanced', 'sermon-manager' ),
+				'title' => __( 'Advanced', 'church-sermon-manager' ),
 				'type'  => 'title',
 				'desc'  => '',
 				'id'    => 'pro_settings',
 			),
 			array(
-				'title'    => __( 'Blubrry PowerPress', 'sermon-manager' ),
+				'title'    => __( 'Blubrry PowerPress', 'church-sermon-manager' ),
 				'type'     => 'checkbox',
-				'desc'     => __( 'Use Blubrry PowerPress player, instead of Sermon Manager\'s one.', 'sermon-manager' ),
-				'desc_tip' => __( 'This is like adding <code>[powerpress]</code> shortcode at the end, except that we do it for you. Default unchecked.', 'sermon-manager' ),
+				'desc'     => __( 'Use Blubrry PowerPress player, instead of Sermon Manager\'s one.', 'church-sermon-manager' ),
+				'desc_tip' => __( 'This is like adding <code>[powerpress]</code> shortcode at the end, except that we do it for you. Default unchecked.', 'church-sermon-manager' ),
 				'id'       => 'blubrry_powerpress_player',
 				'default'  => 'no',
 			),
 			array(
-				'title'   => __( 'Update branch', 'sermon-manager' ),
+				'title'   => __( 'Update branch', 'church-sermon-manager' ),
 				'type'    => 'select',
 				'id'      => 'update_branch',
 				'options' => array(
-					'release' => __( 'Release', 'sermon-manager' ),
-					'nightly' => __( 'Nightly', 'sermon-manager' ),
+					'release' => __( 'Release', 'church-sermon-manager' ),
+					'nightly' => __( 'Nightly', 'church-sermon-manager' ),
 				),
 				'desc'    => 'This option allows you to select from what source you want to get your updates. Explanation of sources: <br><ul><li><strong>Release</strong> - The default update source. Plugin is updated roughly every week to the latest stable release.</li><li><strong>Nightly</strong> - Latest untested and unstable changes. Updates happen often.</li></ul>',
 				'default' => 'release',

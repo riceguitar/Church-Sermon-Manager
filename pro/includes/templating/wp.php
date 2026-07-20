@@ -269,29 +269,29 @@ class WP {
 	public function register_post_type() {
 		register_post_type( $this->post_type, apply_filters( 'sm_pro_register_post_type_' . $this->post_type, array(
 			'labels'            => array(
-				'name'                  => __( 'Templates', 'sermon-manager' ),
-				'singular_name'         => __( 'Template', 'sermon-manager' ),
-				'all_items'             => __( 'Templates', 'sermon-manager' ),
-				'menu_name'             => _x( 'Templates', 'menu', 'sermon-manager' ),
-				'add_new'               => __( 'Re-scan templates', 'sermon-manager' ),
-				'add_new_item'          => __( 'Add New Template', 'sermon-manager' ),
-				'edit'                  => __( 'Edit', 'sermon-manager' ),
-				'edit_item'             => __( 'Edit Template', 'sermon-manager' ),
-				'new_item'              => __( 'New Template', 'sermon-manager' ),
-				'view'                  => __( 'View Template', 'sermon-manager' ),
-				'view_item'             => __( 'View Template', 'sermon-manager' ),
-				'search_items'          => __( 'Search Template', 'sermon-manager' ),
-				'not_found'             => __( 'No Templates found', 'sermon-manager' ),
-				'not_found_in_trash'    => __( 'No Templates found in trash', 'sermon-manager' ),
+				'name'                  => __( 'Templates', 'church-sermon-manager' ),
+				'singular_name'         => __( 'Template', 'church-sermon-manager' ),
+				'all_items'             => __( 'Templates', 'church-sermon-manager' ),
+				'menu_name'             => _x( 'Templates', 'menu', 'church-sermon-manager' ),
+				'add_new'               => __( 'Re-scan templates', 'church-sermon-manager' ),
+				'add_new_item'          => __( 'Add New Template', 'church-sermon-manager' ),
+				'edit'                  => __( 'Edit', 'church-sermon-manager' ),
+				'edit_item'             => __( 'Edit Template', 'church-sermon-manager' ),
+				'new_item'              => __( 'New Template', 'church-sermon-manager' ),
+				'view'                  => __( 'View Template', 'church-sermon-manager' ),
+				'view_item'             => __( 'View Template', 'church-sermon-manager' ),
+				'search_items'          => __( 'Search Template', 'church-sermon-manager' ),
+				'not_found'             => __( 'No Templates found', 'church-sermon-manager' ),
+				'not_found_in_trash'    => __( 'No Templates found in trash', 'church-sermon-manager' ),
 				'featured_image'        => '', // not used.
 				'set_featured_image'    => '', // not used.
 				'remove_featured_image' => '', // not used.
 				'use_featured_image'    => '', // not used.
 				'insert_into_item'      => '', // not used.
 				'uploaded_to_this_item' => '', // not used.
-				'filter_items_list'     => __( 'Filter Templates', 'sermon-manager' ),
-				'items_list_navigation' => __( 'Templates Navigation', 'sermon-manager' ),
-				'items_list'            => __( 'Templates List', 'sermon-manager' ),
+				'filter_items_list'     => __( 'Filter Templates', 'church-sermon-manager' ),
+				'items_list_navigation' => __( 'Templates Navigation', 'church-sermon-manager' ),
+				'items_list'            => __( 'Templates List', 'church-sermon-manager' ),
 			),
 			'public'            => false,
 			'show_ui'           => true,
@@ -427,7 +427,7 @@ class WP {
 		}
 
 		if ( $data instanceof \WP_Error ) {
-			$data = __( 'Error' );
+			$data = __( 'Error', 'church-sermon-manager' );
 		}
 
 		echo $data;
@@ -453,22 +453,22 @@ class WP {
 						'<a href="%s" aria-label="%s">%s</a>',
 						admin_url( sprintf( $post_type_object->_edit_link . '&action=t_duplicate', $post->ID ) ),
 						// translators: %s Sermon title.
-						esc_attr( sprintf( __( 'Duplicate &#8220;%s&#8221;' ), $post->post_title ) ),
-						__( 'Duplicate' )
+						esc_attr( sprintf( __( 'Duplicate &#8220;%s&#8221;', 'church-sermon-manager' ), $post->post_title ) ),
+						__( 'Duplicate', 'church-sermon-manager' )
 					),
 					'edit'      => sprintf(
 						'<a href="%s" aria-label="%s">%s</a>',
 						get_edit_post_link( $post->ID ),
 						// translators: %s Sermon title.
-						esc_attr( sprintf( __( 'Edit &#8220;%s&#8221;' ), $post->post_title ) ),
-						__( 'Edit' )
+						esc_attr( sprintf( __( 'Edit &#8220;%s&#8221;', 'church-sermon-manager' ), $post->post_title ) ),
+						__( 'Edit', 'church-sermon-manager' )
 					),
 					'delete'    => sprintf(
 						'<a href="%s" class="submitdelete" aria-label="%s">%s</a>',
 						admin_url( sprintf( $post_type_object->_edit_link . '&action=t_delete', $post->ID ) ),
 						// translators: %s Sermon title.
-						esc_attr( sprintf( __( 'Delete &#8220;%s&#8221; permanently' ), $post->post_title ) ),
-						__( 'Delete Permanently' )
+						esc_attr( sprintf( __( 'Delete &#8220;%s&#8221; permanently', 'church-sermon-manager' ), $post->post_title ) ),
+						__( 'Delete Permanently', 'church-sermon-manager' )
 					),
 				);
 			} else {

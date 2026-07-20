@@ -57,7 +57,7 @@ class Plugin {
      */
     public function load_translations(): void {
         load_plugin_textdomain(
-            'sermon-manager',
+            'church-sermon-manager',
             false,
             dirname(plugin_basename(__FILE__)) . '/../languages/'
         );

@@ -184,7 +184,7 @@ class WP {
 	 * @since 1.0.0-beta.8
 	 */
 	public function add_tutorial_metabox() {
-		add_meta_box( 'podcast_tutorial', __( 'Podcasting Tutorial', 'sermon-manager' ), array(
+		add_meta_box( 'podcast_tutorial', __( 'Podcasting Tutorial', 'church-sermon-manager' ), array(
 			$this,
 			'render_tutorial_metabox',
 		), $this->post_type, 'advanced', 'high' );
@@ -232,7 +232,7 @@ class WP {
 	 * @since 1.0.0-beta.8
 	 */
 	public function add_main_metabox() {
-		add_meta_box( 'podcast_settings', __( 'Podcast settings', 'sermon-manager' ), array(
+		add_meta_box( 'podcast_settings', __( 'Podcast settings', 'church-sermon-manager' ), array(
 			$this,
 			'render_main_metabox',
 		), $this->post_type, 'advanced', 'high' );
@@ -332,29 +332,29 @@ class WP {
 	public function register_post_type() {
 		register_post_type( $this->post_type, apply_filters( 'sm_pro_register_post_type_' . $this->post_type, array(
 			'labels'            => array(
-				'name'                  => __( 'Podcasts', 'sermon-manager' ),
-				'singular_name'         => __( 'Podcast', 'sermon-manager' ),
-				'all_items'             => __( 'Podcasts', 'sermon-manager' ),
-				'menu_name'             => _x( 'Podcasting', 'menu', 'sermon-manager' ),
-				'add_new'               => __( 'Add New Podcast', 'sermon-manager' ),
-				'add_new_item'          => __( 'Add New Podcast', 'sermon-manager' ),
-				'edit'                  => __( 'Edit', 'sermon-manager' ),
-				'edit_item'             => __( 'Edit Podcast', 'sermon-manager' ),
-				'new_item'              => __( 'New Podcast', 'sermon-manager' ),
-				'view'                  => __( 'View Podcast', 'sermon-manager' ),
-				'view_item'             => __( 'View Podcast', 'sermon-manager' ),
-				'search_items'          => __( 'Search Podcast', 'sermon-manager' ),
-				'not_found'             => __( 'No Podcasts found', 'sermon-manager' ),
-				'not_found_in_trash'    => __( 'No Podcasts found in trash', 'sermon-manager' ),
+				'name'                  => __( 'Podcasts', 'church-sermon-manager' ),
+				'singular_name'         => __( 'Podcast', 'church-sermon-manager' ),
+				'all_items'             => __( 'Podcasts', 'church-sermon-manager' ),
+				'menu_name'             => _x( 'Podcasting', 'menu', 'church-sermon-manager' ),
+				'add_new'               => __( 'Add New Podcast', 'church-sermon-manager' ),
+				'add_new_item'          => __( 'Add New Podcast', 'church-sermon-manager' ),
+				'edit'                  => __( 'Edit', 'church-sermon-manager' ),
+				'edit_item'             => __( 'Edit Podcast', 'church-sermon-manager' ),
+				'new_item'              => __( 'New Podcast', 'church-sermon-manager' ),
+				'view'                  => __( 'View Podcast', 'church-sermon-manager' ),
+				'view_item'             => __( 'View Podcast', 'church-sermon-manager' ),
+				'search_items'          => __( 'Search Podcast', 'church-sermon-manager' ),
+				'not_found'             => __( 'No Podcasts found', 'church-sermon-manager' ),
+				'not_found_in_trash'    => __( 'No Podcasts found in trash', 'church-sermon-manager' ),
 				'featured_image'        => '', // not used.
 				'set_featured_image'    => '', // not used.
 				'remove_featured_image' => '', // not used.
 				'use_featured_image'    => '', // not used.
 				'insert_into_item'      => '', // not used.
 				'uploaded_to_this_item' => '', // not used.
-				'filter_items_list'     => __( 'Filter Podcasts', 'sermon-manager' ),
-				'items_list_navigation' => __( 'Podcasts Navigation', 'sermon-manager' ),
-				'items_list'            => __( 'Podcasts List', 'sermon-manager' ),
+				'filter_items_list'     => __( 'Filter Podcasts', 'church-sermon-manager' ),
+				'items_list_navigation' => __( 'Podcasts Navigation', 'church-sermon-manager' ),
+				'items_list'            => __( 'Podcasts List', 'church-sermon-manager' ),
 			),
 			'public'            => false,
 			'show_ui'           => true,
@@ -442,7 +442,7 @@ class WP {
 		}
 
 		if ( $data instanceof \WP_Error ) {
-			$data = __( 'Error' );
+			$data = __( 'Error', 'church-sermon-manager' );
 		}
 
 		echo $data;
@@ -484,14 +484,14 @@ class WP {
 			'<a href="%s" rel="bookmark" aria-label="%s">%s</a>',
 			$feed_url,
 			/* translators: %s: post title */
-			esc_attr( sprintf( __( 'View &#8220;%s&#8221;' ), $post->post_title ) ),
-			__( 'View' )
+			esc_attr( sprintf( __( 'View &#8220;%s&#8221;', 'church-sermon-manager' ), $post->post_title ) ),
+			__( 'View', 'church-sermon-manager' )
 		);
 
 		if ( ! $default_podcast ) {
 			// Add permanent delete action.
 			/* @noinspection HtmlUnknownTarget */ // translators: %s Sermon title.
-			$actions['delete'] = sprintf( '<a href="%s" class="submitdelete" aria-label="%s">%s</a>', admin_url( sprintf( $post_type_object->_edit_link . '&action=p_delete', $post->ID ) ), esc_attr( sprintf( __( 'Delete &#8220;%s&#8221; permanently' ), $post->post_title ) ), __( 'Delete Permanently' ) );
+			$actions['delete'] = sprintf( '<a href="%s" class="submitdelete" aria-label="%s">%s</a>', admin_url( sprintf( $post_type_object->_edit_link . '&action=p_delete', $post->ID ) ), esc_attr( sprintf( __( 'Delete &#8220;%s&#8221; permanently', 'church-sermon-manager' ), $post->post_title ) ), __( 'Delete Permanently', 'church-sermon-manager' ) );
 		}
 
 		return $actions;

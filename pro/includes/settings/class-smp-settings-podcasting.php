@@ -22,7 +22,7 @@ class SMP_Settings_Podcasting extends SM_Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'podcasting';
-		$this->label = __( 'Podcast', 'sermon-manager' );
+		$this->label = __( 'Podcast', 'church-sermon-manager' );
 
 		parent::__construct();
 	}
@@ -35,7 +35,7 @@ class SMP_Settings_Podcasting extends SM_Settings_Page {
 	public function get_settings() {
 		$settings = apply_filters( 'sm_podcasting_settings', array(
 			array(
-				'title' => __( 'Podcast', 'sermon-manager' ),
+				'title' => __( 'Podcast', 'church-sermon-manager' ),
 				'type'  => 'title',
 				'desc'  => '',
 				'id'    => 'podcasting_settings',

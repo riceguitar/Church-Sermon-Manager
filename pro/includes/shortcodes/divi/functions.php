@@ -48,7 +48,7 @@ function smp_divi_include_taxonomies() {
 			$output .= sprintf(
 				'%3$s<option value="%1$s">%2$s</option>',
 				'',
-				__( '-- No terms available --', 'sermon-manager' ),
+				__( '-- No terms available --', 'church-sermon-manager' ),
 				"\n\t\t\t\t\t"
 			);
 		}

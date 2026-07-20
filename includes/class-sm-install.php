@@ -240,7 +240,7 @@ class SM_Install {
 	public static function cron_schedules( $schedules ) {
 		$schedules['monthly'] = array(
 			'interval' => 2635200,
-			'display'  => __( 'Monthly', 'sermon-manager' ),
+			'display'  => __( 'Monthly', 'church-sermon-manager' ),
 		);
 
 		return $schedules;
@@ -255,7 +255,7 @@ class SM_Install {
 	 */
 	public static function plugin_action_links( $links ) {
 		$action_links = array(
-			'settings' => '<a href="' . admin_url( 'edit.php?post_type=wpfc_sermon&page=sm-settings' ) . '" aria-label="' . esc_attr__( 'View Sermon Manager settings', 'sermon-manager' ) . '">' . esc_html__( 'Settings' ) . '</a>',
+			'settings' => '<a href="' . admin_url( 'edit.php?post_type=wpfc_sermon&page=sm-settings' ) . '" aria-label="' . esc_attr__( 'View Sermon Manager settings', 'church-sermon-manager' ) . '">' . esc_html__( 'Settings', 'church-sermon-manager' ) . '</a>',
 		);
 
 		return array_merge( $action_links, $links );
@@ -272,7 +272,7 @@ class SM_Install {
 	public static function plugin_row_meta( $links, $file ) {
 		if ( SM_BASENAME == $file ) {
 			$row_meta = array(
-				'support' => '<a href="' . esc_url( 'https://github.com/riceguitar/Church-Sermon-Manager/issues' ) . '" aria-label="' . esc_attr__( 'Report an issue or get support', 'sermon-manager' ) . '" target="_blank">' . esc_html__( 'Support', 'sermon-manager' ) . '</a>',
+				'support' => '<a href="' . esc_url( 'https://github.com/riceguitar/Church-Sermon-Manager/issues' ) . '" aria-label="' . esc_attr__( 'Report an issue or get support', 'church-sermon-manager' ) . '" target="_blank">' . esc_html__( 'Support', 'church-sermon-manager' ) . '</a>',
 			);
 
 			return array_merge( $links, $row_meta );

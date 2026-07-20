@@ -318,21 +318,21 @@ if ( $related_query->have_posts() ) {
 										)
 									);
 									?>
-									<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Preacher', 'sermon-manager' ); ?>
+									<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Preacher', 'church-sermon-manager' ); ?>
 										:</span>
 									<span class="wpfc-sermon-meta-text"><?php the_terms( get_the_ID(), 'wpfc_preacher' ); ?></span>
 								</div>
 							<?php endif; ?>
 							<?php if ( ( '1' == $settings->show_passage ) && ( get_wpfc_sermon_meta( 'bible_passage' ) ) ) : ?>
 								<div class="wpfc-sermon-meta-item wpfc-sermon-meta-passage">
-											<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Passage', 'sermon-manager' ); ?>
+											<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Passage', 'church-sermon-manager' ); ?>
 												:</span>
 									<span class="wpfc-sermon-meta-text"><?php wpfc_sermon_meta( 'bible_passage' ); ?></span>
 								</div>
 							<?php endif; ?>
 							<?php if ( ( '1' == $settings->show_service_type ) && ( has_term( '', 'wpfc_service_type', get_the_ID() ) ) ) : ?>
 								<div class="wpfc-sermon-meta-item wpfc-sermon-meta-service">
-											<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Service Type', 'sermon-manager' ); ?>
+											<span class="wpfc-sermon-meta-prefix"><?php echo __( 'Service Type', 'church-sermon-manager' ); ?>
 												:</span>
 									<span class="wpfc-sermon-meta-text"><?php the_terms( get_the_ID(), 'wpfc_service_type' ); ?></span>
 								</div>

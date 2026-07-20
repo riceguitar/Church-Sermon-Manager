@@ -67,7 +67,7 @@ class Group_Control_Sermons extends Group_Control_Base {
 		);
 
 		$fields['authors'] = array(
-			'label'       => __( 'WordPress Author', 'sermon-manager' ),
+			'label'       => __( 'WordPress Author', 'church-sermon-manager' ),
 			'label_block' => true,
 			'type'        => 'query',
 			'multiple'    => true,

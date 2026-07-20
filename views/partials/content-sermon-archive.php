@@ -133,7 +133,7 @@ if ( get_sermon_image_url() && ! \SermonManager::getOption( 'disable_image_archi
 					</div>
 					<?php if ( SermonManager::getOption( 'hide_read_more_when_not_needed' ) && str_word_count( $post->post_content ) > 30 ) : ?>
 						<div class="wpfc-sermon-description-read-more">
-							<a href="<?php echo get_permalink(); ?>"><?php echo __( 'Continue reading...', 'sermon-manager' ); ?></a>
+							<a href="<?php echo get_permalink(); ?>"><?php echo __( 'Continue reading...', 'church-sermon-manager' ); ?></a>
 						</div>
 					<?php endif; ?>
 				</div>
@@ -172,7 +172,7 @@ if ( get_sermon_image_url() && ! \SermonManager::getOption( 'disable_image_archi
 				<?php if ( get_post_meta( $post->ID, 'bible_passage', true ) ) : ?>
 					<div class="wpfc-sermon-meta-item wpfc-sermon-meta-passage">
 						<span class="wpfc-sermon-meta-prefix">
-							<?php echo __( 'Passage', 'sermon-manager' ); ?>:</span>
+							<?php echo __( 'Passage', 'church-sermon-manager' ); ?>:</span>
 						<span class="wpfc-sermon-meta-text"><?php wpfc_sermon_meta( 'bible_passage' ); ?></span>
 					</div>
 				<?php endif; ?>

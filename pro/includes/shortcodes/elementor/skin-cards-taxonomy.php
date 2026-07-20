@@ -29,7 +29,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'Cards', 'sermon-manager' );
+		return __( 'Cards', 'church-sermon-manager' );
 	}
 
 	/**
@@ -331,10 +331,10 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'show_title',
 			array(
-				'label'        => __( 'Title', 'sermon-manager' ),
+				'label'        => __( 'Title', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Show', 'sermon-manager' ),
-				'label_off'    => __( 'Hide', 'sermon-manager' ),
+				'label_on'     => __( 'Show', 'church-sermon-manager' ),
+				'label_off'    => __( 'Hide', 'church-sermon-manager' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 				'separator'    => 'before',
@@ -344,7 +344,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'title_tag',
 			array(
-				'label'     => __( 'Title HTML Tag', 'sermon-manager' ),
+				'label'     => __( 'Title HTML Tag', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => array(
 					'h1'   => 'H1',
@@ -372,7 +372,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'show_desc',
 			array(
-				'label'        => __( 'Description', 'sermon-manager' ),
+				'label'        => __( 'Description', 'church-sermon-manager' ),
 				'type'         => Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Show', 'elementor-pro' ),
 				'label_off'    => __( 'Hide', 'elementor-pro' ),
@@ -385,7 +385,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'desc_length',
 			array(
-				'label'     => __( 'Description Length', 'sermon-manager' ),
+				'label'     => __( 'Description Length', 'church-sermon-manager' ),
 				'type'      => Controls_Manager::NUMBER,
 				'default'   => apply_filters( 'excerpt_length', 25 ),
 				'condition' => array(
@@ -402,7 +402,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 		$this->add_control(
 			'show_image',
 			array(
-				'label'       => __( 'Show Image', 'sermon-manager' ),
+				'label'       => __( 'Show Image', 'church-sermon-manager' ),
 				'type'        => Controls_Manager::SWITCHER,
 				'default'     => 'yes',
 				'render_type' => 'template',
@@ -514,7 +514,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 				<?php endforeach; ?>
 			<?php else : ?>
 				<div class="terms-404">
-					<?php echo __( 'No terms found.', 'sermon-manager' ); ?>
+					<?php echo __( 'No terms found.', 'church-sermon-manager' ); ?>
 				</div>
 			<?php endif; ?>
 		</div>

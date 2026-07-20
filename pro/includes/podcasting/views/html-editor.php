@@ -55,12 +55,12 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 					<?php \SM_Admin_Settings::output_fields( $all_settings, $values ); ?>
 
 					<p>The feed URL:
-						<code><?php echo $post_id ? ( site_url( '/' ) . '?feed=rss2&post_type=wpfc_sermon&id=' . $post_id ) : __( 'Please save the feed to get the URL.', 'sermon-manager' ); ?></code>
+						<code><?php echo $post_id ? ( site_url( '/' ) . '?feed=rss2&post_type=wpfc_sermon&id=' . $post_id ) : __( 'Please save the feed to get the URL.', 'church-sermon-manager' ); ?></code>
 					</p>
 					<p class="submit">
 						<?php if ( empty( $GLOBALS['hide_save_button'] ) ) : ?>
 							<input name="save_podcast" class="button-primary sm-save-button" type="submit"
-									value="<?php esc_attr_e( 'Save changes', 'sermon-manager' ); ?>"/>
+									value="<?php esc_attr_e( 'Save changes', 'church-sermon-manager' ); ?>"/>
 						<?php endif; ?>
 						<input type="hidden" name="post_id"
 								value="<?php echo $post_id; ?>">
