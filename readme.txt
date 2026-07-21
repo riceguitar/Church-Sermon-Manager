@@ -5,7 +5,7 @@ Tags: church, sermon, sermons, preaching, podcasting, manage, managing, podcasts
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 3.4.1
+Stable tag: 3.4.2
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,13 @@ Go to Appearance → Menus, add a Custom Link with `/sermons/` (or `/?post_type=
 Open an issue on the [GitHub issue tracker](https://github.com/riceguitar/Church-Sermon-Manager/issues).
 
 ## Changelog ##
+
+### 3.4.2 (2026-07-20) ###
+* Security: every piece of plugin output is now escaped or explicitly verified as intentional markup, and all request input is sanitized.
+* Changed: the translation text domain is now church-sermon-manager (bundled de/fr/nl/pl translations renamed and still load; the plugin now owns all of its translatable strings).
+* Fixed: the podcast feed and the sermon exporter no longer produce malformed XML when titles, settings, or content contain special characters.
+* Changed: the legacy template engine's cache moved from the plugin folder to the uploads folder, so it survives plugin updates.
+* Added: License header in the plugin file.
 
 ### 3.4.1 (2026-07-16) ###
 * Fixed: Elementor editor no longer hangs on the loading spinner when editing a page whose slug matches the sermon archive slug.

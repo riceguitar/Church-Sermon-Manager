@@ -1,3 +1,10 @@
+### 3.4.2 ###
+Security: all plugin output is now escaped or explicitly verified as intentional markup, and all request input is sanitized — a broad hardening pass across the whole plugin.
+Changed: the translation text domain is now church-sermon-manager. Bundled translations (de/fr/nl/pl) were renamed to match and keep working.
+Fixed: the podcast feed and the sermon exporter no longer produce malformed XML when titles, settings, or content contain special characters like &.
+Changed: the legacy template engine's cache moved out of the plugin folder (into uploads/sm-twig-cache), so updates no longer wipe it.
+Added: a License header in the plugin file, and a reproducible release build that keeps development files out of the install zip.
+
 ### 3.4.1 ###
 Fixed: the Elementor editor no longer hangs on the loading spinner when you edit a page whose slug matches the sermon archive slug.
 Fixed: the Sermon Archive and Sermon Taxonomy Elementor widgets rendered blank cards on the front end — titles, images, and meta now display.
