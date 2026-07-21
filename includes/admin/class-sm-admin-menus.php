@@ -104,12 +104,9 @@ class SM_Admin_Menus {
 			<?php if ( $updated ) : ?>
 				<h2><?php esc_html_e( 'Migration Results', 'church-sermon-manager' ); ?></h2>
 				<ul>
-					/* translators: %d: number of sermons checked. */
-					<li><?php echo esc_html( sprintf( __( 'Total sermons checked: %d', 'church-sermon-manager' ), $results['total'] ) ); ?></li>
-					/* translators: %d: number of posts updated. */
-					<li><?php echo esc_html( sprintf( __( 'Posts updated: %d', 'church-sermon-manager' ), $results['updated'] ) ); ?></li>
-					/* translators: %d: number of posts skipped. */
-					<li><?php echo esc_html( sprintf( __( 'Posts skipped: %d', 'church-sermon-manager' ), $results['skipped'] ) ); ?></li>
+					<li><?php /* translators: %d: number of sermons checked. */ echo esc_html( sprintf( __( 'Total sermons checked: %d', 'church-sermon-manager' ), $results['total'] ) ); ?></li>
+					<li><?php /* translators: %d: number of posts updated. */ echo esc_html( sprintf( __( 'Posts updated: %d', 'church-sermon-manager' ), $results['updated'] ) ); ?></li>
+					<li><?php /* translators: %d: number of posts skipped. */ echo esc_html( sprintf( __( 'Posts skipped: %d', 'church-sermon-manager' ), $results['skipped'] ) ); ?></li>
 				</ul>
 			<?php endif; ?>
 		</div>

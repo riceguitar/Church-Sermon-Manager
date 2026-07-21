@@ -27,6 +27,8 @@ if [ "$WPORG" = "1" ]; then
   rm -rf "$TMP/church-sermon-manager/lib/plugin-update-checker"
   # Drop the Update URI header line; WordPress.org serves updates for the slug.
   sed -i '' '/^ \* Update URI:/d' "$TMP/church-sermon-manager/sermons.php"
+  # Remove the updater bootstrap (marked block) so no updater code remains.
+  sed -i '' '/WPORG-STRIP-START/,/WPORG-STRIP-END/d' "$TMP/church-sermon-manager/includes/main.php"
 fi
 
 ( cd "$TMP" && zip -qr archive.zip church-sermon-manager )

@@ -78,8 +78,7 @@ $current_tab = empty( $current_tab ) ? 'general' : $current_tab;
 					<span><?php esc_html_e( 'Documentation', 'church-sermon-manager' ); ?></span>
 				</h3>
 				<div class="inside">
-					/* translators: %s: link to the plugin documentation. */
-					<p><?php echo wp_sprintf( esc_html__( 'Guides, shortcode reference, and troubleshooting are in the %s.', 'church-sermon-manager' ), '<a href="https://github.com/riceguitar/Church-Sermon-Manager#readme" target="_blank">' . esc_html__( 'documentation', 'church-sermon-manager' ) . '</a>' ); ?></p>
+					<p><?php /* translators: %s: link to the plugin documentation. */ echo wp_sprintf( esc_html__( 'Guides, shortcode reference, and troubleshooting are in the %s.', 'church-sermon-manager' ), '<a href="https://github.com/riceguitar/Church-Sermon-Manager#readme" target="_blank">' . esc_html__( 'documentation', 'church-sermon-manager' ) . '</a>' ); ?></p>
 				</div>
 			</div>
 

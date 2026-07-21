@@ -62,7 +62,7 @@ foreach (
 							autocomplete="off"
 						<?php echo ! empty( $args[ $filter['taxonomy'] ] ) && 'disable' === $args['visibility'] ? 'disabled' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- constant attribute keyword. ?>>
 						<option value=""><?php echo esc_html( $filter['title'] ); ?></option>
-						<?php echo wpfc_get_term_dropdown( $filter['taxonomy'], ! empty( $args[ $filter['taxonomy'] ] ) ? $args[ $filter['taxonomy'] ] : '' ); ?>
+						<?php echo wpfc_get_term_dropdown( $filter['taxonomy'], ! empty( $args[ $filter['taxonomy'] ] ) ? $args[ $filter['taxonomy'] ] : '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- option-list markup from wpfc_get_term_dropdown(). ?>
 					</select>
 					<?php $series = explode( ',', $args['series_filter'] ); ?>
 					<?php if ( isset( $args['series_filter'] ) && '' !== $args['series_filter'] && $series ) : ?>

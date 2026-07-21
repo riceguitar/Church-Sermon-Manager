@@ -411,7 +411,7 @@ class Template_Tags {
 			<span
 					class="sm-pro-sermon-taxonomy-label-separator">:</span>
 			<?php foreach ( $terms as $term ) : ?>
-				<?php echo ( $args['link'] ? '<a href="' . esc_url( get_term_link( $term ) ) . '">' : '<span>' ) . esc_html( $term->name ) . ( $args['link'] ? '</a>' : '</span>' ) . ( end( $terms ) !== $term ? apply_filters( 'smp/shortcodes/the_terms/separator', ',' ) : '' ); ?>
+				<?php echo ( $args['link'] ? '<a href="' . esc_url( get_term_link( $term ) ) . '">' : '<span>' ) . esc_html( $term->name ) . ( $args['link'] ? '</a>' : '</span>' ) . ( end( $terms ) !== $term ? apply_filters( 'smp/shortcodes/the_terms/separator', ',' ) : '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- constant tags around esc_html'd term name and esc_url'd link. ?>
 			<?php endforeach; ?>
 			<?php
 			$content = ob_get_clean();

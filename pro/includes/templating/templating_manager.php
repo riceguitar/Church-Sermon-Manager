@@ -528,7 +528,8 @@ final class Templating_Manager {
 			// Twig errors extend \Exception, not \RuntimeException — rethrow so the
 			// callers' catch ( \RuntimeException ) fallbacks actually engage instead
 			// of the error escaping as a fatal.
-			throw new \RuntimeException( esc_html( 'Error rendering template: ' . $e->getMessage() ), 0, $e );
+			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- the message is esc_html'd; the flagged token is the exception-chaining argument, which is never output.
+			throw new \RuntimeException( 'Error rendering template: ' . esc_html( $e->getMessage() ), 0, $e );
 		}
 	}
 

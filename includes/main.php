@@ -1139,6 +1139,7 @@ add_filter( 'wp_insert_post_data', function ( $data, $postarr ) {
 }, 99, 2 );
 
 // Self-updates from GitHub releases.
+// WPORG-STRIP-START: GitHub update checker — removed from the WordPress.org build, which receives updates from the directory.
 require SM_PATH . 'lib/plugin-update-checker/plugin-update-checker.php';
 $csm_update_checker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
 	'https://github.com/riceguitar/Church-Sermon-Manager/',
@@ -1146,3 +1147,4 @@ $csm_update_checker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdat
 	'church-sermon-manager'
 );
 $csm_update_checker->getVcsApi()->enableReleaseAssets();
+// WPORG-STRIP-END
