@@ -93,7 +93,7 @@ $settings = (object) array_merge( $defaults, (array) $settings );
 				<span class="fl-builder-settings-title-text-wrap"><?php esc_html_e( 'Filter', 'church-sermon-manager' ); ?></span>
 			</h3>
 			<?php foreach ( FLBuilderLoop::post_types() as $slug => $type ) : ?>
-				<table class="fl-form-table fl-custom-query-filter fl-custom-query-<?php echo $slug; ?>-filter" <?php echo $slug == $settings->post_type ? 'style="display:table;"' : ''; ?>>
+				<table class="fl-form-table fl-custom-query-filter fl-custom-query-<?php echo esc_attr( $slug ); ?>-filter" <?php echo $slug == $settings->post_type ? 'style="display:table;"' : ''; ?>>
 					<?php
 
 					// Posts.

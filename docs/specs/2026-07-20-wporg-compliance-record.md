@@ -79,3 +79,24 @@ under Deviations.
 - A fresh Plugin Check run is expected to report: zero ERRORs outside
   `lib/plugin-update-checker/`; WARNINGs limited to the Declined classes
   above.
+
+## Re-scan (2026-07-21) and final pass
+
+The re-run report dropped from 4,315 findings to 1,499 (non-updater errors
+2,750 → 82). The final pass resolved the 82: line-drift misses in the
+filtering/attachments partials and taxonomy views; annotation placements
+the sniff ignores on multiline statements (restructured or converted to
+`phpcs:disable` blocks); `wp_is_writable`/`wp_mkdir_p` swaps;
+`utf8_encode` replaced (PHP 8.2 deprecation); prepared-query annotations;
+justified script-print annotations (Cloudflare Rocket Loader, Divi
+builder); a missed ABSPATH guard; translators comments moved inside PHP
+context; and deletion of stale compiled Twig cache files from the working
+tree. Every change was A/B-verified output-neutral in both renderer modes
+(same-session capture pairs — day-old baselines had gone environmentally
+stale via a WP core auto-update and nonce tick rollover; the harness
+normalization now covers those tokens).
+
+**Scan the built zip, not the repository.** Remaining repo-path findings
+(`tools/`, `bin/`, `tests/`, lint configs, `.gitattributes`,
+`lib/plugin-update-checker/`) are excluded from or deferred in the shipped
+artifact; `tools/build-zip.sh --wporg` produces the submission-clean zip.

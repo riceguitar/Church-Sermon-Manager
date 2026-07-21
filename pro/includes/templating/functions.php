@@ -1092,7 +1092,8 @@ function smp_maybe_install_default_templates() {
 						if ( 'edit.php' === $pagenow && ( isset( $_GET['post_type'] ) && 'wpfc_sm_template' === $_GET['post_type'] ) && ( isset( $_GET['doaction'] ) && 'updateall' === $_GET['doaction'] ) ) {
 							// Replace the installed template with updated one.
 							$wp_filesystem->rmdir( $installed_templates_dir . $template, true );
-							mkdir( $installed_templates_dir . $template );
+							wp_mkdir_p( $installed_templates_dir . $template );
+							// phpcs:ignore PluginCheck.CodeAnalysis.WriteFile.PluginDirectoryWrite -- copies bundled templates into the wp-content/data user-data directory (frozen location), not the plugin directory.
 							copy_dir( $source_templates_dir . $template, $installed_templates_dir . $template );
 
 							// Clear the notification.
@@ -1139,7 +1140,8 @@ function smp_maybe_install_default_templates() {
 				}
 			}
 		} else { // Else copy it to templates.
-			mkdir( $installed_templates_dir . $template );
+			wp_mkdir_p( $installed_templates_dir . $template );
+			// phpcs:ignore PluginCheck.CodeAnalysis.WriteFile.PluginDirectoryWrite -- copies bundled templates into the wp-content/data user-data directory (frozen location), not the plugin directory.
 			copy_dir( $source_templates_dir . $template, $installed_templates_dir . $template );
 		}
 	}

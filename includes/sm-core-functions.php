@@ -84,7 +84,7 @@ function sm_the_date( $d = '', $before = '', $after = '', $post = null ) {
 	 * @since 2.6
 	 *
 	 */
-	echo apply_filters( 'the_date', $the_date, $d, $before, $after, $post );
+	echo apply_filters( 'the_date', $the_date, $d, $before, $after, $post ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core the_date filter output with caller-supplied wrappers.
 }
 
 /**
@@ -299,6 +299,7 @@ function sm_get_image_dimensions( $img_loc ) {
  * @since 2.10
  */
 function sm_get_png_dimensions( $img_loc ) {
+	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- ranged binary read of image headers; WP_Filesystem cannot read partial files.
 	$handle = fopen( $img_loc, 'rb' );
 
 	// Check if url is accessible or fail gracefully.
@@ -307,6 +308,7 @@ function sm_get_png_dimensions( $img_loc ) {
 	}
 
 	if ( ! feof( $handle ) ) {
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fread -- ranged binary read of image headers.
 		$new_block = fread( $handle, 24 );
 		if ( "\x89" == $new_block[0] && "\x50" == $new_block[1] && "\x4E" == $new_block[2] && "\x47" == $new_block[3] && "\x0D" == $new_block[4] && "\x0A" == $new_block[5] && "\x1A" == $new_block[6] && "\x0A" == $new_block[7] ) {
 			if ( "\x49\x48\x44\x52" === $new_block[12] . $new_block[13] . $new_block[14] . $new_block[15] ) {
@@ -335,6 +337,7 @@ function sm_get_png_dimensions( $img_loc ) {
  * @see   http://php.net/manual/en/function.getimagesize.php#88793
  */
 function sm_get_jpeg_dimensions( $img_loc ) {
+	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- ranged binary read of image headers; WP_Filesystem cannot read partial files.
 	$handle = fopen( $img_loc, 'rb' );
 
 	// Check if url is accessible or fail gracefully.
@@ -344,6 +347,7 @@ function sm_get_jpeg_dimensions( $img_loc ) {
 
 	$new_block = null;
 	if ( ! feof( $handle ) ) {
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fread -- ranged binary read of image headers.
 		$new_block = fread( $handle, 32 );
 		$i         = 0;
 		if ( "\xFF" == $new_block[ $i ] && "\xD8" == $new_block[ $i + 1 ] && "\xFF" == $new_block[ $i + 2 ] && "\xE0" == $new_block[ $i + 3 ] ) {
@@ -354,6 +358,7 @@ function sm_get_jpeg_dimensions( $img_loc ) {
 				$block_size = hexdec( $block_size[1] );
 				while ( ! feof( $handle ) ) {
 					$i         += $block_size;
+					// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fread -- ranged binary read of image headers.
 					$new_block .= fread( $handle, $block_size );
 					if ( "\xFF" == $new_block[ $i ] ) {
 						// New block detected, check for SOF marker.

@@ -21,7 +21,7 @@ global $post;
 ?>
 <div id="wpfc-attachments" class="cf">
 	<p>
-		<strong><?php echo __( 'Download Files', 'church-sermon-manager' ); ?></strong>
+		<strong><?php echo esc_html__( 'Download Files', 'church-sermon-manager' ); ?></strong>
 		<?php 
 		if(get_wpfc_sermon_meta( 'sermon_notes' )){
 		$notes = get_wpfc_sermon_meta( 'sermon_notes' );	
@@ -30,7 +30,7 @@ global $post;
 				class="sermon-attachments"
 				download="<?php echo esc_attr( basename( $notes ) ); ?>">
 				<span class="dashicons dashicons-media-document"></span>
-				<?php echo __( 'Notes', 'church-sermon-manager' ); ?>
+				<?php echo esc_html__( 'Notes', 'church-sermon-manager' ); ?>
 			</a>	
 		<?php		
 		}
@@ -44,7 +44,7 @@ global $post;
 						class="sermon-attachments"
 						download="<?php echo esc_attr( basename( $value ) ); ?>">
 						<span class="dashicons dashicons-media-document"></span>
-						<?php echo __( 'Notes', 'church-sermon-manager' ); ?>
+						<?php echo esc_html__( 'Notes', 'church-sermon-manager' ); ?>
 					</a><?php
 					}				
 				}
@@ -60,7 +60,7 @@ global $post;
 					class="sermon-attachments"
 					download="<?php echo esc_attr( basename( $sermon_bulletin ) ); ?>">
 					<span class="dashicons dashicons-media-document"></span>
-					<?php echo __( 'Bulletin', 'church-sermon-manager' ); ?>
+					<?php echo esc_html__( 'Bulletin', 'church-sermon-manager' ); ?>
 				</a>	
 			<?php 
 		}
@@ -74,7 +74,7 @@ global $post;
 						class="sermon-attachments"
 						download="<?php echo esc_attr( basename( $value ) ); ?>">
 						<span class="dashicons dashicons-media-document"></span>
-						<?php echo __( 'Bulletin', 'church-sermon-manager' ); ?>
+						<?php echo esc_html__( 'Bulletin', 'church-sermon-manager' ); ?>
 					</a><?php
 					}				
 				}

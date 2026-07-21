@@ -214,9 +214,7 @@ class Template_Tags {
 					switch ( $item ) {
 						case 'date':
 							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- value composed by the class getter; several return pre-encoded core-filtered text.
-							echo $this->get_the_published_date( array(
-								'date_format' => $args['date_format'],
-							) );
+							echo $this->get_the_published_date( array( 'date_format' => $args['date_format'] ) );
 							break;
 						case 'time':
 							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- value composed by the class getter; several return pre-encoded core-filtered text.
@@ -225,9 +223,7 @@ class Template_Tags {
 						case 'preached_date':
 							echo 'Preached Date: ';
 							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- value composed by the class getter; several return pre-encoded core-filtered text.
-							echo $this->get_the_preached_date( array(
-								'date_format' => $args['date_format'],
-							) );
+							echo $this->get_the_preached_date( array( 'date_format' => $args['date_format'] ) );
 							break;
 						case 'author':
 							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- value composed by the class getter; several return pre-encoded core-filtered text.
@@ -271,12 +267,10 @@ class Template_Tags {
 							break;
 						case 'passage':
 							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- value composed by the class getter; several return pre-encoded core-filtered text.
-							echo $this->get_the_passage( array(
-								'verse_init' => $args['verse_init'],
-							) );
+							echo $this->get_the_passage( array( 'verse_init' => $args['verse_init'] ) );
 							break;
 						default:
-							echo apply_filters( 'smp/shortcodes/the_metadata_' . $item, '' );
+							echo apply_filters( 'smp/shortcodes/the_metadata_' . $item, '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- extension point returning composed markup.
 					}
 					?>
 				</span>

@@ -61,7 +61,7 @@ function smp_divi_include_taxonomies() {
 	$output = '<div id="et_pb_include_taxonomies">' . $output . '<input name="et_pb_include_taxonomies" value=""></div>';
 
 	// @todo - find a way to integrate with Divi and access the settings modal, instead of this workaround. This is maybe breaking the modal rendering as well.
-	$output .= '<script src="' . SMP_URL . 'assets/js/divi/choices.js' . '"></script>';
+	$output .= '<script src="' . SMP_URL . 'assets/js/divi/choices.js' . '"></script>'; // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript -- Divi builder renders this markup outside the enqueue lifecycle; the script ships with the plugin.
 	$output .= '<style>.et-pb-option-container--smp_divi_include_taxonomies {width: 30%;min-width: 250px;}</style>';
 
 	return $output;

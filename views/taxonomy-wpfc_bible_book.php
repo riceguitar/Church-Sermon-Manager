@@ -13,7 +13,7 @@ get_header();
 <?php echo wpfc_get_partial( 'content-sermon-wrapper-start' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- theme-overridable partial markup from wpfc_get_partial(). ?>
 
 <?php
-echo render_wpfc_sorting();
+echo render_wpfc_sorting(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- filtering UI markup composed by the plugin.
 
 if ( have_posts() ) :
 

@@ -1,4 +1,6 @@
 <?php
+
+defined( 'ABSPATH' ) or exit;
 /**
  * Parity instrumentation: logs whether any pro/vendor (Twig) file was
  * included for each front-end request. Install by copying into

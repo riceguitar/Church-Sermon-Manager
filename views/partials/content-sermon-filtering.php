@@ -33,14 +33,14 @@ foreach (
 	) as $required_variable
 ) {
 	if ( ! isset( $$required_variable ) ) {
-		echo '<p><b>Sermon Manager</b>: Partial "<i>' . str_replace( '.php', '', basename( __FILE__ ) ) . '</i>" loaded incorrectly.</p>';
+		echo '<p><b>Sermon Manager</b>: Partial "<i>' . esc_html( str_replace( '.php', '', basename( __FILE__ ) ) ) . '</i>" loaded incorrectly.</p>';
 
 		return;
 	}
 }
 
 ?>
-<div id="<?php echo $args['id']; ?>" class="<?php echo $args['classes']; ?>">
+<div id="<?php echo esc_attr( $args['id'] ); ?>" class="<?php echo esc_attr( $args['classes'] ); ?>">
 	<?php foreach ( $filters as $filter ) : ?>
 		<?php if ( isset( $visibility_mapping[ $filter['taxonomy'] ] ) && in_array( $args[ $visibility_mapping[ $filter['taxonomy'] ] ], array(
 			'yes',
@@ -56,12 +56,12 @@ foreach (
 			<div class="<?php echo esc_attr( $filter['className'] ); ?>" style="display: inline-block">
 				<form action="<?php echo esc_url( $args['action'] ); ?>" method="get">
 					<select name="<?php echo esc_attr( $filter['taxonomy'] ); ?>"
-							title="<?php echo $filter['title']; ?>"
-							id="<?php echo $filter['taxonomy']; ?>"
+							title="<?php echo esc_attr( $filter['title'] ); ?>"
+							id="<?php echo esc_attr( $filter['taxonomy'] ); ?>"
 							onchange="if(this.options[this.selectedIndex].value !== ''){return this.form.submit()}else{window.location = window.location.href.split('?')[0];}"
 							autocomplete="off"
 						<?php echo ! empty( $args[ $filter['taxonomy'] ] ) && 'disable' === $args['visibility'] ? 'disabled' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- constant attribute keyword. ?>>
-						<option value=""><?php echo $filter['title']; ?></option>
+						<option value=""><?php echo esc_html( $filter['title'] ); ?></option>
 						<?php echo wpfc_get_term_dropdown( $filter['taxonomy'], ! empty( $args[ $filter['taxonomy'] ] ) ? $args[ $filter['taxonomy'] ] : '' ); ?>
 					</select>
 					<?php $series = explode( ',', $args['series_filter'] ); ?>

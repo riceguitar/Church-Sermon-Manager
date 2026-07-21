@@ -1,4 +1,6 @@
 <?php
+
+defined( 'ABSPATH' ) or exit;
 /**
  * PHPUnit bootstrap file
  *

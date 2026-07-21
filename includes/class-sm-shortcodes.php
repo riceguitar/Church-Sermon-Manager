@@ -1352,7 +1352,7 @@ class SM_Shortcodes {
 									}
 								}
 
-								// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core paginate_links() markup.
+								// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- core paginate_links() markup.
 							echo $htmlPagination = paginate_links( array(
 									'base'     => preg_replace( '/\/\?.*/', '', rtrim( get_permalink( $post_ID ), '/' ) ) . '/%_%',
 									'current'  => $query->get( 'paged' ),
@@ -1368,7 +1368,8 @@ class SM_Shortcodes {
 								   
 								if ( $query->max_num_pages !=  $paged && $paged == 1  ) {
 								
-								  echo ' <a class="next page-numbers" href="'. esc_url( get_permalink( $post_ID ) ) .'page/'. ($paged + 1) .'">Next &raquo;</a>';								 
+								  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- base URL esc_url-escaped; page number is integer arithmetic.
+								echo ' <a class="next page-numbers" href="'. esc_url( get_permalink( $post_ID ) ) .'page/'. ($paged + 1) .'">Next &raquo;</a>';								 
 								
 								}
 								

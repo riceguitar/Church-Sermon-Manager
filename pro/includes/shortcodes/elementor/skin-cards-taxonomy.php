@@ -482,7 +482,7 @@ class Skin_Cards_Taxonomy extends Skin_Base {
 							/* @noinspection CssUnknownTarget */
 							echo sprintf(
 								'<a href="' . esc_url( get_term_link( $term, $taxonomy ) ) . '" class="wpfc-term-grid-image" style="background-image:url(%s);"></a>',
-								wp_get_attachment_image_url( $image_id, array( 300, 300 ) )
+								esc_url( wp_get_attachment_image_url( $image_id, array( 300, 300 ) ) )
 							);
 						} else {
 							echo sprintf( '<a href="' . esc_url( get_term_link( $term, $taxonomy ) ) . '" class="wpfc-term-grid-image" style="background-color:#cecece;"></a>' );

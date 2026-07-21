@@ -296,12 +296,14 @@ switch ( $template ) {
 			}
 
 			/** Display post html **/
+			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- theme-generated navigation markup inside a fixed wrapper.
 			echo '<div class="page-body' . esc_attr( $bg_color ) . '">
           <div class="post-wrapper">
           	<div class="post-body">' . do_shortcode( $the_content ) . '</div>' .
 			     $navigation_content . '
           </div>
         </div>';
+			// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 
 			get_footer();
 		} else {

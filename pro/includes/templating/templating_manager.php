@@ -44,7 +44,7 @@ final class Templating_Manager {
 		$filesystem_templates = array();
 
 		// Create the directory if it doesn't exist.
-		if ( ! is_dir( $templates_dir ) && is_writable( dirname( $templates_dir ) ) ) {
+		if ( ! is_dir( $templates_dir ) && wp_is_writable( dirname( $templates_dir ) ) ) {
 			wp_mkdir_p( $templates_dir );
 		}
 
@@ -321,7 +321,7 @@ final class Templating_Manager {
 			if ( $copy instanceof \WP_Error ) {
 				wp_delete_post( $new_post_id, true );
 
-				throw new \Exception( 'Failed copying the template files. ' . $copy->get_error_message() );
+				throw new \Exception( 'Failed copying the template files. ' . esc_html( $copy->get_error_message() ) );
 			}
 
 			// Return the Template instance of new template.
@@ -528,7 +528,7 @@ final class Templating_Manager {
 			// Twig errors extend \Exception, not \RuntimeException — rethrow so the
 			// callers' catch ( \RuntimeException ) fallbacks actually engage instead
 			// of the error escaping as a fatal.
-			throw new \RuntimeException( 'Error rendering template: ' . esc_html( $e->getMessage() ), 0, $e );
+			throw new \RuntimeException( esc_html( 'Error rendering template: ' . $e->getMessage() ), 0, $e );
 		}
 	}
 

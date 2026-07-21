@@ -586,7 +586,7 @@ class SermonManager { // phpcs:ignore
 		}
 
 		foreach ( $GLOBALS['sm_plyr_scripts'] as $script ) {
-			echo '<script type="text/javascript" data-cfasync="false" src="' . esc_url( $script->src ) . '"></script>';
+			echo '<script type="text/javascript" data-cfasync="false" src="' . esc_url( $script->src ) . '"></script>'; // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript -- re-prints registered scripts with the data-cfasync attribute for Cloudflare Rocket Loader; sources come from the WP script registry.
 
 			if ( ! empty( $script->extra ) ) {
 				/* @noinspection BadExpressionStatementJS */
@@ -796,7 +796,7 @@ class SermonManager { // phpcs:ignore
 					global $wpdb;
 
 					$sql = 'DELETE FROM ' . $wpdb->options . ' WHERE ( `option_name` LIKE "_transient_%" OR `option_name` LIKE "transient_%")';
-					$wpdb->query( $sql );
+					$wpdb->query( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- static maintenance query, no variable input.
 
 					?>
 					<div class="notice notice-success">

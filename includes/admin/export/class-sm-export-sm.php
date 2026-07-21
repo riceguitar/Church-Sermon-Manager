@@ -97,7 +97,7 @@ class SM_Export_SM {
 		 */
 		function wxr_cdata( $str ) {
 			if ( seems_utf8( $str ) == false ) {
-				$str = utf8_encode( $str );
+				$str = function_exists( 'mb_convert_encoding' ) ? mb_convert_encoding( $str, 'UTF-8', 'ISO-8859-1' ) : $str;
 			}
 
 			$str = '<![CDATA[' . str_replace( ']]>', ']]]]><![CDATA[>', $str ) . ']]>';
@@ -297,7 +297,7 @@ class SM_Export_SM {
 				$query = $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE guid=%s", $attachment_url );
 
 				// get attachment id.
-				$attachment_id = $wpdb->get_var( $query );
+				$attachment_id = $wpdb->get_var( $query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- $query is prepared two lines above.
 			}
 
 			// return id.
